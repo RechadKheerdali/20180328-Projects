@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>08 break;</title>
+</head>
+<body>
+  <script>
+  // break; examples
+    for (var i = 5; i <= 156; i++) {
+      document.write(i);
+      if (i === 32) {
+        break;
+      }
+    };
+
+    // second break demo, this is to show you can reset var i in for loops and use numerous of times
+    for (var i = 7000; i >= 6000; i--) {
+      document.write("<div>" + i + "</div>");
+      if (i === 6986) {
+        break;
+      }
+    }
+  </script>
+</body>
+</html>

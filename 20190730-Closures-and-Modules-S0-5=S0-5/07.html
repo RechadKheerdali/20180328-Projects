@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 07 sharing your module to the global scope with module export pattern -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>07 sharing your module to the global scope with module export pattern</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* sharing your module to the global scope with module export pattern. */
+const iKmodule = (function() {		/*1+*/
+	const iKexportObject = {		/*2+*/
+		iKproperty1: "iKvalue1",
+		iKproperty2: iKpara => printD(iKpara)
+	};
+
+	iKexportObject["iKproperty3"] = "iKvalue3";	/*3+*/
+	printD( iKexportObject.iKproperty3 ); /*OP "iKvalue3" */ /*4+*/
+
+	return iKexportObject;	/*5+*/
+}()); /*END iKmodule */
+
+
+printD( iKmodule ); /*OP iKmodule window object */ /*6+*/
+
+iKmodule["iKproperty2"]("iKarg"); /*OP "iKarg" */ /*7+*/
+
+/*===================*/
+
+(function(md) {		/*8+*/
+
+	printD( md.iKproperty1 ); /*OP "iKvalue1" */
+
+}(iKmodule));/*END (function(){...}()) */	/*9+*/
+
+/*1+ iKmodule is a global variable now, containing the module data to be shared.
+2+ any stored infor you want to share must be stored in some way, object, array, variable, etc... because you are going to return only one thing.
+	+\ object is more ideal to be return. as it is easier to understand.
+3+ you can constantly add to the return object as you do your work.
+4+ the module will still perform as usual though.
+5+ this is the return for the module, and other files will get access to this object iKexportObject .
+6+ the iKmodule is a global object and anyone can access.
+7+ you can access any property of the iKmodule.
+8+ it is not necessary to use parameter since iKmodule is global scope.
+9+ again you do not need to enter the module since it is already entered, unless you want to enter some method of your own and improve this module performance. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

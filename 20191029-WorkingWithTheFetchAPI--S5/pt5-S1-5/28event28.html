@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- intro to server-sent event / eventsource / this is a mock eventsource server to demo what it would be like to receive eventsource from the server -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>28 intro to server-sent event / eventsource / this is a mock eventsource server to demo what it would be like to receive eventsource from the server</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+
+
+<!-- for mock eventsource server to work you require both the underscore.js and 28mockevent.js files.
++\ you do not need to read too much into these files.
+	+\ just know that 28event28mockevent.js file is codes are only to set up what it would be like to receive eventsource so you can practice on. But it also requires underscore.js file for it to work.
+		+\ but in the real world, you would get your eventsource from an actual server. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+
+<script src='28event28mockevent.js'></script>
+
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*intro to server-sent event / eventsource / this is a mock eventsource server to demo what it would be like to receive eventsource from the server */
+/* source: eloyz/mockevent (github).
+	+\ i did not tweak too much here.
++\ iK you do not have to read too much into the 'var mockEvent' variable as that is just the set up of how you want eventsource to present itself to client-side.
++\ eventsource are similar to websocket persistent connection, but it is restricted to only one direction which is the server can send message to the client.
+	+\ but you cannot have the client-side sent message to the server-side.
+	+\ this is ideal if you only want message from the server such as update like breaking news/tweet messages/weather forcast/etc...
+		+\ plus unlike websocket, it is less demanding on the performance of your webpage. */
+
+/* Instantiate a `MockeEvent` ----------*/
+var mockEvent = new MockEvent({	/*1+*/
+    url: '/tweets',		/*2+*/
+    setInterval: 1300,	/*3+*/
+    responses: [		/*4+*/
+        {name: 'first_tweet', data: 'first tweet'},
+        {name: 'tweet', data: 'a tweet'},	/*5+*/
+        {name: 'tweet', data: 'another tweet'},
+        {name: 'tweet', data: 'fourth tweet'},
+        {name: 'last_tweet', data: 'last tweet'}
+    ],
+});
+
+
+/* Instantiate an `EventSource` ---------- */
+var evtSource = new EventSource('/tweets');
+
+/* Listening to specific event names and handling them */
+evtSource.addEventListener(
+	'first_tweet',		/*6+*/
+	function(event){
+		console.log('first tweet1', event)
+	},
+	false
+);
+
+evtSource.addEventListener(
+	'tweet',
+	function(event){
+		console.log('tweet2', event)
+	},
+	false
+);
+
+evtSource.addEventListener(
+	'last_tweet',
+	function(event){
+		console.log('last tweet3', event)
+	},
+	false
+);
+
+/* Listening for open and error events */
+evtSource.onopen = function(event) {
+	console.log('TWEET CONNECTION IS OPEN')
+};
+
+evtSource.onerror = function(event){
+	console.log('TWEET CONNECTION GO BOOM', event.message)
+};
+
+/*1+ iK you can skim through as this is to set up the eventsource.
+	+\ you can custom each property to suit type of data you want coming through the eventsource object.
+	+\ in the real world, the server-side written very differently, which is why you do not have to learn mockEvent object and all that is inside it.
+2+ pretend this is the server url.
+3+ how much time do you want each eventsource to arrive to the client-side.
+	+\ iK in real life the server only sents an eventsource to the client-side base on when it receive an updated message on the server-side.
+4+ iK it is just mock values that will be sent to client like an eventsource messeage, and you will pretend it is from the server.
+	+\ data: is the property where you grab the value from the server, using the .onmessage event.
+	+\ name: property represent the type of event you need to call for you to grab the value of data: , so it is basically a custom event .
+		+\ iK it will not work if you do not include name: property. As in normal circumstance, if there is no custom event than you can just use .onmessage event.
+5+ notice there is 3 "tweet" name:, and all have different value. so in this case therefore the server would send out 3 eventsource to the client.
+6+ ensure it is matching the event type from the server, if non , than .onmessage event should suffice.
+	+\ however we cannot use .onmessage event here, as it does not work with this mock eventsource, but it would work in the real world. */
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

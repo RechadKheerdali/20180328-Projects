@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>04 Template literals</title>
+</head>
+<body><!--    Template literals-->
+<main>
+<script>
+    /*Template literal*/
+// using backtick / no + sign to concatenate / string interpolation ${}
+    let a = 5;
+    let b = 10;
+    console.log(`Fifteen is ${a + b} and
+    not ${2 * a + b}.`);                       //.1
+
+    //.1 notice i use a new line. it only seem to work in console
+    /* quote are no longer need as backtick are simpler, only backticks needed to be use once to cocatenated all string. no +sign needed.
+    +\ string interpolation ${} to insert numerous of things including variables/function/doing maths/etc
+
+    /***********************************/
+
+/*arrow functions*/
+    //a declaration function
+    function declarationF() {
+        return printD(`a declaration function`)
+    };
+    declarationF();
+		/*function declaration is the only function which are hoisted. */
+
+
+    //a function expression
+    var fExpression = function() {
+        return printD(`a function expression`)
+    };
+    fExpression();
+
+
+    //a arrow function
+    const arrowF = () => {
+        return printD(`a arrow function`)
+    };
+    arrowF();
+
+    /*similar to a function expression. const can be change of course*/
+
+    /*******************************************/
+
+//a arrow function more concise
+    const arrowFC = a => printD(a);
+    arrowFC(`a arrow function more concise`);
+
+
+    const brace = x => { x };
+    console.log( brace(5) );        // undefined
+
+    const nobrace = x => x;
+    console.log( nobrace(5) );      // 5
+
+    /* single argument can remove the parenthesis but more than one argument or no argument than a parenthesis is a must
+    /+ one line of code do not need the return keyword and you must omit the open braces too otherwise it will return as undefine for some codes    */
+
+    /*************************************/
+
+/* Returning object literals */
+    var OL = () => ( {propertyO: 1} );
+    console.log( OL() );
+
+    /* for object literal you must include parenthesis because two open braces return as error
+    +\ any other way would be return as error or undefined  */
+
+    /************************************************/
+
+//Parsing order
+    let callback;
+
+    callback = callback || function() {};        // ok
+
+  //  callback = callback || () => {};
+    // SyntaxError: invalid arrow-function arguments
+
+    callback = callback || (() => {});           // ok
+
+    /*****************************************************/
+
+/*for personal interest, it appears to give current year*/
+    const getYear = () => new Date().getFullYear();
+    console.log( getYear() );
+    
+    /* without .getFullYear() you get all current date and time */
+</script>
+</main>
+</body>
+</html>

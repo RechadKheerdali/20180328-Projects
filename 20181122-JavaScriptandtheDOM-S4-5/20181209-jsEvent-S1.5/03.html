@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>03 my method to capitalize hovering before watching videa</title>
+</head><!--   my method to capitalize hovering before watching videa. -->
+<body>
+<main>
+  <p id="capitalP" style="display: inline-block; border: red 2px solid;">can you capitalise me</p>
+
+<script>
+  const cap = document.getElementById(`capitalP`);
+
+  cap.addEventListener(`mouseover`, () => {
+    cap.style.textTransform = `uppercase`;
+  })
+
+  cap.addEventListener(`mouseout`, () => {
+    cap.style.textTransform = `lowercase`;
+  })
+
+  // ik did myself before watching solution. pro developer.
+  /* i could have done this with css but this is through javascript */
+</script>
+</main>
+</body>
+</html>

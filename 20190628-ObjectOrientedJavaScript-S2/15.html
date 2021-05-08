@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 15 the base structor of .defineProperties() outside construction function, using the constructor object as object in .defineProperties(). -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>15 the base structor of .defineProperties() outside construction function, using the constructor object as object in .defineProperties().</title>
+<style>
+/* + + + + + + + + + + + + STYLE -----------------------------*/
+/*------------------------ /style ////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + MAIN ----------------------------->
+<!------------------------ /main ///////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + SCRIPT ----------------------------*/
+'use strict';
+
+
+/* the base structor of .defineProperties() outside construction function, using the constructor object as object in .defineProperties(). 
++\ this is ideal if you only want to use a specific getter and setter on a constructor object property/s, therefore not affecting the constructor function property, and other constructor object you might use later on.
+		+\ .defineProperties() aims at the constructor object, therefore the constructor function and other constructor object will not be affected. */
+const iKconsFunction = function () {this.iKproperty1;}; /*1+*/
+
+const iKconsObject = new iKconsFunction(); /*2+*/
+
+Object.defineProperties(	/*3+*/
+	iKconsObject,			/*4+*/
+	{
+		"iKproperty1": {
+			get: () => this.iKproperty1 || "iKgetDefaultV", /*5+*/
+			set: iKsetPar => this.iKproperty1 = iKsetPar,
+			enumerable: true,	/*6+*/
+			configurable: true	/*6+*/
+		}
+	}
+); /*END Object.defineProperties() */
+
+/***********************/
+
+printD( iKconsObject ); /*OP iKproperty1 shows as normal in the object .*/
+printD( iKconsObject["iKproperty1"] ); /*OP "iKgetDefaultV" */
+
+for (let property in iKconsObject){
+	printD(property);
+}; /*OP "iKproperty1" */	/*7+*/
+
+/*1+ the paremeters are no good since you cannot use them in .defineProperties(). besides that you can reassign as normal.
+1+ optionally you can set this.iKproperty inside the constructor function and not set the enumerable: and configurable: in .defineProperties() .
+	+\ however you must give the this.property a value, even a undefined will suffice. Because if you do not give it a value and not set the enumerable: and configurable: value to true, than it will default to false. Therefore it will not show up in codes like loops.
+2+ do not bother with arguments as it will be ignored by .defineProperties() .
+3+ comes after the constructor object.
+4+ using the constructor object variable.
+5+ notice no _underscore property is set outside the constructor function.
+6+ this.iKproperty1 was not declared before the .defineProperties therefore you must set this to true while doing your getter and setter.
+7+ works fine with loops. */
+
+
+ /*OP */
+/*----------------------- /script ///////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

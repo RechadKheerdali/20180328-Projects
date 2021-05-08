@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- .replaceChild() / .createTextNode() / from MDN-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK-TEMP/2-css-temp/qReset-CSS.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>31 .replaceChild() / .createTextNode() / from MDN</title>
+</head>
+<body>
+<main>
+	<div>
+		<span id="childSpan">foo bar</span>
+	</div>
+<script>
+// Create an empty element node without an ID, any attributes, or any content
+	const sp1 = document.createElement("span");
+
+// Create some content for the new element.
+	const sp1_content = document.createTextNode("new replacement span element.");
+
+// Apply that content to the new element
+	sp1.appendChild(sp1_content);
+
+// Build a reference to the existing node to be replaced
+	const sp2 = document.getElementById("childSpan");
+	const parentDiv = sp2.parentNode;
+
+// Replace existing node sp2 with the new span element sp1
+	parentDiv.replaceChild(sp1, sp2);
+	
+	/*sp2 still exist in window but you cannot see it */
+</script>
+</main>
+</body>
+</html>

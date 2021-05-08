@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :empty -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>03 :empty</title>
+    <style>
+      .box {
+        background: pink;
+        height: 80px;
+        width: 80px;
+      }
+
+      .box:empty {
+        background: lime;
+      }
+    </style>
+</head>
+<body>
+<main>
+  <div class="box"><!-- I will be lime. --></div>
+  <div class="box">I will be pink.</div>
+  <div class="box">
+      <!-- I will be pink in older browsers because of the whitespace around this comment. -->
+  </div>
+    
+<!--    even whitespace is considered as content and will not be effected by :empty -->
+</main>
+</body>
+</html>

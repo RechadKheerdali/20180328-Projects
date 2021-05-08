@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15</title>
+</head>
+<body>
+    <script>
+/*typicall setup for function, followed by calling using ik */
+        function ik () {
+            alert ("using function here");
+        }
+        ik();
+        ik();
+        
+/*this is and functiion expression. work similarly but is instead stored in a var. remember this is really a var so be sure to put ; at the end.*/
+        var ik2 = function() {
+            alert ("with this alert i am using function expression")
+        };
+        ik2();
+    
+/* use the keyword return for the value in the function. Also to show that anything after return will not work*/
+        function giveMeFive() {
+            return "<p>RETURN VALUE BEING PLACE HERE</p>";
+            alert ("this alert will not appear because return is before in hoist mode");
+        }
+        document.write ( giveMeFive() );
+        
+/*from tutorial to show eg of return with confirm and empty space in a email field in html for example*/
+        function isEmailEmpty () {
+            var field = document.getElementById('email');
+            if (field.value === ' ') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        var fieldset = isEmailEmpty();
+        if (fieldset === true) {
+            alert ("please provide email address");
+        }        
+    </script>
+    </body>
+</html>

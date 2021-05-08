@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>02 modifying const within arrays and objects</title>
+</head>
+<body><!--    modifying const within arrays and objects-->
+<main>
+<script>
+    /*you are allowed to modify const but not reassign or overwritten especially if you use the same array or object literal syntax */
+/*modifying array but you cannot redefine it*/
+    const days = ["friday", "wednesday"];
+    printD(days);
+    
+    // adding or changing through index number is allowed
+    days[0] = "monday";
+    printD(days);
+   
+    // adding to const is allowed
+    days.unshift("saturday");
+    printD(days);
+    
+    // taking away to const is allowed
+    days.pop();
+    printD(days);
+    
+    // add new arrays value    RECAPik
+    days[2] = "monday"
+    printD(days);
+    
+    /*********************************/
+    
+/* modifying object */
+    const person = {
+        firstN: "alpha"
+    };
+    printD( person["firstN"] );
+    
+    // adding to const object
+    person["surN"] = "bravo";
+    printD( person["surN"] );
+    
+    //see all current person object (BIM you cannot do this in D.W unless you use for-in loop)
+    console.log(person);
+    
+    //modifying object firstN . a way to redefine a values in const object
+    person.firstN = "x-ray";
+    printD( person.firstN );        //"alpha" becomes "x-ray"
+    
+    //attempting to reassign const person through object literal but typeError occurs
+    person = {
+        firstN: "zulu"
+    };
+    printD(person);
+    
+    //wont work because it is trying to redefine the variable and overide it
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en"> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>07 'for' loop</title>
+</head>
+<body>
+  <script>
+  // 'for' loop
+    var AAA = "";       // this makes it concatenation string
+    for (i = 0; i < 10; i++) {
+      AAA += i + " ";
+    };
+    document.write( "<div>" + AAA + "</div>");
+    /* +\    apparently the var AAA = ""; emphty space is needed to ensure the numbers below it becomes strings so therefor you are just adding in a concatenation and not mathiematically
+    +\   the 'i' is a var set and is commonly use this way (even ‘j’ too), usually var have to be descriptive but in this case since var description in not as important than it is ok to use it this way. instead of typing a long word in the var as it can become overload of information, a blur, so better type comment on the whole for instead
+       eg   for (counter = 0; counter < 10; counter++) {...
+    +\    also be sure you dont add a semi-colon (;) at the end within the parenthesis as it will stop the for loop working
+    +\    for ([initialization]; [condition]; [final-expression])
+   statement.
+    +\    IK question to why you can write statement outside the for brackets and yet have a counting up to 10 displayed, should it not only display the final number as it does not go to d.w until the loop is finish? not sure why?      UPDATE = You're adding to the AAA variable each iteration of the loop. By the end of the loop AAA contains 10 divs with a count in them and then you write them all at once with the document.write call after the end of the loop.         */
+
+   for (var counter = 0; counter < 12; counter += 1) {
+     document.write(counter);
+   };
+/*    +\    is the same as:-
+       var counter = 0;
+       while ( counter < 10 ) {
+       document.write( counter );
+       counter++;
+     };         */
+  </script>
+</body>
+</html>

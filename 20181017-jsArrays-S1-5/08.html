@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>08 Task of treehouse</title>
+</head>
+<body>
+<main>
+<script>/*  Task of treehouse, ik by myself
+3 quiz
+evaluate each answer
+keep track of each correct answer
+then display number of correct answer and wrong in their section
+arrays to hold questions and answer       */
+  var QnA = [
+    ["q0", "a0"],
+    ["q1", "a1"],
+    ["q2", "a2"]
+  ];
+  var question;
+  var answer;
+  var correctz = "<br>"
+  var wrongz = "<br>"
+  var rightAns = 0;
+
+
+  function ask(inputz) {
+
+    for (var i = 0; inputz.length > i; i += 1) {
+      question = prompt(inputz[i][0]);
+      answer = question.toLowerCase();
+
+      if ( answer === inputz[i][1] ) {
+        correctz += inputz[i][0] + "<br>";
+        rightAns++
+      }else if ( answer !== inputz[i][1] ) {
+        wrongz += inputz[i][0] + "<br>";
+      };
+    };
+
+    printD("CORRECT " + correctz);
+    printD("WRONG " + wrongz);
+    console.log("you answered " + rightAns + " question correctly!");
+  };
+
+
+  ask(QnA);
+
+/*  if ( inputz[i].indexOf(qq) !==  ( -1 || inputz[i][0] ) ) { //problem, if you insert the array[0][0], it still comes as the correct answer when it should not *********************
+    correctz += inputz[i][0] + "<br>";
+
+  }else if (inputz[i].indexOf(qq) === -1) { //or 'else' will work fine
+    wrongz += inputz[i][0] + "<br>";
+  };    */
+/*unsatisfied with the result, it works fine but if i answer with the question itself than it comes out as a correct answer when it should not. i have spend some time on it but cannot seem to understand why inputz[i][0] does not work. it should do and tried many other things but none work
++\   anyway i change the if conditions and the current codes is much simpler and i feel silly i did not come up with it on my own as i had a bit of help from the video. lesson learn is to try something else if does not work and look for simpler solutions sometimes   */
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--  :last-child but also first-child principles too-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>01 :last-child but also first-child principles too</title>
+    <style>
+        p:last-child  {
+          color: lime;
+          background-color: black;
+          padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<main>
+<!-- :last-child but same principles for first-child too -->
+  <div>
+    <p>This text isn't selected!</p>
+    <p>This text is selected.</p>
+  </div>
+
+  
+  <div>
+    <h2>This text isn't selected: it's not a `p`.</h2>
+    <p>This text isn't selected.</p>
+    <h2>This text isn't selected: it's not a `p`.</h2>
+  </div>
+  <!-- notice it only targets last element and not last child of your chosen element as it will not work -->
+</main>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 13 'this' in a object -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>13 'this' in a object</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+
+/* 'this' in a object */
+	const Portland = {
+		bridges: 12,
+		airport: this,
+		soccerTeams: 44,
+		logNumberOfBridges: function() {
+			return console.log( this.soccerTeams )
+		} /*1+*/
+	};/*END Portland*/
+		/*1+ notice this.soccerTeams . 'this' represents Portland
+		+\ use return whenever possible */
+
+	console.log(Portland.airport); /*OP: the window object*/
+		/*BIM however 'airport: this.bridges' is undefined and cannot work without and annoymous function and then you call it with () */
+
+
+	function logTeams () {
+		 console.log(this);
+		 console.log(this.bridges);
+	}/*END logTeams*/
+
+
+	Portland.foo = logTeams; 
+		/*created a new property 'foo' in Portland object which stores the function logTeams*/
+
+
+	Portland.foo(); /*output1: Portland object / output2: 12*/ 
+	/*using the () callback function in logTeams() because it is a function.
+	+\ output is the object of Portland, as the 'this' represent the object name*/
+
+
+	logTeams(); /*OP1: logTeam window object of the function / OP2: undefined */
+	/* it is a separate entity from the Portland object
+	+\ OP2 so therefore 'this.bridges' will be undfined because it does not any object to refer to*/
+
+
+	Portland.logNumberOfBridges();  /*OP: 44 */ 
+	/*it will not trigger console.log inside without the parenthesis */
+
+
+	console.log(Portland.logNumberOfBridges); 	/*OP: its strings formation*/
+	/*will only show as string but not a function*/
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

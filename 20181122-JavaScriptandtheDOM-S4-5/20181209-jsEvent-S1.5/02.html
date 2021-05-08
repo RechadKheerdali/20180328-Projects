@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>02 window.setTimeout() / clearTimeout()</title>
+</head><!--    window.setTimeout() / clearTimeout()-->
+<body>
+<main>
+  <h1>3 sec i change</h1>
+
+  <button onclick="delayedAlert();">Show an alert box after two seconds</button>
+  <button onclick="cancelAlert();">Cancel alert before it happens</button>
+
+<script>
+// window.setTimeout() of when page loads
+  window.setTimeout(                       //.1
+    function (html, hr) {                  //.2
+      h1Tag = document.getElementsByTagName(`h1`)[0];
+      h1Tag.textContent = html + hr;
+    },
+    3000,                                  //.3
+    `PARAMETER `,                          //.4
+    `ARGUMENT IMI`
+  );
+  //.1 .setTimeout() is also a function callback.
+  //.1 it also works without window.  .
+  //.2 a nornal function
+  //.3 number of millisecond you want to delay the function
+  //.4 after milliseconds you enter the parameter of the function if any .eg html and hr
+
+  /**************************************************/
+
+// setTimeout() and clearTimeout() with id var on alert button
+  let alertBox;     // to allow both .setTimeout and .clearTimeout to work together
+
+  const delayedAlert = () => {             //.1
+    alertBox = window.setTimeout(          //.2
+      window.alert,                        //.3
+      2000,
+      `code block because a function dont work under another function???`
+    )
+  }
+  //.1 onclick tag connect to delayedAlert function
+  //.2 if we did not use .clearTimeout() than there would be no need for this
+  //+\ using code block since adding another function prevents the program from working. ik dont know why?
+  //.3 can also use plain alert without window keyword
+
+  const cancelAlert = () => {
+    window.clearTimeout(alertBox);     //.1
+  };
+  //.1 simple as alertBox is link to delayedAlert button
+</script>
+</main>
+</body>
+</html>

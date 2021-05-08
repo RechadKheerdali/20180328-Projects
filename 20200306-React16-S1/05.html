@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 05 ReactDOM.createPortal() / create a new element using a different html element node whilst also connected to the main App component -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>05 ReactDOM.createPortal() / create a new element using a different html element node whilst also connected to the main App component</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file (VIP for CRA) -->
+<div id="root"></div>
+
+<div id="iKportal"></div>  <!-- 1+ -->
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*ReactDOM.createPortal() / create a new element using a different html element node whilst also connected to the main App component */
+/* iK it was done using CRA, so you will see what it was like to be written in CRA with several files, and the import and export will be commented out here.
++\ useful if you want to create a new component/element that is not part of the main component (eg. <App />) but still connected and able to interact with the main component.
+	+\ such as creating a modal, etc...
+	+\ BIM the portal component will still be a child nested component to the main component (eg. <App/>).
+		+\ BIM And the portal component will still bubble up any event trigger to the main component, therefore all class methods can remain in the main component.
++\ BIM portal elements/component will be place somewhere different in the page depending where you place it (a different document.getElementById() from the main component (eg. <App/> )).
+	+\ and if there is any other html element inbetween the main and portal component, than you will see it on the web page (unless you moved it with css style). */
+
+	/******/
+	/*App.js file*/
+	/******/
+//	import React from 'react';
+//	import IkPortal from './IkPortal.js';
+
+function App()  {
+	return (
+		<React.StrictMode>
+			<h1>iK App component</h1>
+
+			<IkPortal>
+				<h1>iK IkPortal component</h1>
+			</IkPortal>
+		</React.StrictMode>
+	);  /*2+*/
+};  /*END App */
+
+//export default App;
+
+	
+	/******/
+	/*IkPortal.js file*/
+	/******/
+//	import React from 'react';
+//	import ReactDOM from 'react-dom';
+
+const IkPortal = iKpropsObject => {
+	return (
+		ReactDOM.createPortal(
+			iKpropsObject.children,
+			document.getElementById('iKportal')
+		)  /*3+*/
+	);
+}; /*END IkPortal */
+
+//	export default IkPortal;
+
+
+	/******/
+	/*index.js file*/
+	/******/
+//	import React from 'react';
+//	import ReactDOM from 'react-dom';
+//	import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+/*1+ VIP portal component uses a different dom node element on the html page, separated from the main App dom node element.
+2+ VIP the portal component must still be nested under the main component for it to still be connected to the main component.
+	+\ iK you could probably not nestle the portal component but than there would be of no use to use portal component in the first place, and you would be better off creating a new separated component.
+	+\ BIM remember you do not have to create a functional/class component for the portal component, you could just insert the ReactDOM.createPortal() component within jsx expression if you wanted to.
+		+\ But the demo method is cleaner and easier to understand.
+3+ VIP you must import ReactDOM onto the file you are using for you to be able to use ReactDOM.createPortal() .
+3+ ReactDOM.createPortal(); takes 2 arguments, element/component you want to insert, and parent dom node you want to place your element/component within.
+	+\ Similar to how ReactDOM.render() works. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

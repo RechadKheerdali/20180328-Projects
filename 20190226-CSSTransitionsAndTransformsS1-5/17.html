@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>17 toggle transition and transform smoothly using class</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+  .ik1 {
+      background-color: purple;
+      width: 150px;
+      height: 150px;
+      transition: transform 1s;        /*1+*/
+      transform-origin: bottom right;  /*2+*/
+  }
+      /*1+ necessary for a smooth toggle
+      2+ optional as you decide what transform you want to achive*/
+
+  .ik1js {                          /*1+*/
+    transform: rotateZ(0.5turn);    /*2+*/
+  }
+    /*1+ this class does not yet exist, only exist with .classList.toggle
+    2+ decide whatever you want to achive here*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div class="ik1">HELLO</div>
+  <input type="button" class="button" value="click me">
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+  const inputB = document.querySelector(`[type="button"][value="click me"]`);
+  const div = document.getElementsByClassName(`ik1`)[0];
+
+  inputB.addEventListener(`click`, event => {
+    if(!div.classList.contains(`ik1js`)){       /*1+*/
+      div.classList.toggle(`ik1js`, true);      /*2+*/
+      console.log(`added .ik1js`);              /*3+*/
+    }
+    else if(div.classList.contains(`ik1js`)) {  /*1+*/
+      div.classList.toggle(`ik1js`, false);     /*2+*/
+      console.log(`removed .ik1js`);            /*3+*/
+    }
+  })
+    /*1+ .classList.contains() checks if there is a class or not within the element.
+    2+ using the boolean value at the end means it will only go one way (add or remove)
+    3+ optional*/
+
+  /*i did not need to use the if statement here, i could simple have use .classList.toggle with no boolean and it would have work the same way */
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

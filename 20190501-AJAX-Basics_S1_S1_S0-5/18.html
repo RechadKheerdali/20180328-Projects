@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 18 flickr api in vanilla javascript ajax (in jsonP really) / IK FAILED AJAX-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>18 flickr api in vanilla javascript ajax (in jsonP really) / IK FAILED AJAX</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+
+          <div>
+            <h1>Flickr Photo Feeder</h1>
+            <p>Choose which kind of animal you'd like to return photos of...</p>
+          </div>
+
+          <ul class="ulselect">   <!-- users chooses selection -->
+            <li><button>Dog</button></li>
+            <li><button>Cat</button></li>
+            <li><button>Moose</button></li>
+          </ul>
+
+        <div id="divphotos"> <!-- where link and img will be inserted --> </div>
+
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+
+<!--
+<script src="https://api.flickr.com/services/feeds/photos_public.gne
+?format=json&jsoncallback=handleTheResponse" type="text/javascript"></script>
+-->
+
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+	/*IK BIG FAILURE USING API WITH VANILLA JAVASCRIPT. BECAUSE OR CORS ISSUES.
+	there are too many issues, i have tried many solutions to fix this but no success , i will skip this and hopefully the future tracks lessons will help me resolved this.
+
+	PROBLEMS THAT OCCURED =
+	+\ i kept getting CORS ISSUES that would not allow the api to work
+	+\ i tried searching solutions online, but no real answers
+	+\ because it was jsonp , online suggested to insert it through with an add script and use it json through the script which does sound like a good idea. however i could not access the json file in the script.
+	    +\ i tried to store it in a variable, tried to place it under the ajax field, and other things too but nothing it did allowed me to access the json which baffles me.
+		     +\ however i did notice that it is many link to the url callback. the url triggers the callback function and does not exist until it does, so any variables i try to store it in will not work because of it.
+			      +\ perhaps it would work if i had a live server? not sure? but somehow jquery can access it.
+				       +\ however i am realizing jq is very advance and bypasses it somehow.
+	+\ if (xhr.status === 200) does not work, possible because api requires a live server with vanilla javascript.
+
+	POSSIBLY SOLUTIONS =
+	+\ the 2 online codes that i have collected will collect the api through query string using its own specific function callback. and then take the json data to store in a newly inserted script tag src. 
+	    +\ which i think is clever but somehow it seems impossible to use the data. it seems to be live data, meaning you cannot access online data , but only offline data. because of it i could store in a variable or collect the DOM .innerText 
+	+\ query string seems to be an issue with v.js, as you need to type all the data in your url but in query string, can be done but it not as simple as jq is. requires a lot of coding
+	    +\ i think jq also has a special way of collecting the cors , inserting it in the query string which might be advance.
+
+	FINAL COMMENTS
+	+\ up to file 21.html you will see some of my attempts and online codes which collects the api json file using jsonp , however my effort in trying to use them has fail as i do not seem to be able to access live online data.
+	+\ i worked on this for at least 2.5 full study days and unfortunately feel like i should move on for now, and hoping the fetch api and future ajax tracks will resolve this as the ajax track i am watching will retire 2019 june 19 (maybe because it is outdated)
+	+\ i feel frustrated by all this because it does seem so simple but will not work as expected. i now have to rely on jq  $.ajax() which does the job fine.
+	+\ 
+	*/
+
+
+		/*FROM ONLINE*/
+	/*basically insert the json to a newly inserted script tag*/
+	function handleTheResponse(data) {
+		let jsp = document.getElementById("response").textContent = JSON.stringify(data,null,2);
+	}
+
+	const kiKscript = document.querySelector(`script[src*="kiK.js"]`);
+	const kiKparent = kiKscript.parentNode;
+	
+	const zscript = document.createElement("script");
+	zscript.src = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=handleTheResponse&tags=london&tagmode=any&format=json";
+	kiKparent.insertBefore(zscript, kiKscript);
+
+
+	/********************************/
+
+
+	const ulButton = document.getElementsByClassName(`ulselect`)[0];
+//	const jsonPscript = document.querySelectorAll(`script[src*="api.flickr]`);
+//	let jsonps = JSON.stringify(jsonPscript);
+//	console.log(jsonps);
+
+	ulButton.addEventListener(
+		`click`,
+		(event) => {
+			if (event.target.tagName === `BUTTON`) {
+				let xhr = new XMLHttpRequest();
+
+				xhr.onreadystatechange = function(event) {
+					if (xhr.readyState === 4) {
+//						if (xhr.status === 200) {
+
+						console.log(xhr.readyState + xhr.statusText + 	xhr.status);
+						console.log(`ik working`);
+						console.log(xhr.responseText);
+
+//						}
+					}
+				}/*END xhr.onreadystatechange*/
+
+
+				xhr.open(`GET`, `https://api.flickr.com/services/feeds/photos_public.gne
+?jsoncallback=?&format=json`);
+
+//				xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+//				xhr.setRequestHeader('Content-type','application/json');
+//				xhr.setRequestHeader('Access-Control-Allow-Methods','GET');
+//				xhr.setRequestHeader('X-API-KEY', '/*API KEY*/');
+
+
+
+				xhr.send();
+
+//				console.log(event);
+			}/*END if event condition*/
+		}/*END event function*/
+	)/*END .addEventListener()*/
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

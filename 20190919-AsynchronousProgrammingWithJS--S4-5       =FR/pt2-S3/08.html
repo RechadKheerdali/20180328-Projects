@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- using Promise.all() -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 using Promise.all()</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*using Promise.all() */
+/*Promise.all(iKterableValue); */
+const iKpromise1 = Promise.resolve("iKresolved1");	/*1+*/
+const iKpromise2 = Promise.resolve("iKresolved2");
+const iKpromise3 = Promise.resolve("iKresolved3");
+/* const iKpromise4 = Promise.reject("iK rejected4"); */ /*2+*/
+
+const iKpromiseAll = Promise.all([	/*3+*/
+	iKpromise1,
+	iKpromise2,
+	{iKoProperty1: "iKoV1"},	/*4+*/
+	iKpromise3
+]);
+
+
+IK.printD( iKpromiseAll ); /*OP promise object containing an array of 4 items */ /*5+*/
+
+
+iKpromiseAll
+	.then( x => x.length  )		/*6+*/
+	.then( y => IK.printD( y ) ); /*OP 4 */
+
+iKpromiseAll
+	.then( x => x[1]  )	/*7+*/
+	.then( y => IK.printD( y ) ); /*OP "iKresolved2" */ /*8+*/
+
+iKpromiseAll
+	.then( x => x[2]  )
+	.then( y => IK.printD( y.iKoProperty1 ) ); /*OP "iKoV1" */
+
+/*1+ for demo purposes I used Promise.resolve() to quickly make a promise object. But you real world you more likely to use full promise with .catch().
+2+ Notice I did not insert Promise.reject() in the Promise.all() array value below, because it would reject all the promise object in Promise.all() . I just keep it here if you want to see it for yourself ik.
+3+ Promise.all() is ideal to collect all your promise object as one.
+	+\ so all the promise object needs to become resolved, because if there is one rejected promise, than all the promise object will become rejected too no matter which order they come in.
+3+ you can only insert iterable values in Promise.all(), such an array, string, etc... otherwise error if not iterable.
+3+ notice I used an array to insert the promise object individually. You cannot insert a promise object on its own without an array, otherwise error.
+4+ you do not have to only insert promise object, you can insert any regular value as usual.
+4+ any non promise object will be considered as resolved state.
+4+ notice i inserted an object (non promise object), just like any value in an array.
+5+ it is now just one promise object instead of 3.
+6+ the outcome of it is an array containing 4 items.
+6+ you use the Promise.all() object as one, with the prototype methods at the end of it as usual.
+6+ normally you should use .catch() too but since I am not using reject() .
+7+ accessing the array with index as normal.
+8+ the outcome of iKpromise2 promise object.	*/
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+IK.printD( html );
+IK.everyStyles( DOMelement );
+IK.ascii("a", "b");
+IK.patternIndexNumber( iKarray, searchThisValue );
+IK.cssSupport("cssProperty", "cssValue");
+IK.listAttributes( DOMnode );
+IK.serialize( formDOMelement );
+IK.serializeObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKocfOne = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKocfProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKocfProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKocfProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKocf1 = new iKocfOne();		*/
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>12 huge 3 questions task </title>
+    <style>
+      #ikrulez {
+        background-color: orange;
+      }
+    </style>
+</head>
+<body> <!-- 2018-11-02 fri R2hr   huge 3 question game i did myself alone, hardly any checkup
++\ ask 3 questions, place in console. and questions in correct and wrong section .   used the .push() method in this one-->
+<main>
+  <h3>supermannnnnnnnnnn</h3>
+
+  <div id="ikrulez"></div>
+
+  <h4>superrrrrrrrr</h4>
+
+<script>
+  //print in <div> id ikrulez
+  function printEx(display) {
+    var connections = document.getElementById( "ikrulez" );
+    return connections.innerHTML = display;
+  };
+
+  //display the array in <ul> individually. connected to printEx
+  function olist(listArrayz) {
+    var formz = "<ul>"
+      for (var i = 0; listArrayz.length > i; i++) {
+        formz += "<li>" + listArrayz[i] + "</li>";
+      };
+    return formz += "</ul>";
+    // return printEx(formz);  ikex =  no need for this as i want to keep the ol list seperate
+  };
+
+  // the 3 question in array
+  var QnA = [
+    ["q1", "a1"],
+    ["q2", "a2"],
+    ["q3", "a3"]
+  ];
+  //variables
+  var html; // this is all the content output i want to send to printEx
+  var questionz;
+  var questionAskz;
+  var answerz;
+  var responsez;
+  var resultz = 0;
+  var correctz = [];
+  // ["CORRECTA answer ="];  // list the correct.   no need for this (ikex)
+  var wrongz = [];
+   // ["WRONGA answer ="];    // list the wrong.     no need  (ikex)
+  // var correctWrongList;    //no need
+
+  //the 3 prompt question and conditions
+  function testingz(arrayz) {
+    for (var i = 0; arrayz.length > i; i++) {
+      questionz = arrayz[i][0];
+      answerz = arrayz[i][1];
+      questionAskz = prompt(questionz);
+      responsez = questionAskz.toLowerCase();
+      if (responsez === answerz) {
+        resultz++
+        correctz.push(questionz); //adds to array correctz
+      }else {
+        wrongz.push(questionz); //^^
+      }
+    };
+    // correctWrongList = correctz.concat(wrongz);
+    // olist(correctWrongList);    ik cancelled this because no need to .concat as i found a better solution which i realise printEx means you can write anythng as much as you you in the html, check bottom html for more understanding
+  };
+  // no testingz output but the answer is save for the next process below
+
+  testingz(QnA); //this alone can now ask 3 question with conditions, call the function to create the unorder list, than call another function to print it on an id in html. alot of task
+
+  html = "<p>You got " + resultz + " correct out of 3</p>";
+  html += "<p>right answer</p>" + olist(correctz);
+  html += "<p>wrong answer</p>" + olist(wrongz);
+
+  printEx(html);
+
+/* using the .push() method
++\ would like to have seperated the coreretz and wrongz list but needless work as i want to move on, as i already know haw to do, so i just use .concat() .  UPDATE this has been resolve thanks to var html
++\ note that i tried to write as clean as possible and also make it as easy to understand too
++\ ikex mean ik explanation*/
+</script>
+</main>
+</body>
+</html>

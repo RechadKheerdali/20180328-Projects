@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>04 arrays/function/for</title>
+</head>
+<body>
+<main>
+<script> /*  combos of array/function/loops   */
+    var numberx = [9, 8, 7];
+    for (var j = 0; j < numberx.length; j += 1) {
+        document.write(numberx[j]);
+    };
+//    simple form of array/for combination
+
+/*|||||||||||||||||||||||||||||||||||||||*/
+    var abcz = ["a", "b", "c"];
+
+    function olArr(liArr) {
+        var listz = "<ol>";
+        for (var j = 0; j < liArr.length; j++) {
+            listz += "<li>" + liArr[j] + "</li>";
+        };
+        return printD(listz);
+    };
+
+    abcz.push("d", "e", "f");
+
+    olArr(abcz);
+
+    printD(abcz.length);
+
+//    dont forget liArr[j] is actually a normal array (abcz[j];)calling out a indexed value within the array. see 01.html if you are still unsure
+// .length turns the array into number of value
+//.  no listz += "</ol>"; which i think i did because so that i get a list within a list in the next function
+    
+/*************\\\\\\||||||||||||||||||||||||||||||||||| */
+//    my personal attempt before i fully learn of array/function/for combo.  all looks good now using the while loop
+    function printList (list) {
+			var oli = "<ol>";
+			var limits = 0;
+			while (list.length > limits ) {
+				oli += "<li>" + list[limits] + "</li>";
+				limits++
+			};
+			return oli += "</ol>";
+		};
+
+	var sports = [" mma"];
+
+	sports.push(" football");
+    sports.push(" boxing", " cricket");
+    sports.push(" table tennis");
+
+    printD( printList( sports ) );
+//    notice its a function witin a function
+//    you can only type printD() once and place it at the bottom otherwise you create a copied updated list repeating itself
+//    never forget to put the keyword return in the function otherwise it wwould have return as undefined
+
+    printD(sports.length);
+
+/****************************************************/
+    // if you want to stop at a specific index number for that value.   -from comment
+    var listOfItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+    for (var i = 0; i < listOfItems.length; i++) {
+        if ( i === 2 ) {
+            console.log(listOfItems[i]);
+            };
+        };
+
+/***********************************************************************/
+    //    from back to front values, interesting indeed
+    var temperatures = [100,90,99,80,70,65,30,10];
+
+    for (var i = 7; i <= temperatures.length; i--) {
+        console.log(temperatures[i]);
+        if (i === 0) {
+            break;
+        }
+    };
+</script>
+</main>
+</body>
+</html>

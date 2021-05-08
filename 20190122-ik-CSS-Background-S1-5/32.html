@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- innerText / differences with textContent / MDN-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK-TEMP/2-css-temp/qReset-CSS.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>32 innerText / differences with textContent / MDN</title>
+</head>
+<body>
+<main>
+	<h3>Source element:</h3>
+	<p id="source"> <!--special text and differences-->
+	  <style>#source { color: red; }</style>
+	Take a look at<br>how this text<br>is interpreted
+		   below.
+	  <span style="display:none">HIDDEN TEXT</span>
+	</p>
+	
+	
+	<h3>Result of textContent:</h3>
+	<textarea id="text1" rows="6" cols="70" readonly>.ik..</textarea>
+	
+	<h3>Result of innerText:</h3>
+	<textarea id="text2" rows="4" cols="70" readonly>.ik..</textarea>	
+	
+	<h3>Result of innerHTML:</h3>
+	<textarea id="text3" rows="6" cols="70" readonly>.ik..</textarea>
+
+<script>
+	const p = document.getElementById(`source`);
+	const textContent = document.getElementById(`text1`);
+	const innerText = document.getElementById(`text2`);
+	const innerhtml = document.getElementById(`text3`);
+	
+	textContent.innerHTML = p.textContent;
+	innerText.innerHTML = p.innerText;
+	innerhtml.innerHTML = p.innerHTML;
+	console.log(p.innerHTML);
+</script>
+</main>
+</body>
+</html>

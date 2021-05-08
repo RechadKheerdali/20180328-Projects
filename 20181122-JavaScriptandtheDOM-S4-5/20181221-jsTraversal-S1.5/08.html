@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"> <!--2018 12 30 sun -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>08 2nd attempt TBUD challenge and SUCCESS. haha never give up</title>
+</head><!-- 2nd attempt TBUD challenge and SUCCESS. haha never give up-->
+<body>
+<main>
+    <input type="text">
+    <button id="submit">insert input to list</button>
+    <div>
+        <ol>
+            <li>number 1 </li>
+            <li>number 2 </li>
+            <li>number 3 </li>
+            <li>number 4 </li>
+            <li>number 5 </li>
+        </ol>
+    </div>
+
+<script>
+/* DOM's */
+    const _input = document.getElementsByTagName(`input`)[0];
+    const _inputButton = document.getElementById(`submit`);
+    const _divOl = document.querySelector(`div ol`);
+    const _list = _divOl.getElementsByTagName(`li`);
+    const _allOlButtons = _divOl.getElementsByTagName(`button`);
+    const _upB = document.getElementsByClassName(`upx`);
+    
+    /********************************/
+    
+/* add buttons and colour to DOM */
+    const _applyButtonsToDOM = () => {
+        for (let j = 0; j < _list.length; j++) {
+            const _removeBdom = document.createElement(`button`);
+            _removeBdom.textContent = `remove`;
+            _removeBdom.className = `removex`;
+            _list[j].appendChild(_removeBdom);
+
+            const _upBdom = document.createElement(`button`);
+            _upBdom.textContent = `up`;
+            _upBdom.className = `upx`;
+            _list[j].appendChild(_upBdom);
+
+            const _downBdom = document.createElement(`button`);
+            _downBdom.textContent = `down`;
+            _downBdom.className = `downx`;
+            _list[j].appendChild(_downBdom);
+        };
+        
+        const _firstList = _divOl.firstElementChild;
+        _firstList.style.backgroundColor = `lightskyblue`;
+        _firstList.removeChild(_upB[0]);
+        
+        const _lastList = _divOl.lastElementChild;
+        _lastList.setAttribute(`style`, `background-color:lightsteelblue`);
+        const _lastDownB = _lastList.querySelector(`.downx`);
+        _lastList.removeChild(_lastDownB);
+    };
+    
+    _applyButtonsToDOM();
+    
+    /********************************/
+    
+/* input to creat new list along with removing, adding, and keeping tbud structure */
+    
+//- remove all buttons function
+    const _removeAllButtonsAndColorFromList = () => {
+        for (let j = _allOlButtons.length -1; j >= 0; j--) {
+            let _buttonParent = _allOlButtons[j].parentNode;
+            _buttonParent.removeChild( _allOlButtons[j] );
+        };
+        
+        for (let i = 0; i < _list.length; i++) {
+            _list[i].style.cssText = `background-color:intial;`;
+        };
+    };
+    
+    
+//- insert input value to new list
+    const _inputNewList = () => {
+        const _newLi = document.createElement(`li`);
+        _newLi.textContent = _input.value;
+        _divOl.appendChild(_newLi);
+    };
+    
+    
+//- all combine necessary functions to allow input / new list / restructure buttons layout
+    const _inputButtonRestructure = () => {
+        _inputNewList();
+         _removeAllButtonsAndColorFromList();
+        _applyButtonsToDOM();
+    };
+    
+    _inputButton.addEventListener(`click`, _inputButtonRestructure, false);
+    
+    /**************************************************/
+    
+/* add functions to buttons. also removes buttons and color, and reapply buttons and colours */
+    
+//- add functions remove/up/down to buttons
+    const _functionalButtons = () => {
+        if (event.target.className === `removex`) {
+            let _currentLi = event.target.parentNode;
+            _divOl.removeChild(_currentLi)
+        }
+        else if (event.target.className === `upx`) {
+            let _currentLi = event.target.parentNode;
+            let _beforeLi = _currentLi.previousElementSibling;
+            _divOl.insertBefore(_currentLi, _beforeLi);
+        }
+        else if (event.target.className === `downx`) {
+            let _currentLi = event.target.parentNode;
+            let _afterLi = _currentLi.nextElementSibling;
+            _divOl.insertBefore(_afterLi, _currentLi);
+        };
+    };
+    
+    
+//- all combining functions to allow use of the buttons plus restructure of the buttons and colours
+    const _functionalButtonsAndRestructure = (event) => {
+        _functionalButtons();
+        _removeAllButtonsAndColorFromList();
+        _applyButtonsToDOM();
+    };
+    
+    _divOl.addEventListener(`click`, _functionalButtonsAndRestructure, false);
+    
+    /**************************************************/
+    
+/*  PLAN: 
+    -dom buttons
+    - add buttons
+    - whilst also keeping tbud functions
+    
+    -create new list
+    - insert input too 
+    - remove all buttons
+    - re-add them again 
+    - whilst also keeping tbud functions
+    
+    -add functions to the buttons
+    -also remove and add buttons again
+    - remove all buttons
+    - re-add them again 
+    - whilst also keeping tbud functions  */
+    
+    /* IK i learn;
+    - that parentNode is your best friend, because some of the obvious parent dom do not work , either need more specifity or scoping or unknown .
+    - it is best to always best to take the long road because adding to already made feature can cause problems such as removing all buttons rather than trying to control the button numbers
+    - hoisting very very important          */
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>04 3 question game using objects within arrays</title>
+    <style>
+		#orange {
+			background-color: orange;
+			display: inline-block;
+			padding:10px;
+		}
+	</style>
+</head><!--2018 11 08   iK did all myself, no help-->
+<body> <!-- 3 question game using objects within arrays-->
+<main>
+	<h1>you score is</h1>
+	<div id="orange"></div>
+	<p>you can go now</p>
+
+<script>
+	//print function
+	function printz(message) {
+		var tag = document.getElementById("orange");
+		return tag.innerHTML = message;
+	};
+	
+	//array/object questions and answers
+	var QnA = [
+		{                    //object 1 (index 0)
+			q1 : "a1",
+			q2 : "a2",
+			q3 : "a3"
+		},
+		{                   //object 2 (index 1)
+			q4 : "a4",
+			q5 : "a5"
+		}
+	];
+	
+	//var i will need
+	var score = 0;
+	var question;
+	var answer;
+	var askQuestion;
+	//var response;   +\ no need because the answer has number and we cannot use .toLowerCase()
+	
+	//question & answer and display final score
+	for (var i = 0; i < QnA.length; i += 1) {       //.1
+		for (var property in QnA[i]) {        //.2
+			question = property;         //.3
+			answer = QnA[i][property]    //.4
+			askQuestion = prompt( question );
+			//response = question.toLowerCase(); //.5
+			if (askQuestion === answer) {
+				score++
+				console.log( score );
+			}
+		}
+	};
+	//.1 cycle through index number of array
+	//.2 cycles through object. 
+	//.3 through index number then gets property names
+	//.4 property values
+	//.5 no need because the answer has numbers and we cannot use .toLowerCase()
+
+	printz(score + " out of 5");
+
+/*TO DO LIST-
++\ 3 question game through prompt
++\ arrays which have object as your QnA
++\ display the score in a orange background       DONE*/
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 01 @keyframe / animation-name: / animation-duration: / animation-iteration-count:-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 @keyframe / animation-name: / animation-duration: / animation-iteration-count:</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    /* skip to the most important part*/
+  .box {
+		width: 110px;
+		height: 110px;
+		background-color: red;
+		margin: 30px 0 5px 30px;
+		border: blue 4px solid;
+		outline: black 4px solid;
+	  	outline-offset: 3px;
+	}
+
+/* IK THIS IS THE MOST IMPORTANT PART */
+	.ik1 {
+		animation-name: ikName;              /*set name*/
+		animation-duration: 4s;              /*set time*/
+		animation-timing-function: ease-out; /*set smoothness*/
+		animation-delay: 800ms;              /*set when to start*/
+		animation-iteration-count: 4.25;     /*set number of cycle*/
+	}
+	
+	@keyframes ikName {
+		0% {
+			background-color: blue;
+		}
+		50% {
+			transform: translateY(400px);
+		}
+		100% {
+			background-color: greenyellow;
+		}
+	}
+	
+	/*notice that the original element declaration remains the same before and after the animation*/
+	
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+	<div class="ik1 box">animation</div>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

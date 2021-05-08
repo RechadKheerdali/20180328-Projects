@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>21 474m</title>
+ </head>
+<style>
+    .ik1 {
+        display: inline-block;
+        position: relative;
+        font-size: 150%;
+        width:150px;
+        border: 2px red solid;
+        line-height: 1.2;            }
+    .ik2 {
+        display: none;
+        position: absolute;
+        background-color: green;    }
+    .ik1:hover .ik2 {
+        display: block;    }
+    
+    
+    #ik3 {
+        position: relative;
+        display: inline-block;    }
+    #ik4 {
+        background-color: aquamarine;
+        color: darkviolet;
+        padding: 10px;    }
+    #ik4:hover {
+        background-color: dodgerblue;
+        cursor: zoom-in;    }
+    #ik5 {
+        position: absolute;
+        display: none;    }
+    #ik3:hover #ik5 {
+        display: block;    }
+    #ik5>a {
+        display: block;
+        text-decoration: none;
+        background-color: blueviolet;
+        color: aquamarine;
+        padding: 10px;
+        margin: 10px;    }
+    #ik5 a:hover {
+        background-color: aquamarine;
+        color: blueviolet;    }
+    </style>
+<body>
+    <div class="ik1">
+        <span>hey!!!</span>
+        <div class="ik2">whats up mister, you need help?</div>       </div>  <br><br><br><br><br><br><br><br>
+    
+    <div id="ik3">
+    <button id="ik4">MY BUTTON ik3</button>
+        <div id="ik5">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+        </div>
+        </div><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

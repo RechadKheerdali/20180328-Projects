@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- counter() also able to create subsection like counters() but differently-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK-TEMP/2-css-temp/qReset-CSS.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>29 counter() also able to create subsection like counters() but differently</title>
+<style>
+/*using counter() to do what counters() could not do in normal elements by creating to counter and joining them*/
+	main {
+	  counter-reset: section1;
+	}
+	/* Set "section1" to 0 */
+	
+	h1::before {
+	  counter-increment: section1;
+	  content: counter(section1) ": ";
+	}
+	
+	
+	h1 {
+	  counter-reset: subsection2;
+	}
+	/* Set "subsection2" to 0 */
+
+	h2::before {
+	  counter-increment: subsection2;
+	  content: counter(section1) "." counter(subsection2) " ";
+	}
+</style>
+</head>
+<body>
+<main>
+	<h1>HTML and CSS</h1>
+	<h2>HTML Tutorial</h2>
+	<h2>CSS Tutorial</h2>
+	<h2>Bootstrap Tutorial</h2>
+	<hr>
+
+	<h1>JavaScript</h1>
+	<h2>JavaScript Tutorial</h2>
+	<h2>jQuery Tutorial</h2>
+	<h2>JSON Tutorial</h2>
+	<hr>
+
+	<h1>Server Side</h1>
+	<h2>SQL Tutorial</h2>
+	<h2>PHP Tutorial</h2>
+</main>
+</body>
+</html>

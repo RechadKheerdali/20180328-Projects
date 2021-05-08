@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 09 cloning object properties -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>09 cloning object properties</title>
+<style>
+/* + + + + + + + + + + + + STYLE -----------------------------*/
+/*------------------------ /style ////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + MAIN ----------------------------->
+<!------------------------ /main ///////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + SCRIPT ----------------------------*/
+'use strict';
+
+
+/*cloning object property*/
+
+/*creating the perfect object property clone*/
+	/*create object property1*/
+	const iKobject1 = Object.defineProperties( {}, {"iKproperty1":	{value: "iKoV1", enumerable: true} }); /*1+*/
+
+	printD(Object.getOwnPropertyDescriptors(iKobject1));
+		/*OP {iKproperty1: {value: "iKoV1", writable: false, enumerable: true, configurable: false}} */
+
+
+	/*cloning iKobect1.property1*/
+	let iKclone1 = Object.defineProperties( {}, Object.getOwnPropertyDescriptors(iKobject1) ); /*2+*/
+
+	printD(iKclone1); /*OP {iKproperty1: "iKoV1"}*/ /*3+*/
+
+	printD(Object.getOwnPropertyDescriptors(iKclone1));
+		/*OP {iKproperty1: {value: "iKoV1", writable: false, enumerable: true, configurable: false}} */ /*4+*/
+
+	/*1+ writable: and configurable: are set to false by default.
+	2+ copied iKproperty1 along with all the descriptors.
+	2+ remember this formula to creating the perfect property clone.
+	2+ bim that the second part is still a descriptor, and it is as if you are setting all the descriptors.
+	2+ bim it can also clone multiple properties.
+	3+ same as iKobject1["iKproperty1"] .
+	4+ all the clone descriptors are the same as the original.*/
+
+	/********************/
+
+/*creating a property clone with loops*/
+	let iKclone2 = {};
+
+	for (let property in iKobject1) {
+		iKclone2[property] = iKobject1[property];
+	};
+
+	printD(iKclone2); /*OP {iKproperty1: "iKoV1"}*/ /*5+*/
+
+	printD(Object.getOwnPropertyDescriptors(iKclone2));
+		/*OP iKproperty1: {value: "iKoV1", writable: true, enumerable: true, configurable: true} */  /*6+*/
+
+
+	/*5+ same property and values.
+	6+ however the descriptors are all default true, as it did not copy the property descriptors too.
+	+\ iK i think it is possible to copy the descriptors if you use the .defineProperties() and .getOwnPropertyDescriptors() but it might require a lot of coding, so it better to use the shorter code above and not loops.*/
+
+
+ /*OP */
+/*----------------------- /script ///////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

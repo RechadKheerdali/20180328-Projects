@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>06 reoccurence array / search stock</title>
+</head>
+<body>
+<main>
+<script> /*find all specific array value  / prompt through list */
+// Finding all the occurrences of an element. copied from MDN
+  var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+  var record = [];
+  var a = 'a';
+  var indexA = array.indexOf(a); // used as index number, starts at 0
+
+  while (indexA != -1) {    // only after it passes "d" that it becomes -1
+    record.push(indexA);     // records all the "a" index number
+    indexA = array.indexOf(a, indexA + 1); // BIM you can insert an index number after the value and even +1  to continue the loop
+  };
+
+  printD(record); // [0, 2, 4]
+// useful if you want to find all the same values in an array
+
+/**************************************************************/
+// list all / quit prompt / search value y/n .
+// did by myself, little proud haha
+  var inStock = [ 'apples', 'eggs', 'milk', 'cookies', 'cheese', 'bread', 'lettuce', 'carrot', 'broccoli', 'pizza', 'potato', 'crackers', 'onion', 'tofu', 'frozen dinner', 'cucumber'];
+  var search;
+  var attempts = 2;
+  console.log("you have 3 attampts");
+
+  do {
+    search = prompt("type 'x' for list of instock, 'z to close prompt, or search your item within the instock.");
+    search = search.toLowerCase();
+    if (search === "z") {
+      break;
+    }else if (search === "x") {
+      printD( inStock.join(" IK ") );
+      break;
+    }else if (attempts === 0) {   //only 3 attempts they have
+      alert("3 attempts over");
+      printD( inStock.join(" -M- ") );
+      break;
+    }else {
+      if ( inStock.indexOf(search) > -1 ) { //any array value will be > -1
+        alert("yes we have " + search + " in our stock");
+      }else if ( inStock.indexOf(search) === -1 ) { //non array value returns as -1
+        alert("no we do not have " + search + " in our stock");
+      }
+    };
+    console.log(attempts + " attempts left");
+    attempts--
+  } while (true);
+
+</script>
+</main>
+</body>
+</html>

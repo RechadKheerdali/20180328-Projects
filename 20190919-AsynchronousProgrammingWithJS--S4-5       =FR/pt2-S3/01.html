@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- promise basic skeleton / Promise() / resolve() / reject() / .then() / .catch() / .finally() -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 promise basic skeleton / Promise() / resolve() / reject() / .then() / .catch() / .finally()</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*promise basic skeleton / Promise() / resolve() / reject() / .then() / .catch() / .finally() */
+const iKboolean = true;		/*1+*/
+
+const iKpromise = new Promise( (resolve, reject) => {	/*2+*/
+	setTimeout(				/*3+*/
+		() => {
+			if (iKboolean) {
+				const iKresolved = "iK fulfilled";
+				return resolve( iKresolved );	/*4+*/
+			} else {
+				const iKreject = "iK rejected";
+				return reject( iKreject );		/*5+*/
+			}
+		},
+		1000
+	);
+}); /*END iKpromise */
+
+IK.printD(iKpromise); /*OP promise object in pending state*/ /*6+*/
+
+iKpromise										/*7+*/
+	.then( iKpromiseObjResponse => iKpromiseObjResponse.toUpperCase() )	/*8+*/
+	.then( IK.printD ) /*OP "IK FULFILLED" */	/*9+*/
+	.catch( rej => IK.printD(rej) ) /*OP no outcome*/	/*10*/
+	.finally( IK.printD( "IK .finally()" ) ); /*OP "IK .finally()" */	/*11+*/
+
+setTimeout(
+	() => {IK.printD(iKpromise)},
+	1500
+); /*OP promise object in resolved state*/
+
+/*1+ the demo outcome of the promise. true for resolve() and false for reject() .
+2+ require a 'new' operator as Promise() is a constructor.
+2+ Promise has 1 argument which is an anonymous function (executor).
+    +\ the anonymous function must have 2 arguments which are exacty written as resolve and reject.
+		+\ you can think of the resolve and reject parameter as the .then() and .catch() argument. But than resolve and reject parameter becomes callout with resolve() and reject() in the promise object.
+3+ setTimeout() is optional, and can be a good way to test promise.
+4+ must include resolve() , so if the asynchronous task succeed it must be inserted into resolve() as the outcome.
+4+ resolve() is connected to the resolve parameter and the .then() method.
+5+ if the asynchronous task fails than it will be passed to reject() .
+5+ reject() is connected to the reject parameter and the .then() & .catch() method.
+6+ until the promise object is resolved or rejected than it will appear as pending state despite the PromiseValue: is the resolve value.
+7+ not necessary to use the promise variable as you could use after the Promise object but it offers convenience and easier understanding.
+8+ notice that it is on a new line as it is chaining for each method. But ensure only whitespace in between them.
+8+ .then() can recieve either the resolve() and reject() promise value.
+	+\ .then( iKpromiseResolveValue, iKpromiseRejectValue )  = iKpromiseRejectValue is optional, but it is better to only use the iKpromiseResolveValue.
+	+\ you should think of .then() as the keyword for resolve() in the Promise().
+		+\ which is why you do not need the parenthesis for properties.
+		+\ you could also use anonymous function with the resolve() value as in this demo.
+9+ you can use .then() again and again to change the current value of the promise object. but you not able to use repeated .catch() .
+9+ notice i did not use parenthesis as it only requires the keyword, the callout is resolve() .
+10+ catch() is the keyword for the callout reject(). but just like .then() you use anonymous function and take the reject() value and use it.
+10+ no outcome as long as promise was resolved.
+11+ .finally() is like a cleanup of left overs.
+11+ .finally() unable to take the promise object current value.
+11+ notice .finally() value comes before the asynchronous value. so be wary of .finally() as it will usually happen before the promise asynchronous task.
+	+\ negating setTimeout() makes no difference.	*/
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+IK.printD( html );
+IK.everyStyles( DOMelement );
+IK.ascii("a", "b");
+IK.patternIndexNumber( iKarray, searchThisValue );
+IK.cssSupport("cssProperty", "cssValue");
+IK.listAttributes( DOMnode );
+IK.serialize( formDOMelement );
+IK.serializeObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKocfOne = function ( {iKpar1 = "iKdefaultPar1", iKpar2 = "iKdefaultPar2", iKpar3 = "iKdefaultPar3"} = {}) {
+	this.iKocfProp1 = iKpar1;
+	this.iKocfProp2 = iKpar2;
+	this.iKocfProp3 = iKpar3;
+};
+	const iKocf1 = new iKocfOne();		*/
+</script>
+</main>
+</body>
+</html>

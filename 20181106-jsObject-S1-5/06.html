@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>06 my attempt- display array-object</title>
+    <style>
+		#pupils {
+			background-color: aqua;
+			padding: 10px;
+			display: inline-block;
+		}		
+	</style>
+	
+</head><!--2018 11 10-->
+<body><!--create 5 student and diplay information  my attempt- display array-object using <ol><ul>-->
+<main>
+<section id="pupils"></section>
+
+<script>
+	//print in the id section
+	function printZ(section) {
+		return document.getElementById("pupils").innerHTML = section;
+	};
+	
+	//students info (5 object in an array)
+	var students = [
+		{
+			name: "alpha",
+			age: 11,
+			nationality: "japan",
+			skills: "html"
+		},
+		{
+			name: "bravo",
+			age: 22,
+			nationality: "uk",
+			skills: "css"
+		},
+		{
+			name: "charlie",
+			age: 33,
+			nationality: "france",
+			skills: "javascript"
+		},
+		{
+			name: "delta",
+			age: 44,
+			nationality: "usa",
+			skills: "react"
+		},
+		{
+			name: "echo",
+			age: 55,
+			nationality: "australia",
+			skills: "node.js"
+		}
+	];	
+	
+	//html will be the var to be displayed on screen
+	var html = ""; //if you dont place the empty string here than you will get an undefined word when displayed
+	var num; //number the list
+	
+	//ul function
+	function studentList(list) {
+		//loop through array index number and creating <ol> tag
+		for (var i = 0; list.length > i; i++) {
+			num = i + 1;      //.1			
+			html += "<ul>" + "<strong>" + num + "</strong>"; //.2
+			//loop through object within the array & creating <li>
+			for (var objectv in list[i]) {				
+				html += "<li>" + objectv + " -\\|/- " + list[i][objectv] + "</li>";			
+			}
+			html += "</ul>";
+		}
+		return html;
+	};
+	//.1 numbering the list
+	//.2 set the <ul> list
+	
+	//function that gives the process a go ahead
+	studentList(students);
+	
+	//print of the final html to be displayed
+	printZ( html );
+		
+/*	<ol>
+		<ul>
+			<li></li>
+		</ul>	
+		<ul>
+			<li></li>
+		</ul>
+	</ol>         */	
+/*TO DO LIST
++\ 5 syudent info to be display using ol and ul nested
+==+\ could not do an ul nested within the ol, i think it can only be possible if i break it down evn even more and not use the loop too much but it would require more coding  */
+</script>
+</main>
+</body>
+</html>

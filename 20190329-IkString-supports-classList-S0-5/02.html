@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- label: / continue-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>02 label: / continue</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+/*from mdn*/
+	var string = "";
+
+	iKloop1:                       /*1+*/
+	for (let i = 0; i < 5; i++) {  
+		if (i === 1) {               
+			continue iKloop1;      /*2+*/
+		}
+		string = string + i;       /*3+*/
+	}
+		/*1+ it is label: but you give it a name for the following code
+		2+ skips number 1 on console but continues the loop and ignores the rest of the following code below.
+		3+ 1 was skip because of the if statement and continue iKloop1;*/
+	
+	console.log(string); 	/*expected output: "0234" */
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

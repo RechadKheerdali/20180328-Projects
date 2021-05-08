@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>05 toggle display. i did partly myself</title>
+</head>
+<body><!--toggle display. i did partly myself-->
+<main>
+	<button id="buttonToggle">Select display:none;</button>
+
+	<div id="displayToggle" style="display: block;">     <!--//. EX below-->
+        
+		<h1 id="hOne">what you want me to say</h1>
+		<input type="text" id="inputText">
+		<button id="button1">submit</button>
+	</div>
+
+	<script>
+	const heading = document.querySelector(`#hOne`);
+	const textBox = document.querySelector(`#inputText`);
+	const submitBtn = document.querySelector(`#button1`);
+	
+// submit button to change heading content
+	submitBtn.addEventListener(`click`, () => {
+		heading.textContent = textBox.value;
+	});
+
+// display button toggle to switch display
+	const toggleBtn = document.querySelector(`#buttonToggle`);
+	const displayDiv = document.querySelector(`#displayToggle`);
+	
+	toggleBtn.addEventListener(`click`, function () {
+		if (displayDiv.style.display === `block`) {       //.1
+			toggleBtn.textContent = `Select display:block;`;
+			displayDiv.style.display =`none`;
+		}else if (displayDiv.style.cssText = `display: none`) {    //.2
+			toggleBtn.textContent = `Select display:none;`;
+			displayDiv.style.cssText = `display: block;`;
+		}
+	});
+	//.1 BIM this as it makes sense to you
+	//.2 change it now but before i could not understand why this will not work `else if (displayDiv.style.display == `none`)` .   else or !=`block`  works though!     ||| IK it now works, check EX for ans
+	/*ensure your buttons have specific dom links otherwise both buttons will be firing
+    +\ EX dont understand why only the second time i press the button that it respond
+    ans= is because intially display is an empty string " " so it automatically goes to the second conditional statement. but now that i added display: block; it is not an empty string so therefore it works the first time*/
+	/* //.2 IKRECAPPED i do not understand why = works and == do not work. it should be the other around.  
+	+\ perhaps because there is more than one css setting and you have to type them all for it to be match .cssText
+	+\ the = equal does target only one css therefore it is still true  */
+</script>
+</main>
+</body>
+</html>

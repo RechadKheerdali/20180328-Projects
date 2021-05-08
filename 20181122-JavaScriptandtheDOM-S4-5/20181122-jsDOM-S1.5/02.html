@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>02 eg of tagging and mixing colours / .innerHTML vs .textContent</title>
+</head>
+<body>   <!--eg of tagging and mixing colours / .innerHTML vs .textContent-->
+<main>
+	<ul id="rainbow">
+	  <li>This should be red</li>
+	  <li>This should be orange</li>
+	  <li>This should be yellow</li>
+	  <li>This should be green</li>
+	  <li>This should be blue</li>
+	  <li>This should be indigo</li>
+	  <li>This should be violet</li>
+	</ul>
+	<p>.innerHTML and textContent differences below</p>
+
+<script>
+	let listItems = document.getElementsByTagName(`li`);
+	const colors = ["#C2272D", "#F8931F", "#FFFF01", "#009245", "#0193D9", "#0C04ED", "#612F90"];
+
+	for(var i = 0; i < colors.length; i ++) {
+	  listItems[i].style.color = colors[i];    
+	};
+
+	/*************************************************/
+	
+/* .innerHTML / .textContent / their differences*/
+	const diff = document.getElementById(`rainbow`);
+	
+//.innerHTML
+	printD(diff.innerHTML);            //.1
+	console.log(diff.innerHTML);       //.2
+	//.1 returns string / HTML tags / css effects / css structure / css elements and attribute
+	//.2 returns string / HTML tags / css structure / css elements and attribute
+	
+//.textContent
+	printD(diff.textContent);          //.1
+	console.log(diff.textContent);     //.2
+	//.1 returns string
+	//.2 returns string / css structure
+	/*innerHTML is quite powerful because with wriiten tags you can change the elements within the page,  so it is safer to use textContent because everything just convert into plain string and you will not have security issues when taking users inputs.*/
+</script>
+</main>
+</body>
+</html>

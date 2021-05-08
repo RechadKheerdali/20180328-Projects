@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17</title>
+    <link rel="stylesheet" href="Template/normalize.css">
+</head>
+<body>
+    <script>    
+/*using throw new Error if the user types in a non number*/
+        function noDice (low, high) {
+            if ( isNaN(low) || isNaN(high) ) {
+                throw new Error("Both arguments must be numbers, THIS MESSAGE IS WRITTEN ON CONSOLE.LOG IK");
+            }
+            return Math.floor(Math.random() * (high - low + 1)) + low;
+        }
+        console.log (noDice (2, 7));
+        console.log (noDice (5, 37));
+        console.log (noDice ("seven", 8)); //error show in console and stops all the program below
+        console.log (noDice (6, 7));
+        console.log (noDice (15, 37));
+        
+        
+/*written by another user but i show to demonstrate other ways to use isNaN*/        
+        function randomNumber(upper, lower) {
+            var randomNum = Math.floor(Math.random() * (upper - lower + 1)) + lower; 
+            return randomNum;
+        }
+// Getting the users numbers
+        var lowerNum = prompt("Pick a number");
+        var upperNum = prompt("Pick a larger number");
+        var int1 = parseInt(lowerNum);
+        var int2 = parseInt(upperNum);
+// Checking they gave number digits
+        var num1 = isNaN(int1);
+        var num2 = isNaN(int2);
+// throwing error if missing number digits
+        if ( num1 === true || num2 === true ) {
+          throw new Error("You need to use number digits like 1 2 3");
+        }
+        alert(randomNumber(int1, int2) + " is a random number between your choices.");   
+    </script>
+</body>
+</html>

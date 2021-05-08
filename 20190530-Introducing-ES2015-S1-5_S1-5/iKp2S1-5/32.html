@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 32 class \ create own class method \ array random index number -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>32 class \ create own class method \ array random index number</title>
+<style>
+/* + + + + + + + + + + + + STYLE -----------------------------*/
+/*------------------------ /style ////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + MAIN ----------------------------->
+<!------------------------ /main ///////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + SCRIPT ----------------------------*/
+'use strict';
+
+
+/*class \ create own class method \ array random index number */
+	class iKclass {
+		iKmethod () {                           /*1+*/
+			this.iKarray = ["iKaV1", "iKaV2", "iKaV3"];
+
+			this.randomIndex = Math.floor( Math.random() * this.iKarray.length );  /*2+*/
+
+			return this.iKarray[this.randomIndex];   /*3+*/
+		};
+	}/*END iKclass*/
+		/*notice structured all the values and code into an object construction with the keyword 'this' instead of const variable.*/
+
+	const iKvar = new iKclass();
+
+	printD( iKvar["iKmethod"]() ); /*OP: £one random array value*/
+	printD( iKvar.iKmethod() );    /*OP: £one random array value*/
+		/*both printD() are the same, bracket and dot notation*/
+
+	/*1+ created a new class method.
+	1+ however it is still not iKclass default class like constructor() is. so you will need to use bracket or dot notation to call iKmethod.
+	2+ clever code which selects random index number of the array.
+	3+ just like calling any array, but with a random index number 
+	3+ decided for demo purposes not to structure this as object construction, so i can see the iKmethod being called in printD.*/
+
+
+/*----------------------- /script ///////////////////////////*/ /* 
+const iKvar = "iKV";
+const iKarray = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11</title>
+</head>
+<body>
+    
+    <script>     
+        //there is 7 number unit between 5-11 so thats why you *7 in random and not 6. and the + 4 is your bottom number (not 5) because you already + 1 earlier within the brackets
+        var correctAnswer = false;
+        var random = Math.floor (Math.random() * 7 + 1) + 4;
+        var guess = prompt ("Guess my number between 5 to 11?,  hint its " + random);
+        guess = parseInt(guess);
+        if (guess === random) {
+            correctAnswer = true;
+        }
+        else if (guess > random) {
+            var lowerGuess = prompt ("no its not " + guess + ", guess lower?  hint its " + random);
+            if (parseInt(lowerGuess) === random) {
+                correctAnswer = true;
+            }
+        }
+        else if (guess < random) {
+            var higherGuess = prompt ("not quite " + guess + ", think bigger!  hint its " + random);
+            if (parseInt(higherGuess) === random) {
+                correctAnswer = true;
+            }
+        }
+        if (correctAnswer) {
+            document.write ("<h1> You guess correctly, my number was " + random + ".</h1>");
+        }
+        else {
+            document.write ("<h1>No, the correct guess was " + random + ". NO EXCUSES AND TRY AGAIN!</h1>");
+        }
+        
+//        did this all myself, genuinely quite proud of y work
+    </script>
+</body>
+</html>

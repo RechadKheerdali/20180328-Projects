@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08</title>
+    </head>
+<body>    
+    <script>
+        var topnumber = prompt ("Choose a top number for a random number!");
+        topnumber = parseInt(topnumber);
+        var randomNumber = (Math.floor(Math.random() * topnumber + 1));
+        document.write("<p>" + randomNumber + " is your random number between 1 to " + topnumber + " (your chosen top number).</p>");
+        
+        var inputOne = prompt('Please type your bottom number');
+        var bottomNumber = parseInt(inputOne);
+        var inputTwo = prompt('Please enter your topnumber');
+        var TopNumber = parseInt(inputTwo);
+        var diceRoll = (Math.floor(Math.random() * (TopNumber - bottomNumber + 1)) + bottomNumber);
+        var message = "<p>" + diceRoll + " is a number between " + bottomNumber + " and " + TopNumber + ".</p>";
+        document.write(message);
+//in this you put the +1 within the multiplycation, it still does the same thing from preventing 0 from happening but also without tho than you can never achive the topnumber because of M.floor as you know ir rounds to the lowest number so it will be impossible to get the topnumber because m.random never gets a 1 total and a whole number needs to be 1 a whole number.
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- fetch() requires throw and if statement for it to work with try...catch method -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>26 fetch() requires throw and if statement for it to work with try...catch method</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*fetch() requires throw and if statement for it to work with try...catch method */
+/*because fetch() does not have a reject() property, therefore throw becomes the reject() for fetch() .
+	+\ without throw, you cannot use catch(){}.
+		+\ cannot use .catch() after fetch() because it always return a successful response object. */
+async function iKasyncFunction() {
+	try{
+		return await fetch("1zzjson.json")	/*1+*/
+			.then( iKfetchResponse => {	/*2+*/
+				IK.printD(iKfetchResponse) /*OP response object*//*3+*/
+
+				if (iKfetchResponse.ok) { /*4+*/
+					IK.printD("iK response Success") /*5+*/
+				} else {	/*6+*/
+					throw "iK response Failed"; /*7+*/
+				}
+			}) /*END .then() */
+	} catch(iKerrorPar1) {	/*8+*/
+		throw Error(iKerrorPar1); /*9+*/
+	};
+}; /*END iKasyncFunction */
+
+iKasyncFunction()
+	.catch( iKerrorPar2 => console.error(iKerrorPar2) ) /*10*/
+	 /*aOP	response object of fetch()
+			"Error: iK response Failed" */
+
+/*1+ using false url for demo.
+1+ it is very important that you use return keyword, as you will have difficulty using thenable handlers on the callback function itself.
+2+ .then() receive response object of the fetch() .
+2+ we do not use .catch() because you will always receive fetch() response object, whether it succeed or not, so technically it will always be a resolve status.
+3+ the response object of the fetch() so iK can see the all the other data of the fetch() if you want.
+4+ iKfetchResponse.ok means if it was a successful http response, and it returns true or false.
+	+\ iKfetchResponse.ok ranges from 200-299 .
+4+ you could alternativly use .status or .statusText if you wanted to be more precise.
+5+ you write your normal codes in here if true.
+6+ if the http response fails than it will be false.
+7+ use 'throw' as your reject() for promise object.
+	+\ because reject() will not work on fetch().
+	+\ you can write any normal codes you want but you cannot use the error object or pass it on to catch(){} without throw .
+	+\ throw will give catch(){} the error automatically.
+8+ receives the error from throw .
+9+ Because there is .catch() handler after the callback ( iKasyncFunction() ), the error continues on to the last catch handler.
+	+\ you must use throw again if you want the error object to continue to the last catch handler.
+	+\ if there was no more catch handler after catch(){}, than throw Error() would output from here.
+9+ I could have used throw new Error() or just throw alone if you do not want to use Error() .
+10+ console.error() does not stop exercution like throw would, so be wary on using this. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();	*/
+</script>
+</main>
+</body>
+</html>

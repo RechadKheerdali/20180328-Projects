@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>02 using multiple css property in transition</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/* using multiple css property*/
+	#ik {
+		width: 300px;
+		height: 200px;
+		background-color: red;
+		transition-property: margin-left, background-color;
+		transition-duration: 1s, 2000ms;
+		transition-timing-function: steps(4, end);
+		transition-delay: .4s;
+	}
+
+	#ik:hover {
+		margin-left: 150px;
+		background-color: blue;
+	}
+
+	
+/*transition shorthand, but almost the same as above (different transition-timing-function:*/
+	#ik1 {
+		width: 300px;
+		height: 200px;
+		background-color: red;
+		transition: margin-left 1s ease 0.4s, background-color 2000ms linear 400ms;
+	}
+	
+	#ik1:hover {
+		margin-left: 150px;
+		background-color: aquamarine;
+	}
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+	<div id="ik">coolio</div>
+	<div id="ik1">coolbeans</div>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

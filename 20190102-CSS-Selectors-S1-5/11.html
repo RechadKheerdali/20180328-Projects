@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :first-of-type -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>11 :first-of-type</title>
+    <style>
+		article :first-of-type {
+		  background-color: pink;
+		}
+	</style>
+</head>
+<body>
+<main>
+	<article>
+	  <div>This `div` is first!</div>
+	  
+	  <div>
+		This <span>nested `span` is first</span>!
+	  </div>
+	  
+	  <div>
+		This <em>nested `em` is first</em>, but this <em>nested `em` is last</em>!
+	  </div>
+	  
+	  <div>
+		This <span>nested `span` gets styled</span>!
+	  </div>
+	  
+	  <b>This `b` qualifies!</b>
+	  
+	  <div>
+		<div>This `div` is first!</div>
+		This is the final `div`.
+	  </div>
+	
+	</article>
+</main>
+</body>
+</html>

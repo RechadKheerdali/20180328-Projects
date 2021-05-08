@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 17 flickr api in jQuery ajax (in jsonP really) / SUCCESSFUL JSONP-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>17 IKS0.5 / flickr api in jQuery ajax (in jsonP really) / SUCCESSFUL JSONP</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+
+          <div>
+            <h1>Flickr Photo Feeder</h1>
+            <p>Choose which kind of animal you'd like to return photos of...</p>
+          </div>
+
+          <ul class="ulselect">   <!-- users chooses selection -->
+            <li><button>Dog</button></li>
+            <li><button>Cat</button></li>
+            <li><button>Moose</button></li>
+          </ul>
+
+        <div id="divphotos"> <!-- where link and img will be inserted --> </div>
+
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+
+	$(`.ulselect`).on(`click`, `button`, function(event) {
+			let animalV = $(this).text();   /*button name search*/
+
+			$.ajax(
+				`https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?&format=json`,    /*1*/
+				{
+					method: `GET`,
+					dataType: `json`,
+					data: {
+						format: `json`,      /*2+*/
+						tags: animalV        /*3+*/
+					},
+					success: function(response, status, xhr) {
+						console.log(response);
+						let ulist = `<ul>`;
+
+						$.each(response[`items`], function(index, element) { /*4+*/
+							let aUrl = `<a href="`;
+							aUrl += element[`link`];  /*5+*/
+							aUrl += `">linked</a>`;
+
+							let imgP = `<img src="`;
+							imgP += element.media.m;  /*6+*/
+							imgP += `">`
+
+							let list = `<li>`;
+							list += aUrl + imgP;
+							list += `</li>`;
+							ulist += list;
+						})/*END $.each() loop*/
+
+						ulist += `</ul>`;
+						$(`#divphotos`).html(ulist);
+					}/*END success:*/
+				}/*END $.ajax() object settings*/
+			);/*END $.ajax()*/
+	})/*END .on()*/
+
+	/*1+ BIM you must add jsoncallback=? as a query string at the end of the url because you want to use json format of the flickr file. also you are using jsonP server. if you do not add the jsoncallback=? than you will get CORS issues
+	1+ perhaps also i notice that the file has a function callback which i do not know is allow, and jsoncallback=? might neutralise it somehow.
+	1+ also jsoncallback will not work as data query string callback through $.ajax(). so you have to already write it in the url no matter what
+
+	1+ format=json will turn the file into json file, as some file may come in xml or etc. 
+	1+ format=json is optional through url query string , you could alternatively use dataType: `json`, through $.ajax() object settings. but either way you must include it somewhere otherwise it will not work as json file.
+	1+ BIM `?` is to separate url and query string. `&` is to separate each object query string from each other
+
+	2+ from flickr api, however it is a must to request format: `json`, file because if you do not than CORS issues will rise again due to recieving a different mime type file from flickr (atom+xml).
+	3+ from flickr api. allows you to filter search photos with the attached tags
+	4+ response[`items`] is the photo list on the json file provided from flickr api url
+	5+ element is the current element including the index number, so it could also be response[`items`][index][`link`]
+	6+ there was a double object which is why you see 2 dot notation
+	*/
+
+	/*BIM VERY IMPORTANT ?jsoncallback=?&format=json for the url
+	+/ also you could have added .fail() at the end */
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

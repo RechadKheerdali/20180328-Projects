@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>07 from a comment who did what i was trying to TBUD challenge</title>
+</head><!-- from a comment who did what i was trying to TBUD challenge-->
+<body>
+<main>
+    <h1 id="myHeading">JavaScript and the DOM</h1>
+    <p>Making a web page interactive</p>   
+    <button>Hide</button>
+    <div id='event_1'> 
+    <p class='event_2'>Things that are purple:</p>
+    <input type='text' class='event_2'>
+    <button class='event_2'>Change the description</button>
+    <ul class='addList'>
+      <li>grapes</li>
+      <li>amethyst</li>
+      <li>lavender</li>
+      <li>plums</li>
+    </ul>
+      <input type='text' class='addList'>
+      <button class='addList'>List</button>
+    </div>
+
+
+<script>
+    const buttonPress = document.querySelector('button');
+    let div = document.getElementById('event_1');
+    let description = document.querySelector('p.event_2');
+    let input = document.querySelector('input.event_2');
+    const button = document.querySelector('button.event_2');
+
+    let list = document.querySelector('ul.addList');
+    const addButton = document.querySelector('button.addList');
+
+    let currentList = list.children;
+
+    button.addEventListener('click', () => {
+                            description.textContent = input.value;
+                            });
+    buttonPress.addEventListener('click', () => {
+       if (div.style.display === 'block') {
+      buttonPress.innerHTML = 'Show';
+      div.style.display = 'none';
+    } else {
+      buttonPress.innerHTML = 'Hide';
+      div.style.display = 'block';
+    }
+                                 });
+
+    function add () {
+    let textInput = document.querySelector('input.addList').value;
+    let newList = document.createElement('li');
+    newList.innerHTML = textInput;
+    list.appendChild(newList);
+
+      let newButton_2 = document.createElement('button')
+    newButton_2.innerHTML = 'Up';
+    newButton_2.className = 'up';
+    newList.appendChild(newButton_2);
+
+      let newButton_3 = document.createElement('button')
+    newButton_3.innerHTML = 'Down';
+    newButton_3.className = 'down';
+    newList.appendChild(newButton_3);
+
+      let newButton = document.createElement('button')
+    newButton.innerHTML = 'Remove';
+    newButton.className = 'remover';
+    newList.appendChild(newButton);
+
+      list.append(newList);
+      //ADD AN ITEM TO THE LIST ALSO APPLY THE CORRECT STYLE
+
+      const removeBottom = parentNode => {
+     let top = parentNode.firstElementChild;
+     let bottom = parentNode.lastElementChild;
+     let previousChild = bottom.previousElementSibling;
+     let previousFirst = previousChild.firstElementChild;
+     let newButton_2 = document.createElement('button')
+    newButton_2.innerHTML = 'Down';
+    newButton_2.className = 'down';
+    newList.appendChild(newButton_2);
+      top.style.backgroundColor = 'lightskyblue';
+      bottom.style.backgroundColor = 'lightsteelblue';
+      let remove_2 = bottom.querySelector('button.down');
+      bottom.removeChild(remove_2);
+      previousChild.style.backgroundColor = 'initial';
+    //Add button down after the previous element  
+        previousFirst.after( newButton_2);
+
+    }
+      removeBottom(list);
+
+    }
+
+    addButton.addEventListener('click', add);
+
+    list.addEventListener('click', (event) => {
+      if (event.target.tagName === 'BUTTON') {
+        if (event.target.className === 'remover') {
+          let li = event.target.parentNode;
+          let ul = li.parentNode;
+          ul.removeChild(li);
+        }
+        if (event.target.className === 'up') {
+          let li = event.target.parentNode;
+          let ul = li.parentNode;
+    // if use event.target in preLi wrong answer will happen
+          let preLi = li.previousElementSibling;
+    //if preLi !== null so insert Happen      
+          if (preLi) {
+             ul.insertBefore(li,preLi);
+
+    }
+        }
+         if (event.target.className === 'down') {
+          let li = event.target.parentNode;
+          let ul = li.parentNode;
+          let nextLi = li.nextElementSibling;
+          if (nextLi) { 
+            ul.insertBefore(nextLi,li);
+          }
+         }
+    // REMOVE ALL BUTTONS AND SET BACKGROUND TO INITIAL, THEN ADD
+    //REMOVE
+       let upButtons =document.querySelectorAll('button.up');
+    for (let i = 0; i < upButtons.length; i++) {
+     upButtons[i].parentNode.removeChild(upButtons[i]);
+    }
+     let downButtons =document.querySelectorAll('button.down');
+    for (let i = 0; i < downButtons.length; i++) {
+     downButtons[i].parentNode.removeChild(downButtons[i]);
+    } 
+     let removeButtons =document.querySelectorAll('button.remover');
+    for (let i = 0; i < removeButtons.length; i++) {
+     removeButtons[i].parentNode.removeChild(removeButtons[i]);
+    } 
+    for (let i = 0; i < currentList.length; i++) {
+      currentList[i].style.backgroundColor = 'initial';
+    }
+    //ADD ALL BUTTONS IN LISTS
+        addButtons(currentList)
+    //ADD AND REMOVE BUTTONS AT FIRST AND LAST LISTS FOLLOWING THE INSTRUCTION OFTHE QUEST
+      const removeTop_Bottom = parentNode => {
+     let top = parentNode.firstElementChild;
+     let bottom = parentNode.lastElementChild;
+      top.style.backgroundColor = 'lightskyblue';
+      bottom.style.backgroundColor = 'lightsteelblue';
+      let remove_1 = top.querySelector('button.up');
+      let remove_2 = bottom.querySelector('button.down');
+      top.removeChild(remove_1);
+      bottom.removeChild(remove_2);
+      }
+    removeTop_Bottom(list);  
+      }
+      });
+    const addButtons = list => {
+     for (let z = 0; z < list.length; z++) {
+            let newButton_2 = document.createElement('button')
+    newButton_2.innerHTML = 'Up';
+    newButton_2.className = 'up';
+
+      let newButton_3 = document.createElement('button')
+    newButton_3.innerHTML = 'Down';
+    newButton_3.className = 'down';
+
+      let newButton = document.createElement('button')
+    newButton.innerHTML = 'Remove';
+    newButton.className = 'remover';
+       list[z].append(newButton_2, newButton_3, newButton);
+     }
+    }
+    addButtons(currentList);
+
+    const removeTop_Bottom = parentNode => {
+     let top = parentNode.firstElementChild;
+     let bottom = parentNode.lastElementChild;
+      top.style.backgroundColor = 'lightskyblue';
+      bottom.style.backgroundColor = 'lightsteelblue';
+      let remove_1 = top.querySelector('button.up');
+      let remove_2 = bottom.querySelector('button.down');
+      top.removeChild(remove_1);
+      bottom.removeChild(remove_2);
+
+    }
+    //INITIAL SETTING FOR UL ELEMENT WHEN THE BROWSER LOADS
+    removeTop_Bottom(list);
+</script>
+</main>
+</body>
+</html>

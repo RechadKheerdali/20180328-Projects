@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+    <style>
+/*        flexbox demo.   for parent element
+        align-content:
+        justify-content:
+        place-content:     =shorthand( a.c + j.c )         */
+        .box1 {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;    /*flex-start | flex-end | center | space-between | space-around | stretch | start */
+        }
+        
+        .box2 {
+            display: flex;
+            justify-content: space-between;    /* flex-start | flex-end | center | space-between | space-around | space-evenly */
+        }
+        
+        .box3 {
+            display: flex;
+            flex-wrap: wrap;
+            place-content: flex-end space-evenly; /* shorthand property for both the align-content and justify-content properties in that order */
+        }
+        </style>
+</head>
+<body>
+    <div class="box1" style="border: dashed 2px black; height: 200px;">
+          <div class="one1" style="border: solid 2px blue; width:300px;">One</div>
+          <div class="two1" style="border: solid 2px green; width:300px;">Two</div>
+          <div class="three1" style="border: solid 2px red; width:300px;">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box2" style="border: dashed 2px black">
+          <div class="one2" style="border: solid 2px blue">One</div>
+          <div class="two2" style="border: solid 2px green">Two</div>
+          <div class="three2" style="border: solid 2px red">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box3" style="border: dashed 2px black; height: 150px">
+          <div class="one3" style="border: solid 2px blue; width:300px; height: 20px;">One</div>
+          <div class="two3" style="border: solid 2px green; width:300px; height: 20px;">Two</div>
+          <div class="three3" style="border: solid 2px red; width:300px; height: 20px;">Three</div>
+        </div>  <br><br><br>
+</body>
+</html>

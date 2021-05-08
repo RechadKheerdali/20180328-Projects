@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 02 basic closure / function increment -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>02 basic closure / function increment</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* basic closure / function increment.
+	+\ you need at least 2 function in order to create a private variable for the function scope */
+function iKouterFunction () {
+	let iKcounter = 0;			  /*1+*/
+	function iKinnerFunction () { /*2+*/
+		iKcounter++; 			  /*3+*/
+		return iKcounter;
+	};
+	return iKinnerFunction;        /*4+*/
+};
+
+
+const iKresult = iKouterFunction(); /*5+*/
+
+
+printD( iKresult() ); /*OP 1 */     /*6+*/
+printD( iKresult() ); /*OP 2 */
+printD( iKresult() ); /*OP 3 */
+
+/*1+ iKcounter belongs to iKouterFunction scope.
+2+ any function within the function can access the outer function.
+3+ the inner function has access to the outer function private variable iKcounter.
+4+ notice i did not use the parenthesis as a callback function, so currently the inner function has not been activated.
+5+ the outer function has been called in the new variable, and the function variable iKcounter is currently set at 0.
+	+\ but iKcounter is the background value, as of right now the current value for iKresult is the inner function syntax structure.
+5+ but the inner function has not yet been called because you need the second parenthesis callback to trigger it.
+	+\ but you cannot do iKouterFunction()() in a variable because than the variable iKcounter will reset to its intial value everytime.
+	+\ you only want to store the outer function value, whilst the inner function is only called when you need the outer function variable to be incremented.
+6+ the inner function is being called upon, which increment the outer function iKcounter.
+	+\ and the outer function iKcounter is stored in the new variable iKresult which is why it is not being reset to its intial value. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

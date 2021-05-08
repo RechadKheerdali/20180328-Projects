@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>13 flip front face to show back face hover / two container version , ik preference</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+  .container {
+      margin: 70px 0 0 70px;
+      width: 300px;
+      height: 300px;
+      perspective: 700px;   /*@1*/
+  }
+      /*@1 adds the 3d effect*/
+
+  .itemBox {
+      font-size: 3em;
+      font-weight: bold;
+      color: purple;
+      width: 300px;
+      height: 300px;
+      transition: transform 0.8s cubic-bezier(.1, .9, .9, .1);
+      transform-style: preserve-3d;      /*1@*/
+      backface-visibility: hidden;       /*2@*/
+  }
+      /*1@ without this, backface-visibility: will not work and you will only see the last child back mirror image.
+      2@ without this, than the last child image will take precedence, even at the back side */
+
+  .front,
+  .back {
+      width: inherit;
+      height: inherit;
+      position: absolute;    /*1@*/
+  }
+      /*1@ without this the child image will both show in full, even outside the container*/
+
+  .front {
+      background: yellow;         /*just for backup as recommended*/
+      background-image: url(images/dr.jpg);
+      background-size: 300px 300px;
+  }
+
+  .back {
+      background-color: blue;         /*just for backup as recommended*/
+      background-image: url(images/ali.jpg);
+      background-size: contain;       /*since ali is same size on both side*/
+      transform: rotateY(180deg);     /*1@*/
+  }
+      /*@1 180deg to the backside*/
+
+/*flipping transition when hovered*/
+  .container:hover .itemBox {
+      transform: rotateY(-180deg);
+  }
+      /*noticed i only needed one hover selector since .itemBox is carrying both the image sides*/
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div class="container">
+      <div class="itemBox">
+          <div class="front">Front face</div>
+          <div class="back">Back face</div>
+      </div>
+  </div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

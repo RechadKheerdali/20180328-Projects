@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- content:url("") / content:attr() and string / content replaced elements method  / content:normal / etc-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>20 content:url("") / content:attr() and string / content replaced elements method  / content:normal / etc</title>
+    <style>
+    /* content:url("") involving media image, a sound, a video */
+        main > a:first-child::before {
+            content: url("https://mozorg.cdn.mozilla.net/media/img/favicon.ico") " iK extra element: ";
+            font: x-small Arial, sans-serif;
+            color: red;
+        }
+        /* image within ::before / ::after will only be displayed in its original size and you will not be able to modify the size .
+        +\  notice url and string combine because it is allowed using ::before / ::after */
+        
+        
+    /* content:attr() and string */
+        [data-visual-label]:before {
+            content: attr(data-visual-label) ": ";
+        }
+        /* data-visual-label i need to more research on this as i do not understand this */
+        
+        
+    /* replaced element method  / content:normal / content:attr() and string combine */
+        div.ik1Class {
+            content: url("images/ali.jpg");
+            width: 200px;
+        }
+        /* can modify image size when using replace element method 
+        +\  cannot combine content property (url and string) because it is not allowed when using replaced elements method (aka without using ::before / ::after) */
+        
+        .ik1Class:nth-of-type(3) {
+            content: normal;
+            outline: red 10px solid;
+            border: aqua 10px solid;
+        }
+        /* or content: none; will work too / also notice how :nth-of-type() ignores .class element position and see it as 3rd div 
+        +\ notice the pseudo-elements stay within the original element boundary */
+        div.ik1Class::after { 
+            content: " *ik* " attr(class) " *ik*" url("https://mozorg.cdn.mozilla.net/media/img/favicon.ico"); 
+            outline: blue 2px solid;
+        }
+        /* if replaced elements method is used here than it will not be shown as there are more one content property being used */
+        
+        
+        .m3 {
+            content: radial-gradient(#e66465, #9198e5);
+        }
+        
+        .m4:after {
+            content: " . " attr(class);
+        }
+    </style>
+</head>
+<body>
+<main>
+    <a href="#">Mozilla Home Page</a>   <br><br>
+
+    <div data-visual-label="ikay Rating">6543210</div>    <br>
+
+    <div class="ik1Class">Mozilla 1</div>
+    <div class="ik1Class">MOZILLA 2</div>
+    <div class="m3">Mozilla 3</div>
+    <div class="m4">Mozilla 4</div>
+</main>
+</body>
+</html>

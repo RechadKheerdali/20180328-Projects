@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- inherited style specification-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>26 inherited style specification</title>
+    <style>        
+    /* example of inheritance.  */
+	
+        html body main div.outer   {
+            color: green !important;
+        }
+        /* despite it having the highest specificity , it is further away from <h1> element */
+        
+        .inner1 {
+            color: red ;
+        }
+        /* it has the lowest specificity compared to the above but it is closest parent and will have higher priority to <h1> element */
+    </style>
+</head>
+<body>
+<main>
+    <div  class = "outer">
+        <div class = "inner1">
+            <div class = "inner2">
+                <h1>Voluptate labore cupidatat an enim quamquam ut anim malis, varias id sed veniam 
+                quibusdam, singulis aliqua ut singulis domesticarum, id aliqua illum o officia, 
+                et ab domesticarum, irure e excepteur o eram nam appellat coniunctione do 
+                commodo..</h1>
+            </div>
+        </div>
+    </div> 
+</main>
+</body>
+</html>

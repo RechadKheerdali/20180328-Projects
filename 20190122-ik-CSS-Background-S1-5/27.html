@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- data-* / custom hover / data-* with javascript / .dataset-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/qReset-CSS.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>27 data-* / custom hover / data-* with javascript / .dataset</title>
+    <style>
+	/* data-* using as hover screen */
+		h1::after {
+			content: "from: " attr(data-ikgame);
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			border: blue 2px dashed;
+			opacity: 0;
+		}
+		h1:hover::after {
+			opacity: 1;
+		}
+		/* i could further custom the hover and make it a fancy title */
+	</style>
+</head>
+<body>
+<main>
+	<h1 data-ikgame="God of War"
+		data-ikfocus="Unbreakable">
+		Kratos
+	</h1>
+	<!-- you can add as many data-* you want -->
+
+<script>
+/* demo of using data-* with javascript */
+	const h1 = document.getElementsByTagName(`h1`)[0];
+	
+	const h2 = document.createElement(`h2`);
+	h2.textContent = h1.getAttribute(`data-ikfocus`);
+	h1.parentNode.appendChild(h2);
+	
+/* .dataset */
+	h1.dataset.ikfocus2 = `Unyielding`;
+	console.log(h1.dataset);
+	/* can set/change/read/override data-* with .dataset */
+</script>
+</main>
+</body>
+</html>

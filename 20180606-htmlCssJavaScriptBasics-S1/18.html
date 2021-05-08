@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18</title>
+    <style>
+        header.clearfix {
+            border: red 2px solid;
+            background-color: aquamarine;
+        }
+        navbar {
+            border: blue 4px solid;
+            float: right;
+        }
+        h1 {
+            float:left;
+        }
+        h2 {
+            float: right;
+        }
+/*        this is the important css that ensures for float to remain stable despite media or anything else to act funny. THIS IS CLEARFIX*/
+        .clearfix:before,
+        .clearfix:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <header class="clearfix">
+        <h1>header</h1>
+        <navbar>
+            <h2>navbar</h2>
+        </navbar>
+    </header>
+    
+    <main>
+    <h3>hey how are you</h3>
+    </main>
+    
+</body>
+</html>

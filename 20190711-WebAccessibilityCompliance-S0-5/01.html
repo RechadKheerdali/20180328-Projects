@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 01 .focus() \ redirect focus on click \ .activeElement -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 .focus() \ redirect focus on click \ .activeElement</title>
+<style>
+/* + + + + + + + + + + + + STYLE -----------------------------*/
+/*------------------------ /style ////////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + MAIN ----------------------------->
+
+
+<!-- anchor list -->
+	<ul class="iKul">
+		<li> <a href="#">one</a> </li>
+		<li> <a href="#">two</a> </li>
+		<li> <a href="#">three</a> </li>
+		<li> <a href="#">four</a> </li>
+		<li> <a href="#">five</a> </li>
+	</ul>
+
+
+<!------------------------ /main ///////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + SCRIPT ----------------------------*/
+'use strict';
+
+
+/* .focus() \ redirect focus on click \ .activeElement */
+	const iKul = document.getElementsByClassName("iKul")[0];
+
+
+	iKul.children[2].children[0].focus() /*1+*/
+
+
+	/*ideal to use to redirect the tab focus*/ /*2+*/
+	iKul.addEventListener(
+		"click",                 /*3+*/
+		event => {
+			if (event.target.tagName === "A")        /*4+*/
+				iKul.children[1].children[0].focus(), /*5+*/
+				iKul.children[1].children[0].style.color = 'red';
+		}/*END event => {} */
+	);/*END iKul.addEventListener()*/
+
+	/*.activeElement*/
+	printD( document.activeElement ); /*OP <a href="#">three</a>*/ /*6+*/
+
+	/*1+ when the page loads, the third anchor will be on focus.
+	2+ ideal because assuming these clicks remove the button, than you should redirect the focus on the first element of the list because screen reader can get confuse easily if you do not.
+	    +\ bim that in this example i redirected to the second anchor , and not the first anchor, just because i want to show the flexiblility of .focus() targeting.
+	3+ you must use tab focus then 'enter' for .focus() to work in the event.
+	4+ "LI" does not seem to work for some reason, perhaps "A" is taking more space in the list area.
+	5+ .focus() can only work on focusable element like <a> and not <li> .
+	5+ will redirect focus on the second anchor, and not first anchor like it would in real scenario.
+	6+ .activeElement display any acive focus 
+	6+ on document.write you get absolute file path, which is because of the # in href, so you can ignore that. 
+	6+ focus on the third anchor because i set it to third when the page loaded. */
+
+
+ /*OP */
+/*----------------------- /script ///////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

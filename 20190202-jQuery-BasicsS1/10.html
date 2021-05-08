@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- each() / is()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+    <!-- <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css"> -->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>10 each() / is() </title>
+<style>
+/*\\\\\\\\\\\\\\\\\\\\\\\\\\ style -------------------------------*/
+  div {
+    outline: blue 2px solid;
+    height: 40px;
+  }
+/*------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--\\\\\\\\\\\\\\\\\\\\\\\\ main ------------------------------->
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div id="stop">Stop here</div>
+  <div></div>
+  <div></div>
+  <div></div>
+<!------------------------- /main /////////////////////////////-->
+<script src="zIK/3-JS/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*\\\\\\\\\\\\\\\\\\\\\\\\\\ script ------------------------------*/
+  jQuery(`div`).each(function(index, element) {
+    $(this).css(`backgroundColor`, `orange`)
+            .text(index, element);
+    if ( $(element).is(`#stop`) ) {
+      return false;
+    }
+  })
+  /* .each() is similar to js for loop.
+  +\ index is optional but naturally represent index number
+  +\ element is optional but naturally represent the element itself, similar to $(this)
+  +\ .is() is to search any element in the parenthesis to the `this` element
+  +\ return false will stop the loop */
+/*------------------------- /script /////////////////////////////*/
+// printD();
+// everyStyles(DOMelement);
+// ascii(a, b);
+// console.log();
+</script>
+</main>
+</body>
+</html>

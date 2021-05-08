@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <title>02 adding to arrays</title>
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+</head>
+<body>
+<main>
+<script> /* 3 method to adding to arrays
+1.   .push()
+2.    ik[ik.length] = []
+3.   .unshift()          */
+	var sports = [" mma", " football", " table tennis"];
+	printD(sports);
+
+	sports.push(" boxing", " cricket");
+	printD(sports);
+// 1. adding to the backside of arrays
+
+	console.log(sports.length);
+// .length is flexible, it can tell you how many values their are in an array as well as characters from early lessons
+
+	sports[sports.length] = [" formula 1", " ice skating"];
+	printD(sports);
+// 2. an alternate way to add from the backside however it is better to use the .push property, seems simpler and easier to understand
+// +/ think of it as -  sports[index number] = [ikValue1, ikValue2];  - brackets if there is more than one value
+	   //+\ remember in this eg you are adding an array by inserting 2 values 
+	
+	console.log(sports);
+// +\ shows that the addional array added was a success	
+	
+	sports.unshift(" dart", " golf");
+	printD(sports);
+// 3. adding to the frontside of arrays
+
+  var convertsportz = sports.push(" sprint", " wrestling");
+  printD(convertsportz);
+  printD(sports + "<br><br>");
+// this counts the number of values within the arrays, and display the number through var for some reason but still adds the extra .push() through sport array
+// also it counts from index numbers, so 0 first
+//  dont really know the importance of this method but beaware of it at least
+
+// be sure to add space in front if you want them seperated because of the commas
+
+
+	var numberz = [1, 2, 3,];
+	printD(numberz);
+
+	numberz.push(3, 5);
+	printD(numberz);
+
+	console.log(numberz.length);
+
+	numberz[numberz.length] = [6, 7];
+	printD(numberz);
+
+	numberz.unshift(-2, 0, 0);
+	printD(numberz);
+
+    var convertNumz = numberz[numberz.length] = [8, 9];
+    printD(convertNumz);
+    printD(numberz);
+//    but for bizarre reason iK[iK.length]=[iKvalue]; seems to not work like .push(); so no number is display but instead just the actual value of the var is shown
+	// ik figured out. = it is because of this numberz[numberz.length] = [6, 7]; . you are adding an array instead of a single variable value
+</script>
+</main>
+</body>
+</html>

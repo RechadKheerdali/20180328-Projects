@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16</title>
+</head>
+<body>
+    <script>
+/*you can use numerous info to send to function (called argument), and they can be of different data type.
+Names in the parenthesis of function, seperate them with comma*/
+        function getArea( ikWidth, ikLength, ikUnit ) {
+            var area = ikWidth * ikLength ;
+            return area + " " + ikUnit;
+        }
+        console.log(getArea ( 5, 4, "sq ft" )); // 20 sq ft
+        console.log(getArea ( 30, 4, "SQ M" )); // 120 SQ M
+        
+/*challenge random number using function*/
+        function result (lowerNum, topNum) {
+            var randomNum = Math.floor ( Math.random() * (topNum - lowerNum + 1)) + lowerNum;
+            return randomNum;
+        }
+        var lNum = prompt ("low number?");
+        lNum = parseInt(lNum);
+        var hNum = prompt ("High Number?");
+        hNum = parseInt (hNum);
+        document.write ( result ( lNum, hNum ) );
+        console.log (result (2, 7));
+        console.log (result (5, 37));
+        console.log (result (6, 8));
+        
+        /*alternative solution withD.W, but more shortcut using prompt*/
+        function dieRoll () {
+            var lNum = parseInt(prompt ("LOWER?"));
+            var hNum = parseInt (prompt ("HIGHER?"));
+            return Math.floor ( Math.random() * (hNum - lNum + 1)) + lNum;
+        }
+        document.write ( "<p>" + dieRoll () + "</p>");
+        
+/*isNaN is to check it is not a number even in string form.*/
+        isNaN(9) // false
+        isNaN('nine') // true 
+        
+    </script>
+</body>
+</html>

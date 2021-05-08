@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>05 do{} while()</title>
+</head>
+<body>
+  <script>
+    // to make the human guess the number using the do{} while() system
+    function random_machine () {
+      return Math.floor( Math.random() * 5 + 1 );
+    }
+
+    var random_number = random_machine();
+    var guess_attempts = 0;
+    var correct_answer;
+
+    do {
+      var guess_number = prompt("Guess the number between 1 -5?  HINT its " + random_number);
+      var number_guess = parseInt( guess_number );
+      guess_attempts += 1;
+      if (number_guess === random_number) {
+      correct_answer = true;  };
+    } while (! correct_answer);
+
+    document.write("well done, you guess correctly, the answer was " + random_number + " and it took you " + guess_attempts + " attempts!");
+/* + correct_answer is undefined so no matter what it can never be true and while will always accept it as false.
+ + i did this on my first attempts with minimum footage, quite proud here */
+
+  </script>
+</body>
+</html>

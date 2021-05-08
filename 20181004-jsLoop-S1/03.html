@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>03 function () { while() {}}</title>
+</head>
+<body>
+  <script>
+    function rolling (upper) {
+      var counter = 0;
+      while (counter < upper) {
+        randomNumber = Math.floor(Math.random() * upper + 1);
+        document.write(randomNumber + " ");
+        counter += 1;
+      }
+    }
+    rolling (12);
+// eg demo of using while in function. its still the same thing as 01.html.
+// Also notice i did not use 'var' for randmNumber, appernetly you dont need so much in function! but you keep using for best practice
+  </script>
+
+</body>
+</html>

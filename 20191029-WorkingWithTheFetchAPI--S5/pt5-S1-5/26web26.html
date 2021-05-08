@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- WebSocket / .send() / .onmessage / close() -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>26 WebSocket / .send() / .onmessage / close()</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- form elements -->
+<form id="iKformId">
+	<input id="iKinputTextId" type="text" name="iKtextName" value="iKtextValue1">
+	<input id="iKsubmitId" type="submit">
+</form>
+
+<button type="button" id="iKbuttonCloseId">Close Connection</button>
+
+<div id="iKdivAppendId"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* WebSocket / .send() / .onmessage / close() */
+/* to send and receieve data, you need to use the .send() method and .onmessage event.
++\ websocket works best when you have a trigger event that will allow it to use .send() / .onmessage .
+	+\ for example, this imaginary chat room. */
+const iKwebsocket = new WebSocket("wss://echo.websocket.org");
+
+console.log(iKwebsocket);
+console.log(window.location);	/*1+*/
+
+/*sending data */
+document.forms.iKformId.onsubmit = function(event) {
+	event.preventDefault();
+	iKwebsocket.send( iKinputTextId.value ); /*2+*/
+	console.log(iKwebsocket);
+	console.log(window.location); /*1+*/
+};
+
+/*receiving data / .data */
+iKwebsocket.addEventListener("message", function(event) { /*3+*/
+	iKdivAppendId.append(event.data);	/*4+*/
+	console.log(event);	/*5+*/
+});
+
+/*close the connection */
+iKbuttonCloseId.addEventListener("click", event => {
+	iKwebsocket.close();	/*6+*/
+	iKdivAppendId.append("iK .close()");
+});
+
+
+/*1+ despite websocket being connected and using ws/wss protocol, the whole document page is still used in http/https no matter what event take place.
+	+\ the websocket and url server are using their own exclusive protocol.
+	+\ therefore you can still use fetch() or other asynchronous task using http/https as usual.
+2+ data will be posted to the url server.
+3+ the message event is like the GET method, as it will collect any new data added to the server.
+	+\ it is almost instantanous, so eg. the person we are chatting to sends a message to the server, and we collect the message from the server and append it for us to see.
+3+ you can use either on.. event or .addEventListener() to perform your websocket.
+4+ event parameter is required so that we can access the property .data in the message event object to collect the new data which is added by the server.
+	+\ iKBIM note that you will only get your own data back because we do not have anyone on the other side of the server.
+		+\ iK however I am not sure how yet how to distinguish your message and the other person message as it both uses the data property, perhaps the me or the server needs to id the message somehow.
+4+ .append("iKstring"); is a method that will append string value to the element node. More convenient compare to the other methods.
+5+ you can see all the properties of the message event object.
+6+ .close() will disconnect the websocket connection. */
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

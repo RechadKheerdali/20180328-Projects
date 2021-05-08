@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>04 rom mdn. method eg of how to see all attribute</title>
+</head>
+<body> <!-- from mdn. method eg of how to see all attribute -->
+<main>
+	<p id="paragraph" style="color: green;">Sample Paragraph</p>
+ 
+	 <form action="">
+	  <p>
+		<input type="button" value="Show first attribute name and value" onclick="listAttributes();">
+		<input id="result" type="text" value="">
+	  </p>
+	 </form>
+
+<script>
+	function listAttributes() {
+		const paragraphz = document.getElementById("paragraph");
+		const resultz = document.getElementById("result");
+
+		// First, let's verify that the paragraph has some attributes    
+		if (paragraphz.hasAttributes()) {
+			const attrsz = paragraphz.attributes;
+			let outputz = ``;
+			for(let i = 0; attrsz.length > i; i++) {
+				outputz += `${attrsz[i].name}="${attrsz[i].value}" \\|/ `;
+			}
+			resultz.value = outputz;
+		} else {
+			resultz.value = `No attributes to show`;
+			}
+	};
+</script>
+</main>
+</body>
+</html>

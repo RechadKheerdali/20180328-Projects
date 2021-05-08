@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- align-content: / justify-content: / place-content:-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>09 align-content: / justify-content: / place-content:</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    div.gridContainer {
+        border:blue 10px solid;
+        display: grid;      
+        grid-template-rows: repeat(3, 40px);
+        grid-template-columns: repeat(4, 40px);
+    }
+    
+    div.gridContainer > div.gridItem {
+        border: red 1px solid;
+        background-color: bisque;
+    }
+
+    /*just to show that *-content have nothing to do with outside grid container */
+    section {
+        height: 300px;
+        border: 4px green solid;
+    }
+    
+    .gridContainer {
+        height: 200px;
+        align-content: space-around;      /* vertical alignment */
+        justify-content: end;             /* horizontal alignment */
+        /* place-content: space-around end;   /*same thing as this is shorthand for the both of them*/
+    }
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+    <section>
+        <div class="gridContainer gc1">
+            <div class="gridItem gi1">1</div>
+            <div class="gridItem gi2">2</div>
+            <div class="gridItem gi3">3</div>
+            <div class="gridItem gi4">4</div>
+            <div class="gridItem gi5">5</div>
+            <div class="gridItem gi6">6</div>
+            <div class="gridItem gi7">7</div>
+            <div class="gridItem gi8">8</div>
+            <div class="gridItem gi9">9</div>
+            <div class="gridItem gi10">10</div>
+            <div class="gridItem gi11">11</div>
+        </div>   
+    </section>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+</script>
+</main>
+</body>
+</html>

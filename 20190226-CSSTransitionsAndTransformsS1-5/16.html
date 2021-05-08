@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>16 3d cube 2nd attempt but easier understanding</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/* skip to the most important part*/
+	#cube {
+  		font-size: 300%;
+	}
+	.one {
+		  background-color: rgba(255, 0, 0, 0.7);
+	}
+	.two {
+		  background-color: rgba(0, 0, 255, 0.7);
+	}
+	.three {
+		  background-color: rgba(0, 128, 0, 0.7);
+	}
+	.four {
+		  background-color: rgba(168, 9, 168, 0.7);
+	}
+	.five {
+		  background-color: rgba(255, 165, 0, 0.7);
+	}
+	.six {
+		  background-color: rgba(0, 255, 255, 0.7);
+	}
+
+/* IK THIS IS THE MOST IMPORTANT PART */
+  #viewpoint {
+  		margin: 120px 0 0 120px;      /*1+*/
+  		perspective: 900px;           /*2+*/
+	}
+      /*1+ moved to get a better view for me personally
+      2+ creates the 3d space*/
+
+	#cube {
+		width: 150px;
+      	height: 150px;
+  		transform-style: preserve-3d;      /*1+*/
+  		transition: transform 3.5s;
+  		transform-origin: 60% 80% 110px;   /*2+*/
+	}
+      /*1+ ensure all the .sides gets and shares the same 3d space as #viewpoint
+      2+ this is for when i hover to cause the spin, so nothing significant here */
+
+	/*spinning motion as you hover*/
+	#viewpoint:hover #cube {
+	  	transform: rotateX(400deg) rotateY(-500deg);
+	}
+
+	.sides {
+		position: absolute;   /*ensure it stays in the div*/
+		width: 100%;          /*fill all the avialable spaces*/
+		height: 100%;         /*fill all the avialable spaces*/
+	  /* transform-origin: 75px 75px 75px; */    /*1+*/
+	}
+      /*1+ this is something i find quite hard to understand in 3d as it does not work as expected*/
+
+/*move all six sides to create the cube*/
+	.one {
+		  transform: translateZ(75px);
+	}
+	.two {
+		  transform: rotateY(90deg) translateZ(75px);
+	}
+	.three {
+		  transform: rotateY(180deg) translateZ(75px);
+	}
+	.four {
+		  transform: rotateY(-90deg) translateZ(75px);
+	}
+	.five {
+		  transform: rotateX(90deg) translateZ(75px);
+	}
+	.six {
+		  transform: rotateX(-90deg) translateZ(75px);
+	}
+
+/*seem a simpler solution for me as i did each step by step and follow the hoisting way */
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+	<div id="viewpoint">
+  		<div id="cube">
+    			<div class="sides one">1</div>
+    			<div class="sides two">2</div>
+    			<div class="sides three">3</div>
+    			<div class="sides four">4</div>
+    			<div class="sides five">5</div>
+    			<div class="sides six">6</div>
+  		</div>
+	</div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

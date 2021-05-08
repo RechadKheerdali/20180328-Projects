@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>06 transform: scaleY() / scaleX() / scale() / scaleZ() / scale3d()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    /* skip to the most important part*/
+  .box {
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		margin: 50px 0 0 60px;
+		border: white 2px solid;
+		outline: black 2px solid;
+	  	transition: transform 1s;
+	}
+
+/* IK THIS IS THE MOST IMPORTANT PART */
+	.allBox:hover .ik1 {
+		transform: scaleY(1.8);
+	}
+	.allBox:hover .ik2 {
+		transform: scaleX(1.8);
+	}
+	.allBox:hover .ik3 {
+		transform: scale(1.8, 1.8);  /* (x, y)*/
+	}
+	.allBox:hover .ik4 {
+		transform: scaleZ()); /* needs to be 3d space for it to work */
+	}
+	.allBox:hover .ik5 {
+		transform: scale3d(1.8, 1.1, 1);  /*cant do anything with the third Z value as it is not in 3d space*/
+	}
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+	<div class="allBox">
+		<div class="ik1 box">transform: scaleY()</div>
+		<div class="ik2 box">transform: scaleX()</div>
+		<div class="ik3 box">transform: scale()</div>
+		<div class="ik4 box">transform: scaleZ()</div>
+		<div class="ik5 box">transform: scale3d()</div>
+	</div>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

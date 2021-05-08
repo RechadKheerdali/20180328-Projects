@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 comparision operators</title>
+</head>
+<body>    
+    <script>
+        // example of use of conditional statement
+        var scoreik = (90);
+        if (scoreik > 50) {
+            document.write("you are not as dumb as you look ");
+        }
+        
+        //comparision operators  and list of eg
+        if (1 > 0) {
+            document.write("A ");
+        }
+        // wont work because 0 is not greater than 1
+        if (1 < 0) {
+            document.write("B ");
+        }
+        // either greater or equal  also  <=  too
+        if (1 >= 0) {
+            document .write("C ");
+        }
+        // if you want it to be eaxctly equal then ==
+        if (1 == 1) {
+            document.write("D ");
+        }
+        // works with string text too
+        if ("ik" == "ik") {
+            document.write("E ");
+        }
+        // js recognises the value in string and equates it
+        if (1 == "1") {
+            document.write("F ");
+        }
+        // but with 3 === you need all to be exact including type
+        if (1 === "1") {
+            document.write("G ");
+        }
+        // everything is now equal  ===
+        if (1 === 1) {
+            document.write("H ");
+        }
+        // != has to not be equal
+        if (1 != 1) {
+            document.write("I ");
+        }
+        // != same as == it ignores the typr of data and looks at the value only
+        if (1 != "1") {
+            document.write("J ");
+        }
+        // !== if both value and the data types are the same than its not equal and wont work (true)
+        if (1 !== 1) {
+            document.write("K ");
+        }
+        // !== so if the data or value are not the same then it works
+        if (1 !== "1") {
+            document.write("L ");
+        }
+        // can be dont with other statement too such as alert
+        if (1 !== "0") {
+            alert("M ");
+        }        
+    </script>
+</body>
+</html>

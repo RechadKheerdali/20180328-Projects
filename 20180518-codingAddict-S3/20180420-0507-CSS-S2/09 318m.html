@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>09 318m</title>
+    <style>
+        #ik24px {
+            font-size: 24px;
+        }
+        #ik100 {
+            font-size: 100%;
+        }
+        #ik200 {
+            font-size: 200%;
+        }
+        #ikem {
+            font-size: 1em;
+        }
+        body {
+            font-size: 100%;
+        }
+        #ikbold {
+            font-weight: bolder;
+        }
+        #ikitalic {
+            font-style: italic;
+        }
+        
+        a:link {
+            color: blue;
+            background-color: darkkhaki;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-style: outset;
+            border-width: 4px;
+            border-color: fuchsia;
+            margin: 10px;
+        }
+        a:visited {
+            color:darkorange;
+            background-color: cornflowerblue;
+        }
+        a:hover {
+            color: crimson;
+            background-color: aquamarine;
+        }
+        a:active {
+            color: black;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+    <p id="ik24px">i am alway 24px</p>
+    <p id="ik100">i am alway 100% which by default starts with 16px</p>
+    <p id="ik200">i am alway 200%</p>
+    <p id="ikem">i am always 1EM which by default starts with 16px, alternative way to write percentage</p>
+    <p><strong>why font size matter becuase when user choose to change fontsize in their browser setting percentage and em change to the scale of the user settings but px are fixed and will not change so ensure ypu put 100% in body and aany othe tag if necessary</strong></p> <br>
+    
+    <p id="ikbold">this is writtin in bold options, you can adjust the bold thicknest</p>
+    <p id="ikitalic">this is writtin in italic options</p>  <br>
+    
+    <a href="https://www.google.co.uk" target="_blank">Google</a>
+    <a href="https://www.facebook.com" target="_blank">Facebook</a>
+    <a href="https://www.amazon.co.uk" target="_blank">Amazon</a>
+    <a href="https://www.ebay.co.uk" target="_blank">Ebay</a>   <br><br>
+    as you can see you can adjust the colour of the hyperlinks in css. if you wanted 2 or more css to be the same than just put them togther in the same tag and put a ',' in between them. also be sure to always keep them in order. so its a:link, a:visited, a:hover, a:active.
+    
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 05 regEx requirements input by the user (password sign up) eg -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>05 regEx requirements input by the user (password sign up) eg</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* regEx requirements input by the user (password sign up) eg */
+	const iKupperCase = /[A-Z]/,
+		  iKlowerCase = /[a-z]/,
+		  iKnumber = /[0-9]/;
+
+	printD( iKupperCase.test("ik1") ); /*OP false */ /*1+*/
+	printD( iKlowerCase.test("IK1") ); /*OP false */ /*2+*/
+	printD( iKnumber.test("iKone") ); /*OP false */ /*3+*/
+
+	/*1+ false because there is no uppercase character.
+	2+ false because there is no lowercase character.
+	3+ false because there is no number character. */
+
+	/*=====================================*/
+
+/* useful if you want the user to enter all uppercase, lowercase, number or any other specific characters in the input such as password */
+	iKupperCase.test("iK1") && iKlowerCase.test("iK1") && iKnumber.test("iK1") ? printD(true) : printD(false); /*OP true */ /*4+*/
+
+	/*4+ conditional ternary operator being used.
+	4+ a great example to enforce the user to enter the required characters such as a strong password. */
+
+	/*=====================================*/
+
+/* full length code of regEx if you choose to use the coding*/
+	const iKupLowNum8characters = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)[0-9a-zA-Z\W]{8,}$/; /*5+*/
+
+	printD( iKupLowNum8characters.test( "iK34567" ) ); /*OP false */
+	printD( iKupLowNum8characters.test( "iK@45678" ) ); /*OP true */
+
+	/*5+ iK from online, with my modification to add \W .
+	5+ requires 1 uppercase, 1 lowercase, 1 number, 1 non-word (symbol) and at least 8 characters long.
+		+\ this is a typical password requirement.
+	5+ however i prefer using the && AND logical operater because easier to understand and simpler for you to control. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

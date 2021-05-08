@@ -1,0 +1,64 @@
+body {
+            cursor: not-allowed;        }
+        
+        
+        #ik3 {
+            position: relative;
+            display: inline-block;        }
+        #ik4 {
+            background-color: aqua;        }
+        #ik4:hover {
+            background-color: blueviolet;        }
+        #ik5 {
+            position: absolute;
+            display: none;        }
+        #ik3:hover #ik5 {
+            display: block;        }
+        #ik5 a {
+            display: block;
+            background-color: blueviolet;
+            color: aqua;        }
+        #ik5 a:hover {
+            background-color: aqua;
+            color: blueviolet;        }
+        
+        
+        #ik6 {
+            position: relative;
+            display: inline-block;        }
+        #ik7 {
+            background-color: burlywood;
+            padding:20px;
+            cursor: all-scroll;        }
+        #ik8 {
+            display: none;
+            position: absolute;                    }
+        #ik6:hover #ik8 {
+            display: block;        }
+        #ik8 a {
+            display: block;
+            background-color: darksalmon;
+            padding: 5px;
+            margin: 2px;        }
+        #ik6:hover #ik7 {
+            background-color: green;        }
+        #ik8 a:hover {
+            background-color: burlywood;
+            border: 12px black solid;        }
+
+
+.ik9 {
+    position: relative;
+    display: inline-block;
+}
+.ik11 {
+    display: none;
+    position: absolute;
+}
+.ik9:hover .ik11 {
+    display: block;
+}
+figcaption {
+    width: 280%;
+    text-align: center;
+}

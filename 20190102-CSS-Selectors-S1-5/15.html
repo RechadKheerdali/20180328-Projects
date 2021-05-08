@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- pop up box using :target  - MDN -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>15 pop up box using :target  - MDN</title>
+    <style>
+    /* Unopened lightbox container, when the pop up div box not on display */
+        .lightbox {
+            display: none;
+        }
+
+    /* Opened lightbox container , when the pop up div box appear and its position on display , it takes the whole page */
+        .lightbox:target {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    /* Lightbox content , pink box figcaption */
+        .lightbox figcaption {
+            width: 25rem;
+            position: relative;
+            padding: 1.5em;
+            background-color: lightpink;
+        }
+
+    /* Close button . the anchor with empty href */
+        .lightbox .close {
+            position: relative;
+            display: block;
+        }
+
+    /* includes the X circle after the anchor */
+        .lightbox .close::after {
+            right: -1rem;
+            top: -1rem;
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            display: flex;
+            z-index: 1;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            border-radius: 50%;
+            color: white;
+            content: "×";
+            cursor: pointer;
+        }
+
+    /* Lightbox overlay , the dark transparent background for pop up before anchor as it is the first child. which also works as closing display since it is attach to the anchor */
+        .lightbox .close::before {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-color: rgba(0,0,0,.7);
+            content: "";
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <ul>
+        <li><a href="#example1">Open example #1</a></li>
+        <li><a href="#example2">Open example #2</a></li>
+    </ul>
+
+    <div class="lightbox" id="example1">
+        <figure>
+            <a href="#" class="close"></a> <!-- this is the anchor for closing which the X cross can be made using the :after. also the :before creates the dark transparent behind -->
+            <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis enim, placerat id eleifend eu, semper vel sem.</figcaption>
+      </figure>
+    </div>
+
+    <div class="lightbox" id="example2">
+        <figure>
+            <a href="#" class="close"></a> <!-- this is the anchor for closing which the X cross can be made using the :after. also the :before creates the dark transparent behind -->
+            <figcaption>Cras risus odio, pharetra nec ultricies et, mollis ac augue. Nunc et diam quis sapien dignissim auctor. Quisque quis neque arcu, nec gravida magna.</figcaption>
+        </figure>
+    </div>
+</main>
+</body>
+</html>

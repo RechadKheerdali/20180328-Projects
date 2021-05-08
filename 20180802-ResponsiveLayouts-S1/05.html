@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05</title>
+    <style>
+/*        flexbox demo.   for child element
+        align-self: 
+        order:                               */
+        .box1 {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        .one1 {
+            align-self: flex-end; /* flex-start | flex-end | center | baseline | stretch */
+        }
+        .two1 {
+            align-self: center;
+        }
+        .three1 {            
+            align-self: flex-start;
+        }          /* a-s controls alignment of an individual flex item on the cross axis (vertical axis) */
+        
+        .box2 {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        .one2 {
+            order: 0;
+        }
+        .two2 {
+            order: 1;
+        }
+        .three2 {
+            order: -1;
+        }    /* allows you to rearrange the items
+        ik simply start 1 2 3 4 but -1 0 are for demo purposes */
+    </style>
+</head>
+<body>
+    <div class="box1" style="border: dashed 2px black; height: 150px">
+          <div class="one1" style="border: solid 2px blue; width:300px; height: 20px;">One</div>
+          <div class="two1" style="border: solid 2px green; width:300px; height: 20px;">Two</div>
+          <div class="three1" style="border: solid 2px red; width:300px; height: 20px;">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box2" style="border: dashed 2px black">
+          <div class="one2" style="border: solid 2px blue; width:500px;">One</div>
+          <div class="two2" style="border: solid 2px green; width:500px">Two</div>
+          <div class="three2" style="border: solid 2px red; width:500px">Three</div>
+        </div>  <br><br><br>
+</body>
+</html>

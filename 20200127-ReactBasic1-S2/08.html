@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 08 state / component class function -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 state / component class function</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<div id='iKdivContainer'>iK will be overwritten by react</div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2.0.0-rc.1"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*state / component class function */
+/*VIP have to use class function to create a state.
++\ class componenet can do everything component function can do, but also able to use state.
+	+\ state allows you to change and keep up to date with changeing data.
+	+\ you should use component class function when you want to use state changes, otherwise best to use component function */
+class IkComponentClass extends React.Component {  /*1+*/
+	constructor() {		/*2+*/
+		super();		/*3+*/
+		this.state = {	/*4+*/
+			iKproperty: "iKpropertyValue1"	/*5+*/
+		};
+	};
+
+	render() {		/*6+*/
+		console.log(this); /*OP react class object */ /*7+*/
+		return ( 
+			<div>
+				<h1>{this.state.iKproperty}</h1> 
+				<p>{this.props.iKarg}</p>
+			</div>
+		); /*8+*/
+	};
+}; /*END IkComponentClass */
+
+ReactDOM.render(
+	<IkComponentClass iKarg="iKargValue1" />,	/*9+*/
+	iKdivContainer
+);
+ /*OP 
+<div>
+	<h1>iKpropertyValue1</h1> 
+	<p>iKargValue1</p>
+</div> */
+
+/*1+ VIP you must use capital in naming class function, otherwise react will think you are just creating a new element with the class callback.
+1+ VIP must alway extends class to React.Component .
+2+ VIP you use the constructor method to insert your state properties within the React.Component .
+	+\ BIM you can still receive props object arguments from the component class callback function.
+		+\ iKBIM you will need to insert the props object argument within a new property in state object for it to become state object.
+			+\ iKBIM but you can still use the prop argument without it though, but it will be stateless.
+2+ BIM alternatively you could scrap typing the constructor method syntax, and just insert the state object directly to the class.
+	+\	%%%%%
+...
+state = {
+	iKproperty: "iKpropertyValue1"
+};
+...
+	=eg.
+	+\ however there are some browsers that does not yet fully support this syntax just yet, so for the time being it is best to use the constructor method.
+	+\ however you choose which style to use as there seem to be no differences in performances.
+3+ VIP you must include the super() callback to include the React.Component class.
+	+\ only when you are using the constuctor method but not needed for non constructor method for state objects.
+4+ VIP must always use the this.state property to define your state properties.
+5+ this is state object properties, which can be reassigned if needed be.
+6+ VIP must use render(){} to returns the created element within the class.
+	+\ you could use render(){} method only in the class if you just want to return a element.
+7+ showing the class object, including the component callback argument value.
+8+ VIP you must use this.state to access state properties.
+	+\ the same goes with this.props arguments.
+9+ state callback function (component class) works just like props callback function (component function). Accepting props arguemnts and nest element arguments. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

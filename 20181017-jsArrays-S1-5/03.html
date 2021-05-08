@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>03 removing from arrays</title>
+</head>
+<body>
+<main>
+<script>    /*removing from arrays; there are 2 methods
+    1.   .pop()
+    2.   .shift()       */
+    var namesV = [" ALPHA", " bravo", " charlie", " DELTA", " ECHO"];
+    printD(namesV);
+
+    namesV.pop();
+    printD(namesV);
+//    .pop() remove 1 value from the backside, without inputing anything in the parenthesis
+
+    namesV.shift();
+    printD(namesV);
+//    .shift() removes 1 value from the frontside, again without inputing anything in the parenthesis
+
+    var holdsZ = namesV.pop();
+    printD(holdsZ);
+    printD(namesV);
+//    it can remove and store the value in a variables like this
+</script>
+</main>
+</body>
+</html>

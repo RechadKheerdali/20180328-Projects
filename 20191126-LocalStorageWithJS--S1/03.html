@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- storage object will convert your js objects into string / ability to also use dot notation -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>03 storage object will convert your js objects into string / ability to also use dot notation</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script async src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+window.onload = event => {
+'use strict';
+
+
+/*storage object will convert your js objects into string / ability to also use dot notation */
+/* because localStorage and sessionStorage are property to window, you can add your own property to them too.
++\ the storage object will always store only strings.
+	+\ if you insert anything else, than it will convert it into strings.
++\ iK I used localStorage in this demo file but remember you can do the same with sessionStorage property too. */
+localStorage.setItem('iKlocalKey2', ["iKitem1", "iKitem2"]); /*1+*/
+
+IK.printD(localStorage.iKlocalKey2) /*OP "iKitem1,iKitem2" */ /*2+*/
+IK.printD(localStorage)		/*OP storage object */ /*3+*/
+
+localStorage.iKlocalProperty1 = "iKlocalPropertValue1"; /*4+*/
+IK.printD(localStorage.iKlocalProperty1) /*OP "iKlocalPropertValue1" */
+IK.printD(localStorage) /*OP storage object */
+
+/*1+ notice I inserted an array object as value.
+2+ despite me inserting an array object value, the storage object will convert it into strings.
+	+\ you would need to convert it into json string (eg. JSON.stringify() ) if you want the array object.
+2+ notice I called the key name using dot notation property, which apparently is allowed, despite you using .setItem() method.
+	+\ the bracket notation will work too.
+3+ you are likely to see other key names, especially if you have just visited 02.html file or previous files containting localStorage or sessionStorage property, since it is all using the same url host protocol.
+4+ you can use dot notation to set values, so you might not need to use .setItem().
+	+\ iK however I think you should use .setItem() since it seems to be standard. */
+
+
+ /*OP */
+/***** d */
+}; /*END window.onload */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

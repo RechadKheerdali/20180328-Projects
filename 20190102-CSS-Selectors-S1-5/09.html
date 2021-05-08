@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- nth-of-type() -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>09 nth-of-type()</title>
+    <style>
+	/* Odd paragraphs = or you could just type odd */
+		p:nth-of-type(2n+1) {
+		  color: red;
+		}
+
+	/* Even paragraphs = or you could just type even */
+		p:nth-of-type(2n) {
+		  color: blue;
+		}
+
+	/* First paragraph */
+		p:nth-of-type(1) {
+		  font-weight: bold;
+		}
+		/* same principles as :nth-child() but ignores the different element siblings that is also in the same parent . better to use this than :nth-child since you have more control over the element*/
+	</style>
+</head>
+<body>
+<main>
+    <div>
+        <div>This element isn't counted.</div>
+        <p>1st PARAGRAPH.</p>
+        <p>2nd PARAGRAPH.</p>
+        <div>
+            This div element isn't counted.
+            <p>1st div paragraph.</p>
+            <p>2nd div paragraph.</p>
+            <p>3rd div paragraph.</p>
+        </div>
+        <p>3rd PARAGRAPH.</p>
+        <p>4th PARAGRAPH.</p>
+        </div>
+</main>
+</body>
+</html>

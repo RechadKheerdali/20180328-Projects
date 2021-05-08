@@ -1,0 +1,90 @@
+<!doctype html> 
+<html lang="en">
+    <head>
+    <title>12 362m</title>
+    <style>
+        #ikrelative {
+            border-style: solid;
+            border-color: firebrick;
+            border-width: 5px;
+            width: 90%;
+            height: 250px;
+            position:relative;
+        }
+        #ikabsolute {
+            border: solid 5px black;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            background-color: cyan;
+        }
+        
+        #ikbanner {
+            border: 5px solid black;
+            width: 500px;
+            height: 250px;
+            position: relative;
+        }
+        #ikred {
+            background-color: red;
+            width: 150px;
+            height: 200px;
+            position:absolute;
+            z-index: 1;
+        }
+        #ikblue {
+            background-color: blue;
+            width: 150px;
+            height: 200px;
+            position:absolute;
+            left: 50px;
+            top: 25px;
+            z-index: 4;
+        }
+        #ikgreen {
+            background-color: green;
+            width: 150px;
+            height: 200px;
+            position:absolute;
+            left: 100px;
+            z-index: 2;
+        }
+        #ikyellow {
+            background-color: yellow;
+            width: 150px;
+            height: 200px;
+            position:absolute;
+            left: 150px;
+            top: 25px;
+            z-index: 5;
+        }
+        #ikpurple {
+            background-color: purple;
+            width: 150px;
+            height: 200px;
+            position:absolute;
+            left:200px;
+            z-index: 3;
+        }
+        </style>
+        </head>
+<body>
+<div id="ikrelative">
+    because this div has position relative it contains everything withinh its confine space including the div position absolute
+    <div id="ikabsolute">
+        if it was not for thhe relartive this absolute woulbe be touching the body of the page
+    </div>
+        </div>        <br>
+    
+    <div id="ikbanner">
+        <div id="ikred">red</div>
+        <div id="ikblue">blue</div>
+        <div id="ikgreen">green</div>
+        <div id="ikyellow">yellow</div>
+        <div id="ikpurple">purple</div>
+    </div>
+    
+    </body>
+</html>

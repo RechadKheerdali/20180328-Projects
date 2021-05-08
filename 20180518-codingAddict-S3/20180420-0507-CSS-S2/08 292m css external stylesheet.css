@@ -1,0 +1,25 @@
+p {
+    color:crimson;
+    background-color: darkseagreen;
+    padding: 10px;
+    border-style: dashed;
+    border-width: 3px;
+    border-color: darkmagenta;
+    margin: 2px;
+}
+
+h1 {
+    font-style: oblique;
+    border-top: solid 20px lightblue;
+    border-bottom: solid 20px lightblue;
+    margin: 0px;
+    }
+
+h4 {
+    text-indent: 80px;
+    letter-spacing: 4px;
+}
+h5 {
+    word-spacing: 15px;
+    line-height: 30px;
+}

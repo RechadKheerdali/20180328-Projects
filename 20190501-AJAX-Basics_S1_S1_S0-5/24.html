@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 24 search field using $.ajax() with flickr api / including removing any previous search, search button loading and disabled search box / errors included-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>24 search field using $.ajax() with flickr api / including removing any previous search, search button loading and disabled search box / errors included</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+
+	<div>
+		<h1>Flickr Photo Feeder</h1>
+		<p>Choose which kind of animal you'd like to return photos of...</p>
+	</div>
+
+	<form>
+		<input type="search">
+		<input type="submit" value="Search">
+	</form>
+
+	<div id="divphotos"> <!-- where link and img will be inserted --> </div>
+
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+
+/*IK HAVE A LOOK, THERE IS SOME GOOD STUFF HERE*/
+$(document).ready(
+	$(`[type="submit"]`).on(`click`, function(event) {
+		/*prevent form refreshing*/
+		event.preventDefault();
+		/*indicate searching to user*/
+		$(this).val(`Searching...`);
+		/*disable search box while searching*/
+		$(`[type="search"]`).prop("disabled", true);
+		/*removes all previous search <ul> list and any errors if any*/
+		$(`#divphotos *`).remove();
+		/*user search value*/
+		let searchValue = $(`[type="search"]`).val();
+
+		$.ajax(
+			`https://www.flickr.com/services/feeds/photos_public.gne?jsoncallback=?&format=json`,
+			{
+				method: `GET`,
+				dataType: `json`,
+				data: {
+					tags: searchValue,
+					format: `json`
+				},
+				success: function(response, status, xhr) {
+					let ul = `<ul>`
+
+					$.each(response[`items`], function(index, element) {
+						ul += `<li>`;
+
+						let aUrl = `<a href="${response[`items`][index][`link`]}">LINKS</a>`;
+
+						let img = `<img src="${element.media.m}">`;
+
+						ul += aUrl;
+						ul += img;
+						ul += `</li>`;
+					})/*END $.each()*/
+
+					ul += `</ul>`;
+					$(`#divphotos`).append(ul);
+					/*turn the search box submit back to normal when search is over*/
+					$(`[type="submit"]`).val(`Search`);
+					$(`[type="search"]`).prop(`disabled`, false);
+				}/*END success: function*/
+			}/*END $.ajax object setting*/
+		)/*END $.ajax()*/
+
+		/*incase of error that might occur*/
+		.fail(function(jqXHR, textStatus, errorThrown) {
+			$(`#divphotos`).html(jqXHR.status + " " + jqXHR.statusText + " - try again or refresh ik");
+
+			/*turn the search box submit back to normal when search is over*/
+			$(`[type="submit"]`).val(`Search`);
+			$(`[type="search"]`).prop(`disabled`, false);
+		})/*END .fail()*/
+	})/*END .on()*/
+)/*END .ready()*/
+
+/*good work ik, mostly in jq, due to me wanting to practice jq as well
++\ also i could have added `no result found` too*/
+
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

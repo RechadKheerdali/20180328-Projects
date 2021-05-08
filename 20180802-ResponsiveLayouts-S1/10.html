@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10</title>
+    <link rel="stylesheet" href="10a.css" type="text/css">
+</head> 
+<body>
+<!--    IK workspace -SAMPLES OF FORM USE, <optgroup> AND ETC...-->
+    
+      <form action="index.html" method="post">
+        <h1>Sign Up</h1>
+
+        <fieldset>
+<!--            input text-->
+            <legend><span class="number">1</span>Your basic info</legend>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="user-name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="user-email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="user-password">
+            
+<!--            radio buttons-->
+            <label>Age</label> <br>
+            <input type="radio" name="userage" id="under13" value="under_13">
+                <label for="under13">Under 13</label> <br>
+            <input type="radio" name="userage" id="over13" value="over_13">
+                <label for="over13" >13 or over</label>
+<!--        bare in mind because of the name, radio is working and select only one at a time-->
+        </fieldset>
+
+        <fieldset>
+            <legend><span class="number">2</span>Your profile</legend>
+            
+            <label for="bio">Biography</label>
+            <textarea id="bio" name="user-bio"></textarea>
+            
+<!--            select options-->
+            <label for="job">Job role:</label>
+            <select id="job" name="user_job">
+                <optgroup label="Web">
+                    <option value="fronend_developer">Front-End Developer</option>
+                    <option value="php_developer">PHP Developer</option>
+                    <option value="python_developer">Python Developer</option>
+                    <option value="ruby_developer">Ruby Developer</option>
+                    <option value="rails_developer">Rails Developer</option>
+                    <option value="Web_designer">Web designer</option>
+                    <option value="wordpress-developer">Wordpress developer</option>
+                </optgroup>
+                <optgroup label="Mobile">
+                    <option value="android_developer">Android developer</option>					
+                    <option value="ios_developer">Ios developer</option>
+                    <option value="mobile_designer">Mobile_designer</option>
+                </optgroup>
+                <optgroup label="Business">
+                    <option value="business_owner">Business owner</option>
+                    <option value="freelancer">Freelancer</option>
+                </optgroup>
+            </select>
+
+<!--            checkbox-->
+            <label>Interests:</label> <br>
+            <input type="checkbox" name="user_interests" id="development" value="user_development">
+                <label for="development">Development</label> <br>
+            <input type="checkbox" name="user_interests" id="design" value="user_design">
+                <label for="design">Design</label> <br>
+            <input type="checkbox" name="user_interests" id="business" value="user_business">
+                <label for="business">Business</label>        
+        </fieldset>
+          
+                <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>

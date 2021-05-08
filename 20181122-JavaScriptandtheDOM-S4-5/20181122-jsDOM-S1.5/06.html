@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>06 from MDN, shows how to see all the every css .style thats on the element . useful if i evr need, not sure if i should study this</title>
+    <style>
+        #chooseIK {
+            float: right;
+        }
+    </style>
+</head>  <!--from MDN, shows how to see all the every css .style thats on the element . useful if i evr need, not sure if i should study this-->
+<body style="font-weight:bold;">
+<main>
+    <div id="chooseIK" style="color:red">all .style (css) can be seen in console, including parents and external sheet AMAZING</div>
+
+    
+<script>
+    const element = document.getElementById("chooseIK");
+    let outcome = "";
+    const elementStyle = element.style;
+    const computedStyle = window.getComputedStyle(element, null);
+
+    for (vPropName in elementStyle) {
+      if (elementStyle.hasOwnProperty(vPropName)) {
+        outcome += `${vPropName} <> " ${elementStyle[vPropName]} " <> " ${computedStyle[vPropName]} "\n`;
+      }
+    }
+    console.log(outcome);
+    /* ${elementStyle[vPropName]}  = not sure what this does as it seem to make no difference if i delete it.*/
+    
+</script>
+</main>
+</body>
+</html>

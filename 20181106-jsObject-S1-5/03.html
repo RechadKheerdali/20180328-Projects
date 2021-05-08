@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>03 eg for-in loop through arrays that has object within</title>
+</head>
+<body> <!-- eg for-in loop through arrays that has object within .
+this is mostly for my interest to understand array objects for-in loop-->
+<main>
+<script>
+	var fighters = [
+		{name: "silva", size: "middleweight", weight: 185},
+		{name: "johnson", size: "flyweight", weight: 125}, 
+        `c`, 
+        `d`, 
+        `e`
+	];
+
+	// Loop through the Array. a double loop
+	for (var indexNumber in fighters) {
+	 printD(indexNumber + fighters[indexNumber]); // .1
+	  for (var objProperty in fighters[indexNumber]){ // .2
+		printD('*/* ' + objProperty + ": " + fighters[indexNumber][objProperty]);		// .3
+	  }
+	};
+	// .1 Output Array index number
+	// .2 Second loops through the Object
+	// .3 Output Object property and value
+	
+/*fighters[indexNumber] is the array index number, but cannot understand why it display [object Object] in //.1, this is js
++\ fighters[indexNumber][objProperty] is what gets the property value in the end
++\ c, d, e are given as normal index number
+*/
+</script>
+</main>
+</body>
+</html>

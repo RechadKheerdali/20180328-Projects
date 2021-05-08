@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10</title>
+</head>
+<body>
+    
+    <script>
+        var correctness = false;
+        var numberGame = prompt ("I am thinking of a number between 1 to 5, what is it??");
+        var randomNumber = Math.floor(Math.random() * 5 + 1);
+        if (parseInt(numberGame) === randomNumber) {
+            correctness = true;            
+        }
+            if (correctness) {
+                document.write("<h2>CONGRATZ " + randomNumber + " is the same number i was thinking, are you a psychic?!!</h2>");
+            }
+        else {
+            document.write("<h2>No even close, i was thinking number of " + randomNumber + " haha</h2>");
+        }
+        //showing an example of using a boolean true/false , it work very simliar to === but different method, and later on will can do different things with it. IK i think
+    
+    </script>
+    
+</body>
+</html>

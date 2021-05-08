@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>01 list with remove buttons / .parentNode </title>
+</head><!-- list with remove buttons / .parentNode -->
+<body>
+<main>
+	<div id="divy">
+		<ul id="uly">
+			<li>alpha<button class="btn">remove li</button></li>
+			<li>bravo<button class="btn">remove li</button></li>
+			<li>charlie<button class="btn">remove li</button></li>
+			<li>delta<button class="btn">remove li</button></li>
+		</ul>	
+	</div>
+
+<script>
+	const _div = document.getElementById(`divy`);
+	//	const _ul = _div.getElementById(`uly`);
+	//	const _li = document.getElementsByTagName(`li`);
+	//	const _button = document.querySelectorAll(`button`);
+	/* notice i do not these variables because of .parentNode below */
+
+// removes <li> through evt.target and .parentNode
+	let removeLi = (evt) => {
+		if (evt.target.className === `btn`) {
+			const _li = evt.target.parentNode;
+			const _ul = evt.target.parentNode.parentNode;  //.1
+			_ul.removeChild(_li);
+		}
+	};
+	//.1 double .parentNode works too
+	//.1 _li.parentNode - i could have used this as well
+	
+	_div.addEventListener(`click`, removeLi, true);
+</script>
+</main>
+</body>
+</html>

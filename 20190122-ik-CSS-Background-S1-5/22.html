@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--background-image / background-blend-mode / background-origin / background-clip / background-clip: text;-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>22 background-image / background-blend-mode / background-origin / background-clip / background-clip: text;</title>
+    <style>
+/* nothing special, just div set up box */
+      div {
+        width: 170px;
+        height: 170px;
+        margin: 7px 0 8px 20px;
+        display: inline-block;
+        color: aqua;
+        text-shadow: 3px 3px 6px green;
+      }
+
+/* multiple background-image */
+      #ik1 {
+        background-image: linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)), /*.1*/
+                          url(images/dr.jpg), /*.2*/
+                          url(images/cu.jpg); /*.3*/
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inherit;             /*.4*/
+        width: initial;               /*.5*/
+      }
+      /*.1 1st layer with 0.5 transparency -yellow blue*/
+      /*.2 2nd layer -lizard*/
+      /*.3 3rd layer -stars*/
+      /*.4 <main> is display: block; */
+      /*.5 width is auto since it is block */
+
+/* background-blend-mode */
+      #ik2 {
+        background-color: green;
+        background-image: url(images/ali.jpg);
+        background-size: contain;
+        background-blend-mode: luminosity;
+      }
+      /* background-color and background-image blended together*/
+
+/* background-origin: content-box; */
+      #ik3 {
+        background: url(images/cu.jpg) no-repeat;
+        background-size: 180px;         /*.1*/
+        border: red 7px dotted;         /*.2*/
+        background-position: bottom right; /*.3*/
+        padding: 12px;                   /*.4*/
+        background-origin: content-box; /*.5*/
+      }
+      /*.1 for demo to work otherwise it will fit in perfectly with contain*/
+      /*.2 to illustrate the image to remain to it size but is cut off however it still exist if expanded*/
+      /*.3 starting from bottom right corner of content box*/
+      /*.4 to seperate content and padding otherwise they will look the same*/
+      /*.5 shift the image to the content box edge*/
+
+/* background-clip: content-box; */
+      #ik4 {
+        background: url(images/cu.jpg) no-repeat;
+        background-size: 180px;
+        border: red 7px dotted;
+        background-position: bottom right;
+        padding: 12px;
+        background-clip: content-box;
+      }
+      /* notice the image is restricted within content box and everything outside is cut off */
+
+/* background-clip: text; */
+      #ik5 {
+        background: url(images/cu.jpg) no-repeat;
+        background-size: 280px;
+        color: transparent;
+        text-shadow: none;
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+      /* beware background-clip: text; is still experimental and should not be use at this time */
+    </style>
+</head>
+<body>
+<main>
+  <div id="ik1">3 background-image</div>
+  <div id="ik2">background-blend-mode: hard-light</div>
+  <div id="ik3">background-origin</div>
+  <div id="ik4">background-clip</div>
+  <div id="ik5"><h1>background-clip: text;</h1></div>
+</main>
+</body>
+</html>

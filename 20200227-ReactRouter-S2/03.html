@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 03 Using url : colon parameters to access match.params object property / Url parameters -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>03 Using url : colon parameters to access match.params object property / Url parameters</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file -->
+<div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Using url : colon parameters to access match.params object property / Url parameters */
+/* iK this demo was done using CRA, so you will see what it was like to be written in CRA with several files, including the import and export which will be commented out here.
++\ iKBIM remember that "/" is "/03.html" for this demo only.
++\ Basically you can enter a specific pathname parameters to set and use as data.
+	+\ BIM you would use /: (forward slash and colon) to do that.
+	+\ this will allow you to easily pass data from one page to another page. So you could use the data on the new page if you wanted to.
+		+\ eg. taking user form text value and using the value to do something with it on the next page.
+	+\ so by setting the url path="" props with /: colon (which will create property name), you can than use numerous of features such as <Link> to send your data through (as the property value) or you could could use user text form values to set <Link> url, or you could just write the values within the url address bar, etc... */
+
+const {
+	BrowserRouter,
+	Route,
+	Link
+} = ReactRouterDOM;	/*iKBR*/
+
+	/******/
+	/*App.js file*/
+	/******/
+//	import React from 'react';
+//	import {
+//		BrowserRouter,
+//		Route,
+//		Link
+//	} from "react-router-dom";
+
+function App() {
+	return (
+		<React.StrictMode>
+			<BrowserRouter>
+				<Route path="/03.html/IkUrlParameters/:iKpropName1/:iKpropName2" component={IkUrlParameters} />
+				<Link to="/03.html/IkUrlParameters/iKpropValue1/iKpropValue2">click to url parameters</Link>
+			</BrowserRouter>
+		</React.StrictMode>
+	);		/*1+*/
+}; /*END App*/
+
+
+function IkUrlParameters ( {match} ) {  /*2+*/
+	console.log( match.params ); /*OP {iKpropName1: "iKpropValue1", iKpropName2: "iKpropValue2"} */ /*3+*/
+	console.log( match.params.iKpropName1 ); /*OP "iKpropValue1" */ /*4+*/
+	console.log( match.params.iKpropName2 ); /*OP "iKpropValue2" */
+
+	return (
+		<React.Fragment>
+			<h1>iK Url Parameters</h1>
+			<p>{match.params.iKpropName1}</p>
+			<p>{match.params.iKpropName2}</p>
+		</React.Fragment>
+	);
+}; /*END IkUrlParameters */
+
+//	export default App;
+
+	/******/
+	/*index.js file*/
+	/******/
+//	import React from 'react';
+//	import ReactDOM from 'react-dom';
+//	import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+/*1+ BIM in the url you set the match.params object properties using /: colon before the subpath name.
+	+\ eg. ".../:iKpropName1/:iKpropName2"
+		+\ VIP if you do not use /: (colon) than it will not work.
+		+\ you can name the iKpropName's whatever you want, and use as many as you like.
+		+\ VIP you must first set the match.params property names using something like <Route path="> and /: colon in the url. Then add the values using something like <Link to=""> .
+2+ using destructuring to gain the match object provided by the react router.
+	+\ BIM react router provides three objects: match, history and location object.
+		+\ BIM and you can gain all three objects through props object.
+3+ match.params object is where all the \: subpath properties will be stored, and you can use it through the props object.
+4+ "iKpropValue1" from match.params is assign by the setting of the <Link to=""> url subpath names. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

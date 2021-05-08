@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 07 gif motion images . motion images frames using steps() / plus eg of prefixes / from internet-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>07 gif motion images . motion images frames using steps() / plus eg of prefixes / from internet</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+	.hi {
+		background-image: url("images/steps.png");  /*1+*/
+		width: 50px;                                /*2+*/
+		height: 72px;                               /*3+*/
+
+		-webkit-animation: play 1s steps(10) infinite;
+		   -moz-animation: play 1s steps(10) infinite;
+			-ms-animation: play 1s steps(10) infinite;
+			 -o-animation: play 1s steps(10) infinite;
+				animation: play 1s steps(10) infinite;  /*4+*/
+	}
+		/*1+ the image is 500px x 72px
+		2+ divide the 10 frames by 10 (500px/10px = 50px) in order to get the smooth motion as you would do in a film tape
+		3+ the height is not so important here but still keep consitency
+		4+ animation-name / animation-duration / animation-timing-function / animation-iteration-count .
+	    4+ steps(10) is the important as it creates the motion without inbetween blur
+		4+ notice i have included all the prefixes, however possible not important in today modern browsers*/
+
+	@-webkit-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -500px; }
+	}
+
+	@-moz-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -500px; }
+	}
+
+	@-ms-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -500px; }
+	}
+
+	@-o-keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -500px; }
+	}
+
+	@keyframes play {
+	   from { background-position:    0px; }
+		 to { background-position: -500px; }  /*1*/
+	}
+		/*1+ this cause the image to slide to the left very quickly 
+		1+ behaves like transition combine with transform: translate(); */
+
+	/*
+@keyframes move {
+  from { top: 0; left: 0; }
+  to   { top: 100px; left: 100px; }
+}
+				= another option but not for the penguine, ik however inset into notes
+	*/
+	
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+	
+	<img src="images/steps.png" alt="penguin">	/*eg. 1 whole image*/
+	<div class="hi"></div>                      /*container for the image motion*/
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- a bad example of using synchronous method / user will need to wait and unable to multi task -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>03 a bad example of using synchronous method / user will need to wait and unable to multi task</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<input type="text" class="border-danger" value="input text">
+<button id="button">button synchronous</button>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*a bad example of using synchronous method / user will need to wait and unable to multi task */
+/*you will notice after you press the button, you are unable to use the input text as everything is paused for 5 seconds.
++\ from treehouse video*/
+const iKbutton = document.getElementById("button");
+
+function iKsynchronous () {
+	console.log("START. user waits 5 seconds because of synchronous"); /*1+*/
+
+	let start = new Date().getTime(); /*2+*/
+
+	while( new Date().getTime() - start < 5000 ); /*3+*/
+
+	console.log("FINISH. 5 seconds up, user now free to do other tasks"); /*4+*/
+}; /*END function iKsynchronous*/
+
+iKbutton.addEventListener("click", iKsynchronous);
+
+	/*1+ shows the begining of the countdown.
+	2+ .getTime() returns all the milli seconds since 1 January 1970 00:00:00 UTC and the current time.
+	3+ this method can just run while loop without any coding inside to just pause everything by the extra milli seconds you added in the expression.
+	4+ after 5 seconds this string appears in the console.
+	+\ this is why you should use setTimeout() in this type of situation because it is asynchronous, therefore user can use input text or do other things. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+IK.printD( html );
+IK.everyStyles( DOMelement );
+IK.ascii("a", "b");
+IK.patternIndexNumber( iKarray, searchThisValue );
+IK.cssSupport("cssProperty", "cssValue");
+IK.listAttributes( DOMnode );
+IK.serialize( formDOMelement );
+IK.serializeObject( iKobject );            */
+</script>
+</main>
+</body>
+</html>

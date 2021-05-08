@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- display grid or inline-grid; / plus other grid property-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>01 display grid or inline-grid; / plus other grid property</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    #gridContainer > div {
+        border: red 1px solid;
+        background-color: bisque;
+    }
+
+    #gridContainer {
+        border:blue 10px solid;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-rows: repeat(auto-fit, minmax(50px, 1fr)); /* with auto-fit it almost becomes implicit grid and grid-auto-row can now declare all rows size */
+        grid-auto-rows: 70px 1fr;     /* this determines the size of all the rows now, and it is in alternative turns*/ 
+        grid-column-gap: 3px;
+        grid-row-gap: 3px;
+/*        grid-auto-flow: column;*/   /*this prevents rows auto-fit working in grid-template-rows: as it become only one row.  set the number rows you want for it to appear on more rows*/
+    }
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+    <div id="gridContainer">
+        <div class="gridItem">1</div>
+        <div class="gridItem">2</div>
+        <div class="gridItem">3</div>
+        <div class="gridItem">4</div>
+        <div class="gridItem">5</div>
+        <div class="gridItem">6</div>
+        <div class="gridItem">7</div>
+        <div class="gridItem">8</div>
+        <div class="gridItem">9</div>
+    </div>
+
+<!--ik you can skip this if you want-->
+	<form id="display">
+		<label for="grid1">display: grid;</label>
+		<input type="radio" id="grid1" value="grid" name="dislayTeam" checked>
+		
+		<label for="inlineGrid1">display: inline-grid;</label>
+		<input type="radio" id="inlineGrid1" value="inlineGrid" name="dislayTeam">
+	</form>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/* ik you can skip script if you want because you know these javascript */
+    const divBox = document.getElementById(`gridContainer`);
+	const formDisplay = document.getElementById(`display`);
+	const radioGrid = document.getElementById(`grid1`);
+	const radioInlineGrid = document.getElementById(`inlineGrid1`);
+	
+/* display: grid; or inline-grid;*/
+	formDisplay.addEventListener(`click`, (event) => {
+		if (event.target.id === `grid1`) {
+			divBox.style.display = `grid`;
+		}else if (event.target.id === `inlineGrid1`) {
+			divBox.style.display = `inline-grid`;
+		}
+	});
+/*------------------------- /script /////////////////////////////*/
+</script>
+</main>
+</body>
+</html>

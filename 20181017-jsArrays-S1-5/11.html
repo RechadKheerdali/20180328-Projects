@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>11 .getElementById() / .innerHTML</title>
+    <style>
+      div {
+        color: red;
+        font-style: italic;
+      }
+    </style>
+</head>
+<body>
+<main> <!-- .getElementById() / .innerHTML within function -->
+  <h3>sup</h3>
+
+  <div id="ikrulez"></div>
+
+  <h4>er</h4>
+
+<script>
+  function printEx(messagex) {
+    var divikrulez = document.getElementById("ikrulez");
+    return divikrulez.innerHTML = messagex;
+  };
+  /* this is almost exactly like document.write() but now you can precisely choose where your content goes by using the html id
+  +\ need to ensure that you make the id a string when placing it in d.gebid
+  +\ d.getElemenById() is holding an object which holds a reference to a particular spot on the webpage        -   it targets the id located in html and any content will be place inside it  .   called a "node" representing a tag in the page
+  +\ .innerHTML is a property you can change
+  +\ be wary as it tends to overide anything before as it follow the hoist mode*/
+
+  printEx( "this is created through document.getElementById() and .innerHTML" );
+// printD();
+// console.log();</script>
+</main>
+</body>
+</html>

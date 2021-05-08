@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 11 using mocha and chai unit testing in browser -->
+<head>
+	<!--  iK enter /mocha.css here -->
+	<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/> <!-- 1+ -->
+    <title>11 using mocha and chai unit testing in browser</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+<!-- iK enter div with mocha id on it -->
+<div id="mocha"></div> <!-- 2+ -->
+
+<!---------------------- /main /////////////////////////-->
+<!-- iK enter both /mocha.js and /chai.js script file here --> <!-- 3+ -->
+<script src="https://unpkg.com/mocha/mocha.js"></script>
+<script src="./node_modules/chai/chai.js" type="text/javascript"></script>
+
+<!-- set up mocha bdd -->
+<script>
+	mocha.setup('bdd');  /*4+*/
+</script>
+
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*enter your real codes you will be using */ /*5+*/
+function iKfunction11( iKstringP ) { return iKstringP };
+
+
+</script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+/*enter your test codes as you would normally would in your test folder*/ /*5+*/
+const iKexpect = chai.expect;
+
+describe('iK 11.html - iKfunction11 = testing mocha and chai using browser', function () {
+	it('iK expect it be a string', function() {
+		iKexpect( iKfunction11('iKstring1') ).to.be.a('string');
+	});
+
+	it('iK expect it to be equal', () => {
+		iKexpect( iKfunction11( 'iKequal') ).to.equal('iKequal');
+	});
+}); /*END describe() */
+
+</script>
+<script>
+
+	mocha.run(); /*6+*/
+
+/*1+ to style the mocha div element to look nice.
+2+ where mocha will show test result on the browser page.
+3+ will add the mocha and chai global object.
+4+ will set up the bdd testing for your codes you want testing.
+	+\ you do not have to place this code in its own script tag, but it is convenient if you have a large project.
+5+ ideally you would place your real code within a separate file you just use <script> tag to import them.
+5+ BIM notice you do not have to use module.export or require() since they are all in the same outline of the html file.
+6+ will run mocha on your div to get test result.
+	+\ if you do not want mocha div to run, than comment this code out.
++\ iK once you finish you project, you should remove all the mocha / chai / test codes out of your html file for optimization. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

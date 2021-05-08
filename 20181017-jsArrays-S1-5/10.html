@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>10 var easy to understand</title>
+</head>
+<body>
+<main>
+<script>/* think about every var info you are going to need and make it as clear as possoible for you and anyone else to read  instead of trying to remember whats what  */
+  var questions = [
+      ['How many favorite colors do you have?', 3],
+      ['How many pets have you had in your lifetime?', 4],
+      ['What number of countries have you been to, outside of the USA?', 7]
+  ];
+  var question;
+  var answer;
+  var response;
+  var html;
+  var correctAnswers = 0; //all var are easy to understand
+
+  function print(message) {
+    document.write(message);
+  };
+
+  for (var i = 0; i < questions.length; i += 1) {
+    question = questions[i][0];
+    answer = questions[i][1];
+    response = parseInt( prompt(question) );
+    if (response === answer) {
+      correctAnswers += 1;
+    }
+  };
+
+  html = "You got " + correctAnswers + " question(s) right.";
+  print(html);
+
+// printD();
+// console.log();</script>
+</main>
+</body>
+</html>

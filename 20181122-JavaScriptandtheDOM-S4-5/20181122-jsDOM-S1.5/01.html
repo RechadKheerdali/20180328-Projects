@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>01 DOM button changing colour</title>
+</head>
+<body> <!-- getElement\sById\TagName\ClassName / click / tagging all for loop / classList.add\remove()\ .className / .querySelector\All() -->
+<main>
+  <h1 id="myHeading">javascript DOM</h1>
+  <input type="text" id="myText">
+  <div id="buttonsAll">
+    <button id="myButton">change backgroundColor of H1</button>
+    <button id="myButton2">change color of H1</button>
+    <button id="myButton3">change background of H1</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button class="classBn">colour red</button>
+    <button id="twoSec">2 second delay alert</button>
+    <button id="threeSec">3 second delay alert</button>
+  </div>
+
+<script>
+/* capturing the id and typing colour we want and clicking button to change colour */
+//tagging the id's
+  const Heading = document.getElementById(`myHeading`);
+  const Text = document.getElementById(`myText`);
+  const Button = document.getElementById(`myButton`);
+  const Button2 = document.getElementById(`myButton2`);
+  const Button3 = document.getElementById(`myButton3`);
+
+//adding click for descibing the action then the functions for it to change background-color
+  Button.addEventListener( `click`, () => {
+    Heading.style.backgroundColor = Text.value;
+  }
+  );
+
+//function to change font color
+  Button2.addEventListener(
+    `click`,
+    () => {
+      Heading.style.color = Text.value;
+    }
+  );
+
+//old fashion function to add background (since other style. not working)
+  Button3.addEventListener(`click`, function () {
+    Heading.style.background = Text.value;
+  })
+
+  /*******************************************/
+
+/*tagging all buttons with .getElementsById()*/
+//getElementsById() of the button and switching document name
+  const divButtons = document.getElementById(`buttonsAll`);      //.1
+  const allButtons = divButtons.getElementsByTagName(`button`);  //.2
+
+  for (let i = 0; i < allButtons.length; i++) {                  //.3
+    allButtons[i].style.backgroundColor = `lightgreen`;
+  };
+  /* .1 - capture the div id. not neceassary as i want to tag all the buttons but to show you eg how you can aim for specific elements if you wanted
+  +\ .2 notice instead of keyword document i used the divButtons because it already is a document so im just tagging it further.
+  +\ .2 also there was no need if i wanted to i could have simply use the keyword document and got rid of divButtons but i wanted to show eg
+  +\ .3 to tag all collection with getElementsByTagName() than you have to use the for loop to go through each index number     */
+
+  /*********************************************************/
+
+/*using .getElementsByClassName() / classList.add() / classList.remove() / .className*/
+// adding a new class while also removing the old class
+  const classB = document.getElementsByClassName(`classBn`);
+
+  let change = classB[3].classList.add(`ikik`);   //.1
+  change = classB[3].classList.remove(`classBn`); //.2
+  //.1 added a second class with "classBn", so now it is "classBn, ikik"
+  //.2 remove the class "classBn", now it is "ikik" alone
+  
+  classB[8].className = `overrideiK`;             //.3
+  //.3 .className can be use to set a class name much easier than above but it overides any previous class if any
+  //.3 remember you took on classBn away so there is a total of 9 classBn and therefore index number of 8
+  /* if yu are looking to replace a class than you have to do it in the order by add and removing throught document.getElementByClassName() */
+
+  /*********************************************************/
+// back to front for loop for "classBn"
+    for (let i = classB.length - 1; i >= 0; i--) {   //.1
+      classB[i].style.backgroundColor = `red`;       //.2
+    };
+    //.1 there are 8 "classBn" now because of classList.remove()
+    //.1 BIM `i` reflects index number and not total number of length so therefore minus 1 is included otherwise it does not exist and becomes undefined.
+    //.2 `i` will begin with the index number of 7
+
+	/*****************************************************/
+	
+/*.querySelectorAll() / .querySelector()  */
+// .querySelectorAll() more flexible as it searches everything in the html
+	const qAll = document.querySelectorAll(`.classBn:nth-child(even)`);                                                   //.1
+	
+	for (let i = 0; i < qAll.length; i += 1) {           //.2
+		qAll[i].style.color = `yellow`;
+	};
+	//.1 select class in is traditional way with .dot
+	//.1 you can even use psuedo as you would in css
+	//.2 it may ne a HTML collection using index numbers and you still have to use the for loop if you want to selcect all
+	/* qS are much more flexible because you can select any tag as you would do normally in css */
+	
+	
+// .querySelector()  returns the first Element within the document that matches the specified selector, or group of selectors
+	const qZero = document.querySelector(`main div#buttonsAll button.classBn`)                      //.1
+	
+	qZero.style.color = `white`;
+	//.1 example as how you can select a very specific css selector just as you would in css
+	
+	/*******************************************/
+	
+/*delayed function*/
+//setTimeout with old school function
+	const twoDelayed = document.querySelector(`#twoSec`);
+	
+	twoDelayed.addEventListener(`click`, function () {
+			setTimeout( function() {               //.1
+					alert(`hello`);                //.2
+				},                                 //.3
+			2000                                   //.4
+			)		
+		}		
+	);
+	//.1 setTimeout() execute code after a set time expires
+	//.2 code that will executed after set time, even or D.W (however t will overwrite the doc so ensure you tag it first)
+	//.3 dont forget to add comma after you write the code
+	//.4 set delay time in miliseconds
+
+//setTimeout with arrow function
+	const threeDelayed = document.getElementById(`threeSec`);
+	
+	threeDelayed.addEventListener( `click`, () => {
+			setTimeout( () => {
+					alert(`3 second coolio`)
+				},
+			3000
+			)
+		}
+	);
+</script>
+</main>
+</body>
+</html>

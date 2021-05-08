@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07</title>
+<!--    IK you can skip this if you want i just copied and paste from a comment to get this navbar syntax which looks pretty good-->
+    <style>
+    .nav {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-flow: row nowrap;
+          background-color: #e3e3e3;
+        }
+
+        li a, .dropdown-menu {
+          display: inline-block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover, .dropdown:hover .dropdown-menu {
+          background-color: #586aba;
+        }
+
+        li.dropdown {
+          display: inline-block;
+        }
+
+        .dropdown-menu__content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-menu__content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+
+        .dropdown-menu__content a:hover {
+          background-color: #586aba;
+        }
+
+        .dropdown:hover .dropdown-menu__content {
+          display: block;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-menu">Dropdown</a>
+      <div class="dropdown-menu__content">
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Lorem ipsum</a>
+        <a href="#">Lorem ipsum</a>
+      </div>
+    </li>
+    </ul>
+    
+</body>
+</html>

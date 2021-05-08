@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>05 treehouse 3 question from objects in arrays</title>
+</head>
+<body><!-- treehouse 3 question from objects in arrays -->
+<main>
+<script>
+	var questions = [
+	  {
+		question: 'How many states are in the United States?', 
+		answer: 50
+	  },
+	  {
+		question: 'How many continents are there?',
+		answer: 7
+	  },
+	  {
+		question: 'How many legs does an insect have?', 
+		answer: 6
+	  }
+	]; //simpler than mine because he converted the objects into sepertae question and answer
+	
+	var correctAnswers = 0;
+	var question;
+	var answer;
+	var response;
+
+	function print(message) {
+	  document.write(message);
+	}
+
+	for (var i = 0; i < questions.length; i += 1) {
+	  question = questions[i]["question"]; //.1
+	  answer = questions[i].answer;        //.2
+	  response = prompt(question);
+	  response = parseInt(response);
+	  if (response === answer) {
+		correctAnswers += 1;
+	  } 
+	}
+	//.1 BIM you can use the bracket notation
+	//.2 or you can use the .notation.   both still work fine here
+	/* 1 loop was use unlike mine which i use 2 loops*/
+
+	html = "You got " + correctAnswers + " question(s) right."
+	print(html);
+</script>
+</main>
+</body>
+</html>

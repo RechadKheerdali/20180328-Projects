@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05</title>
+    <style>
+        p {
+            padding: 40px;
+        }
+        
+        /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            p {background: red;}
+        }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            p {background: green;}
+        }
+
+/* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {
+            p {background: blue;}
+        } 
+
+/* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            p {background: orange;}
+        } 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+            p {background: pink;}
+        }
+        
+        body {
+            background-color: bisque;
+        }
+        
+        /* this is for portrait and landscape */
+        @media only screen and (orientation: portrait) {
+            body {
+                background-color: lightblue;
+            }
+        }
+        
+        /* If the screen size is 600px wide or less, hide the element */
+        @media only screen and (max-width: 600px) {
+            object {
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>screen size adjusted for mobile and etc</p>
+    
+    <button type="submit">Submit order</button>
+    perhaps proper way to use<br>
+    
+    <button type="reset">Start over</button>     =   to reset<br>
+    
+    <input type="range" min="0" max="50" value="10">         =  offer adjustable range<br>
+    
+    <input type="color"> adjustyt the color <br>
+    
+    <input type="date" min="2010-08-14" max="2011-08-14"> <br>
+    
+    <embed type="application/x-shockwave-flash"
+ src="zombie_walk.swf"/> <br>
+    
+    <object width="300" height="150">
+  <param name="movie" value="zombie_walk.swf"/>
+  <param name="bgcolor" value="white"/>
+</object> <br>
+    
+    <video width="320" height="240" controls>
+  <source src="forrest_gump.mp4" type="video/mp4">
+  <source src="forrest_gump.ogg" type="video/ogg">
+  <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
+  <track src="subtitles_no.vtt" kind="subtitles" srclang="no" label="Norwegian">
+</video>   <br>
+    
+</body>
+</html>

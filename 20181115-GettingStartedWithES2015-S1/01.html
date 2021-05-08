@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>01 const</title>
+</head>
+<body>   <!--    getting to know const-->
+<main> 
+<script>
+    /* const is a constant locked variable that cannot be easily changed*/  
+    const name = "alpha";
+    printD(name); /*OP "alpha" */    //constant variable
+    
+    /**************************/
+    
+/* attempt to redefine the const value through function */ 
+    function changeN(fName) {  
+        const name = fName;  //.1 
+        return printD(name);
+    };
+    changeN("bravo"); /*OP "bravo" */
+    
+    //.1 typeError if i dont include the 'const' keyword
+    /* const has been successfully redefined only because of the function scope.
+    However in the global scope it is still define as the original "alpha" value */
+    
+    /******************************/
+    
+/* attempt to redefined const through global scope */
+    name = "charlie";  //.1 
+    printD(name); /*OP typeError */
+    
+    //.1 wont redefine because its already declared
+    /* even if i put the const keyword in it, it wont redefine */
+</script>
+</main>
+</body>
+</html>

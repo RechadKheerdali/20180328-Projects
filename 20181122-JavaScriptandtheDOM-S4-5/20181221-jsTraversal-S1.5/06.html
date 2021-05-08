@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>06 failed attempt at buttons function but highlight top bottom up down challenge</title>
+</head><!-- failed attempt at buttons function but highlight top bottom up down challenge -->
+<body>
+<main>
+    <input type="text">
+    <button id="submit">insert input to list</button>
+    <div>
+        <ol>
+            <li>number 1 </li>
+            <li>number 2 </li>
+            <li>number 3 </li>
+            <li>number 4 </li>
+            <li>number 5 </li>
+        </ol>
+    </div>
+
+<script>
+/* DOM */
+    const _input = document.getElementsByTagName(`input`)[0];
+    const _buttonSubmit = document.getElementById(`submit`);
+    const _divOl = document.querySelector(`div ol`);
+    const _li = document.getElementsByTagName(`li`);
+    const _removeBclass = document.getElementsByClassName(`removex`);
+    const _upBclass = document.getElementsByClassName(`upx`);
+    const _downBclass = document.getElementsByClassName(`downx`);
+    let _firstLi;
+    let _firstUpB;
+    let _lastLi;
+    let _lastDownB;
+
+    /*************************************************************/
+    
+/* insert buttons tags on DOM as normal */
+    const _DOMbuttonFormation = () => {
+        for (let i = 0; i < _li.length; i++) {
+            let _DOMremoveB = document.createElement(`button`);
+            _DOMremoveB.textContent = `remove`;
+            _DOMremoveB.className = `removex`;
+            _li[i].appendChild(_DOMremoveB);
+            
+            let _DOMupB = document.createElement(`button`);
+            _DOMupB.textContent = `up`;
+            _DOMupB.className = `upx`;
+            _li[i].appendChild(_DOMupB);
+            
+            let _DOMdownB = document.createElement(`button`);
+            _DOMdownB.textContent = `down`;
+            _DOMdownB.className = `downx`;
+            _li[i].appendChild(_DOMdownB);
+        };
+    };
+    
+    _DOMbuttonFormation();
+    
+    /*********************************************************/
+    
+/* insert new list through input button .aEL() including rud buttons in the new list whilst also ensuring the right number of buttons for each button */
+    //adding rud buttons in the new list for use .addEventListener() below
+    const _rudB = (parentLi) => {
+        let _removeB = document.createElement(`button`);
+        _removeB.textContent = `remove`;
+        _removeB.className = `removex`;
+        parentLi.appendChild(_removeB);
+        
+        let _upB = document.createElement(`button`);
+        _upB.textContent = `up`;
+        _upB.className = `upx`;
+        parentLi.appendChild(_upB);
+        
+        let _downB = document.createElement(`button`);
+        _downB.textContent = `down`;
+        _downB.className = `downx`;
+        parentLi.appendChild(_downB);
+    };
+  
+    
+    // re-assess the rud button number so they are equal to list numbers and remove extra buttons.  for .addEventListener() below 
+    const _reAssesB = () => {
+        if (_li.length < _removeBclass.length) {
+            for (let i = 0; i < _li.length; i++) {
+                _li[i].removeChild( _removeBclass[i] );
+            };
+        };        
+        
+        if (_li.length < _upBclass.length) {
+            for (let i = 0; i < _li.length; i++) {
+                _li[i].removeChild( _upBclass[i] );
+            };
+        };        
+        
+        if (_li.length < _downBclass.length) {
+            for (let i = 0; i < _li.length; i++) {
+                _li[i].removeChild( _downBclass[i] );
+            };
+        };        
+    };
+
+    
+    
+    
+    
+    
+    
+//    firstElementChild / lastElementChild
+    const _firstLastUpDownB = () => {
+        _firstLi = _divOl.firstElementChild;
+        _firstUpB = _firstLi.querySelector(`.upx`);
+        if (_firstUpB) {
+            _firstLi.removeChild(_firstUpB);
+        };
+        
+        
+        _lastLi = _divOl.lastElementChild;
+        _lastDownB = _lastLi.getElementsByClassName(`downx`)[0];
+        if (_lastDownB) {
+            _lastLi.removeChild(_lastDownB);
+        };
+    };
+    
+    
+    
+    
+    
+    //insert input to list which add new li / add buttons / check length of buttons and remove extra buttons
+    const _insertInput = () => {
+        let _newLi = document.createElement(`li`);
+        _newLi.textContent = _input.value;
+        _rudB(_newLi);
+        _divOl.appendChild(_newLi);
+        _DOMbuttonFormation();    
+        _reAssesB();
+        _firstLastUpDownB();
+    };
+    
+    _buttonSubmit.addEventListener(`click`, _insertInput, false);
+    
+    /***********************************************************/
+    
+/* adding functions to the rud buttons */
+    const _rudFunctions = (event) => {
+        if (event.target.className === `removex`) {
+            let _currentLi = event.target.parentNode;
+            _divOl.removeChild(_currentLi);
+        }
+        
+        else if (event.target.className === `upx`) {
+            if (event.target.parentNode.previousElementSibling) {
+                let _currentLi = event.target.parentNode;
+                let _liPrevSibling = _currentLi.previousElementSibling;
+                _divOl.insertBefore(_currentLi, _liPrevSibling);
+            }
+        }
+        
+        else if (event.target.className === `downx`) {
+            if (event.target.parentNode.nextElementSibling) {
+                let _currentLi = event.target.parentNode;
+                let _liAfterSibling = _currentLi.nextElementSibling;
+                _divOl.insertBefore(_liAfterSibling, _currentLi);
+            }
+        };        
+    };
+    
+    _divOl.addEventListener(`click`, _rudFunctions, false);
+    
+    
+    
+
+    /*
+    - adding rud buttons
+    - insert input to list
+    - remove up down function
+    - prevent up down cycle
+    - remove up and down buttons from list
+    
+    
+    UNRESOLVED ISSUES TO GETTING RID OF FIRST UP AND LAST DOWN BUTTONS
+    PRESS INSERT BUTTON 3 TIMES AND IT STOPS WORKING THE WAY IT SHOULD AND I DONT KNOW WHY AS I HAVE MORE THAN 4 HOURS INTO THIS AND FEEL DISAPPOINTED BECAUSE I THINK I DID EVERYTHING AS I SHOULD HAVE BUT CANT UNDERSTAND WHY???  it seems so simple but became more complex than i thought
+
+i am on the right track, apparently a comment profile use very similar principles as me but he remove all the buttons and then readded all the buttons to structure the way you want so i was a bit lazy in the sense ik only remove extra buttons reAssesB() i think ik , 
+
+
+steven parker solution but with background colours :+=== 
+
+if (li.previousElementSibling) {
+    if (li.style.backgroundColor == "lightskyblue")    // has color but not on top?
+      li.style.backgroundColor = null;                 // ...then remove color
+    li.appendChild(up);
+  } else li.style.backgroundColor = "lightskyblue";    // always add color to top item
+  if (li.nextElementSibling) {
+    if (li.style.backgroundColor == "lightsteelblue")  // has color but not on bottom?
+      li.style.backgroundColor = null;                 // ...then remove color
+    li.appendChild(down);
+  } else li.style.backgroundColor = "lightsteelblue";  // always add color to bottom item    */
+</script>
+</main>
+</body>
+</html>

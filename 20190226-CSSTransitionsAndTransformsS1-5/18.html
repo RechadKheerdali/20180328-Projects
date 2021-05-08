@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>18 star wars sliding scripter</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+	#container {
+		height: 600px;                    /*1+*/
+		perspective: 500px;               /*2+*/
+    	perspective-origin: center left;  /*3+*/
+    	overflow: hidden;                 /*4+*/
+	}
+      /*1+ the item will have to be naturally long for it to the desire effect.
+      2+ adds the 3d space
+      3+ optional but it creates a better effect
+      4+ optional but it prevents it from overcrossing over other element*/
+
+	.cover {
+  		display: flex;
+  		justify-content: center;
+  		transform: rotateX(30deg) scaleY(1.5) translateY(-10em);  /*1+*/
+	}
+      /*1+ this sets the element position , particularly rotate*/
+
+	.para {
+  		width: 60%;
+  		background-color: aquamarine;
+  		transition: transform 3s ease-in;    /*1+*/
+	}
+      /*1+ cannot insert in .cover because it transform-origin has been effected by rotate. so we start afresh here*/
+
+	#container:hover .para {           /*1+*/
+	  	transform: translateY(35em);   /*2+*/
+	}
+    /*1+ .para will be the transform-origin because it is not effected by rotate
+    2+ slides down */
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div id="container">
+  		<div class="cover">
+    			<p class="para">The scaleZ function specifies a scale operation using the [1,1,sz] scaling vector, where sz is given as the parameter. The effect of the scaleZ function is most evident when used in combination with functions such as the rotate and perspective functions, as shown in the following example. The scaleZ function specifies a scale operation using the [1,1,sz] scaling vector, where sz is given as the parameter. The effect of the scaleZ function is most evident when used in combination with functions such as the rotate and perspective functions, as shown in the following example.</p>
+  		</div>
+	</div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

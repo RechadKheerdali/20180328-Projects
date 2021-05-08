@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :nth-last-child()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>07 :nth-last-child()</title>
+    <style>
+		p {
+			font-size: 200%;
+			text-align: center;
+			margin: 2px;
+		}
+		
+/*choose 3rd child from the bottom*/
+		p:nth-last-child(10) {
+			color: red;
+		}
+/*every 4 child starting from the last child. n means going backwards*/
+		p:nth-last-child(4n+1) {
+			background-color: lightblue;
+		}
+/*last 3 child selected. -n means going is forward*/
+		p:nth-last-child(-1n+3) {
+			border: dashed 5px black;
+		}
+/*select every child*/
+		p:nth-last-child(n) {
+			font-weight: bold;
+		}
+/*using double :nth-last-child() to set start and end of child*/
+		p:nth-last-child(n+6):nth-last-child(-n+8) {
+			color: green;
+		}
+	</style>
+</head>
+<body>
+<main>
+	<section>
+		<h1>last child</h1>
+		<p>12th - P1</p>
+		<p>11th - P2</p>
+		<p>10th - P3</p>
+		<p>9th - P4</p>
+		<p>8th - P5</p>
+		<p>7th - P6</p>
+		<p>6th - P7</p>
+		<p>5th - P8</p>
+		<p>4th - P9</p>
+		<p>3rd - P10</p>
+		<p>2nd - P11</p>
+		<p>1st - P12</p>
+	</section>
+</main>
+</body>
+</html>

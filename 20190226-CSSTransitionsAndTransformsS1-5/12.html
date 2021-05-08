@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>12 flip front face to show back face hover / one container version</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+  .container {
+      margin: 70px 0 0 70px;
+      width: 300px;
+      height: 300px;
+      perspective: 600px;   /*@1*/
+  }
+      /*@1 adds the 3d effect*/
+
+  .front,
+  .back {
+      font-size: 3em;
+      font-weight: bold;
+      color: purple;
+      width: inherit;
+      height: inherit;
+      position: absolute;            /*@1*/
+      transition: transform 1.3s cubic-bezier(.55, -.62, .27, 1.22);
+      backface-visibility: hidden;   /*@2*/
+  }
+      /*@1 is required since the 2 sides do not have an extra container to flip for it, so there positioning is more important now
+      @2 without this, than the last child will take precedence, even at the back side*/
+
+  .front {
+      background: yellow;         /*just for backup as recommended*/
+      background-image: url(images/dr.jpg);
+      background-size: 300px 300px;
+  }
+
+  .back {
+      background-color: blue;         /*just for backup as recommended*/
+      background-image: url(images/ali.jpg);
+      background-size: contain;       /*since ali is same size on both side*/
+      transform: rotateY(180deg);     /*@1*/
+  }
+      /*@1 180deg will still not be the starting point, 0 is*/
+
+/*flipping transition when hovered*/
+  .container:hover .front {
+      transform: rotate3d(0, 1, 0, -180deg);
+  }
+
+  .container:hover .back {
+      transform: rotateY(0deg);    /*@1*/
+  }
+      /*@1 0deg is the starting point and it rotates back to it from 180deg*/
+
+      /*you could have added another container for both sides and only hover one element instead of two*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div class="container">
+      <div class="front">Front face</div>
+      <div class="back">Back face</div>
+  </div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

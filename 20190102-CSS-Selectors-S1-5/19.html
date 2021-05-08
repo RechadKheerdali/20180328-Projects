@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- ::before / content / .toggle / dont understand where the tick comes from in li::before-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>19 ::before / content / .toggle / dont understand where the tick comes from in li::before</title>
+    <style>
+        li {
+            list-style-type: none;
+            position: relative;
+            margin: 2px;
+            padding: 0.5em 0.5em 0.5em 2em;
+            background: lightgrey;
+            font-family: sans-serif;
+        }
+
+        li.done {
+            background: #CCFF99;
+        }
+
+        li.done::before {
+            content: '';
+            position: absolute;
+            border-color: #009933;
+            border-style: solid;
+            border-width: 0 0.3em 0.25em 0;
+            height: 1em;
+            top: 1.3em;
+            left: 0.6em;
+            margin-top: -1em;
+            transform: rotate(45deg);
+            width: 0.5em;
+        }           /* somehow border and position makes a tick???? how??? confused  */
+    </style>
+</head>
+<body>
+<main>
+    <ul>
+        <li>Buy milk</li>
+        <li>Take the dog for a walk</li>
+        <li>Exercise</li>
+        <li>Write code</li>
+        <li>Play music</li>
+        <li>Relax</li>
+    </ul>
+<script>
+    var list = document.querySelector('ul');
+
+    list.addEventListener('click', function(ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('done');   /* .toggle allows you to add and remove class .done */
+            }
+        }, false
+    );
+</script>
+</main>
+</body>
+</html>

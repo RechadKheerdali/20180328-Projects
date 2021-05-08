@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13</title>
+</head>
+<body>
+    
+    <script>
+/*        experiemnt with the logical operators if you have any doubt with this syntax.
+there 3 type of operand
+&& LOGICAL AND
+|| LOGICAL OR
+! LOGICAL NOT   */    
+        var one = true;
+        var two = false;
+        var three = true;
+        if (one && two || three) {
+          document.write ("<h1>TRUE</h1>");
+        }
+        else {
+          document.write ("<h1>FALSE</h1>");
+        }
+ //play with these combo too if you want eg-
+    /*    true && true || false = true
+          true && false || true = true;
+          false && false || true = true;
+          true && false || false = false;     */
+    
+        var correct = false;
+        var ik = 25
+        if ( !(20 > ik && ik < 30 || ik > 15) ) {;
+            correct = true;
+            document.write (correct);
+        }
+        else {
+            document.write (correct);
+        }
+        
+    </script>
+</body>
+</html>

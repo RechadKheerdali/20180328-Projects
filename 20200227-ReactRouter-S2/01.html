@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 01 Simple demo of creating 2 url pages using : <BrowserRouter> / <route> / path={} / component={} / exact / render={} / <Link> / to={} -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 Simple demo of creating 2 url pages using : <BrowserRouter> / <route> / path={} / component={} / exact / render={} / <Link> / to={}</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file -->
+<div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+
+	<!--	react router cdn -->
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Simple demo of creating 2 url pages using : <BrowserRouter> / <route> / path={} / component={} / exact / render={} / <Link> / to={} */
+/* iK this demo was done using CRA, so you will see what it was like to be written in CRA with several files, including the import and export which will be commented out here.
++\ However since this demo was finalized in the browser (bracket text editor), I had to change a few things for it to work.
+	+\ iK just to note sometimes bracket text editor live preview does not work and you will just get an empty white screen. So just restart the browser and bracket again, and it should work.
+	+\ iKBIM I will use iKBR to indicate the code is for browser cdn only.
+		+\ iKBIM and if necessary I will put iKCRA to indicate it is for SPA (create-react-app) only. 
+	+\ iK remember it is always best to do it on SPA.
++\ iKBIM from what I can see, there is no additional http request or loading to a new site, which is good and very quick too. */
+
+const {
+	BrowserRouter,
+	Route,
+	Link
+} = ReactRouterDOM;	/*iKBR*/
+
+	/********/
+	/*IkHomePage.js file*/
+	/********/
+//	import React from 'react';
+//	import {Link} from 'react-router-dom';
+
+const IkHomePage = () => (
+	<div>
+		<h1>iK home page</h1>
+		<Link to="/01.html/IkPathPage1">go to iK path page 1</Link>
+	</div>
+); 			/*1+*/
+
+//	export default IkHomePage;
+
+
+	/********/
+	/*IkPathPage1.js file*/
+	/********/
+//	import React from 'react';
+//	import {Link} from 'react-router-dom';
+
+const IkPathPage1 = () => (
+	<div>
+		<h1>iK path page 1</h1>
+		<Link to="/01.html">go to iK home page</Link>
+	</div>
+);			/*2+*/
+
+//	export default IkPathPage1;
+
+
+	/********/
+	/*App.js file*/
+	/********/
+//	import React from 'react';
+//	import {
+//		BrowserRouter,
+//		Route,
+//	} from "react-router-dom";
+//	import IkHomePage from './IkHomePage.js';
+//	import IkPathPage1 from './IkPathPage1.js';
+
+function App() {
+	return (
+		<React.StrictMode>
+			<BrowserRouter>
+				<Route exact path="/01.html" component={IkHomePage} />
+				<Route path="/01.html/IkPathPage1" render={ () => <IkPathPage1 /> }></Route>
+			</BrowserRouter>
+		</React.StrictMode>
+	);		/*3+*/
+}; /*END App*/
+
+//	export default App;
+
+
+	/********/
+	/*index.js file*/
+	/********/
+//	import React from 'react';
+//	import ReactDOM from 'react-dom';
+//	import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+/*1+ <Link to=""> is the same as <a href=""> but the react router version.
+	+\ and you should use the react router version to avoid non-sync with the url address, plus it will also be recorded to the router props objects if you want to use.
+1+ BIM notice I used "/01.html/IkPathPage1" for to="" props attribute.
+	+\ VIP normally in SPA like CRA server you would  use "/" for home domain page, and anything after "/" forward slash is the pathname/querystring/hashname/etc...
+		+\ so "/" forward slash would represents home origin url of the domain.
+		+\ iKBIM But in this demo I was using bracket non-server, which was the file domain path "/01.html" as the default home domain url, because that was the file name on my local computer, and without a server like CRA npm start the file name will be included as home domain url.
+			+\ Otherwise normally you would just use "/IkPathPage1" as the link.
+				+\ using uppercase in url is optional, it would still be fine without.
+2+ remember "/01.html" would normally be "/" link for home domain url page.
+3+ <React.StrictMode> ensure strict mode is on for all its nested components.
+3+ VIP you must set <BrowserRouter> as container for all its nested compoenents that will use react router features.
+	+\ any componenets that is outside <BrowserRouter> container will not have access to react router features.
+3+ <Route> is a component that will observe the url address bar when the page loads and you can determine what content will show on the page for that specific url.
+	+\ you can use as many <Route> as you want, setting as many contents for specific url pathnames.
+	+\ path="" lets you choose the pathname of the url for you specific component to work on.
+		+\ 'exact' props attribute will ensure the path="" will match exactly with the address url for your component to work.
+			+\ BIM if you do not use 'exact' than any addional characters that comes after the path="" url will also match. But 'exact' prevents subpath, therefore allowing you to be very specific with your url.
+	+\ component={} lets you callback your component functions you would like to execute on the specific path={} url.
+	+\ render={} is the same as component={} but you use a anonymous function to call your component callback.
+		+\ BIM reason why you would use render={} over component={} is if you want to pass a props object through the component callback, or need to use the tag component callback. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

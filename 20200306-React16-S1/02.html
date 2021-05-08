@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 02 Using componentDidCatch() to create class component error boundary -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>02 Using componentDidCatch() to create class component error boundary</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file (VIP for CRA) -->
+<div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Using componentDidCatch() to create class component error boundary */
+/* iK it was done using CRA, so you will see what it was like to be written in CRA with several files, and the import and export will be commented out here.
++\ this is useful if you only want to place error fallback component to a few specific components that you suspect could cause errors.
+	+\ this method gives you more options, and you do not have to place the error component at the top level tree dominating every react dom output on the page.
++\ iK more or less the same demo as the previous one Eg01/01.html, but you will notice I create a new class component which is the error component, and you can use as many times, and on any components you feel could cause error.
+	+\ it will only use error fallback components on its nested component children, whilst everything else above it (parents/siblings) will run as normal unaffected by the errors. */
+
+	/******/
+	/*App.js file*/
+	/******/
+//	import React, {Component} from 'react';
+//	import IkErrorBoundaryComponent from './IkErrorBoundaryComponent.js';
+
+class App extends React.Component {
+	state = {
+		iKproperty1: 'iKvalue1'
+	};
+
+	iKerrorButton = () => {
+		this.setState( {iKproperty1: Error()} );
+	};
+
+	render() {
+		return (
+			<IkErrorBoundaryComponent>
+				<h1>{this.state.iKproperty1}</h1>
+				<button onClick={this.iKerrorButton}>Causes Error</button>
+			</IkErrorBoundaryComponent>
+		);   /*1+*/
+	}; /* END render */
+};  /*END App */
+
+//	export default App;
+
+	
+	/******/
+	/*IkErrorBoundaryComponent.js file*/
+	/******/
+//	import React, {Component} from 'react';
+
+//	export default 
+class IkErrorBoundaryComponent extends React.Component { /*2+*/
+	state = {
+		iKhasError: false
+	};
+
+	componentDidCatch(iKerrorP, iKinfo) { /*3+*/
+		this.setState( {iKhasError: true} );
+		console.log(iKerrorP);
+		console.log(iKinfo);
+	};
+
+	render() {
+		if (this.state.iKhasError) {
+			return <h1>iK error occured</h1>;
+		}
+		else {
+			return this.props.children; /*4+*/
+		};
+	};
+}; /*END IkErrorBoundaryComponent */
+
+
+	/******/
+	/*index.js file*/
+	/******/
+//	import React from 'react';
+//	import ReactDOM from 'react-dom';
+//	import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+/*1+ BIM <IkErrorBoundaryComponent> has become error self container. If any of its nested children cause error, than <IkErrorBoundaryComponent> will trigger its fallback codes you set up (just like try...catch would have).
+	+\ this will prevent all the react dom elements from crashing, so every other codes can still operate as normal.
+1+ iK I remove <React.StrictMode> for easier demo read.
+2+ iK you will notice most of the necessary codes for making error boundary component has been simply moved to this class component.
+	+\ but there is not really any new codes, just rearrangement.
+3+ componentDidCatch() has 2 optional arguments you can use: iKerrorP for the type of error that occured. And iKinfo is extra information about the error.
+	+\ You could pass the error arguments onto your error tracking services for more accurate and detailed info about the error which could make it easier to debug.
+		+\ the error tracking service will usually have their own api codes for you to pass the error arguments to them so they can display to you as intended.
+4+ so if there is no errors, than the children elements of <IkErrorBoundaryComponent> will continue to upload onto the dom page. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

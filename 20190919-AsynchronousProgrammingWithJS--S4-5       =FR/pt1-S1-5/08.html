@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- .onload \ examples of using callback and its asynchronous -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelementplayer.min.css" integrity="sha256-ji1bfJaTGnyscoc7LzcV9yNJy5vGKJ0frO3KJo1oaGQ=" crossorigin="anonymous" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 .onload \ examples of using callback and its asynchronous</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.12/mediaelement-and-player.min.js" integrity="sha256-z7JbZVaNbNzLvOCFHUNrjqnZRojZbRAxgr4KU2qL0qc=" crossorigin="anonymous"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* .onload \ examples of using callback and its asynchronous */
+function iKgetJSONajax (iKmethod, iKurl, iKcallback) {
+	const iKxhr = new XMLHttpRequest();
+	iKxhr.onload = function () {		/*1+*/
+		const iKjson = JSON.parse(iKxhr.responseText);
+		return iKcallback(iKjson);		/*2+*/
+	};
+
+	iKxhr.open(iKmethod, iKurl);
+	iKxhr.send();
+}; /*END iKgetJSONajax () {} */
+
+
+/*space api json*/
+iKgetJSONajax(
+	"GET",				/*iKmethod*/
+	"http://api.open-notify.org/astros.json", /*iKurl*/
+	iKjson => IK.printD(iKjson)		/*iKcallback*/
+); /*OP: ik the json format*/ /*3+*/
+
+
+/*wiki god of war summary api json*/
+iKgetJSONajax(
+	"GET",
+	"https://en.wikipedia.org/api/rest_v1/page/summary/god%20of%20war",
+	function (iKdifferentName) { return IK.printD(iKdifferentName) } /*4+*/
+); /*OP: ik the json format*/
+
+IK["printD"]("iK synchronous task"); /*OP "iK synchronous task" */ /*5+*/
+
+/*1+ .onload is a faster way than .onreadystatechange , as it will trigger the function as soon as the .readyState becomes 4, therefore not needing if (iKxhr.readyState === 4 ) {...}  .
+2+ returning the argument anonymous funciton
+3+ returns json format from iKgetJSONajax function, plus it is easier to understand.
+4+ notice i used function declaration and a different parameter name which all works fine.
+5+ despite it coming last in the source page, it will show up first because of the ajax.
+	+\ IK it may appear that the callback function is asynchronously, but it is not true because when i tested it out, callback function works synchronously. so it is the ajax within the callback function that it comes after in the call stack.
+5+ for some reason it shows first on the web but than is overwritten by the iKgetJSONajax() callback, and i am not sure why.
+	+\ this can cause problems as there will be some task you want to happen after the asynchronous task but will always be overwritten, so you may need to think about alternatively ways to include them. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+IK.printD( html );
+IK.everyStyles( DOMelement );
+IK.ascii("a", "b");
+IK.patternIndexNumber( iKarray, searchThisValue );
+IK.cssSupport("cssProperty", "cssValue");
+IK.listAttributes( DOMnode );
+IK.serialize( formDOMelement );
+IK.serializeObject( iKobject );            */
+</script>
+</main>
+</body>
+</html>

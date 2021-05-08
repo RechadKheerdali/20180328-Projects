@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 25 2 flickr api using v.js /  including removing previous search, search button loading / highlight buttons-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>25 2 flickr api using v.js /  including removing previous search, search button loading / highlight buttons</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+
+
+	<div>
+		<h1>Flickr Photo Feeder</h1>
+		<p>Choose which kind of animal you'd like to return photos of...</p>
+	</div>
+
+	<ul class="ulselect">   <!-- users chooses selection -->
+		<li><button>Universe</button></li>
+		<li><button>Kratos</button></li>
+	</ul>
+
+	<div id="divphotos"> <!-- where link and img will be inserted --></div>
+
+
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+
+
+/*list of DOMs*/
+	const universeButton = document.querySelector(`li:first-of-type button`);
+	const kratosButton = document.querySelector(`li:last-of-type button`);
+	const divPhotos = document.getElementById(`divphotos`);
+
+/*daniel flint code for v.js api */
+/*UNIVERSE BUTTON*/
+	/* i change callback function and names in universe
+	+\ i change the query string to add tags=universe */
+	const scriptUniverse = document.createElement("script");
+	scriptUniverse.src = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=universe&format=json&tags=universe"
+	document.head.appendChild(scriptUniverse);
+
+	function universe(data) {
+		/*waits for html to load first*/
+		window.addEventListener(`load`, function(){
+
+			let jsp = JSON.stringify(data,null,2);
+			/*convert to js object*/
+			const jsonp = JSON.parse(jsp);
+
+			universeButton.addEventListener(`click`, (event) => {
+				/*setting buttons color*/
+				universeButton.style.backgroundColor = `deepskyblue`;
+				kratosButton.style.backgroundColor = `buttonface`;
+
+				/*indicate searching for user through button*/
+				universeButton.innerText = `Searching...`;
+				kratosButton.innerText = `Kratos`;
+
+				/*removing all previous search list and error if any*/
+				while (divPhotos.children.length > 0) {
+					divPhotos.removeChild(divPhotos.firstElementChild);
+				};
+
+				/*creating ul list with anchor and img*/
+				const ul = document.createElement(`ul`);
+				let li;
+				for (let i = 0; i < jsonp[`items`].length; i += 1) {
+					li = document.createElement(`li`);
+
+					let aUrl = document.createElement(`a`);
+					aUrl.href = jsonp[`items`][i][`link`];
+					aUrl.innerText = `Link`;
+
+					let img = document.createElement(`img`);
+					img.src = jsonp.items[i].media.m;
+
+					li.appendChild(aUrl);
+					li.appendChild(img);
+					ul.appendChild(li);
+				}/*END for loop*/
+
+				divPhotos.appendChild(ul);
+
+				/*returning `searching...` text to normal*/
+				universeButton.innerText = `UNIVERSE`;
+			})/*END universeButton.addEventListener()*/
+		})/*END window.addEventListener(`load`, function()*/
+	};/*END function universe(data) */
+
+	/*however i was not sure how to insert error message when something went wrong, mostly where to place the throw, and what criteria*/
+
+/***********************************************/
+
+
+/*KRATOS BUTTON*/
+	/* copied and paste the universe button function. so it is exactly the same as above.
+	+\ only change the necessary parts to kratos and any other adjustment needed 
+	+\ not able to place them in one function because they both use separate url which makes it not possible because the url cannot be change through the user search box
+	+\ ik not necessary to look below as you already seen above*/
+	const scriptKratos = document.createElement("script");
+	scriptKratos.src = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=kratos&format=json&tags=kratos"
+	document.head.appendChild(scriptKratos);
+
+	function kratos(data) {
+		/*waits for html to load first*/
+		window.addEventListener(`load`, function(){
+
+			let jsp = JSON.stringify(data,null,2);
+			/*convert to js object*/
+			const jsonp = JSON.parse(jsp);
+
+			kratosButton.addEventListener(`click`, (event) => {
+				/*setting buttons color*/
+				universeButton.style.backgroundColor = `buttonface`;
+				kratosButton.style.backgroundColor = `deepskyblue`;
+
+				/*indicate searching for user through button*/
+				universeButton.innerText = `universe`;
+				kratosButton.innerText = `Searching...`;
+
+				/*removing all previous search list and error if any*/
+				while (divPhotos.children.length > 0) {
+					divPhotos.removeChild(divPhotos.firstElementChild);
+				};
+
+				/*creating ul list with anchor and img*/
+				const ul = document.createElement(`ul`);
+				let li;
+				for (let i = 0; i < jsonp[`items`].length; i += 1) {
+					li = document.createElement(`li`);
+
+					let aUrl = document.createElement(`a`);
+					aUrl.href = jsonp[`items`][i][`link`];
+					aUrl.innerText = `Link`;
+
+					let img = document.createElement(`img`);
+					img.src = jsonp.items[i].media.m;
+
+					li.appendChild(aUrl);
+					li.appendChild(img);
+					ul.appendChild(li);
+				}/*END for loop*/
+
+				divPhotos.appendChild(ul);
+
+				/*returning `searching...` text to normal*/
+				kratosButton.innerText = `KRATOS`;
+			})/*END kratosButton.addEventListener()*/
+		})/*END window.addEventListener(`load`, function()*/
+	};/*END function kratos(data) */
+
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

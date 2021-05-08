@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>05 event keyword / .target / .tagName / adding and removing from the list / hover list in uppercase and using event handler / .stopPropagation() </title>
+</head><!--    event keyword / .target / .tagName / adding and removing from the list / hover list in uppercase and using event handler / .stopPropagation() -->
+<body>
+<main>
+  <div>
+    <input type="text" id="input">
+    <button class="insertButton">enter your list</button>
+    <button>remove from list</button>
+    <ul>
+      <li class="foo">alpha</li>
+      <li>bravo</li>
+      <li>charlie</li>
+      <li>delta</li>
+    </ul>
+  </div>
+
+<script>
+/* clicking to get any info of the page .  IK MAIN PART 1 */
+// event keyword / .target / .tagName
+  document.addEventListener(`click`, (event) => {     //.1
+    console.log(event.target);                        //.2
+    console.log(event.target.tagName);                //.3
+  });
+  //.1 event is a special keyname as it gives the event object with info and method
+  //+\ putting event in the parameter is not necessary as it still work. you could leave it empty
+  //.2 .target gives you the info of the original source that it came from
+  //.3 .tagName gives the html tag but in capital letters
+  //+\ you can do the same with className or id
+
+  /************************************************/
+
+/* adding and removing from the list. IK you already been through this, can skip this section if you want */
+  const inputz = document.getElementById(`input`);
+  const buttonAddz = document.getElementsByClassName(`insertButton`)[0];
+  const buttonRemovez = document.getElementsByTagName(`button`)[1];
+  const ulz = document.querySelector(`ul`);   //BIM selects the first ul without index number
+  const liz = document.querySelectorAll(`li`);
+
+// adding input value to the list
+  buttonAddz.addEventListener(`click`, () => {
+    let newList = document.createElement(`li`);
+    newList.textContent = inputz.value;
+    ulz.appendChild(newList);
+  });
+
+// removing list
+  buttonRemovez.addEventListener(`click`, function() {
+    let lastLi = ulz.querySelector(`li:last-child`);
+    ulz.removeChild(lastLi);
+  });
+
+    /**************************************************/
+
+/* hover list in uppercase and using event handler. IK MAIN PART 2 */
+  const divz = document.getElementsByTagName(`div`)[0];
+
+// hover list toUpperCase()
+  divz.addEventListener(
+    `mouseover`,
+    (event) => {
+      if (event.target.tagName == `LI`) {                  //.1
+        event.target.textContent = event.target.textContent.toUpperCase();
+      }                                                    //.2
+    },
+    false                                                  //.3
+  );
+  //.1 without this to specify <li> than the browser will assume the whole <div> box will be targeted and everything in the div will be change according to the function set up below
+  //.2 BIM event.target is specifying the <li> so we can add .textContent to change
+  //.3 BIM that .addEventListener() third parameter is optional boolean (userCapture). true for capturing phase. false for bubbling phase (which is by default)
+  //+\ for some reason both boolean works here. not sure why? as only false should be the only one that works here
+
+// hover list toLowerCase() / .stopPropagation()
+  divz.addEventListener(`mouseout`, () => {
+    if (event.target.tagName == `LI`) {
+      event.target.textContent = event.target.textContent.toLowerCase();
+      event.stopPropagation();               //.1
+    }
+  });
+  //.1 .stopPropagation() prevents further bubbling/capturing. which i am guessing  in this case is nothing outside the <div> box
+  /* event and .target allows to track .createElement new and delete elements after the page is loaded unlike the for loop which neglects new elements */
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- css specificity / directed vs inheritance-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>25 css specificity / directed vs inheritance</title>
+    <style>
+	/*specificity points despite hoisting method */
+		div#test#test h1 { 
+			color: blue !important; 
+		} 
+			/* = 10202pt on specificity*/
+		
+		div#test h1 { 
+			color: green !important; 
+		}
+			/* = 10102pt on specificity */
+		
+		h1 { 
+			color: yellow; 
+		}
+			/* = 1pt on specificity */
+		/*blue wins no matter which order in comes in*/
+		
+		
+		
+	/*Directly targeted elements vs. inherited styles*/
+		#parent {
+		  color: green !important;
+		}
+		h2 {
+		  color: pink;
+		}
+		/*will be pink because the h2 selector targets the element specifically, and the green selector is only inherited from its parent.*/
+	</style>
+</head>
+<body>
+<main>
+	<div id="test">
+	  <h1 style="color: red">div#test#test h1 {!important} - wins with 10202 specificity</h1>
+	</div>
+
+	<div id="parent">
+	  <h2>h2 {} - wins because the selector is targeting directly to element and not through inheritance</h2>
+	</div>
+</main>
+</body>
+</html>

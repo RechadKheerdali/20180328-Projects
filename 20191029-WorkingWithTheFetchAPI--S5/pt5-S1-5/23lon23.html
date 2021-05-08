@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- long polling / however without the server side setup than it will become regular polling / callback within function itself / persistent connection -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>23 long polling / however without the server side setup than it will become regular polling / callback within function itself / persistent connection</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*long polling / however without the server side setup than it will become regular polling / callback within function itself / persistent connection */
+/* source: javascript.info .
++\ imagine this is a low traffic chat room. so disregard many codes that is needed such as form input text / url / etc, as this is just for your understanding of the infrastructure.
++\ long polling or regular polling is about the client-side keeping a constant connection with the url server-side.
++\ this would be long polling if the server side has setup a pending connection. And they will only return the response object until they receive a message (eg. from the other person).
+	+\ once the browser receive the response object, it will resend the same request, and the cycles continues on until the users are finish.
++\ But since we are not able to use a server side to create a pending request, this demo of long polling become a regular polling, which means we set the number of times the request is send out.
+	+\ since we did not set a timer (setTimeout() ) on the http request being send out, the http request is a constant stream of http request (providing it was triggered).
+		+\ which is usually bad for performance and is not recommended for big task. so long polling is usually best.
+			+\ long polling is best when there is low traffic, such as waiting for your emails, instead of high traffic like back and forth conversation in chat rooms.
+
++\ A sketch of client-side subscribe function that makes long requests.
++\ notice it is simply the callback function calling within itself */
+
+/* Sending messages, a simple POST */
+function PublishForm(form, url) { /*1+*/
+
+ 	function sendMessage(message) {
+		fetch(url, {
+			method: 'POST',
+			body: message
+		});
+	}
+
+	form.onsubmit = function() {
+		let message = form.message.value;
+		if (message) {
+			form.message.value = '';
+			sendMessage(message);
+		}
+		return false;
+	};
+}; /*END function PublishForm */
+
+
+/* Receiving messages with long polling */
+function SubscribePane(elem, url) { /*1+*/
+
+	function showMessage(message) {
+		let messageElem = document.createElement('div');
+		messageElem.append(message);
+		elem.append(messageElem);
+	}
+
+	async function subscribe() {
+		let response = await fetch(url);
+
+		if (response.status == 502) { /*2+*/
+			/* let's reconnect */
+			await subscribe();
+		}
+		else if (response.status != 200) {
+			/* Show Error to user*/
+			showMessage(response.statusText);
+			/* Reconnect in one second */
+			await new Promise(resolve => setTimeout(resolve, 1000)); /*3+*/
+			await subscribe();
+		}
+		else {
+			/* Get and show the message */
+			let message = await response.text();
+			showMessage(message);
+			/* Call subscribe() again to get the next message */
+			await subscribe();
+		};
+	}; /*END async function subscribe */
+
+	subscribe();
+}; /*END function SubscribePane */
+
+/*1+ the callback was found and triggered in their html page using another <script>.
+1+ iK I also tested out with a working url with minor tweaks, and without a server side pending the connection, you only get a constant stream on http request, as long it is always 200 status.
+2+ Status 502 is a connection timeout error, may happen when the connection was pending for too long, and the remote server or a proxy closed it
+3+ not sure why it needs to wait for 1 second to reconnect?
++\ just to note, long polling is only good if chats are not often, but if you require constant stream chat than it is best to use other methods. */
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- grid-auto-flow:-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>03 grid-auto-flow:</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    div.gridContainer {
+        border:blue 10px solid;
+        display: grid;
+    }
+    
+    div.gridContainer > div.gridItem {
+        border: red 1px solid;
+    }
+    
+    div.gc1 {
+        grid-auto-flow: row;
+    }
+
+    div.gc2 {
+        grid-auto-flow: column;
+    }
+    
+/* check out the number order for each */
+    div.gc3 {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, 50%)
+    }
+    
+    div.gc4 {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(3, auto);
+    }
+    /*also grid-auto-columns can only work with grid-auto-flow: column;*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+    <div class="gridContainer gc1">
+        <div class="gridItem">1 grid-auto-flow: row;</div>
+        <div class="gridItem">2</div>
+        <div class="gridItem">3</div>
+        <div class="gridItem">4</div>
+    </div>        <hr>
+    
+    <div class="gridContainer gc2">
+        <div class="gridItem">1 grid-auto-flow: column;</div>
+        <div class="gridItem">2</div>
+        <div class="gridItem">3</div>
+        <div class="gridItem">4</div>
+        <div class="gridItem">5</div>
+    </div>    <hr>
+    
+    <div class="gridContainer gc3">
+        <div class="gridItem">1 grid-auto-flow: row;</div>
+        <div class="gridItem">2</div>
+        <div class="gridItem">3</div>
+        <div class="gridItem">4</div>
+        <div class="gridItem">5</div>
+        <div class="gridItem">6</div>
+    </div>  <hr>
+
+    <div class="gridContainer gc4">
+        <div class="gridItem">1 grid-auto-flow: column;</div>
+        <div class="gridItem">2</div>
+        <div class="gridItem">3</div>
+        <div class="gridItem">4</div>
+        <div class="gridItem">5</div>
+        <div class="gridItem">6</div>
+    </div>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+</script>
+</main>
+</body>
+</html>

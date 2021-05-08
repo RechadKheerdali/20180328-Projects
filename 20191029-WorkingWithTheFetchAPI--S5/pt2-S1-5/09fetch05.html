@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- using POST method with fetch() -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>05 using POST method with fetch()</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*using POST method with fetch() */
+const iKobject1 = {"iKoProperty1": "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"}; /*1+*/
+
+fetch("https://httpbin.org/post", { /*2+*/
+	method: "POST",	/*3+*/
+	headers: {	/*4+*/
+		"Content-Type": "application/json;charset=utf-8" /*5+*/
+	},
+	body: JSON.stringify(iKobject1) /*6+*/
+})/*END fetch() */
+	.then(iKresponseBody => iKresponseBody.json() )	/*7+*/
+	.then(IK.printD) /*OP response object */ /*8+*/
+
+/*1+ imagine I want to send this object through POST method as a json data.
+1+ iK notice "iKoProperty1": as it is wrap in quotes, which is bizarre because I always thought you cannot do that, perhaps it has something to do with some latest updates, or I got it wrong the whole time.
+2+ notice that the second argument of fetch() is an object syntax.
+3+ choose your http method you want to use.
+4+ it has to be the header line of the http request which probably requires input.
+	+\ i see most website and treehouse use the header: property but when I remove this entirely, it makes no difference.
+		+\ however I will still keep doing this as there must be a reason why this exist.
+5+ Content-Type: is the most common used request header: I have seen.
+5+ not sure "...;charset=utf-8" is required at the end, but there is no harm in including it I think. Got it from javascript.info btw.
+6+ this is the payload, where you send you data to POST.
+6+ sending iKobject1 as json.
+	+\ just remember you JSON.stringify() will only work on js objects, therefore you will need to convert map or set objects into arrays or object first.
+7+ you can still use the thenable handlers despite the change of http method.
+	+\ so you still receive the response body of the url.
+8+ you will notice the response object in the console will have the your iKobject1 data through its properties.
+	+\ the property called json: in the response object contains all your properties of iKobject1.
+		+\ .then(iKresponseBody => iKresponseBody.json ) you would use this if you want to gain access to them. */
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

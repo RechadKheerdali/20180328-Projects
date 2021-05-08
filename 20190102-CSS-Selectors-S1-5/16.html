@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--treehouse fun demo but interesting how little is required / :target-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>16 treehouse fun demo but interesting how little is required / :target</title>
+    <style>
+        /* Once the browser targets #eat, the animation is triggered */
+        #eat:target {  
+          animation: play .8s steps(10) infinite;
+        }
+
+        .monster {
+          width: 190px;
+          height: 240px;
+          margin: 40px auto;
+          background: url('https://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/blog/monster.png') left center;
+        } 
+        /*ik the image seems to go through frame by frame slider shots (maybe svg) cause by animation but i still not understanding the process */
+
+        @keyframes play {
+            100% { background-position: -1900px; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div id="eat" class="monster"></div>
+    <a href="#eat">Eat</a>
+    <a href="#">Stop Eating</a>
+</main>
+</body>
+    
+<!---------------------------------------
+    /* place this style at the bottom as it is not important, you could delete if you want, you already know but checking his standards */
+---------------------------------------->
+    <style>
+        body {
+          background: #24aecd;
+          text-align: center;
+        }
+        a {
+          text-decoration: none;
+          font-family: sans-serif;
+          color: white;
+          background: #196481;
+          padding: 10px 15px;
+          border-radius: .35em;
+          border-bottom: solid 3px rgba(0,0,0,.2);
+          margin-left: 6px;
+        }
+        a:hover {
+          background: firebrick;
+        }
+    </style>
+</html>

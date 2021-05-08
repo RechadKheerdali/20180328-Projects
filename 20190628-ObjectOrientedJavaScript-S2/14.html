@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 14 the base structor of .defineProperties() outside construction function, using the .prototype as object variable. -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>14 the base structor of .defineProperties() outside construction function, using the .prototype as object variable.</title>
+<style>
+/* + + + + + + + + + + + + STYLE -----------------------------*/
+/*------------------------ /style ////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + MAIN ----------------------------->
+<!------------------------ /main ///////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + SCRIPT ----------------------------*/
+'use strict';
+
+
+/* the base structor of .defineProperties() outside construction function, using the .prototype as object variable.
++\ this method does everything, accept arguments, setter works fine, no _underscore property.
+	+\ which is why this is my main method for .defineProperties() with constructor function.
++\ .defineProperties() aims at the constructor function properties itself using .prototype */
+const iKconsFunction = function ( {iKpar} = {} ) {
+	this.iKproperty1 = iKpar;	/*1+*/
+};
+
+Object.defineProperties(	/*2+*/
+	iKconsFunction.prototype,	/*3+*/
+	{
+		"iKproperty1": {
+			get: () => this.iKproperty1 || "iKgetDefaultV", /*4+*/
+			set: iKsetPar => this.iKproperty1 = iKsetPar, /*5+*/
+			enumerable: true,	/*6+*/
+			configurable: true	/*6+*/
+		}
+	}
+); /*Object.defineProperties() */
+
+const iKconsObject = new iKconsFunction( {iKpar: "iKarg"} ); /*7+*/
+
+/***********************/
+
+printD( iKconsObject ); /*OP iKproperty1 showing as normal property in the object */
+printD( iKconsObject["iKproperty1"] ); /*OP "iKarg" */
+
+iKconsObject.iKproperty1 = "iKreassign";
+
+printD( iKconsObject ); /*OP iKconsObject object */
+printD( iKconsObject["iKproperty1"] ); /*OP "iKreassign" */
+
+
+for (let property in iKconsObject) {
+	printD( property + " = " + iKconsObject[property] );
+}; /*OP "iKproperty1 = iKreassign" */ /*8+*/
+
+
+printD( typeof iKconsFunction );           /*OP function*/ /*9+*/
+printD( typeof iKconsFunction.prototype ); /*OP object*/   /*10+*/
+printD( iKconsFunction.prototype );        /*OP {constructor: ƒ}*/ /*11+*/
+
+/*1+ if you plan on using the constructor object arguments than you set the parameters, and declare the property in the constructor function.
+1+ just beware the parameters will go throught the setter function first.
+2+ .defineProperties() comes after the constructor function.
+3+ notice the .prototype being used on the constructor function, which converts it to object.
+4+ not required to use _underscore property when .defineProperties() is outside the constructor function.
+5+ remember that any arguments or reassignments will pass through the setter function first.
+6+ you must always set enumerable: and configurable: too when setting the getter and setter, otherwise they will default to false.
+	+\ makes no difference if you declared the property in the constructor function or not, always set all the property flags.
+7+ arguments will pass through the setter function first.
+8+ property showing in the loop.
+9+ constructor function is a function.
+10+ with .prototype you can convert it into object.
+11+ shows the function is now wrapped in an object.
+    +\ iKrecap202101 = it appears that prototype will show all the variables within the function as an object literal.
+        +\ perhaps this will work with other objects too. */
+
+
+ /*OP */
+/*----------------------- /script ///////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

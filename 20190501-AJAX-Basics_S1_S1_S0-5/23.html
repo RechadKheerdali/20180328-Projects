@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 23 using daniel flint code to make cat flickr click search-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>23 using daniel flint code to make cat flickr click search</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+	.ulselect li:nth-of-type(2) button {
+		background-color: aqua;
+	}
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+
+
+	<div>
+		<h1>Flickr Photo Feeder</h1>
+		<p>Choose which kind of animal you'd like to return photos of...</p>
+	</div>
+
+	<ul class="ulselect">   <!-- users chooses selection -->
+		<li><button>Dog</button></li>
+		<li><button>Cats</button> Only cats has been v.js jsonp</li>
+		<li><button>Moose</button></li>
+	</ul>
+
+	<div id="divphotos"> <!-- where link and img will be inserted --> </div>
+
+
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+
+
+/*daniel flint online code*/
+	const script = document.createElement("script");
+	script.src = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=handleTheResponse&format=json&tags=cats"
+	document.head.appendChild(script);
+
+
+
+/*using d.f callback function to write my function within*/
+	function handleTheResponse(data) {
+		/*i converted d.f api data into a node using .createNode for easier access*/
+		let jsp = document.createTextNode = JSON.stringify(data,null,2);
+
+		/*i have to convert the d.f string into object*/
+		let jsonp = JSON.parse(jsp);  
+
+		const catButton = document.querySelector(`.ulselect li:nth-of-type(2) button`);
+		const divPhotos = document.getElementById(`divphotos`);
+
+		/*the click event*/
+		catButton.addEventListener(`click`, function(event) {
+			let ul = `<ul>`;
+
+			for (let i = 0; i < jsonp[`items`].length; i++) {
+				/*<a> link of cats*/
+				let aUrl = `<a href="${jsonp.items[i].link}">link</a>`;
+
+				/*<img> media.m of cats*/
+				let img = `<img src="${jsonp["items"][i]["media"]["m"]}">`;
+
+				ul += `<li>${aUrl + img}</li>`;
+			}/*END for loop*/
+
+			ul += `</ul>`;
+			divPhotos.innerHTML = ul;
+		})/*END catButton.addEventListener()*/
+	};/*END handleTheResponse(data) */
+
+
+/*i could also easily replicate this to do the same for dog and moose. however i cannot do a proper search box.
++\ so this version is very limited compared to the jq  $.ajax() method i used in 17.html file.
++\ as you can see no xhr object is used*/
+
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

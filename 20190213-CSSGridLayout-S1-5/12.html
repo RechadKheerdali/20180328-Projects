@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- auto and 1fr differences-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>12 auto and 1fr differences</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    div.gridContainer {
+        border:blue 10px solid;
+        display: grid;
+    }
+    
+    div.gridContainer > div.gridItem {
+        border: red 1px solid;
+        background-color: beige;
+    }
+    
+/* auto */
+    .gc1 {
+        grid-template-rows: repeat(2, minmax(55px, auto));
+        grid-template-columns: repeat(auto-fit, minmax(55px, auto));
+    }
+    /* auto does it best to show all the content and extend the grid cell size to adjust, but not all the grid cell are the same size now */
+    
+/* 1fr */
+    .gc2 {
+        grid-template-rows: repeat(2, minmax(55px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+    }
+    /* 1fr ignores the content and focuses on keeping the all the grid cell size the same */
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+    <h3>auto</h3>
+    <div class="gridContainer gc1">
+        <div class="gridItem gi1">1</div>
+        <div class="gridItem gi2">2 to use heredwdwwdwdwd as the</div>
+        <div class="gridItem gi3">3</div>
+        <div class="gridItem gi4">4 to use hesddsdsre as the</div>
+        <div class="gridItem gi5">5</div>
+        <div class="gridItem gi6">6</div>
+        <div class="gridItem gi7">7 to use here a</div>
+        <div class="gridItem gi8">8</div>
+        <div class="gridItem gi9">9</div>
+        <div class="gridItem gi10">10 to use </div>
+        <div class="gridItem gi11">11</div>
+    </div>   
+
+    <h3>1fr</h3>
+    <div class="gridContainer gc2">
+        <div class="gridItem gi1">1</div>
+        <div class="gridItem gi2">2 to use heredwdwwdwdwd as the</div>
+        <div class="gridItem gi3">3</div>
+        <div class="gridItem gi4">4 to use hesddsdsre as the</div>
+        <div class="gridItem gi5">5</div>
+        <div class="gridItem gi6">6</div>
+        <div class="gridItem gi7">7 to use here a</div>
+        <div class="gridItem gi8">8</div>
+        <div class="gridItem gi9">9</div>
+        <div class="gridItem gi10">10 to use </div>
+        <div class="gridItem gi11">11</div>
+    </div>   
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+</script>
+</main>
+</body>
+</html>

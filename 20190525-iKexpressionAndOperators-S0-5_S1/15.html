@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 15 object constructor function with 'this' / the use of 'new' also -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>15 object constructor function with 'this' / the use of 'new' also</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+
+/* object constructor function */
+	/*however the function correspond to a js object which is style as follows*/
+	const City = function(name, state) {
+		this.name = name || 'Portland'; /*1+*/
+		this.state = state || 'Oregon';
+		this.printMyCityAndState = function() {
+		  return console.log(this.name + ", and my state is " + this.state);
+		};
+	};
+	/*1+ .name and .state is not change by the parameter of the function as they are object.
+	1+ || the OR logical operand is being used. and if no argument is pass through to the parameter than the alternative will be automatically be selected.
+	1+ 'this' does not represent City itself because it will remain undefined. the 'this' will represent the 'new' constructor instance you form in a new variable such as Portland (below).
+	    +\ so you cannot use City.name because it will be undefined and still a function, not an object.
+	1+ the = sign is being used despite it having characteristic of object, but think of it as a new variable that you are declaring*/
+
+
+	/*setting new constructors so you can modify the City() property*/
+	portland = new City();
+	seattle = new City('Seattle', 'Washington');
+	salem = new City('Salem');                  /*1+*/
+		/*1+ or i could use (undefined, "Salem") to add to the second argument*/
+		/*notice they are not using const/let/var which you can use by the way if you wanted to. But the variables are configurables.
+		+\ you have to use the 'new' constructor otherwise calling one of the object will not work and be undefined*/
+
+
+	/*console output because we are calling a object function in City()*/
+	portland[`printMyCityAndState`](); /*1+*/
+	seattle.printMyCityAndState();
+	salem.printMyCityAndState();
+		/*1+ BIM bracket and dot notation.
+		1+ you must use the () outside the bracket notation if the value is an anonymous function */
+
+
+	/*object output*/
+	console.log(portland);
+	console.log(seattle);
+	console.log(salem);
+
+
+	/*i can also create new object keys using the 'new' constructor just like a normal object*/
+	portland[`ik`] = "ik1";
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode);
+// serialize(formDOMelement);
+// serializeObject();
+</script>
+</main>
+</body>
+</html>

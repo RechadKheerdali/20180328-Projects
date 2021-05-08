@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 01 Example of creating react context api / React.createContext() / .Provider / .Consumer -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 Example of creating react context api / React.createContext() / .Provider / .Consumer</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file on create-react-app -->
+    <div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2.0.0-rc.1"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+/*Example of creating react context api / React.createContext() / .Provider / .Consumer */
+/* react context api prevents prop drillings, therefore possible making your react code cleaner and less clutter 
++\ iK I first created this code on create-react-app, and copied it here to browser.
+	+\ iK also use this opportunity to imagine you doing this on create-react-app with all 5 files.
+		+\ index.html (which is the html page) / index.js / App.js / 01context.js / 01.js .
+	+\ iK I commented out the import and export , but it will give you a good idea how it works on build project. */
+
+	/*01context.js file*/
+//import React from 'react';
+
+const iKcontextObject = React.createContext(); /*1+*/
+
+//export 	/*2+*/
+const IkProvider = iKcontextObject.Provider;  /*3+*/
+
+//export 
+const IkConsumer = iKcontextObject.Consumer;  /*4+*/
+
+/******************/
+/******************/
+
+	/*01.js file*/
+//import React, {Component} from 'react';
+//import {IkProvider} from './iKcontextObjectP/01context.js';
+//import {IkConsumer} from './iKcontextObjectP/01context.js';
+
+class IkClassComponent1 extends React.Component {
+	state = {
+		iKobject1: {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2"}
+	};
+
+	render() {
+		return (
+			<IkProvider value={ {iKstateObject1: this.state.iKobject1, iKpropsObject1: this.props} }>
+				<div>
+					<h1>List</h1>
+					<IkFunctionalComponent1 />
+				</div>
+			</IkProvider>
+		);  /*5+*/
+	};
+}; /*END IkClassComponent1 */
+
+function IkFunctionalComponent1() {
+	return (
+		<IkConsumer>{ iKcontextObjectP => { /*6+*/
+
+			console.log(iKcontextObjectP.iKpropsObject1); /*OP {iKpropArg: "iKproping"} */ /*7+*/
+
+			return (
+				<ol>
+					<li>one</li>
+					<li>{iKcontextObjectP.iKstateObject1.iKoProperty2}</li>
+					<li>three</li>
+				</ol>
+			); /*OP: the second <li> will be "iKoV2" */
+		}}</IkConsumer>
+	);
+}; /*END IkFunctionalComponent1 */
+
+//export default IkClassComponent1;
+
+/******************/
+/******************/
+
+	/*App.js file*/
+//import React from 'react';
+//import IkClassComponent1 from './01.js';
+
+function App() {
+	return (
+		<IkClassComponent1 iKpropArg="iKproping" />
+	);
+};
+
+//export default App;
+
+/******************/
+/******************/
+
+	/*index.js file*/
+//import React from 'react';
+//import ReactDOM from 'react-dom';
+//import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+/*1+ You must first create the react context api Provider and Consumer if you want to use context api.
+1+ It is ideal to place context api on a separate file away from the main elements.
+2+ You could put the export keyword in front of const as it will work fine.
+3+ .Provider will store the data you want to store your state / props object / etc.
+4+ .Consumer will pass the stored data in .Provider to the component functions or nested elements of your choice to use as you see fit.
+5+ <IkProvider> is representing the .Provider of the context.
+	+\ VIP you must use value={} attribute in <IkProvider> for you to store your data in the context api.
+		+\ iK I passed in an object within value because I wanted to pass the state object and the props object. But if you only want to pass a single or more propery data than you can.
+			+\ BIM you can pass almost any data, including class method function.
+	+\ BIM all the nested elements of <IkProvider> will have access to 'value' stored data.
+		+\ VIP but the nested elements must be wrap by <IkConsumer> , and become direct child of <IkConsumer> for them to access <IkProvider> stored data.
+	+\ BIM it is recommended to have <IkProvider> be top-level component or at least the nearest top common ancester.
+		+\ <IkProvider> can be use either functional or class component.
+6+ VIP <IkConsumer> must be direct parent for any nested element to be able to use the .Provider stored data.
+	+\ VIP you must wrap all your nested elements (that wants to use the stored data) within a anonymous function of <IkConsumer> .
+6+ BIM iKcontextObjectP represents the stored context data within the .Provider .
+7+ this props object is from the <App> function, but is stored in .Provider . */
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

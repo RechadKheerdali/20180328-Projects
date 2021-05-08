@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 01 basic ajax-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 basic ajax</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+
+<!--	first ajax being displayed on html-->
+	<div id="ajax1"></div>
+
+<!--	second ajax that is triggered by onclick function-->
+	<button class="ik" onclick="onclickAJAX()">onclick ajax button</button>
+	<div class="ajax2"></div>
+
+<!--	third ajax using modern and best practice javascript-->
+	<button class="ik3">addEventListener() ajax button</button>
+	<div id="ajax3"></div>
+
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.0.slim.min.js" integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+	/*IK SOME.HTML FILES MAY NOT WORK AS INTENDED IF YOU ARE NOT USING A SERVER TOO DUE TO AJAX REQUIRING A SERVER
+	+\ ALSO I NOTICE FIREFOX SEEM LIKE IT WORKS FOR MOST FILES!!*/
+
+/*ajax 1 on html page*/
+    const xhr1 = new XMLHttpRequest();         /*1+*/
+
+    xhr1.onreadystatechange = function(){      /*2+*/
+      if(xhr1.readyState === 4){               /*3+*/
+          document.getElementById('ajax1').innerHTML = xhr1.responseText; 
+      }
+    };
+
+    xhr1.open('GET', '01ajax.html');           /*4+*/
+
+    xhr1.send();                               /*5+*/
+		/*1+ step 1 Create XMLHttpRequest Object
+		2+ step 2 Create callback function  
+		3+ 4 is request finished and response is ready
+		4+ step 3 Open request  
+		5+ step 4 send request 
+		+\ the four steps are the skeleton of ajax. you only really need to modify the call function to do what you want to do */
+
+
+/*ajax 2 triggered by button onclick*/
+	const xhr2 = new XMLHttpRequest();         
+
+    xhr2.onreadystatechange = function(){      
+      if(xhr2.readyState === 4){               
+          document.querySelector('.ajax2').innerHTML = xhr2.responseText; 
+      }
+    };
+
+    xhr2.open('GET', '01ajax.html');           
+
+    function onclickAJAX() {                                  /*1+*/
+		xhr2.send();                                          /*2+*/
+		document.querySelector(`.ik`).style.display = `none`; /*3+*/
+	}
+		/*1+ the onclick function
+		2+ you can place .send() within a function so you can do extra things too
+		3+ display="none" for the button after clicked */
+
+
+/*ajax 3 triggered by button .addEventListener()*/
+	const xhr3 = new XMLHttpRequest();
+
+	xhr3.open(`GET`, `01ajax.html`);            /*1+*/
+
+	xhr3.onreadystatechange = () => {
+		if (xhr3.readyState === 4) {
+			document.getElementById(`ajax3`).innerHTML = xhr3.responseText;
+		}
+	};
+
+	const button3 = document.querySelector(`.ik3`);
+
+	button3.addEventListener(
+		`click`,
+		() => {
+			xhr3.send();
+			button3.parentNode.removeChild(button3);
+		}
+	)
+		/*1+ you can place .open() before the callback function, optional */
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode)
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    
+<!--    include in you head as it makes you website looks a little nicer on ohone as it can do a weird zoom.-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">       
+    <title>02</title>
+      <style>
+          body {
+              font-size: 1.5em;
+          }
+          h1 {
+              font-size: 2em;     
+          }
+          .ik1 {
+              font-size: 1.5em;
+              font-variant: small-caps;
+              font-stretch: condensed;
+          }
+          
+          .ik2 {
+              font-stretch: ultra-expanded;
+              font-size-adjust: 5;
+          }
+          
+/*          this is the best example to use the universal selector because border-box substract the padding and border in your determine width and height so it wont add any hidden width and height*/
+          * {
+              box-sizing: border-box;
+          }
+          
+          img {
+              width: 40%;
+              min-width: 250px;
+              max-width: 500px;
+              border-radius: 50% 20% / 10% 40%;
+          }
+      
+          div {
+              width: 150px;
+              height:150px;
+              background-color:white;
+              background-image:
+                radial-gradient(midnightblue 9px, transparent 10px),        
+                repeating-radial-gradient(midnightblue 0, midnightblue 4px, transparent 5px, transparent 20px, midnightblue 21px, midnightblue 25px, transparent 26px, transparent 50px);    
+             background-size: 30px 30px, 90px 90px; 
+             background-position: 0 0;
+          }
+      </style>
+
+  </head>
+  <body>
+<a href="01.html">01</a> <br>
+
+    <!-- <body> Consider that its font-size is set to 1.5em -->
+     <h1>Header</h1>    <!-- Consider that its font-size is set to 2em -->
+
+    <p class="ik1">A paragraph explains smthngee...</p>   <!-- Consider that its font-size is set to 1,5em --> 
+
+    <p class="ik2">A Paragraph Explains Smthngee...</p>
+      
+      
+      <img src="image/15464.jpg" alt="winners">
+      
+      <div>example of what is possible with gradient css</div>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+/*        by ilshaad kheerdali 2018 */
+
+*,
+*::before,
+*::after    {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;    /* IMPORTANT IK display/f.direction/m.height   is for sticky footer but be sure to add margin-top: auto; on the main footer  
+	+\ also this must be used with header/main/footer otherwise flex.D: column changes the format*/
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.4;
+}
+.body_wrapper {
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;    /* IMPORTANT IK display/f.direction/m.height   is for sticky footer but be sure to add margin-top: auto; on the main footer  */
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.4;
+/*    its a copy only because you want it to be in sync with the body plus you now have extra container to customize (.bodywrapper) without having to touch the body*/
+    width: 100%;
+    margin: auto;
+	font-family: ;
+
+}
+
+.main_footer {
+    margin-top: auto; /*always keep so it stay as a sticky footer*/
+}
+
+/*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+BASE SYNTAX FOR ALL
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*/
+
+
+@media only screen and (max-width: 767px) /*480px main focus*/ {
+    
+}
+
+
+@media only screen and (min-width: 768px),
+       only screen and (min-width: 700px) and (orientation: landscape) /*might want to consider 768px but test it out first*/ {
+    
+}
+
+
+@media only screen and (min-width: 992px) {
+    
+}
+
+
+@media only screen and (min-width: 1200px) {
+    
+}
+
+
+/*
+++++++++++++++++++++++++++++++++
+CLEARFIX   for floated elements
+++++++++++++++++++++++++++++++++
+*/
+.clearfix::before,
+.clearfix::after    {
+    content: " ";
+    clear: both;
+    display: table;
+}

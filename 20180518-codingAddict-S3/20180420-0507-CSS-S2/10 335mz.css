@@ -1,0 +1,34 @@
+ul, ol {
+    list-style-type: circle;
+}
+
+ul {
+    background-color: darkkhaki;
+}
+
+ul li {
+    background-color: bisque;
+}
+
+ol {
+    background-color: aqua;
+}
+
+ol li {
+    background-color: dimgray;
+}
+
+.ik1 {
+    list-style-type: none;
+}
+
+.ik1 li {
+    font-weight: bolder;
+}
+
+.ik2 {
+    list-style-position: inside;
+}
+.ik5 {
+    list-style-image: url();  
+}

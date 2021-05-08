@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after    {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;    /* display/f.direction/m.height   is for sticky footer but be sure to add margin-top: auto; on the main footer  */
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.4;
+}
+
+.bodywrapper {
+    width: ;
+    margin: auto;
+}
+
+/*
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+BASE SYNTAX FOR ALL
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+*/
+
+
+@media only screen and (min-width: 480px) {
+    
+}
+
+
+@media only screen and (min-width: 768px),
+       only screen and (min-width: 700px) and (orientation: landscape) {
+    
+}
+
+
+@media only screen and (min-width: 992px) {
+    
+}
+
+
+@media only screen and (min-width: 1200px) {
+    
+}
+
+
+/*
+++++++++++++++++++++++++++++++++
+CLEARFIX   for floated elements
+++++++++++++++++++++++++++++++++
+*/
+.clearfix::before,
+.clearfix::after    {
+    content: " ";
+    clear: both;
+    display: table;
+}

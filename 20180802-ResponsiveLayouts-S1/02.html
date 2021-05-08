@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02FLEXBOX</title>
+    <style>
+/*        flexbox demo.  for parent element
+        display: inline-flex;  /*or flex as block
+        flex-direction:
+        flex-wrap
+        flex-flow:    = shorthand( f.d + f.w )
+        align-items:                             */
+        .box1 {
+          display: inline-flex;  /*or flex as block*/
+          flex-direction: row-reverse; /* row | row-reverse | column | column-reverse;  */
+        }
+        
+        .box2 {
+            display: flex;
+            flex-wrap: wrap-reverse;  /*nowrap | wrap | wrap-reverse*/
+        }
+        
+        .box3 {
+            display: flex;
+            flex-flow: row-reverse wrap;   /*shorthand for flex-direction and flex-wrap*/
+        }
+        
+        .box4 {
+            display: flex;
+            align-items: flex-end;   /* flex-start | flex-end | center | baseline | stretch */
+        }            
+    </style>
+</head>
+<body>
+    <div class="box1" style="border: dashed 2px black">
+          <div class="one1" style="border: solid 2px blue">One</div>
+          <div class="two1" style="border: solid 2px green">Two</div>
+          <div class="three1" style="border: solid 2px red">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box2" style="border: dashed 2px black">
+          <div class="one2" style="border: solid 2px blue; width:500px;">One</div>
+          <div class="two2" style="border: solid 2px green; width:500px">Two</div>
+          <div class="three2" style="border: solid 2px red; width:500px">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box3" style="border: dashed 2px black">
+          <div class="one3" style="border: solid 2px blue; width:500px;">One</div>
+          <div class="two3" style="border: solid 2px green; width:500px">Two</div>
+          <div class="three3" style="border: solid 2px red; width:500px">Three</div>
+        </div>  <br><br><br>
+        
+    <div class="box4" style="border: dashed 2px black; height: 60px">
+          <div class="one4" style="border: solid 2px blue">One</div>
+          <div class="two4" style="border: solid 2px green">Two</div>
+          <div class="three4" style="border: solid 2px red">Three</div>
+        </div>  <br><br><br>
+</body>
+</html>

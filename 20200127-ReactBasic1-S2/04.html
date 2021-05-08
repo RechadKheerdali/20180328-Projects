@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 04 Create a react component with function (component function) / react component callback function / props object as argument -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>04 Create a react component with function (component function) / react component callback function / props object as argument</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<div id='iKdivContainer'>iK will be overwritten by react</div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2.0.0-rc.1"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Create a react component with function (component function) / react component callback function / props object as argument */
+/*The simplest way to define a component is to write a JavaScript function*/
+function IkComponentFunction(iKpropsObject) {	/*1+*/
+	console.log(iKpropsObject); /*OP props object*/ /*2+*/
+
+	return (
+		<div>
+			<h1>{iKpropsObject.iKpropsName}</h1>
+			<p className="iKclass1">iKparagraph string</p>
+		</div>
+	);	/*3+*/
+};
+
+const iKdivElement = (
+	<IkComponentFunction iKpropsName="iKpropsValue">
+		iKchildrenElement
+	</IkComponentFunction>
+); /*4+*/
+
+ReactDOM.render(
+	iKdivElement,
+	document.getElementById('iKdivContainer')
+);
+
+/*1+ VIP you must always start component function name with a capital letter.
+	+\ React treats components starting with lowercase letters as DOM tags. For example, <div /> represents an HTML div tag, but <IkComponentFunction /> represents a component and requires IkComponentFunction to be in scope.
+		+\ so if you do not start your components with capitals letters than it will not work because react will assume it is a html element tag.
+	+\ it is best to name component function to what ever element you are going to create for easier understanding of the code, such as 'Footer' / 'Header' / 'Main' / 'Navigation' / etc...
+1+ VIP react collects argument as the props object.
+	+\ often argument is just called props universally.
+1+ you could write component function in arrow function, to be more concise, and eliminating the return keyword. But not much difference besides that.
+2+ OP {iKpropsName: "iKpropsValue", children: "iKchildrenElement"} .
+	+\ if you installed react developer tools, than you should see props object without having to use console.log() .
+3+ you can use the props object however you want to use on your element.
+	+\ you could even use it as className value using jsx expression {} .
+4+ VIP jsx uses element tags as the callback function for the component function.
+	+\ iK so basically you should think of this as callback function, and not creating a typical jsx element.
+	+\ VIP react jsx element tag rules changes when you use component function name, as react and jsx recognised it is a component function and not a creation of a new element.
+	+\ VIP jsx callback function also accepts arguments which will become part of the props objects for the component function.
+	+\ iKVIP component function accepts 2 type of arguments, one is props objects which is writen in the attribute area. And the second argument as element (iKchildrenElement).
+		+\ VIP props object argument must always be type as keys.
+			+\ VIP you can name whatever property name you want (that makes context sense) as it will be part of the props object.
+				+\ VIP the js camelCase no longer applies within component callback function.
+			+\ BIM you can also use jsx expression for iKpropValue.
+		+\ BIM iKchildrenElement can be almost anything, it could be another jsx html element / jsx expression / component callback function / etc…
+			+\ BIM iKchildrenElement will also become props object for the function, and be given the 'children' property name.
+				+\ iKBIM you will not see 'iKchildrenElement' string on the page because i did not use iKpropsObject.children within my function to add it to the <div> element.
+4+	%%%%%
+<IkComponentFunction iKpropsName="iKpropsValue" />
+=eg. if you do not plan to use nested element for the react callback function, than you can just use self closing tag without the additional typing.
+4+ iK not required to store the react callback function in a variable, but easier to understand here. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

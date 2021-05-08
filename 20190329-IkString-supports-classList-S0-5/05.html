@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- .classList / .classList.item() / .classList.length / .classList.contains() / .classList.replace()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>05 .classList / .classList.item() / .classList.length / .classList.contains() / .classList.replace()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+	<div class="ik1 ik2 ik3 ik4 ik5"></div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+	const ikClass = document.getElementsByClassName(`ik1`)[0];
+	
+/* .classList */
+	printD( 
+		ikClass.classList      /*ik1 ik2 ik3 ik4 ik5*/
+	);
+		/*you can read/set/overide the element class*/
+	
+/* .classList.item() */
+	printD(
+		ikClass.classList.item(2)    /*ik3*/
+	)
+		/*returns the class name of the index number provided in the parenthesis*/
+	
+/* .classList.length */
+	printD(
+		ikClass.classList.length       /*5*/
+	)
+		/*returns the number of classes in the element*/
+	
+/* .classList.contains() */
+	printD(
+		ikClass.classList.contains(`ik5`)    /*true*/
+	)
+		/*returns boolean, on whether the class exist or not*/
+	
+/* .classList.replace() */
+	ikClass.classList.replace(`ik2`, `ik6`)   /*ik1 ik6 ik3 ik4 ik5*/
+	printD(
+		ikClass.classList
+	)
+		/*ik2 has been replace by ik6*/
+	
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);	
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#layoutwrapper {
+    width: ;
+    margin: auto;
+}

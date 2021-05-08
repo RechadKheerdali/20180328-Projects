@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>03 let / var  scoping differences</title>
+</head>
+<body><!--   let / var  scoping differences-->
+<main>
+<script> 
+/*let work very similar to var but let has block level scope */
+    let x = 1;
+
+    if (x === 1) {
+      let x = 2;
+      printD(x);            //  local scope change output: 2
+    }
+
+    printD(x + "<br>");     //  global scope unchange output: 1
+    // let value is kept seperate in global and conditional statement
+    
+    /*******************************/
+    
+// another examples of scoping diferences in functions
+    function varTest() {
+      var i = "a";
+      if (true) {
+        var i = "b";         // local scope and a function scope
+        printD(i);           // b
+      }
+      printD(i);             // b
+    };
+    varTest();   // var is a global scope that shares with everything
+    
+    function letTest() {
+      let j = "A";
+      if (true) {
+        let j = "B";          // only a local scope. not function scope
+        printD(j);            // B
+      }
+      printD(j + "<br>");     // A
+    };
+    letTest();                // let becomes a local scope that keeps lock within its original block
+    
+    /*************************************/
+    
+// var / let changes intermitently
+    var one = 1;
+    var two = 2;
+
+    if (true) {
+      var one = 11;    // global scope
+      printD(one);     // 11
+      let two = 22;    // var switch to let.  the scope is inside the if-block
+      printD(two);     // 22 - local scope
+    } 
+
+    printD(one);       // 11  - global scope changed
+    printD(two);       // 2   - global scope unchanged by local scope
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- .eq() / .prevUntil()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>08 .eq() / .prevUntil() </title>
+<style>
+/*"""""""""""""""""""""""""" style -------------------------------*/
+    li {
+        outline: blue 0.1em solid;
+        display: inline-block;
+        width: 10%;
+        height: 2em;
+    }
+/*------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--"""""""""""""""""""""""" main ------------------------------->
+    <ul>
+        <li>1</li>
+        <li class="index1">2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+<!------------------------- /main /////////////////////////////-->
+<script src="zIK/3-JS/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*""""""""""""""""""""""""" script ------------------------------*/
+/* .eq() . it uses the index number system */
+    $(`li`).eq(0).css(`backgroundColor`, `red`);
+    $(`li`).eq(1).css(`backgroundColor`, `green`);
+    $(`li`).eq(2).css(`backgroundColor`, `blue`);
+    $(`li`).eq(-1).css(`backgroundColor`, `yellow`);
+    $(`li`).eq(-2).css(`backgroundColor`, `purple`);
+    /* minus numbers basically means it will go backwards through the loop */
+    
+/* .prevUntil() */
+    const $li = $(`li:last-child`).prevUntil(`.index1`, `li`).css(`font-size`, `30px`); /*.1*/
+        
+    /* $li.style.color = `red`;   will not work because in js you need to use loop in order to apply to the DOM collection*/
+    /*.1 in .prevUntil(), its the position of the element and what type of element */
+/*------------------------- /script /////////////////////////////*/
+</script>
+</main>
+</body>
+</html>

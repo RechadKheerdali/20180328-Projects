@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- FormData()  -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 FormData()</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- form elements -->
+<form id="iKformId">
+	<input type="text" name="iKtextName1" value="iKtextValue1" id="iKinputTextId">
+	<input type="password" name="iKpasswordName1" value="iKpasswordValue1" id="iKinputPasswordId">
+	<input type="submit" id="iKsubmitId">
+</form>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*FormData() */
+/* ik do not forget you have html also written. */
+/***** FormData( iKoptionalFormElement ); */
+const iKformData = new FormData( iKformId ); /*1+*/
+
+
+/***** .append(iKnewName, iKvalue) */
+/***** .set(iKnewName, iKvalue) */
+iKformData.append("iKappendName1", "iKappendValue1"); /*2+*/
+iKformData.set("iKsetName1", "iKsetValue1");
+
+iKformData.append("iKappendName2", iKinputTextId.value); /*3+*/
+
+
+IK.printD( iKformData ); /*OP {} */ /*4+*/
+
+
+for (let iKarray of iKformData) {	/*5+*/
+	IK.printD( iKarray )		/*6+*/
+};
+ /*OP	["iKtextName1", "iKtextValue1"]
+ 		["iKpasswordName1", "iKpasswordValue1"]
+ 		["iKappendName1", "iKappendValue1"]
+		["iKsetName1", "iKsetValue1"]
+		["iKappendName2", "iKtextValue1"]	*/
+
+/*1+ FormData() works similarly as map object, which has similar properties and method.
+	+\ however unlike map object, you can only insert form element within the parenthesis, and nothing else.
+		+\ but this is optional, you do not have in insert iKoptionalFormElement, and instead use the .append() or .set() method.
+1+ you only need to insert the form element node inside the parenthesis, and it will convert all the elements inside the form element into an 2 dimentional array of pairs.
+	+\ eg. [ 
+				[name attribute, value attribute],
+				[name attribute, value attribute],
+				[name attribute, value attribute] 
+			]
+2+ difference between .append() and .set() is, if there are 2 or more repeated name (iKnewName) in the formData object, .set() will override its value with the last repeated name (iKnewName). But .append() will not override anything, instead it will add new key pair, so you will have 2 or more repeated name (iKnewName) but with different value.
+	+\ iK however when experimented i get 2 .append() repeated name with both on separate value, but will always get the first value when I use .get() ???.
+3+ if you want to target a specific element in the form element, than get its node and use .value (or .name) as shown in the demo.
+	+\ however this will not work on all elements, such as input[type=file] element.
+4+ it appears as an empty object literal, but just like map object you need to use loop syntax to see all data.
+5+ just like map object you can instead use destructuring on iKarray since each array is a pair.
+	+\ for (let [iKkey, iKvalue] of iKformData) {...}		=eg.
+6+ remember you could use index 0 or 1 bracket to gain the values.
++\ remember you can use many other properties and method on formdata object, and most are the same as map object properties and method. */
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

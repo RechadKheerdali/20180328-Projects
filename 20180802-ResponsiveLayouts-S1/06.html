@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06</title>
+    <link rel="stylesheet" href="06workspace.css" type="text/css">
+    <style>
+        /* this might be a good formula if doing a navbar and you want one box such as home to be opposite to the rest of the boxes 
+        p.s ignorre the other css background just remeber these css on this html <style> */
+        .box1 {
+            display: flex;
+            justify-content: space-between;
+        }
+        .one1 {
+            margin-right: auto;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .item {
+            flex-grow: 1;
+            flex-basis: 120px; /* when screen gets small and pass the 120px threshold then the items will break up and therefore not be of even size. ik personally i prefer using % as it seems to work better */
+        }
+    </style>
+</head>
+<body>
+    <div class="box1" style="border: dashed 2px black; ">
+          <div class="one1" style="border: solid 2px blue">Home</div>
+          <div class="two1" style="border: solid 2px green">Two</div>
+          <div class="three1" style="border: solid 2px red">Three</div>
+        </div>  <br>
+    
+    <p style="color: red;">from workspace treehouse lesson on flexbox. remeber the important thing to bare in mind is that all thes items are different amount of content which affects flex-grow sizes. but if you mix in flex-basis then you can set them evenly. auto means 0px so they will be even to 0px but at a different px it will be even until it passes that px    </p>
+    
+    <div class="container">
+		<div class="item-1 item">
+			Item 1
+			<p>Mustache cred 3 wolf moon shabby chic, flannel vegan Godard selfies aesthetic taxidermy post-ironic forage deep v tousled.</p>
+		</div>
+		<div class="item-2 item">
+			Item 2
+			<p>Vegan meggings hashtag, before they sold out Pitchfork next level vinyl. Fanny pack direct trade High Life.</p>
+			<p>Bicycle rights mumblecore irony disrupt.</p>
+		</div>
+		<div class="item-3 item">
+			Item 3
+			<p>Banksy squid distillery Portland whatever, lo-fi Wes Anderson.</p>
+		</div>
+		<div class="item-4 item">
+			Item 4
+			<p>Sriracha raw denim fixie.</p>
+		</div>
+	</div>
+</body>
+</html>

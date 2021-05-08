@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>08 practiced\add some new features too / .removeChild() / .parentNode / document.body</title>
+</head>
+<body> <!-- practiced\add some new features too / .removeChild() / .parentNode / document.body -->
+<main id="mainy">
+    <input type="text" class="inputy" placeholder="for your new div">
+    <button class="addButton">add item</button>
+    <button id="removeDivy">Remove item</button>
+    <div>div box</div>
+    <h2>using .ParentNode</h2>
+    <p id="nested">.parentNode with if condition</p>
+
+<script>
+    const mainy = document.getElementById(`mainy`);
+    const input = document.getElementsByClassName(`inputy`)[0];
+    const button = document.getElementsByClassName(`addButton`)[0];
+    
+// add new div  
+    button.addEventListener(`click`, () => {
+        if (input.value.length > 0) {                             //.1
+            const newDiv = document.createElement(`div`);
+            newDiv.textContent = input.value;
+            newDiv.style.cssText = `background-color: orange; color: white;`;    //.2
+            mainy.appendChild(newDiv);                            //.3
+            input.value = null;                                   //.4
+            input.setAttribute(`placeholder`, `anymore`);
+        }
+    })
+    //.1 this prevents an empty string in the input to create a new element and place it in the DOM
+    //.2 adding css style to the new div
+    //.3 BIM the new div is being added to the <main> . so you can add anything anywhere as long as you inserted a tag beforehand
+    //.4 null is the same as empty string ""
+
+    /*****************************************************/
+    
+// .removeChild()
+    const removeButton = document.getElementById(`removeDivy`);
+    
+    removeButton.addEventListener(`click`, () => {
+        const divDOM = document.querySelector(`div:last-child`);   //.1
+        mainy.removeChild(divDOM);
+    })
+    //.1 :last-child prevents all the <div> to be remove, there will always be one left, which is why div `div box` is not being remove 
+    
+    /********************                           *******************/
+    
+//// .removeChild()   using the reverse for loop
+//    const removeButton = document.getElementById(`removeDivy`);
+//    
+//    removeButton.addEventListener(`click`, () => {
+//        const divDOM = mainy.getElementsByTagName(`div`);     //.1
+//        for(let i = divDOM.length - 1; i >= 0; i--) {
+//            mainy.removeChild( divDOM[i] );                   //.2
+//            break;                                            //.3
+//        }
+//    })
+    //.1 notice i was being specific with parent node otherwise it would not work because the <div> would not be a direct child. especially when using .getElementByTagName()  .
+    //.2 notice the parent DOM node specifity here too.
+    //.3 without break; all of <div> would be remove.
+    /* cannot understand why this is not working. everything looks good to me and i did spend a lot of time on this so ??????      answer:- because i have a <main> in my template, i need to be more specific in my parent node for it to work 
+    +\  also BIM that newDiv .createElement() does not yet exist in the DOM yet especially with the IF conditional statement so you cannot attach that DOM node 
+		
+		THIS DOES WORK NOW WITH THE CHANGE OF THE MAIN TAG*/
+                
+    /************************************************/
+        
+/* .parentNode */
+// remove H2 
+    const iKh2 = document.getElementsByTagName(`h2`);
+
+    iKh2[0].parentNode.removeChild(iKh2[0]);
+    /* so you don’t have to go finding it and write another set of DOM node code */
+        
+    
+// Removing a specified element without having to specify its parent node
+    const node = document.getElementById("nested");    
+    
+    if (node.parentNode) {                       //.1
+      node.parentNode.removeChild(node);
+    }
+    //.1 remove a node from the tree, unless it's not in the tree already
+        
+    /**************************************************/
+    
+// document.body
+    let p = document.createElement("p");
+    p.textContent = `whats up! from document.body`;
+    document.body.appendChild(p);
+    
+    document.body.style.backgroundColor = `lightblue`;
+    /* beware when using this ik because it will appear outside the <main> tag in your personal template which can cause you possible problems */
+</script>
+</main>
+</body>
+</html>

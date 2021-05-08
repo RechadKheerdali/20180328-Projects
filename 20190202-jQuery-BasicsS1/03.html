@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- $(this) / .on() / .off() / .one() / noscript-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+    <!-- <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css"> -->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>03 $(this) / .on() / .off() / .one() / noscript</title>
+<style>
+	#ikBox {
+		width:200px;
+		height: 200px;
+		background: red;
+	}    
+</style>
+</head>
+<body>
+<main>
+<!--    if javascript was disabled onscript will show-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+    
+    <div id="ikBox">jQuery. click x2 me</div>
+
+<script src="zIK/3-JS/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* .on() event handler */
+    $(`#ikBox`).on(`mouseover`, function() {
+        $(this).css(`backgroundColor`, `blue`)
+        }
+      );
+    
+/* .off() removing event handler */
+    $(`#ikBox`).off(`mouseover`);
+    
+/* .one() can only use an event handler onces */
+    $(`#ikBox`).one(`dblclick mouseleave`, () => {
+        $(`#ikBox`).text(`jQuery. you just double clicked me arrrrrrg`);
+        }
+    );
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07</title>
+    <style>
+        div {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <script>
+        var SecondsPerMin = (60);
+        var MinPerHour = (60);
+        var HoursPerDay = (24);
+        var DayPerWeek = (7);
+        var WeekPerYear = (52);
+        var PersonAge = prompt ("What is you age?");
+        var AliveInSeconds = (DayPerWeek * WeekPerYear * PersonAge)
+        document.write ("<h1>You have been alive for just a little over " + AliveInSeconds + " days</h1>");
+    </script>
+        </div>
+    
+    <script>
+        var html = prompt ("how many html badges do you have?");
+        var css = prompt ("how many css badges do you have?");
+        var total = parseInt(html) + parseInt(css);
+        document.write ("<p>you have " + total + " badges</p>");
+        //if i did not add parseInt() or parseFloat() than js will see it as string and just mush the numbers together as normal string
+        
+        var decimals = (2.96557865);
+        var deci = (3.58643323456);
+        decimals += (deci);
+        document.write ("<p>" + decimals.toFixed(3) + "</p>");
+        document.write ("<h1>" + Math.round(decimals) + "</h1>");
+        document.write ("<strong>" + Math.floor(decimals) + "</strong>");
+        document.write ("<p>" + Math.ceil(decimals) + "</p>");
+        //floor always round to the lowest integar while ceil to the highest.
+        
+        var diceRoll = (Math.floor (Math.random() * 6) + 1);
+        document.write ("<p>" + diceRoll + " is you random die roll</p>");
+//Math.random() produce random number between 0 to 0.9e9 (never 1)     and for this example multiplying by 6 replicate a dice , however to avoid a possible chance of it landing on a 0 we add 1 so no matter we will always get 1 minimum.   Then we add Math.floor() because 6.9e9 will always be a 6 and it has a full 16.6e9% chance just like the rest of the numbers chance instead of having half of a chance because of rounding to the nearest number.
+    
+    </script>
+</body>
+</html>

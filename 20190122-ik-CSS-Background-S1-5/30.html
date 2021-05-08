@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- counter-reset / counter-increment / number styling with counter-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK-TEMP/2-css-temp/qReset-CSS.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+	<title>30 counter-reset / counter-increment / number styling with counter</title>
+<style>
+	main {
+		counter-reset: ik -4;
+	}
+	/*the ik counter will begin at -4*/
+	
+	h2::before {
+		counter-increment: ik 2;
+		content:"# " counter(ik, decimal-leading-zero) " ";
+	}
+	/* from 4 the ik counter will add 2 to increment 
+	+\ also selected the type of counter i would like to use , i could also chosen many others like lower-roman or circle*/
+</style>
+</head>
+<body>
+<main>
+	<h2>HTML Tutorial</h2>
+	<h2>CSS Tutorial</h2>
+		<p>using css counter here</p>
+	<h2>JavaScript Tutorial</h2>
+	<h2>Bootstrap Tutorial</h2>
+	<h2>SQL Tutorial</h2>
+	<h2>PHP Tutorial</h2>
+</main>
+</body>
+</html>

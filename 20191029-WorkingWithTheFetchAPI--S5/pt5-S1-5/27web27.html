@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- demo of what websocket could look like when put together -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>27 demo of what websocket could look like when put together</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- form elements -->
+<form id="iKformId">
+	<input id="iKinputTextId" type="text" name="iKtextName1" value="iKtextValue1">
+	<input id="iKsubmitId" type="submit" style="display:none;">
+</form>
+
+<button type="button" id="iKbuttonOpenId">Open Connection</button>
+
+<button type="button" id="iKbuttonCloseId" style="display:none;">Close Connection</button>
+
+<div id="iKdivAppendId"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*demo of what websocket could look like when put together */
+/***** click to open connection with websocket */
+iKbuttonOpenId.onclick = event => {
+	const iKwebsocket = new WebSocket("wss://echo.websocket.org"); /*1+*/
+
+
+	/***** if websocket connection succeeds, let user know */
+	iKwebsocket.onopen = () => {
+		console.log(iKwebsocket);
+
+		iKdivAppendId.innerHTML += "<div>iK Websocket server OPEN</div>";
+
+		iKbuttonOpenId.style.display = "none";
+		iKbuttonCloseId.style.display = "inline-block";
+		iKsubmitId.style.display = "inline-block";
+	}; /*END iKwebsocket.onopen */
+
+
+	/***** if error occurs in connection */
+	iKwebsocket.onerror = event => {
+		console.error( Error("iKerror"), iKwebsocket, event );
+
+		iKdivAppendId.innerHTML = "<div>iK Websocket ERROR</div>";
+
+		iKbuttonOpenId.style.display = "inline-block";
+		iKbuttonCloseId.style.display = "none";
+		iKsubmitId.style.display = "none";
+	}; /*END iKwebsocket.onerror */
+
+
+	/***** submit data to server */
+	iKformId.onsubmit = event => {
+		event.preventDefault();
+		iKwebsocket.send( iKinputTextId.value );
+		iKinputTextId.value = "";
+	};
+
+
+	/***** receive data from server */
+	iKwebsocket.onmessage = event => {
+		iKdivAppendId.innerHTML += `<div>${event.data}</div>`;
+		console.log(event);
+	};
+
+
+	/***** close websocket connection */
+	iKbuttonCloseId.onclick = () => iKwebsocket.close(1000, "iK Chatroom Closed"); /*2+*/
+
+	iKwebsocket.onclose = event => {
+		console.log(event);		/*3+*/
+
+		iKdivAppendId.innerHTML += "<div>iK Websocket server CLOSED</div>";
+
+		iKbuttonOpenId.style.display = "inline-block";
+		iKbuttonCloseId.style.display = "none";
+		iKsubmitId.style.display = "none";
+	}; /*END iKwebsocket.onclose */
+}; /*END iKbuttonOpenId.onclick */
+
+/*1+ websocket method/property/event must be roughly the same scope within the WebSocket() click event for this to work smoothly.
+2+ 1000 is like the status code for close event. It means it close normally.
+	+\ the second argument is you entering you the connection closed.
+	+\ both arguments are optional.
+3+ the event is a close event.
+	+\ you can access the .close() arguments through it.
+		+\ you can also do some if statement if you got disconnected with a different status. */
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

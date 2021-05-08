@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09</title>
+<!--
+    IK SOME EXAMPLES OF FORM TAGS AND THEIR ATTRIBUTE THAT COMES WITH IT, THIS IS FROM MDN
+-->
+</head>
+<body>
+    <fieldset>
+        <legend>Input</legend>
+        <form>
+            <div>
+                <label for="display-name"> Name:
+                    <span class="warning">*(Allows only letters.)</span> 
+                </label>
+                <input type="text" id="display-name" name="ip-display"
+                       pattern="[A-Za-z\s]+"
+                       maxlength="5" minlength="2" value="Aa" required />
+            </div>
+            <div>
+                <label for="readonly-ip">ReadOnly:</label>
+                <input type="text" id="readonly-ip" name="ip-readonly"
+                       placeholder="I'm read only." readonly />
+            </div>
+            <div>
+                <label for="disabled-ip">Disabled:</label>
+                <input type="text" name="ip-disabled"
+                       id="disabled-ip"
+                       value="I am disabled"
+                       disabled />
+            </div>
+            <div>
+                <input type="submit" class="submit" value="Submit" />
+            </div>
+        </form>
+</fieldset>
+    
+    <p><button>Default button</button></p>
+
+<p><button disabled>Disabled button</button></p>
+
+<p>
+  <button name="submit" type="submit" value="submit-true">
+    Form submit button
+  </button>
+</p>
+
+<p><button accesskey="a">Button with <u>A</u>ccesskey</button></p>
+
+<p><button class="styled">Fancy styled button</button></p>
+
+</body>
+</html>

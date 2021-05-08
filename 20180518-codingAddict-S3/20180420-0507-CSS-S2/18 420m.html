@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>18 420m</title>
+    <style>
+        div {
+            border: 2px solid red;
+        }
+        div#ik1>p {
+            background-color: cornflowerblue;
+        }
+        
+        div#ik2 + p {
+            background-color: cornflowerblue;
+        }
+        div#ik3 ~ p {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <h3>child selector </h3>
+    <div id="ik1">
+    <p>i am decendant of my parent div</p>
+    <p>i am decendant of my parent div</p>
+    <p>i am decendant of my parent div</p>
+    <span><p>my direct decendant is span so div wont work on me if you use div>p as i am not direct, im a child selector</p></span>
+    </div>   <br> <br/>
+    
+    <h3>ajacent selector</h3>
+    <div id="ik2">
+    <p>i am decendant of my parent div</p>
+    <p>i am decendant of my parent div</p>
+    <p>i am decendant of my parent div</p>
+    <p>my direct decendant is span so div wont work on me if you use div>p as i am not direct, im a child selector</p>
+    </div>
+    <p>i am the direct sibling of the div above me the ajacent sibling, just add + for me in selector</p>
+    <p>i am not the direct sibling of the div above me</p>   <br> <br/>
+    
+    <h3>general selector</h3>
+    <div id="ik3">
+    <p>i am decendant of my parent div</p>
+    <p>i am decendant of my parent div</p>
+    <p>i am decendant of my parent div</p>
+    <p>my direct decendant is span so div wont work on me if you use div>p as i am not direct, im a child selector</p>
+    </div>
+    <p>i am the direct sibling of the div above me the ajacent sibling, just add + for me in selector</p>
+    <p>we are the general, we are the siblings of div and by using ~ every P siblings will be affected after the main slelector</p>
+    <p>we are the general, we are the siblings of div and by using ~ every P siblings will be affected after the main slelector</p>
+    <h4><p> am a h4, not a direct P so it dont afeect me</p></h4>
+    <p>we are the general, we are the siblings of div and by using ~ every P siblings will be affected after the main slelector</p>          <br> <br/>
+    
+</body>
+</html>

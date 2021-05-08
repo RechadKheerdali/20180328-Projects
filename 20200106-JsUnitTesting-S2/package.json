@@ -1,0 +1,22 @@
+{
+  "name": "ik_unit_testing",
+  "version": "1.0.0",
+  "description": "js unit testing / mocha / chai",
+  "main": "02.js",
+  "scripts": {
+    "test": "mocha",
+    "watch": "mocha --watch ./test ./",
+	"ikupdate": "npm install && npm audit fix && npm update && exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ikaladdin@bitbucket.org/ikaladdin/20200101-npmbasic.git"
+  },
+  "author": "i k",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/ikaladdin/20200101-npmbasic#readme",
+  "devDependencies": {
+    "chai": "~4.2.0",
+    "mocha": "~7.0.0"
+  }
+}

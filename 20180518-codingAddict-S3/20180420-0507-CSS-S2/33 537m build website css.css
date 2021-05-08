@@ -1,0 +1,32 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font: 100%;   
+    background-color: aquamarine;}
+
+ul.navbarh {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #00c708;
+    border: solid black;
+    border-width: 2px 0px;}
+.navbarh>li {
+    float:left;
+    display: inline-block;
+    padding: 10px;}
+.nbhv {
+    display: none;
+    position: absolute;}
+.nbhv a {
+    display: block;}
+#history:hover .nbhv {
+    display: block;
+    z-index: 1;
+    background-color: #00c708;}
+.navbarh li:first-child {
+    float: right;    }
+

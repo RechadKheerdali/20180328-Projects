@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>01 passing a function within a function parameter as argument</title>
+</head>
+<body>   <!-- passing a function within a function parameter as argument-->
+<main>
+<script>
+// function declaration
+  function declaration(argD) {
+    return console.log(argD)
+  };
+
+  declaration(`function declaration`);
+
+
+// function within a function parameter argument
+  function executeFunctionD( functionD, argD ) {
+    functionD(argD);
+  };
+
+  executeFunctionD( declaration, `function through a function` );
+
+
+// enter the full function within the callback function executeFunctionD(); parameter
+  executeFunctionD(
+    function parameterF(argP) {
+      return console.log(argP);
+    },
+    `function through function parameter`
+  );
+  /* think of this as executeFunctionD(); , it is a normal callout
+  +\ not necessary to type keyword function in the parameter which would be known as anonymous function */
+
+
+// arrow function through call function executeFunctionD();
+  executeFunctionD(
+    (argA) => {
+      return console.log(argA);
+    },
+    `arrow function through function parameter`
+  );
+
+
+// shortest arrow function through call function executeFunctionD();
+  executeFunctionD(
+    argAS =>  console.log(argAS),
+    `shortest arrow function through function parameter`
+  );
+
+
+// a different perspective
+  executeFunctionD(console.log, `simple console log...`);
+</script>
+</main>
+</body>
+</html>

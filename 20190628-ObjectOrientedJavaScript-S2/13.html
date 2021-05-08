@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 13 object literal / getter and setter being used on the property itself combined with _underscore -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>13 object literal / getter and setter being used on the property itself combined with _underscore</title>
+<style>
+/* + + + + + + + + + + + + STYLE -----------------------------*/
+/*------------------------ /style ////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + MAIN ----------------------------->
+<!------------------------ /main ///////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + SCRIPT ----------------------------*/
+'use strict';
+
+
+/*object literal / getter and setter being used on the property itself combined with _underscore */
+	const iKobject1 = {
+		get iKproperty1 () {        /*1+*/
+			return this._iKproperty1 || "iKdefaultV1" /*2+*/
+		},
+		set iKproperty1 (iKpara1) {
+			this._iKproperty1 = iKpara1  /*3+*/
+		}
+	};
+
+	printD( iKobject1 );   /*OP {} */ /*4+*/
+	printD( iKobject1["iKproperty1"] ); /*OP "iKdefaultV1" */ /*5+*/
+
+
+	iKobject1["iKproperty1"] = "iKreassignment1";
+	printD( iKobject1 ); /*OP {_iKproperty1: "iKreassignment1"} */ /*6+*/
+	printD( iKobject1["iKproperty1"] ); /*OP "iKreassignment1"*/ /*7+*/
+
+	/*1+ set a getter on a property name itself.
+	2+ you must use _underscore property (or any other property name) because error occurs if you use the real property itself.
+	2+ because _underscore property has yet to be define, default value is live.
+	3+ again error will occur if you use the real property.
+	4+ iKproperty does not occur because it is a getter and setter function, but property does exist if you click on it.
+	5+ default value occurs as normal.
+	6+ _iKproperty1 now exist but should never be touch, only through getter and setter property.
+	7+ assignment works as normal too.
+	+\ will not work using arrow function. */
+
+
+ /*OP */
+/*----------------------- /script ///////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

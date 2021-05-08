@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>04 highlight the list in uppercase \ different method.\ for looping</title>
+</head><!-- highlight the list in uppercase \ different method.\ for looping -->
+<body>
+<main>
+  <ul>
+    <li>alpha</li>
+    <li>bravo</li>
+    <li>charlie</li>
+    <li>delta</li>
+    <li>echo</li>
+  </ul>
+<script>
+    const list = document.getElementsByTagName(`li`);
+
+    for (let i = 0; i < list.length; i++) {                       //.1
+      list[i].addEventListener(`mouseover`, () => {               //.2
+        list[i].textContent = list[i].textContent.toUpperCase();  //.3
+      });
+
+      list[i].addEventListener(`mouseout`, () => {                //.4
+        list[i].textContent = list[i].textContent.toLowerCase();
+      });
+    };
+    //.1 for loop allows it to hover all the list
+    //+\ notice i put both .addEventListner() in the for loop
+    //.2 mouseover is hovering over
+    //.3 different from my method but still the same effect. redefining through .textContent
+    //.4 mouseout is when you hover out of the element
+    /* the for loop is good to use but it only run once when the page is loaded so therefor if you use .createElement() the for loop will not work on that. so you need add the code in the same code block as the for loop or use the event handler (next page) */
+</script>
+</main>
+</body>
+</html>

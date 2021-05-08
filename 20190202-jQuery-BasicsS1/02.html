@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--chaining method / .text() / .removeClass() / .addClass() / .css() / .fadeIn() / .fadeOut() / .delay() / .slideUp() / .slideDown()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>02 chaining method / .text() / .removeClass() / .addClass() / .css() / .fadeIn() / .fadeOut() / .delay() / .slideUp() / .slideDown()</title>
+<style>
+	article {
+		background: green;
+		width:200px;
+		height:200px;
+	}
+</style>
+</head>
+<body>
+<main>
+	<div id="divTest2" class="blue">coolio</div>
+	
+	<article>jQuery animation effect, using chaining method</article>
+
+<script src="zIK/3-JS/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* div box */
+	$("#divTest2").text("Hello, world!").removeClass("blue").addClass("bold").css("color", "blue");	
+
+/* article box */
+	jQuery(`article`).hide(1000)
+					.fadeIn(1000)
+					.delay(500)
+					.slideUp(1000)
+					.slideDown(5000)
+					.fadeOut(20000);
+	/* if the code is getting to long you could give each its own line for easier read as jQuery ignores whitespace */
+</script>
+</main>
+</body>
+</html>

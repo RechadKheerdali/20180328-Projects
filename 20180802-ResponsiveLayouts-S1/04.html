@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04</title>
+    <style>
+/*        flexbox demo.   for child element
+        flex-grow:
+        flex-shrink:
+        flex-basis:
+        flex: 1 1 auto; or flex: 1;    = shorthand( f.g + f.s + f.b ) */
+        .box1 {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        .one1 {
+            flex-grow: 1;
+        }
+        .two1 {
+            flex-grow: 5;
+        }
+        .three1 {
+            flex-grow: 1;
+        }   /* it allows the bar to grow proportionate and expand */
+        
+        .box2 {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        .one2 {
+            flex-shrink: 1;
+        }
+        .two2 {
+            flex-shrink: 3;
+        }
+        .three2 {
+            flex-shrink: 1;
+        }    /* same as f.grow but works opposite, it allows it to shrink with the page if the item width is big and adjusted*/
+        
+        .box3 {
+            display: flex;
+            flex-flow: row-reverse nowrap;
+        }
+        .one3 {
+            flex-basis: 20%;
+        }
+        .two3 {
+            flex-basis: 60%;
+        }
+        .three3 {
+            flex-basis: 10%;
+        }  /* seem to allow you to adjust each item specifically despite the given size */
+        
+        /* flex: 1 1 auto;  is shorthand  but even more shorter flex: 1; same as flex: 1 1 0;
+        flex: initial | auto | none | <positive-number>
+        intial = 0 1 auto:   - f.grow will not expand
+        auto = 1 1 auto;    - expand and shrink
+        none = 0 0 auto;   - neither expand or shrink, fixed */
+    </style>
+</head>
+<body>    
+    <div class="box1" style="border: dashed 2px black">
+          <div class="one1" style="border: solid 2px blue;">One</div>
+          <div class="two1" style="border: solid 2px green;">Two</div>
+          <div class="three1" style="border: solid 2px red;">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box2" style="border: dashed 2px black">
+          <div class="one2" style="border: solid 2px blue; width:500px;">One</div>
+          <div class="two2" style="border: solid 2px green; width:500px;">Two</div>
+          <div class="three2" style="border: solid 2px red; width:500px;">Three</div>
+        </div>  <br><br><br>
+    
+    <div class="box3" style="border: dashed 2px black">
+          <div class="one3" style="border: solid 2px blue; width:500px;">One</div>
+          <div class="two3" style="border: solid 2px green; width:500px">Two</div>
+          <div class="three3" style="border: solid 2px red; width:500px">Three</div>
+        </div>  <br><br><br>
+</body>
+</html>

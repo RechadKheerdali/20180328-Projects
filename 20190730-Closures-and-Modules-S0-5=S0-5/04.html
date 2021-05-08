@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 04 buttons loops text with closure / the old ways but still worth looking iK -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>04 buttons loops text with closure / the old ways but still worth looking iK</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<button id="first">First</button>
+<button id="second">Second</button>
+<button id="third">Third</button>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* buttons loops text with closure / the old ways but still worth looking iK.
+	+\ demo of buttons text showing right innerHTML with closure and 'var'.
+		+\ without closure than you will only get the value of the last button everytime. */
+var buttonsDom = document.getElementsByTagName('button');
+
+
+for(var i = 0; i < buttonsDom.length; i += 1) {
+	var buttons = buttonsDom[i];
+	var buttonText = buttons.innerHTML;  /*1+*/
+
+	buttons.addEventListener('click', iKclosure(buttonText) ); /*2+*/
+
+/*	buttons.addEventListener('click', function() {
+		console.log(buttonText);
+	});								*/ /*3+*/
+
+}; /*END for loop*/
+
+
+	/*click event handler function of closure*/
+function iKclosure ( button_html ) {
+	return () => console.log( button_html );
+};
+
+/*1+ however if i used 'let' variable than i would not need to use closure function, instead i could use a regular function
+2+ if you use 'var' than you would have to use closure function, which is what the old ways use to look like.
+2+ in closure function you would need to use parenthesis twice to call both function. But .addEventListener() is already calling the first function, which spares you from calling the outer function, only the inner function needs a callback which is shown here.
+3+ if you try to use this function along with 'var' instead of the closure function, than when you press the buttons, you will always get the last button text value. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

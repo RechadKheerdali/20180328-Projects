@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>01 js objects and accessing it</title>
+</head>
+<body>
+<main>
+<script> /*js objects and accessing it*/
+ // this is an object literal
+	var student = {
+		name: "dave",               //key: values . a single var
+		age: 31,
+		grades: [60, 78, 38, 53],   //property:value . an array var
+		birthCountry: "brazil",
+		usCitizen: true
+	};
+/* functions/arrays/string/number/boolean is either an object or treated as an object
++\ simple way to think of an object is something that has properties and methods
++\ an object is like a single item that hold multiple variables including adding another object
++\ {} create an object, whilst [] create an array.  and spaces inbetween symtax are optional   */
+
+/****************************************/
+//accessing object
+	printD( student["name"] );  //[] similar to array but using key name instead to access. the bracket notation
+	
+	printD( student.birthCountry ); //called .notation, this works the same way as [] but it is common/easier/simpler to use.
+/*object uses a key/property name to access its data while array uses an index number to access it data   */
+
+/******************************/
+//reasign/changing the value method is the same as a normal variables
+	student.birthCountry = "barbados";  // redefined
+	
+	printD( student.birthCountry );
+
+/*******************************************/
+// add new properties to the object
+	student.favouriteSport = "football";
+	
+	printD( student.favouriteSport );
+/*this make the object very flexible because of it*/
+
+/******************************************/
+//you can perform maths to the property like a normal var
+	student.age += 1;
+	
+	printD( student.age );
+	
+/*****************************************/
+//you can still see the .length of the array within the object
+	printD( student.grades.length );
+/* its not uncommon to see property within property or object within object
++\ however im not sure how to see the object .length*/
+
+/***************************************************/
+//using method within the object array
+	printD( student.grades.join(" <^> ") );
+</script>
+</main>
+</body>
+</html>

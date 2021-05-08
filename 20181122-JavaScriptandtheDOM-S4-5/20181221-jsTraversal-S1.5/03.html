@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>03 .insertBefore() (from MDN but modified)</title>
+</head><!-- .insertBefore() (from MDN but modified) -->
+<body>
+<main>
+	<div>
+	  <span id="sp1">sp1 foo bar</span>
+	</div>
+
+<script>
+/* insertBefore() (from MDN but modified) */
+	
+	// Get a reference to the element, before we want to insert the element
+	var sp1 = document.getElementById("sp1");
+	
+	// Get a reference to the parent element
+	var parentDiv = sp1.parentNode;
+
+	// Create a new, plain <span> element
+	var sp2 = document.createElement("span");
+	sp2.textContent = `sp2.insertBefore() \\|/ `;
+	
+	// Insert the new element into the DOM before sp1
+	parentDiv.insertBefore(sp2, sp1);
+</script>
+</main>
+</body>
+</html>

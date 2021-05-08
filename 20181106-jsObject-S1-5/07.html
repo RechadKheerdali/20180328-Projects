@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>07 searchable prompt detail, part of the treehouse challenge</title>
+    <style>
+        #listing {
+            background-color: aquamarine;
+            display: inline-block;
+            padding: 10px;
+        }
+        #listing p {
+            width: 300px;
+            background-color: firebrick;
+        }
+
+/*    *******************    */
+    </style>
+</head><!--2018 11 12-14  . r.8hrs to complete -->
+<body><!--searchable prompt detail, part of the treehouse challenge
+-able to type 'all' for d.w all profiles
+-able to tyoe 'done' do see a different simple d.w all profiles
+- able to type a name and see one alert of the profile and d.w of that profile too
+- also ik notice the null in the if condition-->
+<main>
+    <section id="listing"></section>
+    
+<!--    *************************-->
+<script>
+//01 function to print on on div id
+    function printS(inserty) {
+        var connectz = document.getElementById("listing");
+        return connectz.innerHTML = inserty;
+    };
+    
+    /*****************************************************/
+//02 students info (5 object in an array)
+	var students = [
+		{
+			name: "alpha",
+			age: 11,
+			nationality: "japan",
+			skills: "html"
+		},
+		{
+			name: "bravo",
+			age: 22,
+			nationality: "uk",
+			skills: "css"
+		},
+		{
+			name: "charlie",
+			age: 33,
+			nationality: "france",
+			skills: "javascript"
+		},
+		{
+			name: "delta",
+			age: 44,
+			nationality: "usa",
+			skills: "react"
+		},
+		{
+			name: "echo",
+			age: 55,
+			nationality: "australia",
+			skills: "node.js"
+		}
+	];
+    
+    /******************************************/
+//03 list of all the variables
+    var html = "";   //every output to html goes in here
+    var question;  //for alert() questions
+    var nameValues = [];  // to save all the student names so we can use it in the conditional statement
+    var simpleDisplay = "";  //for use of displaying a single profile
+    var dLindex;   //the index number of the array chosen by user for selected profile
+    var profile;   // display only one profile
+    var all = "all";   // part of 07.conditional statement option for user to choose see all profile
+    var done = "DONE"; //part of 07.conditional statement option to choose to end prompt screen
+    
+    /**********************************************************************/
+//04 function to simple display of one profile for alert
+    function display(dList, dLindex) {             //.1
+        for (var listOb in dList[dLindex]) {
+                simpleDisplay += listOb.toUpperCase() + "- " + dList[dLindex][listOb] + ", \ \ ";               //.2
+        }
+        return simpleDisplay;
+    };
+    //.1  dList is the student array/object list and the dLindex is the index number provided from the conditional statement (user prompt answer) below. BIM dL
+    //.2 display property name and property value, that simple, all the other stuff is fluff
+    
+    /********************************************************/
+//05 function to display all profiles into numbered <ul> list
+    function unlist(sList) {                         //.1
+        for (var i = 0; i < sList.length; i++) {     //.2
+            html += i + 1 + "<ul>";                  //.3
+            for (var obProperty in sList[i]) {       //.4
+                html += "<li><strong>" + obProperty + "</strong> \\|/ " + sList[i][obProperty] + "</li>";
+            }
+            html += "</ul>";
+        }
+        return html;
+    };
+    //.1 eList is for array-object list students
+    //.2 cycle though index
+    //.3 the i + 1 is to number each profile. could have used a seprate var
+    //.4 cycle through object
+    // obProperty = property name
+    // sList[i][obProperty] = property value
+   
+    /************************************************************/
+/* 06 function that cycles through all the property values ["name"] in students and return for only the property value for ["name"] than store it for var nameValues for use of the conditional statement to see only one profile
+    - adds to the array nameValues using .push()
+    - saves all the name property of the student array*/
+    function obList(cycle) {                                //.1
+        for (var indexN in cycle) {
+            for ( var obValue in indexN ) {                 //.2      IKrecap this is unnecessary and dont really make sense
+                nameValues.push( cycle[indexN]["name"] );   //.3
+            }
+        }
+        return nameValues;                                  //.4
+    };
+/*  //.1 cycle is for array-object list students
+    //.2 cannot understand if i had use cycle[indexN] instead of indexN than it       would repeated the same value 4 times. as it seem to work fine in 03.html
+    //.3 cycle[indexN]["name"]  has something to do with //.1 confusion as i notice this only when i was picking a specfic property value but when i was picking all the porperty value cycle[indexN][obValue] will only work if i had use cycle[indexN] in //.1
+    - 1 for a specific property value than use the var prop name in for-in loop
+    - 2 for all property value than use array name with previous var prop name in the above for-in loop.
+    //.4 nameValues is just a typical array that now contains all the property name values within  - alpha,bravo,charlie,delta,echo      */  
+    
+    obList(students);  //goes through all the property value for the conditional statement
+    //so in this case we now have our nameValues ready to use with all the stored array names of the students   
+    
+    /**********************************************************/
+/*07 conditional statement, prompt questions of what user want to to see
+    conditional statement on prompt
+    - see full student list in div
+    - quit and get list anyway
+    - choose to see 1 profile on alert */
+    do {
+        question = prompt("the 5 student profile are 'alpha, bravo, charlie, delta, echo'. Or to see all on screen type 'all', to see screen type 'done'");
+        if ( nameValues.indexOf(question) > -1 ) {       //.1
+            dLindex = nameValues.indexOf(question);      //.2
+            profile = display( students, dLindex )       //.3
+            alert( profile );                            //.4            
+            printS ( profile );                          //.4
+            break;
+        }else if ( question === null || question.toLowerCase() === all ) {  //.5
+            html += unlist(students);                    //.6
+            printS( html );
+            break;
+        }else if ( question.toUpperCase() === done ) {    //.7
+            for (var i = 0; students.length > i; i++) {   //.8
+                html = "<p>" + display(students, i) + "</p>";  //.9
+            }
+            printS( html );
+            break;
+        }
+    }while(true);
+    //.1 got the index number from the question using the nameValues array. and the index number matches students so no quarries of reorganising them
+    //.2 dLindes is same index number as array students
+    //.3 passing it through the 04-function so in return we get the single profile of that index number and being stored in var profile
+    //.4 single profile is being displayed on alert and 01-printS
+    //.5 all = "all".  question===null means if you press the 'cancel' button, as cancel is like no value (null), and you wont get a error in console for toLowerCase(), but ideally you shuld put the 'if' quit option first as this as null and is more suited with quit option
+    //.6 using 05.function to display the profile into numbered <ul> list
+    //.7 done = "DONE"
+    //.8 for loop needed to display all profile using the 04.function (single profile function) and now because of it i got all 5 profile together
+    //.9 difficult to insert <br> as it will not seperate despite numerous effort (including .push()), so i settle with red <p> to shorten the width making it slightly easier to read.      - if i wanted to insert <br> and seperate them then i will have to copy 04.function display and make tweaks to it but it dont seem worth it now but i confident i can do it
+    
+    /********************************************************************/
+/*ALL THE LIST OF SYNTAX AND PURPOSE IN THIS TEXT EDITOR IK*/
+    //01 function to print on on div id
+    //02 students info (5 object in an array)
+    //03 list of all the variables
+    //04 function to simple display of one profile for alert
+    //05 function to display all profiles into numbered <ul> list
+    // 06 function that cycles through all the property values ["name"] in students and return for only the property value for ["name"] than store it for var nameValues for use of the conditional statement to see only one profile
+    //07 conditional statement, prompt questions of what user want to to see
+    
+    /************TO DO LIST 
++\ prompt with show full list or quit 
++\ option to choose one student profile list
+
+print
+student with array and object
+
+student profiles
+- list of variables
+
+function for list ul so you can get all student profile
+
+function that cycles through all the property values
+
+conditional statement on prompt
+- see full student list in div
+- quit and get list anyway
+- choose to see 1 profile on alert  */
+</script>
+</main>
+</body>
+</html>

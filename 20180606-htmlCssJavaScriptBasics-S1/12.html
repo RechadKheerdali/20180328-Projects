@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12</title>
+</head>
+<body>
+    <script>
+        //ik this was taken on the commentary section for you to get a good idea of js with 5 questions but none done by you here. its for educational purposes..................... it is the orginal and i have not change nothing. good to see how it can be done
+        
+    /*The Quiz Game
+Answer five questions 
+Win a prize
+By Joe Worthington
+*/
+
+//Welcomes player, asks for name and then displays the the ranking
+
+var player = prompt("Hello and welcome to The Quiz Game. Here are 5 questions to answer. Let's begin with your name?");
+
+document.write("<p>" + player + " here is what you can win:</p>" + "<p>5 correct answers = GOLD badge</p>" + "<p>3-4 correct answers = SILVER badge</p>"  + "<p>1-2 correct answers = BRONZE badge</p>" + "<p>0 correct answers = THE DUNCE'S HAT</p>");
+
+//Question 1
+var playerAnswer1 = prompt("Question 1. Who wrote The New York Trilogy?");
+var answer1 = "paul auster".toUpperCase() ;
+if (playerAnswer1.toUpperCase() === answer1) {
+  var score = 1;
+} else (score = 0); {
+  document.write("<p>Your answer was " + playerAnswer1 + "</p>");
+}
+//Prints score to console log
+console.log(score);
+
+//Question 2
+var playerAnswer2 = prompt("Question 2. What artist painted the picture Guernica?");
+var answer2 = "picasso".toUpperCase();
+if (playerAnswer2.toUpperCase() === answer2) {
+  score = score + 1;
+} else ( score + 0); {
+  document.write("<p>Your answer was " + playerAnswer2) + "</p>";
+}
+
+//Prints score to console log
+console.log(score);
+
+//Question 3
+var playerAnswer3 = prompt("Question 3. What is 10% of 35?");
+var answer3 = 3.5;
+if (parseFloat(playerAnswer3) === answer3) {
+  score = score + 1;
+} else (score + 0); {
+  document.write("<p>Your answer was " + playerAnswer3 + "</p>");
+}
+
+//Prints score to console log
+console.log(score);
+
+//Question 4
+//Assumes the answer is false
+var correctAnswer4 = false
+//Generates the random number I'm thinking of between 1-10
+var randomNumber = Math.floor(Math.random() * 10) +1;
+/*User has first attempt with the following results:
+1.Guess it right first time and it writes the guess to the document
+2.Second attempt with a hint as to the random number being higher or lower
+3. Prints the second attempt to the document
+*/
+var playerAnswer4 = prompt("Question 4. What number am I thinking of between 1-10? (it's okay, you get two attempts!)");
+if (parseInt(playerAnswer4) === randomNumber ) {
+  correctGuess = true;
+  score = score + 1;
+  document.write("<p>Your answer was " + playerAnswer4 + ", right first time, you lucky son-of-a-gun!");
+} else if (parseInt(playerAnswer4) < randomNumber) {
+  var guessMore = prompt('Try again. The number I was thinking of is more than ' + playerAnswer4);
+  if (parseInt(guessMore) === randomNumber) {
+  correctAnswer4 = true;
+    score = score + 1;
+    document.write("<p>Your first guess was " + guessMore);
+  } else (score + 0); {
+    document.write("<p>Your second guess was " + guessMore);
+  }
+} else if ( parseInt(playerAnswer4) > randomNumber) {
+  var guessLess = prompt('Try again. The number I was thinking of is less than '+ playerAnswer4);
+  if (parseInt(guessLess) === randomNumber) {
+  correctAnswer4 = true;
+    score = score + 1;
+    document.write("<p>Your first guess was " + guessLess);
+  } else (score + 0); {
+    document.write("<p>Your second guess was " + guessLess);
+  }
+}
+
+//Prints score to console log
+console.log(score);
+
+//Question 5
+var playerAnswer5 = prompt("Danny's mother has four children...Jimmy, Jason and Rachel... and what's the name of the fourth child?");
+var answer5 = "danny".toUpperCase();
+if (playerAnswer5.toUpperCase() === answer5) {
+  score = score + 1;
+} else (score + 0); {
+  document.write("<p>Your answer was " + playerAnswer5);
+}
+
+//Prints score to console log
+console.log(score);
+
+alert("So, how did you do? Let's find out.");
+if (score === 5) {
+  document.write("<h1>You scored " + score + "! You won a GOLD badge! Congratulations " + player + ".</h1>");
+} else if (score === 4 || score === 3) {
+  document.write("<h2>You scored " + score + "! You won a SILVER badge! Well done " + player + ".</h2>");
+} else if (score === 2 || score === 1) {
+  document.write("<h3>You scored " + score + "! You won a BRONZE badge! Not bad " + player + ".</h3>");
+} else (document.write("<h4>Your score was " + score + ". Hm, " + player + " you're going to have to wear THE DUNCE'S HAT. Maybe give it another go, hey!</h4>")); {
+}
+
+//Prints score to console log
+console.log(score);
+        
+    </script>
+</body>
+</html>

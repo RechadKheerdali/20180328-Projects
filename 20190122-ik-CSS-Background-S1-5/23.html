@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- background-attachment: scroll | fixed | local / from css tricks -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>23 background-attachment: scroll | fixed | local / from css tricks</title>
+    <style>
+      h2 {
+        text-align: center;
+        margin-top: 48px;
+      }
+      div {
+        height: 200px;
+        width: 50%;
+        max-width: 600px;
+        margin: 32px auto;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+      .scroll {
+        background: url('http://lorempixel.com/600/200/animals');
+        background-attachment: scroll;
+      }
+      .fixed {
+        background: url('http://lorempixel.com/600/200/animals');
+        background-attachment: fixed;
+      }
+      .local {
+        background: url('http://lorempixel.com/600/200/animals');
+        background-attachment: local;
+      }
+      .expand {
+        height: 400px;
+        width: 100%;
+      }
+      .extra-space {
+        margin-bottom: 50px;
+      }
+    </style>
+</head>
+<body>
+<main>
+  <!-- iK main focus here is on background-attachment: scroll | fixed | local . the rest is to expand the page height so that we can see the scrolling in action
+  +\ BIM it can take a while to load since the image is from a placeholder that loads a different img everytime -->
+  <h2><code>scroll (default)</code></h2>
+  <div class="scroll">
+    <div class="expand"></div>
+  </div>
+
+  <h2><code>fixed</code></h2>
+  <div class="fixed">
+    <div class="expand"></div>
+  </div>
+
+  <h2><code>local</code></h2>
+  <div class="local">
+    <div class="expand"></div>
+  </div>
+
+  <br class="extra-space">
+</main>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :not() -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>17 :not()</title>
+    <style>
+    /* can select id and class */
+        p:not(#p2) {
+            border: red 4px solid;
+        } 
+        
+    /* double :not() / can also select pseudo class too */
+        p:not(:first-child):not(:nth-last-of-type(2)) {
+            background-color: aqua;
+        }
+        
+    /* can select html attributes too */
+        input:not( [type="submit"] ) {
+            box-shadow: inset 5px 5px 3px blue;
+        }
+        
+    /* all element but #p2 */
+        :not(#p2) {
+            height: 75px;
+        } 
+    </style>
+</head>
+<body>
+<main>
+    <p>one</p>
+    <p id="p2">two</p>
+    <p>three</p>
+    <p>four</p>
+    <p>five</p>
+    <input type="text">
+    <input type="submit">
+</main>
+</body>
+</html>

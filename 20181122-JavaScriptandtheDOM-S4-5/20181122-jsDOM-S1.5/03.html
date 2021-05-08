@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>03 change text through input / .className / .type / .getAttribute() / .setAttribute() / .removeAttribute() / .cssText </title>
+</head>
+<body> <!--change text through input / .className / .type / .getAttribute() / .setAttribute() / .removeAttribute() / .cssText -->
+<main>
+	<h1>type something to change me</h1>
+	<input type="checkbox">
+	<button>submit</button>
+    
+    <h2>multiple inline style with .setAttribute()</h2>
+    <h3>style.ccsText = exact same css typo with css js properties references typo</h3>
+
+<script>
+	const h1z = document.getElementsByTagName(`h1`);
+	const inputz = document.getElementsByTagName(`input`);
+	const buttonz = document.getElementsByTagName(`button`);
+	
+// converting the input type to text
+	inputz[0].type = `text`;
+	/*using and changing css attributes in js*/
+	
+	/**********************************************/
+
+//adding function for it to change h1 through text and button
+	buttonz[0].addEventListener(`click`, () => {       //.1
+			h1z[0].textContent = inputz[0].value;      //.2
+		}
+	);
+	//.1 dont forget to put index number despite there only being just one tag
+	//.2 BIM .textContent collects the format infor while .value collects the return value
+    //.2 innerHTML is a security risk here because they can change tag and css through input text
+
+	/*****************************************/
+	
+/* adding css attributes through javascript */
+// .className attribute
+	h1z[0].className = "classiciK";
+	
+// .title attribute
+	document.getElementsByClassName(`classiciK`)[0].title = `title attribute`;
+		
+// .getAttribute()
+	console.log( h1z[0].getAttribute( `class` ) );
+	
+// .setAttribute()
+	inputz[0].setAttribute( `name`, `helloiK` );
+	
+// .removeAttribute()
+	inputz[0].removeAttribute(`name`);
+	
+// .multiple css with .setAttribute();
+    const h2z = document.querySelector(`h2`);
+    h2z.setAttribute(`style`, `color: red; background-color: lightgrey; border: 3px blue dotted;`);
+    
+//.cssText
+    const h3z = document.getElementsByTagName(`h3`);
+    h3z[0].style.cssText ="background-color: yellow";
+</script>
+</main>
+</body>
+</html>

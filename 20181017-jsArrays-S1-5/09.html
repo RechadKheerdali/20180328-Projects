@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>09 ik not understanding .toLowerCase()</title>
+</head>
+<body>
+<main>
+<script> /*  finally understanding why .toLowerCase() not working. array values data type changes outcomes drastically and can be complicated*/
+  var quiz = [
+  ['Your name?','neil'],
+  ['neil`s age', 24],
+  ['Aim of neil is film maker', "true"]
+];        // had to convert true boolean in string as it does not compute with js
+  var answer;
+  var question;
+  var response;
+  var correctanswers = 0;
+  var html;
+
+  function print(message) {
+  document.write(message);
+  };
+
+  for(var i = 0 ; i < quiz.length; i += 1){
+
+    question = quiz[i][0];
+    answer = quiz[i][1];
+    response =  prompt(question) ; //this use to contain parseInt()
+    response = response.toLowerCase();   //ik i dont understand why this is not a function.  ik  figured it out, you cannot use parseInt and toLowerCase together as one is converting to string and the other to numbers, they do not mix. so i got rid of the parseInt() in the abov response and now it works.
+    // plus i had to turn the array values to string as it will nt make sense for the function if you are calling string and numbers together with the method i am using
+
+    if ( response == answer ){  // with on 2 == equality user is able to type 24 as string and js understand it is a number. could not do that with ===
+      //also .toLowerCase() would not work on answer because there is a number on the array , so js wont accept it
+        correctanswers += 1;
+    }
+  };
+
+  html = "you got "+ correctanswers + " question(s) right?";
+  print(html);
+
+// printD();
+// console.log();</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>05 add input / remove / up / down button list . / i created with minimal help </title>
+</head><!-- add input / remove / up / down button list . / i created with minimal help -->
+<body>
+<main>
+	<input type="text">
+	<button id="addlistx">Add to list</button>
+
+	<div>
+		<ul id="divuly">
+			<li>
+				number 1 
+				<button class="removex">remove</button>
+				<button class="upx">up</button>
+				<button class="downx">down</button>
+			</li>			
+			<li>
+				number 2 
+				<button class="removex">remove</button>
+				<button class="upx">up</button>
+				<button class="downx">down</button>
+			</li>			
+			<li>
+				number 3 
+				<button class="removex">remove</button>
+				<button class="upx">up</button>
+				<button class="downx">down</button>
+			</li>			
+			<li>
+				number 4 
+				<button class="removex">remove</button>
+				<button class="upx">up</button>
+				<button class="downx">down</button>
+			</li>
+			<li>
+				number 5 
+				<button class="removex">remove</button>
+				<button class="upx">up</button>
+				<button class="downx">down</button>
+			</li>
+		</ul>	
+	</div>
+
+<script>
+	const input$ = document.getElementsByTagName(`input`)[0];
+	const addB$ = document.getElementById(`addlistx`);
+	const divUl$ = document.querySelector(`div #divuly`);
+	const removeB$ = document.getElementsByClassName(`removex`);
+	const upB$ = document.querySelectorAll(`.upx`);
+	const downB$ = document.getElementsByClassName(`downx`);
+
+/* add to list button using input value in the new list */    
+// add all remove / up / down buttons function
+    const buttonRUD$ = (parentLi$) => {
+        const newRemove$ = document.createElement(`button`);
+        newRemove$.textContent = `remove`;
+        newRemove$.className = `removex`;
+        parentLi$.appendChild(newRemove$);
+        
+        const newUp$ = document.createElement(`button`);
+        newUp$.textContent = `up`;
+        newUp$.className = `upx`;
+        parentLi$.appendChild(newUp$);
+        
+        const newDown$ = document.createElement(`button`);
+        newDown$.textContent = `down`;
+        newDown$.className = `downx`;
+        parentLi$.appendChild(newDown$);
+    };
+    /* optional to put empty string inbetween buttons so it looks like html buttons */
+	
+    
+// adding list with input value and new buttons
+    const addingList$ = (event) => {
+        const newLi$ = document.createElement(`li`);
+        newLi$.textContent = input$.value;       //.1
+        buttonRUD$(newLi$);
+        divUl$.appendChild(newLi$);
+    };
+	//.1 you can put an empty string to seperate the values and buttons
+    
+	addB$.addEventListener(`click`, addingList$, false);
+	
+    /***********************************************************/
+    
+/* seperate function to adding function to the Remove, Up, Down button */
+// remove button - remove list
+    const removeList$ = () => {                   //.1
+        const li$ = event.target.parentNode;
+        divUl$.removeChild(li$);    
+        
+    };
+    //.1 dont put a second event in the paremeter if you have it already set up in another function such as the one in buttonFunc$() , otherwise it will not work as browser gets confuse
+
+// up button - move list up
+    const upList$ = () => {
+        if (event.target.parentNode.previousElementSibling) {
+            const li$ = event.target.parentNode;
+            const beforeLi$ = li$.previousElementSibling;
+            divUl$.insertBefore(li$, beforeLi$);
+        }
+    };
+    
+// down button - move list down
+    const downList$ = () => {
+        if (event.target.parentNode.nextElementSibling) {
+            const li$ = event.target.parentNode;
+            const nextedLi$ = li$.nextElementSibling;
+            divUl$.insertBefore(nextedLi$, li$);
+        }
+    };
+
+    
+// combining all function to make one function
+    const buttonFunc$ = (event) => {
+        if (event.target.className === `removex`) {
+            removeList$();
+        }
+        else if (event.target.className === `upx`) {
+            upList$();
+        }
+        else if (event.target.className === `downx`) {
+            downList$();   
+        }
+    };
+    
+    divUl$.addEventListener(`click`, buttonFunc$, false);
+</script>
+</main>
+</body>
+</html>

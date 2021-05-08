@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tables+ (In-Depth Tutorial)</title>
+    <style>
+        #table-display {
+            border: 10px groove red;
+        }
+        table {
+            border-spacing: 4px;
+            background-color: rgb(220, 245, 245);
+            border-bottom: 2px dotted;
+            border-top: 2px dashed;
+            border-left: 2px solid;
+            border-right: 2px double
+            border-collapse: separate;
+            border-color: rgb(45, 13, 224);
+            width: 600px;
+        }
+        
+        #table-of-contents {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        
+        #intro {
+            border-bottom: 1px solid black;
+        }
+        
+        #captions {
+            border-bottom: 1px solid black;
+        }
+        
+        #row-colspan {
+            border-bottom: 1px solid black;
+        }
+        
+        #bg-color {
+            border-bottom: 1px solid black;
+        }
+        
+        #borders {
+            border-bottom: 1px solid black;
+        }
+        
+        #display-groove {
+            border: 6px groove green;
+        }
+        
+        #display-ridge {
+            border: 6px ridge red;
+        }
+        
+        #display-inset {
+            border: 6px inset teal;
+        }
+        
+        #display-outset {
+            border: 6px outset lime;
+        }
+        
+        #display-solid {
+            border: 2px solid black;
+        }
+        
+        #display-double {
+            border: 2px double gray;
+        }
+        
+        #display-dotted {
+            border: 2px dotted blue;
+        }
+        
+        #display-dashed {
+            border: 2px dashed purple;
+        }
+        
+        #end {
+            border-bottom: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="table-display">
+        <br>
+        <table border align="center">
+            <caption><strong>Meet the CS Avatars!</strong></caption>
+            
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Hobbies</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="3" width="100px">CS<br>Avatars</th>
+                    <td><img src="https://www.kasandbox.org/programming-images/creatures/Hopper-Happy.png" height="30"></td>
+                    <td>Hopper</td>
+                    <td>Programming, hopping.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://www.kasandbox.org/programming-images/creatures/Winston.png" height="30"></td>
+                    <td>Winston</td>
+                    <td>Eating donuts, then regretting it after writing programs to realize how bad it is for him.</td>
+                </tr>
+                <tr>
+                    <td><img src="https://www.kasandbox.org/programming-images/creatures/OhNoes.png" height="30"></td>
+                    <td>Oh Noes Guy, the Error Buddy</td>
+                    <td>Freaking out all the time.</td>
+                </tr>
+                <tr>
+                    <th colspan="4">Meet Orange Juice Squid and Mr. Pink!</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">Other<br>Avatars</th>
+                    <td><img src="https://www.kasandbox.org/programming-images/avatars/orange-juice-squid.png" width="30"></td>
+                    <td>Orange Juice Squid</td>
+                    <td>Drinking OJ and becoming OJ...</td>
+                </tr>
+                <tr>
+                    <td><img src="https://www.kasandbox.org/programming-images/avatars/mr-pink.png" width="30"></td>
+                    <td>Mr. Pink</td>
+                    <td>Not being pink, tickling with fur.</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+    </div>
+    <br><br>
+    <div id="table-of-contents">
+        <h1 align="center">Table of Contents</h1>
+        <ul>
+            <li><a href="#table-display">Display</a></li>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#captions">Captions</a></li>
+            <li><a href="#row-colspan">Rowspan and Colspan</a></li>
+            <li><a href="#bg-color">Background Color</a></li>
+            <li><a href="#borders">Borders</a></li>
+            <li><a href="#end">The End</a></li>
+        </ul>
+    </div>
+    <div id="intro">
+        <h3 align="center">Introduction</h3>
+        <p>Above is an example of pretty much everything you can do with tables! It might not be organized, but that's mainly because it's showing most things, you would have it centered around something else. Anyways, one of the first things you will notice is the color, you will also probably notice the borders, the fact that they're there, the colors, and the style. Then, there is the caption at the top, "Meet the CS Avatars!", and the "CS Avatars" block and "Other Avatars" block. Finally, there is the "Meet Orange Juice Squid and Mr. Pink!" block that seperates the two categories. In this tutorial, I will explain how to use all of them, and a few extra things, too. (Like the fact that the red border isn't a table...) First, I will go over captions, they are pretty simple. </p>
+    </div>
+    <div id="captions">
+        <h3 align="center">Captions</h3>
+        <p>Captions are more simple than pretty simple, actually, that was an exaggeration. But, I will still, pointlessly, give it a paragraph. So to make a caption, you use the captions tag, which looks like this '&ltcaption&gt Caption Here! &lt/caption&gt'. The reason the greater than/less than signs are curly, is just because they're unicode precedes and succeeds and you can't use actual greater than/less than signs inside a paragraph... (Yay, fillers!) Now, back to actual info, the only attribute you can give it is the align attribute. It looks something like this, 'align="left/right/top/bottom" '. You can use the align attribute in text to, it's why my headings have alignment. Okay, so next, I will go over the rowspan and colspan attributes on the &ltth&gt tag. I'm not completely sure if it works on the &lttd&gt tag. <strong>Note: The caption tag has to be used inside the table tag, but not inside a row.</strong></p>
+    </div>
+    <div id="row-colspan">
+        <h3 align="center">Rowspan and Colspan</h3>
+        <p>The rowspan and colspan are pretty self-explanatory. They make a &ltth&gt take up more than one row, or column, depending on which one you use. So if you did 'rowspan="3"', which is what the "CS Avatars" block uses, it will take up three rows. If you did 'colspan="4"', it would take up four columns, just as the "Meet Orange Juice Squid and Mr. Pink!" block uses. The attribute syntax the same as most; 'rowspan="rows" ', and the same applies to colspan, just, you know, with colspan instead... These two attributes are extremely useful in formatting, but I'm only sure they work with &ltth&gt. You would just use the tag inside a row, so far it works no problem. Then you would use &lttd&gt tag for everything else. </p>
+    </div>
+    <div id="bg-color">
+        <h3 align="center">Background Color</h3>
+        <p>The background color attribute is even more simple than the caption tag... You should already know the syntax... I'm not sure why I even did a section for it... So... ummmm.... yeah. I guess next is the explanation of borders, so that's fun... I'm just going to awkwardly fill the section so it doesn't look <em>that</em> bad... Enough fillers. I'm just going to explain borders.</p>
+    </div>
+    <div id="borders">
+        <h3 align="center">Borders</h3>
+        <p>YAYY! Borders! Borders are AMAZZING... you can do so much with them, and not just in tables, the big fancy red border on the display is not part of the table, it's part of a div tag. Borders have eight different styles,<br><br>
+        <strong id="display-groove">Groove</strong>
+        <strong id="display-ridge">Ridge</strong>
+        <strong id="display-inset">Inset</strong>
+        <strong id="display-outset">Outset</strong>
+        <strong id="display-solid">Solid</strong>
+        <strong id="display-double">Double</strong>
+        <strong id="display-dotted">Dotted</strong>
+        <strong id="display-dashed">Dashed</strong>
+        <br><br>
+        Most people will probably use the 3-D ones when wrapping text like I did in the display, and above, and the 2-D ones for tables, or just 3-D... So, a border has three sub-attributes. The sub-attributes are (in order) the size (in px), the style, and the color. The CSS tag looks something like this, <br>'border: 6px, groove, green'. That is the code for the Groove display. You can do 'border-bottom' and it will only do it for the bottom, or 'border-top', any direction, and it will only do a border for that. Using that will give you different borders, but connected like the blue outside border in the display. Not only that, you can do 'border-style', 'border-width', or 'border-color', and you would only have to specify the width, or style. Or, if you're really specific... 'border-bottom-style', etc. The border attribute works on anything, really. But, you either have to do a seperate table for everything, so for the table heading blocks and table data blocks or on the table tag, just add border as an attribute, but don't assign it anything. (Or just the rows) The very last thing on borders, you can add the border collapse attribute and assign it collapse to collapse the borders. Oh dang, another last thing, there is also border spacing to add space in between borders. Mess around with it to get the hang of everything.
+        </p>
+    </div>
+    <div id="end">
+        <h3 align="center">The End!</h3>
+        <p>Thank you for sticking around to the end, unless you didn't, and you used the Table of Contents shortcut or something... If you didn't stick until the end, please read through it, it will help. I may not be the best teacher, I'm hardly good at this... <strong>Thanks again!</strong><br><br>-Agustin</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 04 Search form for list of gif images api -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>04 Search form for list of gif images api</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file (VIP for CRA) -->
+<div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Search form for list of gif images api */
+/* iK I learn so much here so study this.
+	+\ took me at least a nearly two day to do this, as it was a lot more complicated than I expected. But I learn that knowing and doing is two different things. And by doing you learn a lot more.
++\ iK In this demo you will see three default gifs of kratos as the page loads (<li>). You can also submit your search text to search any gifs provided by giphy.com api.
+	+\ iK I did not bother with much of the small details such as error message if user submit nothing in the search text, or much of the error handling as you should know most of them by now, and I did not do css style. */
+
+class App extends React.Component {
+	state = {
+		iKgifs : [] /*1+*/
+	};
+
+
+	iKajax = (iKsearchString = "kratos") => { /*2+*/
+		axios.get(`http://api.giphy.com/v1/gifs/search?q=${iKsearchString}&limit=3&api_key=dc6zaTOxFJmzC`) /*3+*/
+			.then( iKresponseObjectP => iKresponseObjectP.data.data) /*4+*/
+			.then( iKapiDataArrayP => this.setState({ iKgifs: iKapiDataArrayP }) ) /*5+*/
+	}; /*END iKajax */
+
+
+	componentDidMount = () => { /*6+*/
+		this.iKajax();
+	};
+
+
+	iKsubmit = event => {
+		event.preventDefault();
+		this.iKajax( this.iKuserSearchString.value ); /*7+*/
+		event.currentTarget.reset();
+	}; /*END iKsubmit */
+
+
+	render() {
+		return [  /*8+*/
+			<form onSubmit={this.iKsubmit} key="iKformKey">
+				<input type="search" ref={ iKinputElement => this.iKuserSearchString = iKinputElement }/>
+				<button type="submit">submit request</button>
+			</form>,
+
+			<IkGifUl iKdataArray={this.state.iKgifs} key="IkGifUlKey" />
+		]; /*9+*/
+	}; /*END render */
+}; /*END App */
+
+
+
+const IkGifUl = props =>  {
+	const iKloopList = props.iKdataArray.map( iKitem => {
+		return (
+			<IkGifLi
+				iKsrc={iKitem.images.fixed_height_small}
+				iKalt={iKitem.title}
+				key={iKitem.id.toString()}
+			/>
+		); /*10+*/
+	}); /*END iKloopList */
+
+	return (
+		<ul>
+			{ iKloopList }
+		</ul>
+	); /*11+*/
+}; /*END IkGifUl */
+
+
+const IkGifLi = ( {iKsrc, iKalt} ) => { /*12+*/
+	return (
+		<li><img src={iKsrc.url} alt={iKalt}/></li>
+	); /*13+*/
+}; /*END IkGifLi */
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+/*1+ VIP You should almost always place a placeholder value that is matching the eventual collected data object you will gain later on.
+	+\ so this.state.iKgifs property is suppose collect the ajax api data which will be an array, so til than I place an empty array until it is replace by the api array data.
+		+\ VIP you do this to avoid any errors in the first run script of react dom when the page is loaded (if you plan to use the specific state property immediately).
+			+\ BIM in this demo this.state.iKgifs will be using a loop when the ajax api data is collected and returns <li> gifs. That will only happen in the second run of react dom, but in the first run this.state.iKgifs will have not yet collected the array api data, however there will be no error because I used an empty array as a placeholder for the first run through the loop.
+2+ Using default parameters if no arguments is provided.
+3+ giphy.com api url for gif images, the default gif when the page loads will be kratos gifs.
+3+ you will notice I used three query strings which was provided by giphy.com api.
+	+\ q is for which gif image you are searching for, which by default will be kratos.
+		+\ But you will notice I am using template literal string, which I can insert the user search text for the gifs they want.
+	+\ limit is for the number of gifs you want to download, but I chose only 3 gifs to collect for my demo.
+	+\ api_key is the api key password you must use to access the data, otherwise it will not work (provided by treehouse).
+	+\ there are other api query string on their website but I only used 3 for my demo.
+4+ BIM the first .data is an axios property to collect the json data from the response object.
+	+\ the second .data is the object property name from the giphy.com data object you requested in order to access the specific data you want.
+5+ VIP You should almost always place your asynchronous api data within state object, as state will constantly update the react dom.
+	+\ BIM It is very difficult to use asynchronous api data without state, since react works synchronously and will skip asychronous codes which than could cause error.
+		+\ iKBIM I have found it difficult to use async await function too, as it does not seem to work accordingly with react.
+	+\ iK do not rely too much on thenable handler to do everything for you, let the state object do that for you.
+6+ componentDidMount() will allow me to add the default kratos three gifs list when the user first load to the page. Than the user can submit their search text for their gifs to change that.
+7+ the user search text will fetch new gifs to be uploaded to the page.
+8+ Notice I used array brackets as return type, so siblings elements can be return without parent element container.
+9+ Notice I inserted two key props attribute, as this was requested by react console, so I just gave them any name.
+9+ this.iKuserSearchString is now the <input> element.
+9+ <IkGifUl /> should return <ul> list of gif images when submit button is pressed.
+10+ <IkGifLi /> should return 3 <li> elements of gif images when looping.
+10+ There are 3 props attribute given to <IkGifLi /> :
+	+\ iKsrc is the data image url with a fixed height for src attribute.
+	+\ iKalt is the data title description for the alt attribute.
+	+\ key is for react, as it will send warning if no id was provided for key.
+11+ All 3 <li> should be provided to <ul> . 
+12+ props destructuring.
+	+\ I did not use the key props because I do not need to use it, as that is for react only.
+13+ returns <li> with gif image. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

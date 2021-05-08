@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :root / :target-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>13 :root / :target</title>
+    <style>
+    /* :root selects the root element of the document. <html> in the case of HTML */
+        :root {
+          background-color: beige;
+        }
+        
+    /* display on/off without javascript or :hover */
+        div {
+            background-color: aqua;
+            height: 200px;
+            display: none;
+        }
+                
+    /* :target selects the chosen element you want to effect */
+        div#ik:target {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <a href="#ik">display</a>
+    <a href="#">no display</a> <!-- this takes focus away from the :target for div#ik and brings it to its original display:none;-->
+    
+    <div id="ik">muhammad ali</div>
+</main>
+</body>
+</html>

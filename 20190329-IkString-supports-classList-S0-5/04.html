@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :checked-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>04 :checked</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+	.ik1 {
+		width: 200px;
+		height: 200px;
+		border: black 3px solid;
+		background-color: palegreen;
+		direction: rtl;          /*ik just for interest*/
+		visibility: visible;
+	}	
+
+	input[type="checkbox"]:checked ~ *.ik1 {   /*1+*/
+		visibility: collapse;
+	}
+		/*1+  ~ *.ik1 will target every after sibling element thats .ik1. however you could have just used ~ .ik1
+		1+ it seems you have to use the ~ , as it will not work otherwise*/
+	
+	input[type="checkbox"]:checked ~ label {
+		background-color: cornflowerblue;
+	}
+	
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+	<input type="checkbox" id="ikcheck">
+	
+	<div class="ik1">
+		<p>*deepskyblue if browser supports transform-box: border-box;</p>
+		<p>*springgreen if browser does not supports transform-box: border-box;</p>
+	</div>
+
+	<label for="ikcheck">label check box to display div</label>
+	
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);	
+</script>
+</main>
+</body>
+</html>

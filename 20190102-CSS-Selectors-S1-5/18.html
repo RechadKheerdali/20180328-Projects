@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- ::first-line / ::first-letter  - MDN-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>18 ::first-line / ::first-letter  - MDN</title>
+    <style>
+        ::first-line {
+            color: blue;
+            text-transform: uppercase;
+
+            /* WARNING: DO NOT USE THESE */
+            /* Many properties are invalid in ::first-line pseudo-elements */
+            margin-left: 20px;
+            text-indent: 20px;
+        }
+        
+        
+        ::first-letter {
+            color: red;
+            font-size: 200%;
+            float: left;
+            line-height: 0.5;
+        }
+        /* targets only the first letter of the block element but some special puntuation marks it can be extended with the first letter */
+        
+        
+        /* this would work since it will have block elements */  /*  
+        span {
+            display: inline-block;
+        }                                                        */
+    </style>
+</head>
+<body>
+<main>
+    <p>"*'&lceil;#Styles will only be applied to the first line of this paragraph.
+    After that, all text will be styled like normal. See what I mean?</p>
+
+    <span>The ::first-line and ::first-letter of this text will not receive special styling
+    because it is not a block-level element.</span>
+    
+<!-- IK i think there is a bug in chrome as p line is jumbled together on the ::first-line. maybe it will be fixed by the time i recap. other browser seem to work fine though, and both internal and external stylesheet makes no differences  -->
+</main>
+</body>
+</html>

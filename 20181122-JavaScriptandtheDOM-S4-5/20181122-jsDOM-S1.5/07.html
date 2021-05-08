@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+	<script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>07 .createElement() / .appendChild()</title>
+</head>
+<body> <!-- .createElement() / .appendChild() -->
+<main>
+    <ol id="ko">
+        <li>list one</li>
+    </ol>
+                                <hr>
+    
+    <button>submit extra list</button>
+    <input type="text" id="input">
+    <ul id="ul">
+        <li>first of the list</li>
+    </ul>
+    
+
+<script>
+/* creating a new element and inserting content. than inputting it to html dom */
+// inserting within tag and using .textContent method 
+    const olz = document.getElementById(`ko`);       //.1
+    
+    let newli = document.createElement(`li`);      //.2
+    
+    newli.textContent = `use of document.createElement() and DOM.appendChild()`;    //.3
+    olz.appendChild(newli);                          //.4
+    //.1 tagging the ol tag
+    //.2 created a new element <li>, but it is stored in memory for now
+    //.3 add some content
+    //.4 inserted it within the <ol>
+    
+    /***************************************************/
+
+/* create new list with the user text and button submit */
+    const buttonz = document.getElementsByTagName(`button`)[0];
+    const inputz = document.querySelector(`#input`);
+    const ulz = document.querySelector(`#ul`);
+    
+    buttonz.addEventListener(`click`, () => {
+        let newList = document.createElement(`li`);
+        newList.textContent = inputz.value;            //.1
+        ulz.appendChild(newList);                      //.2
+        inputz.value = ``;                            //.3
+    })
+    //.1 users text content is added to the new <li>
+    //.2 inserted newList within the <ul>
+    //.3 after function the text box clears to empty string
+</script>
+</main>
+</body>
+</html>

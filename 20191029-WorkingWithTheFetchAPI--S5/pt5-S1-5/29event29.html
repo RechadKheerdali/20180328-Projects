@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- server-sent event / EventSource object / persistent connection / iK minor tweaks to make it mock event object more readable to me for future use */
+ -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>29 server-sent event / EventSource object / persistent connection / iK minor tweaks to make it mock event object more readable to me for future use</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- close button to stop eventsource on its track -->
+	<button id="iKbuttonCloseId">close</button>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*server-sent event / EventSource object / persistent connection / iK minor tweaks to make it mock event object more readable to me for future use */
+
+/* Instantiate a `MockeEvent` ----------*/
+const mockEvent = new MockEvent({
+    url: '/iKpathName',	/*iKadjustable*/
+    setInterval: 1300,	/*iKadjustable*/
+    responses: [
+        {name: 'message', data: 'iKeventSourceV1'},	/*iKadjustable*//*1+*/
+        {name: 'iKcustomEventType1', data: 'iKeventSourceV2'},
+        {name: 'iKcustomEventType1', data: 'iKeventSourceV3'}, /*2+*/
+        {name: 'iKcustomEventType3', data: 'iKeventSourceV4'},
+        {name: 'iKcustomEventType1', data: 'iKeventSourceV5'}
+    ]
+});
+
+
+/* Instantiate an `EventSource` ---------- */
+const iKeventSource = new EventSource("/iKpathName");
+
+/* Listening for open and error events */
+iKeventSource.onopen = event => console.log("iKeventsource CONNECTION IS OPEN", event, iKeventSource); /*3+*/
+
+iKeventSource.onerror = event => console.log("iKeventsource CONNECTION ERROR", event); /*4+*/
+
+iKbuttonCloseId.onclick = () => iKeventSource.close(); /*5+*/
+
+/* Listening to specific event names and handling them */
+iKeventSource.addEventListener(		/*iKadjustable*/
+	'message',		/*6+*/
+	event => console.log( event.type, event.data, event ), /*7+*/
+	false	/*8+*/
+);
+
+iKeventSource.addEventListener(
+	"iKcustomEventType1",	/*9+*/
+	event => console.log( event.type, event.data, event ),
+	false
+);
+
+iKeventSource.addEventListener(
+	"iKcustomEventType3",
+	event => console.log( event.type, event.data, event ),
+	false
+);
+/*OP
+	"message , iKeventSourceV1" , event object
+	"iKcustomEventType1 , iKeventSourceV2" , event object
+	"iKcustomEventType1 , iKeventSourceV3" , event object
+	"iKcustomEventType3 , iKeventSourceV4" , event object
+	"iKcustomEventType1 , iKeventSourceV5" , event object */
+
+
+/*1+ Think of name: as the custom type of event listener the client-side will have to use if they want to get the .data of the eventsource object.
+	+\ or you could think of name: as event: property, because thats the property for the server-side, which allows them to name the event listener the client-side will use.
+1+ iK I used "message" because I think normally if the server did not set up the event type, than you would use .onmessage / "message" (.addEventListener) .
+	+\ iK however beware that in this case you are not allowed to use .onmessage event listener.
+		+\ iK but you can use .addEventListenr("message", ...);
+2+ notice there is 2 "iKcustomEventType1" . but server will still send repeated event type to the client synchronously with each separate value.
+3+ iK you can get all the server data prior using the open event, and inserting the iKeventSource.handler.responses.
+	+\ iK I do not know if this is exclusive to the mock eventsource or this is the norms.
+3+ iK bewary as .addEventListener does not seem to work with open event, and the same for error event too.
+4+ the error event also collects if the user closes the connection with .close() .
+	+\ as there seem to be no close event for the eventsource object.
+5+ .close() will stop anymore server events coming through.
+	+\ iK strangely it will straight to error event, close event does not seem to respond under it.
+6+ set the type of event it requires from the server.
+7+ IK however I notice if I would use IK.printD() or document.write(), it will prevent the other iKeventSource.addEventListener() from running. And I do not know why?
+	+\ perhap you should push the values into a new array or something as it will work that way.
+8+ not necessary, it bubbling/capturing.
+9+ will call all the "iKcustomEventType1", but in the synchronous order of the server layout. 
+
+
+ /*OP */
+/***** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error(iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- @supports / CSS.supports()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>03 @supports / CSS.supports()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+	
+	/*ik skip, not important stuff*/
+	.ik1 {
+		width: 300px;
+		height: 300px;
+		border: black 3px solid;
+		text-decoration-line: underline;
+	}	
+
+/* @supports */
+	/*works if browser supports transform-box: border-box;*/
+	@supports (transform-box: border-box) {
+		.ik1 {
+			background-color: deepskyblue;
+		}
+	}
+	
+	/*works if browser does not supports transform-box: border-box*/
+	@supports not (transform-box: border-box) {
+		.ik1 {
+			background-color: springgreen;
+		}
+	}
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+	<div class="ik1">
+		*deepskyblue if browser supports transform-box: border-box; <br>
+		*springgreen if browser does not supports transform-box: border-box;
+	</div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+	
+/* CSS.supports() */
+	const supportTBoxBorder = window.CSS.supports(`transform-box: border-box`);
+	
+	if (supportTBoxBorder === true) {
+		printD(`transform-box: border-box is supported on this browser`);
+	}
+	else if (supportTBoxBorder === false) {
+		printD(`transform-box: border-box is not supported on this browser`);
+	}
+	
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);	
+</script>
+</main>
+</body>
+</html>

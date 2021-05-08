@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>11 sliding items within a container</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+  .container {
+      margin: 10px 0 0 10px;
+      border: 3px solid red;
+      width: 300px;
+      height: 300px;
+      position: relative;     /*@1*/
+      overflow: hidden;      /*@1*/
+  }
+      /*@1 position:relative; is important in order to keep all the content within the container as it is block level and it will allow the overflow to work as intended */
+
+  img,
+  .lizard,
+  .ali {
+      width: inherit;
+      height: 300px;
+      position: absolute;     /*@1*/
+  }
+      /*@1 it keeps the img elements within the .container*/
+
+  /*move one img out of view so that it can transition when hovered*/  
+  img.lizard {
+      transform: translateX(300px);
+      transition: transform 1s;
+  }
+ 
+  /*this remains in view and will translateX() when hovered*/	
+  img.ali {
+      transition: transform 1s;
+  }
+
+/*transformation using :hover indivually for each img element*/
+  .container:hover img.lizard {
+      transform: translateX(0px);
+  }
+
+  .container:hover img.ali {
+      transform: translate3d(-300px, 0, 0);
+  }
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div class="container">
+      <img class="lizard" src="images/dr.jpg" alt="lizard">
+      <img class="ali" src="images/ali.jpg" alt="ali">
+  </div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

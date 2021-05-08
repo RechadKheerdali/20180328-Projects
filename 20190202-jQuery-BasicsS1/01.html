@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- difference between pure js and jQuery / jQuery() / $() / .hide() / .show() / .click()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>01 difference between pure js and jQuery / jQuery() / $() / .hide() / .show() / .click()</title>
+<style>
+	#ikBox {
+		width:200px;
+		height: 200px;
+		background: red;
+	}
+</style>
+</head>
+<body>
+<main>
+	<div id="ikBox">jQuery. click me</div>
+
+<script src="zIK/3-JS/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* pure javascript */ /* 
+     const divBox = document.getElementsByTagName("div")[0]; 
+	 divBox.style.display = `none`; 
+	 divBox.style.display = ``;           */
+    /* ik similar as display: ``; which mean it now is back to normal and not set to none*/
+
+/* jQuery */
+	jQuery("#ikBox").hide();
+	/* same as display:none; */
+	
+	$(`main :first-child`).show();
+	/* jQuery() and $() are the same but shorter */
+		
+/*********************************************************/
+
+/* pure javascript click event handler for alert() */ /*
+    const divBox = document.getElementById(`ikBox`); 
+    divBox.addEventListener(`click`, () => { 
+        alert(`vanilla javascript`); 
+        }, 
+        false 
+	);            */
+	
+/*jQuery click event handler for alert()	*/
+	$(`[id="ikBox"]`).click( () => {
+		alert(`jQuery`);
+    });
+	/* using click() and than inserting a function within to create alert */
+</script>
+</main>
+</body>
+</html>

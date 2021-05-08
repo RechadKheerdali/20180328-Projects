@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>14 css hide element but :checked to show again / from mdn</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+  div.collapsed {
+    	height: 0;                    /*1@*/
+    	overflow: hidden;             /*2@*/
+	  	transition: height 2s, background-color 2s;
+  }
+      /*1@ you could use other form of hiding the element but this is one method as it strolls down to appear and disappear
+      2@ .callapsed still exist and without overflow it will show outside of the container*/
+
+  .expand:checked ~ .collapsed {      /*1@*/
+      	background-color: green;
+    	height: 34vh;                 /*2@*/
+  }
+      /*1@ BIM .expand is still a sibling to .callapsed
+      2@ mdn choice of height but you can choose any height you want*/
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div class="container clearfix">
+    	<input type="checkbox" class="expand" id="expand">
+    	<label for="expand">Expand Height</label>
+
+    	<div class="collapsed">
+      		<h2>Chocolate cupcake dessert</h2>
+      		<p> Tiramisu apple pie sesame snaps lemon drops pie bonbon wafer sweet jujubes. Toffee cupcake wafer. Dessert jelly ice cream sweet roll chocolate bar toffee oat cake cotton candy sweet roll. Cotton candy sweet oat cake croissant macaroon gummies cake gummi bears bear claw. Tootsie roll biscuit marshmallow topping.</p>
+    	</div>
+  </div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 09 $.getJSON() list all in jq / $(document).ready() / $.each()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>09 $.getJSON() list all in jq / $(document).ready() / $.each()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+	.in {
+		background-color: springgreen;
+	}
+
+	.out {
+		background-color: red;
+	}
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+	<div id="ajaxdiv"></div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+
+/* $.getJSON(url, data, function(data, status, xhr)) */
+	$(document).ready(           /*waits for page to load first*/
+		$.getJSON(            
+			`03jsonEmp.json`,                 /*url*/
+
+			function(data, status, xhr) {     /*function*/
+				let ulist = `<ul>`;
+
+				$.each(data, function(index, element) {      /*1+*/
+					if ( data[index][`inoffice`] === true ) {
+						ulist += `<li class="in">${element.name}</li>`;  /*2+*/
+					}
+					else {
+						ulist += `<li class="out">${data[index]["name"]}</li>`; /*3+*/
+					}
+				}) /*END OF .each()*/
+
+				ulist += `</ul>`;
+				$("#ajaxdiv").append(ulist);	
+
+			} /*END OF function*/
+
+		) /*END OF $.getJSON()*/
+
+	); /*END OF.ready()*/
+
+/*1+ you have to use the $ sign as your selector, it will not accept anything else from what i can see when using json data
+2+ element is the current value that the loop is on.
+3+ data is similar to element but you have to type the full data info for it to know what the current value is in the loop.
++\ you might have notice that 09.html file will work more often than 04.html v.js file because jq have better compatibility than v.js */
+
+
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+// cssSupport(cssProperty, cssValue);
+// listAttributes(DOMnode)
+</script>
+</main>
+</body>
+</html>

@@ -1,1 +1,3 @@
-# 20180328-Projects
+# project key notes
+
+javascript / react / rest api / nodejs / testing / etc...

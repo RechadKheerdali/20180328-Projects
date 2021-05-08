@@ -1,0 +1,51 @@
+<!DOCTYPE html> 
+ <html lang="en">
+<head>
+    <title>24 488m</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+            background-color: darkkhaki;        }
+        li {
+            float: left;
+            border: 2px red solid;        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px;        }
+        .listlink {
+            display: inline-block;        }
+        .divlinks {
+            display:none;
+            position:absolute;
+            z-index: 1;
+            background-color: coral;        }
+        .divlinks a {
+            display: block;        }
+        .listlink:hover .divlinks {
+            display: block;        }
+        .divlinks a:hover {
+            background-color: darkcyan;        }
+    </style>
+</head>
+<body>
+     <ul>
+        <li><a href="#">Home</a></li>        
+        <li><a href="#">Info</a></li>      
+        <li class="listlink">
+            <a href="#">About</a>
+            <div class="divlinks">
+                <a href="#">History</a>
+                <a href="#">Culture</a>
+                <a href="#">statistic</a>
+                <a href="#">foundation</a>
+            </div>        </li>        
+        <li><a href="#">Faq</a></li>        
+        <li><a href="#">Contact</a>
+              </li>
+    </ul>
+</body>
+</html>

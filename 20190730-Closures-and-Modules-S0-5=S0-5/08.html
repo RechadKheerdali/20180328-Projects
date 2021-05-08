@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 08 loose augmentation / run asynchonously with javascript -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 loose augmentation / run asynchonously with javascript</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* loose augmentation / run asynchonously with javascript.
+	+\ iK it does not work with const or let, you need to use var.
+	+\ i am not sure what it is suppose to do exactly but treehouse said something about it being loaded first, if it is loaded first than import it otherwise load as usual, whatever quickest in the asynchonously.
+		+\ so if the iKmodule file loads first, the iKexportObject will load to the empty object in the argument, otherwise normal load.
+		+\ iK a bit confusing but i will trust what they say i suppose.*/
+var iKmodule = (function(iKexportObject ) {	/*1+*/
+	var iKexportObject = {
+		iKproperty1: "iKvalue1",
+		iKproperty2: "iKvalue2"
+	};
+
+	return iKexportObject;
+}( iKmodule || {} )); /*END iKmodule */ /*2+*/
+
+
+printD( iKmodule ); /*OP iKmodule window object */
+
+/*1+ notice the var.
+1+ the parameter has to be the same name as the object thats being return.
+2+ iKmodule will load file as normal. and {} will load if it is the first file in the asychronous que. 
++\ iK however i might not use this since i have to use var, this might be the old way of doing it. i should use this if i am worried this will load first and might break error because it is dependent on another file.
+	+\ however the whole point of using module is to not rely on other libraries so you should not resort to this. 
++\ also you can further localised you module by adding .sub to the module name and even the arguments too.
+	+\ it does not seem to work here but it demostrated on treehouse video. 
+		+\ possibly because you need to work on a replica module, im guessing. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- .before() / .after()-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>05 .before() / .after()</title>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--"""""""""""""""""""""""" main ------------------------------->
+    <div class="container">
+        <h2>Greetings</h2>
+        <div class="inner">Hello</div>
+        <div class="inner">Goodbye</div>
+    </div>
+
+<!------------------------- /main /////////////////////////////-->
+<script src="zIK/3-JS/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*""""""""""""""""""""""""" script ------------------------------*/
+/* .before() */
+    jQuery(`div.inner`).before(`<strong>iKtesting</strong>`);
+    /* it will create multiple element if their are more than one of css selector so you need to be specific if you only want one element   */
+    
+/* .after() */
+    $(`div.container`).after( $(`h2`) );
+    /* you can also move current element to elsewhere */
+/*------------------------- /script /////////////////////////////*/
+</script>
+</main>
+</body>
+</html>

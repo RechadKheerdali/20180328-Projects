@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- testing if the web browser supports localStorage\sessionStorage -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>04 testing if the web browser supports localStorage\sessionStorage</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.16.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script async src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+//window.onload = event => {
+'use strict';
+
+
+/*testing if the web browser supports localStorage\sessionStorage */
+/*iKresource 2016: treehouse video.
++\ some browser will not support iKstorage, and because it does not recognize it in its js engine, it will throw an error which is why we will need to use if statement and try...catch */
+window.onload = event => {	/*1+*/
+	if ( iKlocalStorageSupport() ) {	/*2+*/
+		IK.printD("localStorage support");
+		/* ... iK write all your localStorage code in here ... */ /*3+*/
+	};	/*4+*/
+
+
+	function iKlocalStorageSupport() {
+		try {
+			return "localStorage" in window && localStorage !== null; /*5+*/
+		} 
+		catch( iKerrorEvent ) {
+			return console.log("iKcatchError");	/*6+*/
+		};
+	};
+}; /*END window.onload */
+
+
+/*1+ the .onload event was used in the treehouse video, is not a bad idea either.
+1+ BIM you cannot use load event listener twice on a code. Meaning you cannot use a child load event listener within a parent load event listener. From my iK experiment.
+2+ using a callback function in the if statement is much cleaner and easier to understand.
+2+ we are testing localStorage, but the same can be done with sessionStorage.
+3+ so if localStorage exist than we can load any codes here, but it would be better to use more callback function to add our codes as it will be easier to read too.
+4+ not required to use else{} , since we do not want to do anything if localStorage does not work.
+5+ will return true if all expression is true.
+5+ the first expression checks if localStorage property exist in the browser window object.
+5+ the second expression checks localStorage property is not null. And that it has a set of function within for it to work accordingly.
+	+\ but it does not mean if the localStorage is empty of values, but if it has a function structure or constructor/properties/methods.
+6+ will return false to the if statement, so therefore it cannot run the code in 'if block'.
+
+6+ iKrecap I notice the catch(){} will only be triggered if the object does not exist or mistype, perhap within the scopes.
+	+\ so if the string is mistype, than catch(){} will not be trigger, eg. "localStorage".
+	+\ but if the object did not exist or is mistype, than catch(){} will be triggered, eg. window .
+		+\ that includes any other object such as localStorage .
+			+\ however the same does not apply if you use the object as property through dot notation, eg. window.localStorage.
+				+\ only if window. did not exist or mistype than catch(){} will be triggered, but will completely ignores if .localStroage exist/mistype as it is a property. */
+
+
+ /*OP */
+/***** d */
+//}; /*END window.onload */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ ["iKsetV1"], ["iKsetV2"], ["iKsetV3"] ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

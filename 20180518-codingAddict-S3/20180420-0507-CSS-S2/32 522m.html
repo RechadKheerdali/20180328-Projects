@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>31 517m</title>
+    <style>
+        body {
+            margin: 10px 10px 10px 30px;        }
+        div {
+            color: white;
+            font-size: 50px;
+            width: 90px;
+            height: 90px;
+            border: 2px solid black;        }
+        
+        
+        #ik1 {
+            background-color: orange;
+            animation-name: helloik;
+            animation-duration: 5s;        }
+        @keyframes helloik {
+            from {                
+                background-color: orange;            }
+            to {
+                background-color: darkmagenta;   }        }
+        
+        
+        #ik2 {
+            background-color: aqua;
+            animation-name: secondik;
+            animation-duration: 5s;
+            animation-delay: 2s;
+            animation-iteration-count: 4;    }
+        @keyframes secondik {
+            0%{background-color: aqua;}
+            50%{background-color: purple;}
+            100%{background-color: chartreuse;}  }
+        
+        
+        img {
+            border-radius: 50%;
+            padding: 20px;
+            background-color: red;
+            filter: contrast(20) grayscale(30%);        }
+        
+    </style>
+</head>
+<body>
+    <div id="ik1">1 transition //////////////</div><br><br><br><br><br><br><br>
+    
+    <div id="ik2">2 rotateY //////////////</div><br><br>
+    
+    <img src="images/images.jpg" alt="trumpy" width="400">
+    
+</body>
+</html>

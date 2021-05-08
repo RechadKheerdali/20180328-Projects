@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- ^ / * / $ attribute selectors / i  .  copied from MDN -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>04 ^ / * / $ attribute selectors / i  .  copied from MDN</title>
+    <style>
+      a {
+        color: blue;
+        font-size: 200%;
+      }
+
+      /*  ^  - Internal links, beginning with "#" */
+      a[href^="#"] {
+        background-color: gold;
+      }
+
+      /*  *  - Links with "example" anywhere in the URL */
+      a[href*="example"] {
+        background-color: silver;
+      }
+
+      /*  * / i     - Links with "insensitive" anywhere in the URL,
+         regardless of capitalization because of the i placement */
+      a[href*="insensitive" i] {
+        color: cyan;
+      }
+
+      /*  $  - Links that end in ".org" */
+      a[href$=".org"] {
+        color: red;
+      }
+
+      /* double attributes and capital insensitive i */
+      [href][href^="#INSE" i] {
+        font-weight: bold;
+      }
+    </style>
+</head>
+<body>
+<main>
+  <ul>
+    <li><a href="#internal">Internal link</a></li>
+    <li><a href="http://example.com">Example link</a></li>
+    <li><a href="#InSensitive">Insensitive internal link</a></li>
+    <li><a href="http://example.org">Example org link</a></li>
+  </ul>
+</main>
+</body>
+</html>

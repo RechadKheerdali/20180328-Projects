@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :nth-last-child() 3 or more child and it selects all (from MDN)-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>08 :nth-last-child() 3 or more child and it selects all (from MDN)</title>
+    <style>
+/* very clever system.
+If there are at least three list items in a sections, than style applies to all of that section*/
+		li:nth-last-child(n+3),        /*1*/
+		li:nth-last-child(n+3) ~ li {  /*2*/ 
+		  color: red;
+		}
+		/*.1 - this targets the third <li> from the bottom and everything above it 
+		    +\ will only work if there is a third <li> child otherwise nothing*/
+		/*.2 - it looks at the starting point of (n+3) than the general selector looks at its following siblings below and targets them if any
+		    +\ again will only work if there is a third <li> child (n+3) */
+	</style>
+</head>
+<body>
+<main>
+	<h4>A list of four items (styled):</h4>
+	<ol>
+	  <li>One</li>
+	  <li>Two</li>
+	  <li>Three</li>
+	  <li>Four</li>
+	</ol>
+
+	<h4>A list of two items (unstyled):</h4>
+	<ol>
+	  <li>One</li>
+	  <li>Two</li>
+	</ol>
+</main>
+</body>
+</html>

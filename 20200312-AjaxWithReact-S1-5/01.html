@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 01 Using componentDidMount() and fetch() to upload api data when page first loads -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>01 Using componentDidMount() and fetch() to upload api data when page first loads</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file (VIP for CRA) -->
+<div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Using componentDidMount() and fetch() to upload api data when page first loads */
+/* iK demo of using asynchronous codes within react.
++\ You pass any asynchronous / updates / changes to the state object as usual.
+	+\ with the help of lifecycle such as componentDidMount() or event triggers. */
+
+class App extends React.Component {
+	state = {
+		iKapiObject: "iKplaceholder" /*1+*/
+	};
+
+	componentDidMount() {  /*2+*/
+		fetch("https://jsonplaceholder.typicode.com/users") /*3+*/
+			.then(iKresponseObjectP => iKresponseObjectP.json())
+			.then(iKjsonP => {
+				this.setState({
+					iKapiObject: iKjsonP
+				}) /*4+*/
+			})
+			.catch(iKerrorP => console.log(iKerrorP));
+	}; /*END componentDidMount */
+
+	render() {
+		console.log(this.state.iKapiObject); /*5+*/
+
+		return (
+			<React.StrictMode>
+				<h1>{this.state.iKapiObject[0].email}</h1>
+			</React.StrictMode>
+		); /*6+*/
+	}; /*END render */
+}; /*END App */
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+/*1+ iKVIP you must place a truthy placeholder default value if you are using the state property in the first load of the page.
+	+\ because if you set a falsy value such as null, than when the react dom reads the null in its first run upon loading, it will crash react dom.
+	+\ this would not be required if you did not need to use the state property in the first load, but this demo is using the state iKapiOjbect for <h1> element in the first load.
+		+\ BIM remember that when the state object property is updated/changed than react dom is re-loaded to the page again with the updated state object property.
+			+\ BIM usually state object properties are updated/changed by event triggers or lifecycle like componentDidMount(), and asynchronous codes.
+2+ using the componentDidMount() to fetch() the api and update the state object. So that the react dom can be updated the seconded run through the page as soon as the page loads.
+	+\ BIM you would not need to use componentDidMount() if you do not want the asynchronous code to load when the user first visits your page.
+		+\ BIM an example of not using the lifecycle is the user would be using a search form and submitting an event trigger (eg. submit event) for the asynchronous code to fire, and than their desired content will be uploaded.
+3+ url api collects 10 user data.
+4+ this.state.iKapiObject has been changed to an array data of 10 user.
+5+ VIP you will see two outputs, in the first react dom run the output value will be "iKplaceholder" . Than in the second run the outpur value will be an array data of 10 users (from the api url).
+	+\ iK probably be best to run any final output within the lifecycle/event trigger, since there it will only run once.
+6+ VIP if this.state.iKapiObject started as a falsy value, than react dom would have crashed error in the first run of loading to the page. Despite componentDidMount() did collect the api data afterwards.
+	+\ iK alternatively you could probably use falsy value if you used conditional statement.
+		+\ iK or alternatively you could put a string saying 'loading...' for the user which should be ok. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

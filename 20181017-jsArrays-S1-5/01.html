@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <title>01 arrays</title>
+</head>
+<body>
+	<script>  /*- array -   -and calling for specific array value */
+//	 this is a typical array
+		var scores = [
+			100,
+			99,
+			60
+			];
+		document.write( scores[2] );
+
+		var names = [
+			'KRATOS',
+			'Amit',
+			'Sarah',
+			'Ricardo',
+			'Piers'
+			];
+		document.write( names[0] );
+
+		var values = [
+			1,
+			-100,
+			true,
+			false,
+			'JavaScript'
+			];
+		document.write( values[2] );
+
+//	<!-- +.    can store many values -->
+//	<!-- same symtax as var but includes brackets[]  -->
+	//    calling arrays but just in [] at the end of its name
+	//    rememebr the valus inside arrays are index numbers begining with 0. so the first value will be 0. if you have 3 values than its 0, 1, 2
+	//    notice how i sytle the symtax, this is recommended but good practice as it is clearer to read
+
+		var fruits = ['Apple', 'Banana'];
+		console.log(fruits.length);
+//			<!-- show of .length -->
+        
+   /* to add in array through the index number*/         
+        var footballers = [];
+        footballers[0] = 'messi';
+        footballers[1] = 'maradona';
+        footballers[2] = 'N.ronaldo';
+        console.log(footballers);
+	</script>
+</body>
+</html>

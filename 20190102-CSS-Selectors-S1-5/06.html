@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :nth-child(an+b) -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>06 :nth-child(an+b)</title>
+    <style>
+		p {
+			font-size: 200%;
+			text-align: center;
+			margin: 2px;
+			font-weight: bold;
+		}
+		
+/*not index number . and it represent all child under the parent*/
+		section :nth-child(1) {       
+			color: green;
+		}
+/*every 4th child. same as (4n+1)  */
+		p:nth-child(4n) {
+			background-color: lightblue;
+		}
+/*(an+b) expression. +b only means which child to start from. also this is the same as (odd) */
+		p:nth-child(2n +1) {    
+			background-color:pink;
+		}
+/*to go backwards use (-n) , same as (-1n) . and to go forward (n) , also as (1n)*/
+		p:nth-child(-n+4) {
+			border: 6px dashed black;
+		}
+/*targets every child p with just (n), same as (1n)*/
+		p:nth-child(n) {
+			text-decoration: underline;
+		}
+/*set start and finish using double :nth-child()*/
+		p:nth-child(n+6):nth-child(-n+9) {
+			text-indent: 200px;
+		}
+/*cannot use comma within parenthesis so use seperate :nth-child()*/
+		p:nth-child(5),
+		p:nth-child(11) {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+<main>
+	<section>
+		<h1>1st first child</h1>
+		<p>2nd - P1</p>
+		<p>3rd - P2</p>
+		<p>4th - P3</p>
+		<p>5th - P4</p>
+		<p>6th - P5</p>
+		<p>7th - P6</p>
+		<p>8th - P7</p>
+		<p>9th - P8</p>
+		<p>10th - P9</p>
+		<p>11th - P10</p>
+		<p>12th - P11</p>
+		<p>13th - P12</p>
+	</section>
+</main>
+</body>
+</html>

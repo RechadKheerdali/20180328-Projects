@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>03 guil example of some of the common values of transition-timing-function: / cubic-bezier() / steps()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    /* skip to the most important part*/
+    body {
+      background-color: #F5F5F5;
+      color: #555;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .wrap {
+      margin: 30px auto 100px;
+      max-width: 740px;
+    }
+    .container {
+      padding: 1em;
+      margin-bottom: 2.5em;
+      border: 1px solid #aaa;
+      background-color: white;
+    }
+
+/* IK THIS IS THE MOST IMPORTANT PART */
+    .box {
+      padding: 1em;
+      width: 35px;
+      height: 35px;
+      background-color: steelblue;
+      transition-property: transform;
+      transition-duration: 1.8s;
+    }
+    .container:hover .box {
+      transform: translateX(635px);
+    }
+
+    /* .ease {
+      transition-timing-function: ease:
+    } */
+    /* not neccessary because ease is the default function for transition-timing-function: */
+
+    .linear {
+      transition-timing-function: linear;
+    }
+    .ease-in {
+      transition-timing-function: ease-in;
+    }
+    .ease-out {
+      transition-timing-function: ease-out;
+    }
+    .ease-in-out {
+      transition-timing-function: ease-in-out;
+    }
+    .cb-1 {
+     transition-timing-function: cubic-bezier(.8, .1, 1, .04);
+    }
+    .cb-2 {
+     transition-timing-function: cubic-bezier(.1, .9, .9, .1);
+    }
+    .cb-3 {
+      transition-timing-function: cubic-bezier(0.6, 1.5, 0.6, 1);
+    }
+    .cb-4 {
+      transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .cb-5 {
+      transition-timing-function: cubic-bezier(0.5,3.0,0.5,-2.0);
+    }
+	.step-start {
+		transition-timing-function: step-start;
+	}
+	.step-end {
+		transition-timing-function: step-end;
+	}
+	.steps {
+		transition-timing-function: steps(5, end);
+	}
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+  <div class="wrap">
+    <span>ease | cubic-bezier(0.25, 0. 1, 0.25, 1)</span>
+    <div class="container">
+      <div class="box ease"></div>
+    </div>
+
+    <span>linear</span>
+    <div class="container">
+      <div class="box linear"></div>
+    </div>
+
+    <span>ease-in</span>
+    <div class="container">
+      <div class="box ease-in"></div>
+    </div>
+
+    <span>ease-out</span>
+    <div class="container">
+      <div class="box ease-out"></div>
+    </div>
+
+    <span>ease-in-out</span>
+    <div class="container">
+      <div class="box ease-in-out"></div>
+    </div>
+ <!-- cubic-bezier() -->
+    <span>cubic-bezier(.8, .1, 1, .04)</span>
+    <div class="container">
+      <div class="box cb-1"></div>
+    </div>
+
+    <span>cubic-bezier(.1, .9, .9, .1)</span>
+    <div class="container">
+      <div class="box cb-2"></div>
+    </div>
+
+    <span>cubic-bezier(0.6, 1.5, 0.6, 1)</span>
+    <div class="container">
+      <div class="box cb-3"></div>
+    </div>
+
+    <span>cubic-bezier(0.68, -0.55, 0.265, 1.55)</span>
+    <div class="container">
+      <div class="box cb-4"></div>
+    </div>
+
+    <span>cubic-bezier(0.5, 3.0, 0.5, -2.0)</span>
+    <div class="container">
+      <div class="box cb-5"></div>
+    </div>
+<!--	step()  -->
+     <span>step-start</span>
+    <div class="container">
+      <div class="box step-start"></div>
+    </div>
+
+    <span>step-end</span>
+    <div class="container">
+      <div class="box step-end"></div>
+    </div>
+
+    <span>steps(iKintegar, start || end)</span>
+    <div class="container">
+      <div class="box steps"></div>
+    </div>
+  </div>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

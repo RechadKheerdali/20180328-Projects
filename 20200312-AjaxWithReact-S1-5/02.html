@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 02 Using componentDidMount() and axios to upload api data when page first loads / .get() -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>02 Using componentDidMount() and axios to upload api data when page first loads / .get()</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- index.html file (VIP for CRA) -->
+<div id="root"></div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+
+
+	<!--1+-->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Using componentDidMount() and axios to upload api data when page first loads / .get() */
+/* iK it was done using CRA, so you will see what it was like to be written in CRA with several files, and the import and export will be commented out here.
++\ iK this demo has the same principles and similar format as the previouse demo with the fetch() api.
+	+\ the only real difference is we are using axios library to GET our url api data.
++\ axios is a library that uses ajax, but works on both browser and nodejs, while also having better browser support. */
+
+	/******/
+	/*App.js file*/
+	/******/
+//	import React from 'react';
+//	import axios from 'axios';
+
+class App extends React.Component {
+	state = {
+		iKapiObject: "iKplaceholder"
+	};
+
+	componentDidMount() {
+		axios.get("https://jsonplaceholder.typicode.com/users") /*2+*/
+			.then(iKresponseObjectP => {
+				console.log(iKresponseObjectP); /*OP axios object */ /*3+*/
+				console.log(iKresponseObjectP.data); /*OP array data of the 10 users */ /*4+*/
+				this.setState({
+					iKapiObject: iKresponseObjectP.data
+				});
+			})
+			.catch(iKerrorP => console.log(iKerrorP));
+	}; /*END componentDidMount */
+
+	render() {
+		return (
+			<React.StrictMode>
+				<h1>{this.state.iKapiObject[0].email}</h1>
+			</React.StrictMode>
+		);
+	}; /*END render */
+}; /*END App */
+
+//	export default App;
+
+
+	/******/
+	/*index.js file*/
+	/******/
+//	import React from 'react';
+//	import ReactDOM from 'react-dom';
+//	import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+/*1+ axios cdn for browser only.
+	+\ for SPA use npm and import
+2+ axios.get() is for GET request, just like it would be for default fetch() request.
+	+\ there are many other method you could use too (eg. .post() / .patch() / etc.), iK check axios documentation for full list.
+3+ BIM there is many properties within the axios object which you could use, such as gaining status, config, etc... Including the request property which is the XMLHttpRequest object.
+4+ .data is the data for the GET request data you wanted, and it will have already converted the json data into js object.
+	+\ BIM axios will by default request json data as return data type, but you could change that if you wanted to (iK check online documentation as it is simple to change). */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

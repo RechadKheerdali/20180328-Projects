@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+        <title>11 346m display</title>
+    <style>
+        a {
+            background-color: aquamarine;
+            display: block;
+        }
+        li {
+            background-color: darkkhaki;
+            display: inline;
+        }
+        h2 {
+            display: none;
+        }
+        h1 {
+            visibility: hidden;
+        }
+        
+        .ik1 {
+            border: solid 5px red;
+            position: relative;
+            bottom: 10px;
+            left: 15px;
+        }
+        .ik2 {
+            border: solid 5px blue;
+            position: relative;
+            top: 10px;
+            right: 15px;
+        }
+        .ik3 {
+            border: solid 5px green;
+            position: relative;
+            top: -15px;
+            right: -55px;
+        }
+        .ik4 {
+            border: solid 5px black;
+            position: relative;
+            bottom: -10px;
+            left: 75px;
+        }
+        .ik5 {
+            border: solid 5px rgb(255, 69, 255);
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+        }
+        .ik6 {
+            border: solid 5px orange;
+            position: absolute;
+            top: 170px;
+            left: 50px;            
+        }
+    </style>
+</head>
+<body>
+    <a href="ikexample">im a link block level now</a>
+    <a href="ikexample">im a link block level now</a>
+    <a href="ikexample">im a link block level now</a>
+
+    <br> <br/>
+    
+    <ul>
+        <li>im a inline element now</li>
+        <li>im a inline element now</li>
+        <li>im a inline element now</li>
+
+          </ul>        <br>
+        <br> <br/>
+    <br> <br/>
+    <br> <br/>
+    <br> <br/>
+    <br> <br/>
+    <br> <br/>
+    <br> <br/>
+
+    <p> the difference between display none and visibility hidden is that the hidden box is still lov=cated in the page. chack yourself below</p>
+    <h2>Display: none -  completely gone on the page</h2>
+    <h1>visibility: hidden  - dissapears but box still on page</h1>
+    <p>cannot see anything can you but one box gone and one box still on the page hidden</p>
+    <br><br>
+    
+    <p class="ik1">iam am static</p>
+    <p class="ik2">iam am relative</p>
+    <p class="ik3">iam am position relative</p>
+    <p class="ik4">iam am movable to close its static position</p>
+    
+    <p class="ik5">i am in position: fixed</p>
+    
+    <p class="ik6">i am position: absolute; i am suppose to be below this page but not</p>
+    
+</body>
+</html>

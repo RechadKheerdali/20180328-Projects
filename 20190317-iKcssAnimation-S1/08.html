@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 08 time limited on hover items then return to normal / from mdn -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 time limited on hover items then return to normal / from mdn </title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+	.demo {
+	  border-top: 100px solid grey;
+	  height: 300px;
+	}
+
+	.demo:hover .growsandstays {
+	  animation-name: grow;
+	  animation-duration: 3s;
+	  animation-fill-mode: forwards;
+	}
+	
+	.demo:hover .grows {
+	  animation-name: grow;
+	  animation-duration: 3s;
+	}
+	
+	@keyframes grow {
+	  0% { font-size: 0; }
+	  100% { font-size: 40px; }
+	}
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+	<p>Move your mouse over the gray box!</p>
+	<div class="demo">
+		<div class="growsandstays">This grows and stays big.</div>
+		<div class="grows">This just grows.</div>
+	</div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

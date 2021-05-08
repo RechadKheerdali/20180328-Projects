@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06</title>
+    <style>
+        /* If the screen size is 600px or less, set the font-size of <div> to 30px */
+        @media only screen and (max-width: 600px) {
+            p {
+                font-size: 20px;
+                font-weight: bolder;
+            }
+        }
+        
+        /* If the screen size is 601px or more, set the font-size of <div> to 80px */
+        @media only screen and (min-width: 601px) {
+            p {
+                font-size: 50px;
+                color: red;
+            }
+        }
+
+        h1 {
+  -webkit-text-fill-color: pink;
+  -webkit-text-stroke-color: turquoise;
+  -webkit-text-stroke-width: 1.75px; 
+
+
+  text-align: left;
+  text-decoration: overline pink wavy;
+  text-transform: uppercase;
+  text-indent: 100px;
+            font-size: 55px;
+}    
+    </style>
+ </head>
+    
+<body>
+    <p>a simple paragraph the display the change of font size as the screen size changes because of media quieries</p> <br>
+    
+    <h1>My Logo sucker</h1>
+</body>
+</html>

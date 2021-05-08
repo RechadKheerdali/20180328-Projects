@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!--ikPERSONAL RESEARCH = modify pseudo-element images size / outline / outline-offset-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>21 ikPERSONAL RESEARCH = modify pseudo-element images size / outline / outline-offset </title>
+    <style>
+    /* adjust image size using pseudo-elements with display: and background-image:*/
+        div::after {
+            content: "";
+            display: inline-block;
+            width: 15em;
+            height: 15em;
+            background-image: url(images/ali.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: aqua;
+        }
+
+      /* outline is the outside part of the content but does not effect anything else */
+        section:first-of-type {
+          background-color: orange;
+          border-radius: 2rem;
+          height: 100px;
+          border: rgba(170, 50, 220, .6) 15px solid;
+          outline: 8px ridge red;
+        }
+
+        section:nth-last-of-type(1) {
+          background-color: red;
+          height:100px;
+          border: purple 15px solid;
+          outline: orange 8px solid;
+          outline-offset: 8px;   /*.1*/
+        }
+        /*.1 to seperate border and outline. but only the outline will move*/
+    </style>
+</head>
+<body>
+<main>
+    <div>pseudo-elements adjusting size of ::after image</div>
+
+    <section>first</section>
+    <br> <br>
+    <section>last</section>
+</main>
+</body>
+</html>

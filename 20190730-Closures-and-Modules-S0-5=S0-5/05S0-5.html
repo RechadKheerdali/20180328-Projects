@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 05 basic module pattern \ (function(){...}()) / S0.5 -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>05 basic module pattern \ (function(){...}()) / S0.5</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/* basic module pattern \ (function(){...}()) / S0.5  .
+	+\ demo of the effect on the global space scope*/
+
+	/* a normal global function (non-module pattern) */
+function iKfunction1 () {		/*1+*/
+	printD("iKarg1");
+};
+
+iKfunction1(); /*OP "iKarg1" */
+
+/*===================*/
+
+	/* a local function (module pattern) */
+;(function () {					/*2+*/
+	function iKfunction2 () {	/*3+*/
+		printD("iKarg2");		/*4+*/
+	};
+
+	iKfunction2(); /*OP "iKarg2" */
+
+	$("main").text("iKjQueryText").css("background-color", "lightblue"); /*5+*/
+
+}()); /*END (function(){...}()) (module pattern)*/
+
+/*1+ iKfunction1 is a global variable, and can be found easily by users (eg. console) or other files.
+2+ added a module pattern (function(){...}()) , and any variables inside becomes a local scope which cannot be found in the global scope.
+2+ you could alternatively remove the outer () parenthesis and replace it with a '+' or '!' at the start and ';' at the end. which works the same way.
+	+\ there are a few others symbols you can use such as '-' , but '+' and '!' are the most common.
+	+\ reason to use this is if you are concatenating with other files so you know this file is mixed with other modules in a specific order.
+		+\ iK i do not know how strict it is in the order of files but only use if you know for sure otherwise best not to use it.
+		+\ however if you do not know which files will come first that its best not to use this and keep the () parenthesis but add ';' at the front instead. ;()  .
+3+ iKfunction2 is a local variable and cannot be found easily by users or other files.
+4+ but the local scope has no problem using global scope variables (printD).
+5+ you can even use jquery or other js library despite it being a local scope. */
+
+
+ /*OP */
+/*--------------------- /script /////////////////////////*/ /* 
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKproperty1: "iKoV1", iKproperty2: "iKoV2", iKproperty3: "iKoV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

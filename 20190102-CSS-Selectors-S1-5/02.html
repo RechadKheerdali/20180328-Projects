@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- :only-child -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>02 :only-child</title>
+    <style>
+      div:only-child {
+        color: red;
+      }
+
+      div {
+        display: inline-block;
+        margin: 6px;
+        outline: 1px solid;
+      }
+    </style>
+</head>
+<body>
+<main>
+  <div>
+    <div>I am an only child.</div>
+  </div>
+
+  <div>
+    <div>I am the 1st sibling.</div>
+    <div>I am the 2nd sibling.</div>
+    <div>I am the 3rd sibling, 
+		<div>but this is an only child.</div>
+	</div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- enter brief description of the page-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>04 transform: skewX(); / skewY() / skew()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    /* skip to the most important part*/
+  .box {
+		width: 110px;
+		height: 110px;
+		background-color: red;
+		margin: 30px 0 5px 30px;
+		border: white 2px solid;
+		outline: black 2px solid;
+		box-shadow: 2px 2px 2px 2px purple;
+		transition: transform 1s;
+	}
+
+/* IK THIS IS THE MOST IMPORTANT PART */
+	.allBox:hover .ik1 {
+		transform: skewX(-30deg);
+	}
+	.allBox:hover .ik2 {
+		transform: skewY(-30deg);
+	}
+	.allBox:hover .ik3 {
+		transform: skew(-30deg, -40deg);  /* (x, y) */
+	}
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+	<div class="allBox">
+		<div class="ik1 box">transform: skewX()</div>
+		<div class="ik2 box">transform: skewY()</div>
+		<div class="ik3 box">transform: skew()</div>
+		<span>&uarr; hover over &uarr;</span>
+	</div>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

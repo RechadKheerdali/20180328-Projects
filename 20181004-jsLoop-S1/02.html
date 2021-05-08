@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>02 while() {}</title>
+</head>
+<body>
+    <script>
+        var upper = 1000;
+        var randomNumber = getRandomNumber(upper);
+        var computerGuess; //currently set as undefined. so when while condition !== does not match than the loop can work
+        var attempts_by_computer = 0;
+
+        function getRandomNumber(upper) {
+          return Math.floor( Math.random() * upper ) + 1;
+        }
+
+        while( computerGuess !== randomNumber ) {
+          computerGuess = getRandomNumber(upper);
+          attempts_by_computer+= 1;
+        }
+        document.write("<p>The random number was: " + randomNumber + "</p>");
+        document.write("<p> It took the computer " + attempts_by_computer + " attempts to get it right.</p>");
+// IK some personal questions 1) i think functions rolls the dice again but not sure, maybe computer guesses again 2)what limits the computer to guess up to 1000, is it the upper within the function?
+// IK i think i understand; computerguess is nothing but gains a number in while and i think its sticks to that number until the randomNumber gets it right.    or does this mean that computerguess changes after it goes throught a loop again?
+// IK think i got it, stop thinking function can only be place in one var. randomNumber already got its random number set but now computerguess is using function to make its guesses, until it matches with randomNumber!
+
+    </script>
+</body>
+</html>

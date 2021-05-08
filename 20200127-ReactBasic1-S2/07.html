@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 07 Inserting data and iterate through component callback to gain elements / react key property to identify each data -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>07 Inserting data and iterate through component callback to gain elements / react key property to identify each data</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<div id='iKdivContainer'>iK will be overwritten by react</div>
+
+
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2.0.0-rc.1"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+/*Inserting data and iterate through component callback to gain elements / react key property to identify each data */
+/*It is important for react to identify elements that is being iterated so that it can prevent duplicates.
+	+\ BIM React manages what gets rendered to the DOM. In order for this process to be fast and efficient, React needs a way to quickly know which items were changed, added, or removed. For this, React gives elements a special built-in prop named 'key'. A 'key' is a unique identifier that gives React a way to quickly and reliably identify an element in a list. */
+const iKarrayObject1 = [
+	{
+		"name": "Alpha",
+		"inoffice": false,
+		id: 1
+	},
+	{
+		"name": "Bravo",
+		"inoffice": true,
+		id: 2
+	},
+	{
+		"name": "Charlie",
+		"inoffice": true,
+		id: 3
+	}
+]; /*END iKarrayObject1 */	/*1+*/
+
+function IkCreateList (iKpropsObject1) {
+	return (
+		<ol>
+			{ 
+				iKpropsObject1.iKdata.map(function(iKelement){  /*2+*/
+					return ( <IkGetEachList iKindex={iKelement} key={iKelement.id.toString()} /> ); /*3+*/
+				})
+			}
+		</ol>
+	);
+};
+
+function IkGetEachList (iKpropsObject2) {
+	return (<li>{iKpropsObject2.iKindex.name}</li>) /*4+*/
+};
+
+ReactDOM.render(
+	<IkCreateList iKdata={ iKarrayObject1 } />,
+	iKdivContainer
+);
+/*OP 
+	Alpha
+	Bravo
+	Charlie  (on the html list) */
+
+/*1+ it is always to include 'id' property and insert a unique accending number for each data.
+	+\ usually 'id' property is already set when collecting data from elsewhere.
+	+\ 'id' property is associated with the 'key' property that we are going to pass as props.
+	+\ BIM ensure each 'id' is unique, and no duplicate, otherwise it cause problems down the line.
+2+ BIM it is much more simpler to loop in react using .map() and other js loop methods than it is using any of the for loops.
+	+\ iKBIM you can still loop using for loops, but you would need to wrap the for loop in a funcion invoke ( function(){}() ) for it to work. Plus you would need to create an empty flag array first to push the data within (using for loop), than return the array.
+		+\	%%%%%
+...
+function () {
+	let iKarr = [];
+	for (let i of iKpropsObject1.iKdata) {
+		iKarr.push(<li>{i.name}</li>)
+	}
+	return iKarr
+}()
+...
+		=eg.
+			+\ iK therefore stick to .map() and similar shortcut loops because react are more in sync with them, than they are with for loops.
+3+ VIP you must pass property 'id' to 'key' props argument, when creating multiple elements using the data, react needs to identify for them as unique.
+	+\ iKVIP 'key' is a special property name, and can only be passed through component callback function as argument. It cannot be passed through normal jsx element.
+		+\ you will notice 'key' property will have a special highlight on react developer tool too.
+		+\ BIM ensure you only pass 'id' property number for each element you create.
+			+\ VIP ensure you convert 'id' number into string using .toString() .
+		+\ BIM you do not need to do nothing else after you pass the 'key' props through the component callback function, as react will do the rest to recognise it.
+4+ iK notice I have not use 'key' property, as you do not need to do anything with it. */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

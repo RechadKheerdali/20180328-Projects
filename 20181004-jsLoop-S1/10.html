@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>10 B</title>
+</head>
+<body>
+  <script>
+  // B - second method but still the same = the correctGuess example using false at the start, i like this better because you can us if/else if/else outside the while loop.
+    function randomDice () {
+      var num = Math.floor( Math.random() * 20 + 1 );
+      return num;
+    };
+
+    var randomNumber = randomDice();
+    var attempts = 5;
+    var correctGuess = false;
+
+    do {
+      var guess = parseInt( prompt("guess between 1-20? you have " + attempts + " attempts left.   HINT " + randomNumber) );
+      attempts--;
+      if (guess === randomNumber) {
+        correctGuess = true;
+        break;
+      };
+    } while (attempts > 0)
+
+    if (correctGuess) {
+      document.write("IKcongratz");
+    }else if (! correctGuess) {
+      document.write("loserIK");
+    };
+/* +/    also dont forget you are allowed to redefine the same var down though the hositing method. up to this point i forgot
++/     also you can easily convert the do..while into the while loop by deleting the do.. and replacing it with the while . however it is not necessary , but if you did it would work becuse while would be true so it is guranteed to run on the first go, but if it was not than use do..while only */
+  </script>
+</body>
+</html>

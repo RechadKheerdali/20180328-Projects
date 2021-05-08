@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>05 method - .join();  .concat();  .indexOf();</title>
+</head>
+<body>
+<main>
+<script>   /* .join()  /   .concat()   /   .indexOf()    */
+//    .join()
+    var weekDays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+
+    var weekComma = weekDays.join(" *M* ");
+
+    printD(weekDays);  //how it would noramlly appears untouched
+    printD(weekComma);
+//    with .join() you can link the arrays how you want
+
+    /*****************************************************/
+//    .concat()
+    var alp1 = ["A", "B", "C"];
+
+    var alp2 = ["X", "Y", "Z"];
+
+    var alpAll = alp2.concat(alp1);
+
+    printD(alpAll);
+//    .concat() joins the array values together to make one long array
+
+    /*********************************************************/
+//    .indexOf()
+    var namesV = [" ALPHA", " bravo", " charlie", " DELTA", " ECHO", " bravo"];
+
+    var callingNum = namesV.indexOf(" DELTA");
+
+    printD(callingNum);
+    printD( namesV[callingNum] );
+//    .indexOf() allows you to call the value within the array and tell you the index number of that value. and you can do vice versa by calling array normally as shown
+
+    /*************************************************/
+    var nonexist = namesV.indexOf(" xray"); //" xray" does not exist
+
+    printD(nonexist);
+//    also if the value doe not exist than it will always return as -1, so BIM because you can use that to do some interesting things
+
+    /*****************************************************/
+    var startingFrom = namesV.indexOf(" bravo", 2); // notice the index number after the value
+
+    printD(startingFrom);
+    printD( namesV[startingFrom] );
+
+
+    var beginFrom = namesV.indexOf(" ALPHA", 1); // " ALPHA" does exist but only before the index number of 1
+
+    printD(beginFrom);
+    printD( namesV[beginFrom] );
+//   putting an index number after the value in .indexOf() means you start from that index number and will ignore anything before
+</script>
+</main>
+</body>
+</html>

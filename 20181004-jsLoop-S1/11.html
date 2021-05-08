@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="znormalize.css" rel="stylesheet" type="text/css">
+    <link href="zik_css_template.css" rel="stylesheet" type="text/css">
+    <title>11 C</title>
+</head>
+<body>
+  <script>
+  // C  - third method, again still works the same way, this is the for loop method.
+    function randomDice () {
+      var num = Math.floor( Math.random() * 20 + 1 );
+      return num;
+    };
+
+    var randomNumber = randomDice();
+    var i;  //this is attempts, but not necessary to type this but its good practice to make it clear
+    var correctGuess = false;
+
+    for (var i = 5; i >= 1; i -= 1) {
+      var guess = parseInt( prompt("guess between 1-20? you have " + i + " attempts left.   HINT " + randomNumber) );
+      if (guess === randomNumber) {
+        correctGuess = true;
+        break;
+      }
+    };
+
+    if (correctGuess) {
+      document.write("IKcongratz");
+    }else if (! correctGuess) {
+      document.write("loserIK");
+    }
+  </script>
+
+</body>
+</html>

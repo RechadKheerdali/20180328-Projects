@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09</title>
+</head>
+<body>
+    <script>
+        var q1 = prompt ("What does UK stand for?");
+        if (q1.toUpperCase() === "UNITED KINGDOM" || q1 === "qaz") {
+            document.write ("Thats right, United Kingdom!");            
+            }
+        else {
+            document.write("WRONG! the answer is United Kingdom");
+        }
+//remember that js is case sensitive so even if the answer is correct but the casing is different js will assume its not the same and therfore wrong. but adding the toUpperCase method will convert the answer to uppercase and equality the same then it becomes correct. another option is you can add the method with the var syntax if you preferre
+        //qaz is just a test to show you can use LOGICAL OR which is something you learn later on so for now if you are confuse by it then just ignore it for now
+        
+        // this is a ascii table chart, for you to test which is greater according to the order list. so in doubt quickly use this to find out
+        var a = "z";
+        var b = "†";
+        if ( a > b ) {
+            document.write("<p>ASCII test calculation<br><strong>" + a + " is > greater than " + b + "</strong></p>");
+            }   
+        else if ( a === b ) {
+            document.write("<p>ASCII test calculation<br><strong>" + a + " = equals " + b + "</strong></p>");
+            }
+        else if( a < b ) {
+            document.write("<p>ASCII test calculation<br><strong>" + a + " < is less than " + b + "</strong></p>");
+            }
+    
+    </script>
+</body>
+</html>

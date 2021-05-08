@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- grid-row-start: / grid-row-end: / grid-column-start: / grid-column-end: / playground-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/rik.css" rel="stylesheet" type="text/css">
+    <title>06 grid-row-start: / grid-row-end: / grid-column-start: / grid-column-end: / playground</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    div.gridContainer {
+        border:blue 10px solid;
+        display: grid;      
+        grid-template-rows: repeat(4, minmax(40px, auto));
+        grid-template-columns: repeat(4, minmax(40px, auto));
+    }
+
+    div.gridContainer > div.gridItem {
+        border: red 1px solid;
+        background-color: cornsilk;
+    }
+
+    div.gi1 {
+        background-color: rgba(255, 195, 0, 0.9) !important; 
+    }
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+    <div class="gridContainer gc1">
+        <div class="gridItem gi1">1</div>
+        <div class="gridItem gi2">2</div>
+        <div class="gridItem gi3">3</div>
+        <div class="gridItem gi4">4</div>
+        <div class="gridItem gi5">5</div>
+    </div>    
+    
+    <h2>move grid item 1 using grid-row-start: , grid-row-end: and grid-column-start: , grid-column-end:</h2>
+    
+    <fieldset>
+        <h4>using grid-row:</h4>
+        <label for="rowStart">choose grid-row-start: iKnumber; Or span: iKnumber;</label>
+        <input type="text" id="rowStart">
+        <br>
+
+        <label for="rowEnd">choose grid-row-end: iKnumber; Or span: iKnumber;</label>
+        <input type="text" id="rowEnd">
+
+
+        <h4>using grid-column:</h4>
+        <label for="columnStart">choose grid-column-start: iKnumber; Or span: iKnumber;</label>
+        <input type="text" id="columnStart">
+        <br>
+
+        <label for="columnEnd">choose grid-column-end: iKnumber; Or span: iKnumber;</label>
+        <input type="text" id="columnEnd">
+        <br><br>
+
+        <strong><em>Remember you cannot use 2 span iKnumber otherwise it will not work</em></strong>
+        <input type="submit" class="Button">
+    </fieldset>
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kik.js" type="text/javascript"></script>
+<script type="text/javascript">
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+    const gridOne = document.getElementsByClassName(`gi1`)[0];
+    const rowStart = document.getElementById(`rowStart`);
+    const rowEnd = document.getElementById(`rowEnd`);
+    const columnStart = document.getElementById(`columnStart`);
+    const columnEnd = document.getElementById(`columnEnd`);
+    const Button = document.getElementsByClassName(`Button`)[0];
+
+    Button.addEventListener(`click`, (event) => {
+        const rs = rowStart.value;
+        const re =rowEnd.value;
+        const cs = columnStart.value;
+        const ce =columnEnd.value;
+        gridOne.style.cssText = `grid-row-start: ${rs}; grid-row-end: ${re}; grid-column-start: ${cs}; grid-column-end: ${ce};`;
+        });
+/*-BIM ------------------------ /script /////////////////////////////*/
+/* 2019 02 20 ik i made this myself , took longer ended up not working than expected. anyway its complete now and enjoy 
++\ BIM apparently wrapping the fieldset in <form> reset the input text and almost reloads the page therefore js .style.cssText ended up not working*/
+</script>
+</main>
+</body>
+</html>

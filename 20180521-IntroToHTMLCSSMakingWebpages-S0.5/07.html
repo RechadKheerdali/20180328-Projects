@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>07 Using calc() in CSS</title>
+<style>
+    /*
+        Learn more here: https://css-tricks.com/a-couple-of-use-cases-for-calc/
+        Learn more about browser support here: http://caniuse.com/#feat=calc
+    */
+    
+    #calcid {
+        /* Fallback (recomended by CSS tricks) */
+        width: 80%;
+        
+        /* Width */
+        width: calc(100% - 200px);
+        
+        /* Changes the background */
+        background: #d3d3d3;
+        
+        /* Border */
+        border: 1px solid #000;
+    }
+    
+    body {
+        font-family: "Segoe UI", arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+    <div id = "calcid">
+        <h1>This is an Example of <code>calc()</code> in CSS</h1>
+        <p>Try changing the width of the window and see what happens.</p>
+        <p><a href="https://css-tricks.com/a-couple-of-use-cases-for-calc/">Learn more</a></p>
+    </div>
+</body>
+</html>

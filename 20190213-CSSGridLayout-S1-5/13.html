@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">    <!-- by ilshaad kheerdali 2018 -->
+<head><!-- 13 ik flex template css analysis-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="13flex.css" rel="stylesheet" type="text/css">
+    <title>13 ik flex template css analysis</title>
+<style>
+/* ik there is nothing special here but i wanted to show the difference on why i should use grid instead of my flex css.
+	flexbox css template is not as flexible as css grid, therefore this is only ideal if you are targetting mobile/tablet (with 1 column) user or browsers that is not css grid supported. 
+     +\ it is difficult getting a good responsive sticky footer layout when you are using media query 768px and upper to get more than one column. So either you use just header/main/footer and do everything inside it or sacrifice sticky footer as that is link to flex.
+			+\ plus it is a nightmare to set gaps between the containers if you wanted
+*/
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+    #main_header {
+        background-color: rgba(255, 69, 0, 0.8);
+    }
+    
+    #main_nav {
+        background-color: rgba(169, 169, 169, 0.8);
+    }
+    
+    #main_page {
+        background-color: rgba(138, 43, 226, 0.8);
+    }
+    
+    #main_footer {
+        background-color: rgba(0, 100, 0, 0.8);
+    }
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<div id="background_image">
+	<!--	<img src="images/ali.jpg" id="backgroundImg">-->
+<div id="body_wrapper">
+<header id="main_header">
+<!--+ + + + + + + + + + + + + HEADER ------------------------------->
+    <h1>any header content</h1>
+    <h1>any header content</h1>
+<!-------------------------- /header ////////////////////////////-->
+</header>
+<main id="main_page">
+<!--    consider changing for a smaller width for main-->
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+    <h1>any main content</h1>
+<!-------------------------- /main /////////////////////////////-->
+</main>
+<footer id="main_footer">
+<!--+ + + + + + + + + + + + + FOOTER ------------------------------->
+    <h1>any footer content</h1>
+    <h1>any footer content</h1>
+<!-------------------------- /footer ////////////////////////////-->
+</footer>
+</div>
+</div>
+</body>
+</html>

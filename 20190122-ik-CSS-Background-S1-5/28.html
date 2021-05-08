@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- counter() / counters() / counters() with dot.numeral using li-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>28 counter() / counters() / counters() with dot.numeral using li</title>
+<style>
+/*counter with no s in content*/
+	main {
+	  counter-reset: iksection;
+	}
+	/* Set a counter named 'iksection', and its initial value is 0. using the parent container */
+
+	h3::before {
+	  counter-increment: iksection;  /*.1*/                
+	  content: counter(iksection);   /*.2*/    
+	}
+	/*.1 Increment the value of section counter by 1 */
+	/*.2 Display the value of section counter */
+	
+	
+	
+/*counters() . with the s in content*/
+	ol {
+	  counter-reset: ik1; /*.1*/
+	  list-style-type: none;
+	}
+	/*.1 Creates a new instance of the ik1 counter with each ol element */
+
+	li::before {
+	  counter-increment: ik1;            /*.1*/     
+	  content: counters(ik1, "+") " ";   /*.2*/
+	}
+	/*.1 Increments only this instance of the ik1 counter */
+	/*.2 Combines the values of all instances of the ik1 counter, separated by a period */
+	/*counters seem to differ with the dot notation numerals as it also counts inner list too. plus you get to add a string (eg "+") inbetween the numbers. i also notice that it only seem to works only with <li>, and not so others from what i have tried */
+</style>
+</head>
+<body>
+<main>
+<!-- counter() -->
+	<h3>Introduction</h3>
+	<h3>Body</h3>
+	<h3>Conclusion</h3>
+
+	
+<!-- counters() -->
+	<ol>
+	  <li>item</li>          <!-- 1     -->
+	  <li>item               <!-- 2     -->
+		<ol>
+		  <li>item</li>      <!-- 2.1   -->
+		  <li>item</li>      <!-- 2.2   -->
+		  <li>item           <!-- 2.3   -->
+			<ol>
+			  <li>item</li>  <!-- 2.3.1 -->
+			  <li>item</li>  <!-- 2.3.2 -->
+			</ol>
+			<ol>
+			  <li>item</li>  <!-- 2.3.1 -->
+			  <li>item</li>  <!-- 2.3.2 -->
+			  <li>item</li>  <!-- 2.3.3 -->
+			</ol>
+		  </li>
+		  <li>item</li>      <!-- 2.4   -->
+		</ol>
+	  </li>
+	  <li>item</li>          <!-- 3     -->
+	  <li>item</li>          <!-- 4     -->
+	</ol>
+	
+	<ol>
+	  <li>item</li>          <!-- 1     -->
+	  <li>item</li>          <!-- 2     -->
+	</ol>
+</main>
+</body>
+</html>

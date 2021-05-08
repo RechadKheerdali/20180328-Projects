@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMP/2-css-temp/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMP/2-css-temp/pik-css-temp.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMP/3-JS-temp/js-temp.js"></script>
+    <title>02 why you should avoid using .previousSibling but instead use .previousElementSibling</title>
+</head><!-- why you should avoid using .previousSibling but instead use .previousElementSibling-->
+<body>
+<main>
+	<div>
+		<button id="a1">a1</button>
+		<span id="b2">b2</span>
+		<button id="c3">c3</button>
+	</div>
+<script>
+/*.previousSibling */
+	const a1 = document.getElementById("a1");
+	const b2 = document.getElementById("b2");
+	const c3 = document.getElementById("c3");
+
+//using .previousSibling refers to anything before in the node
+	document.write(b2.previousSibling);            // [object Text]
+	console.log(b2.previousSibling);               // #text
+	console.log(b2.previousSibling.textContent);   // empty string
+	console.log(c3.previousSibling.id);            // undefined
+	/*whitespace is the next thing in the DOM*/
+	
+//using .previousSibling.previousSibling will get the element before
+	document.write(b2.previousSibling.previousSibling);          //.1
+	console.log(b2.previousSibling.previousSibling);             //.2
+	console.log(b2.previousSibling.previousSibling.textContent); //.3
+	console.log(c3.previousSibling.previousSibling.id);          //.4
+	//.1 [object HTMLButtonElement]
+	//.2 <button id="a1">a1</button>
+	//.3 a1
+	//.4 b2
+	/*double .previousSibling is the next element in the DOM
+	+\ it is unreliable as you have to always be aware of what is the next subject in the DOM is if you use this. it is better to use .previousElementSibling
+	+\ BIM you will not always get the next element as the next subject might already be the next element*/
+	
+	/**************************************************/
+	
+/*.previousElementSibling */
+//using .previousSibling.previousSibling will get the element before
+	document.write(b2.previousElementSibling);          //.1
+	console.log(b2.previousElementSibling);             //.2
+	console.log(b2.previousElementSibling.textContent); //.3
+	console.log(c3.previousElementSibling.id);          //.4
+	//.1 [object HTMLButtonElement]
+	//.2 <button id="a1">a1</button>
+	//.3 a1
+	//.4 b2
+	/* guarantees to get the previous element unlike .previousSibling */
+</script>
+</main>
+</body>
+</html>

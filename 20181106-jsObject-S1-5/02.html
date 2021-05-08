@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK-TEMPLATES/02-css-template/normalize.css" rel="stylesheet" type="text/css">
+    <link href="zIK-TEMPLATES/02-css-template/pik-css-template.css" rel="stylesheet" type="text/css">
+    <script src="zIK-TEMPLATES/03-JSscript-template/pik-js-template.js"></script>
+    <title>02 'for-in' loop for object</title>
+</head>
+<body> <!-- 'for-in' loop for object -->
+<main>
+<script>
+	var iKstudent = {
+			name: "dave",                //key: values 
+			age: 31,
+			grades: [60, 78, 38, 53],    //property:value 
+			birthCountry: "brazil",
+			END: true
+	};
+	
+// for-in loop is only for object
+	for (var iKproperty in iKstudent) {   //some people dont type the var
+		printD( iKproperty )
+	};
+/* iKproperty will only print all the variable property names, not the property value .
++\ think of for-in name as the representation of the property names*/
+
+/*************************************************************/
+	document.write("<br>");
+/**************************************************/
+// full list of the object 
+	for (var iKproperty in iKstudent) {
+		printD( iKproperty + " */* " + iKstudent[iKproperty] );
+	};
+/*you have to use the square bracket notation [] method to gain access to the values within the properties .   the .notation will not work in a for-in loop as it will assume it is a property/method   
++\ if you try to use the .notation than it will be return as undefined
++\ BIM you can call a property name in string (eg "age") but you will get the same answer for the rest of the property , as it is specific*/
+
+/**************************************************/
+	for (var iKproperty in iKstudent) {
+		console.log( iKproperty, ">^<", iKstudent[iKproperty] )
+	};
+/* in console.log() you can just simply use comma ',' to concatenate everything instead of using the + sign   */
+</script>
+</main>
+</body>
+</html>

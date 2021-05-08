@@ -1,0 +1,80 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>25 ik testing</title>
+    <style>
+        ul {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;        }
+        li {
+            float: left;
+            display: inline-block;   }
+        a {
+            display: block;        }
+        .div1 {
+            display: none;
+float: right;            z-index: 1;
+        }
+        .linklist1:hover .div1 {
+            display: inline-block;   }
+        .div2 {
+            display: none;
+float: right;            z-index: 2;
+        }
+        .div1:hover .div2 {
+            display: inline-block;        }
+        .div3 {
+            display: none;
+float: right;            z-index: 3;
+        }
+        .div2:hover .div3 {
+            display: block;        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Home</a></li>        
+        <li><a href="#">Info</a></li>        
+        <li class="linklist1"><a href="#">About</a>
+            <div class="div1">
+                <a href="#">History</a>
+                  <div class="div2">
+                  <a href="#">Contact1</a>
+                      <div class="div3">
+                      <a href="#">list1</a>
+                      <a href="#">list2</a>
+                      <a href="#">list3</a>
+                      <a href="#">list4</a>
+                            </div> 
+                  <a href="#">Contact2</a>
+                  <a href="#">Contact3</a>
+                  <a href="#">Contact4</a>
+                            </div> 
+                
+                 <a href="#">Culture</a>
+                  <div class="div2">
+                  <a href="#">Contact1</a>
+                  <a href="#">Contact2</a>
+                  <a href="#">Contact3</a>
+                  <a href="#">Contact4</a>
+                            </div> 
+                <a href="#">statistic</a>
+                <a href="#">foundation</a>
+            </div>     </li>        
+        <li><a href="#">Faq</a></li>        
+        <li class="linklist1"><a href="#">Contact</a>
+            <div class="div1">
+                <a href="#">Contact1</a>
+                <a href="#">Contact2</a>
+                <a href="#">Contact3</a>
+                <a href="#">Contact4</a>
+                            </div> </li>
+    </ul>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <p>ik i cannot seem to figure out how to do multiple navbar menu that appears presentatable on the right side so do IKRESEARCH ON IT.
+    PS i would take absolute off for at least for a working navbar. i replace with float right which seem ok</p>
+</body>
+</html>

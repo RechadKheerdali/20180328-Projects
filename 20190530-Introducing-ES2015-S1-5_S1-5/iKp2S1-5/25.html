@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 25 entering array to map (online) / .keys() / .values() / .entries() / .has() / .get() / Array.from() -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelementplayer.min.css" rel="stylesheet" type="text/css">
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>25 entering array to map (online) / .keys() / .values() / .entries() / .has() / .get() / Array.from()</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+<!-------------------------- /main /////////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.15.0/dist/umd/popper.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.10/mediaelement-and-player.min.js" type="text/javascript"></script>
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+'use strict';
+
+
+/*entering array to map (online)*/
+	/*inserting directly through Map([])*/
+	let recipeMap = new Map([
+		['cucumber', 500],
+		['tomatoes', 350]
+	]);
+			/*you always have to insert one extra [] container, no matter if you insert array. 2 dimensional array.
+			+\ it will not accept object.
+			+\ you cannot insert more than 2 values inside an array, it will ignore any more values added inside the array.
+				+\ you do need to structure the array as an object with property and values.
+			+\ you can add as many array using the ,comma to separate them .*/
+
+
+	/* iterate over keys (vegetables) with .keys() */
+	for ( let vegetable of recipeMap.keys() ) {
+		printD(vegetable); /*OP: 'cucumber', 'tomatoes'*/
+	};
+			/*.keys() help gain the property if any*/
+
+
+	/* iterate over values (amounts) with .values() */
+	for ( let amount of recipeMap.values() ) {
+		printD(amount); /*OP: 500, 350 */
+	};
+			/* .values() to gain value*/
+
+
+	/* iterate over [key, value] entries with .entries() */
+	for ( let entry of recipeMap ) {   /*1+*/
+		printD(entry); /*OP: ["cucumber", 500] , ["tomatoes", 350] */
+	};
+			/*1+ it is the same as recipeMap.entries() */
+
+
+	/* .has() returns a boolean if the item exist or not */
+	printD( recipeMap.has("cucumber") ); /*OP: true*/
+		/*it will work as if you enter a property name because the array is structured like an object constructor.
+		+\ but will not work for the second value of the array (500/350).
+		+\ of course will work on normal object constructors too*/
+
+
+	/* .get() to gain the value of the property*/
+	printD( recipeMap.get('cucumber') ); /*OP: 500 */
+		/*will not work on the value of the array (500/350)*/
+
+
+	/* Array.from() */
+	const iKarray = Array.from( recipeMap );
+
+	printD(iKarray); /*OP: ["cucumber", 500] , ["tomatoes", 350] */
+		/*you get a 2-dimensional-array */
+
+
+/*------------------------- /script /////////////////////////////*/ /* 
+const iKvar = "iKV";
+const iKarray = ["iKV1", "iKV2", "iKV3"];
+const iKobject = {iKproperty1: "iKV1", iKproperty2: "iKV2", iKproperty3: "iKV3"};
+ printD(html);
+ everyStyles(DOMelement);
+ ascii(a, b);
+ patternIndexNumber(theArrayz, searchThisValue);
+ cssSupport(cssProperty, cssValue);
+ listAttributes(DOMnode);
+ serialize(formDOMelement);
+ serializeObject();             */
+</script>
+</main>
+</body>
+</html>

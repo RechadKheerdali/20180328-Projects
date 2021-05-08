@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Refactoring Redux with string variable action type list / adding and removing names of the store array -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!--    <link href="zIK/02css/aReset.css" rel="stylesheet" type="text/css">-->
+<!--    <link href="zIK/02css/normalize.css" rel="stylesheet" type="text/css">-->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelementplayer.min.css" />
+    <link href="zIK/02css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/02css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>02 Refactoring Redux with string variable action type list / adding and removing names of the store array</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!-- <noscript> is for users who have javascript turned off. instructions on how to enable javascript. ik you can modify the inline style how you want and beware of top nav bar-->
+    <noscript style="border: red 2px solid; font-weight: bolder; padding-bottom: 4px;">
+     For full functionality of this site it is necessary to enable JavaScript to its normal settings.
+     Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+     instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+<!--+ + + + + + + + + + + MAIN --------------------------->
+<!---------------------- /main /////////////////////////-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.14/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" integrity="sha256-G7A4JrJjJlFqP0yamznwPjAApIKPkadeHfyIwiaa9e0=" crossorigin="anonymous"></script>
+<script src="zIK/HS07mockServerEventsource/mockevent.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js" integrity="sha256-7nQo8jg3+LLQfXy/aqP5D6XtqDQRODTO18xBdHhQow4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.min.js"></script>
+<!--<script src="./node_modules/sinon/pkg/sinon.js"></script>-->
+<script src="zIK/03JS/kiK.js" type="text/javascript"></script>
+<script type="text/babel">
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+
+
+/*Refactoring Redux with string variable action type list / adding and removing names of the store array */
+/* resource: treehouse:
+	+\ iK It seem to be a good structure, as you can see all the action type in one list. Making it easier for you and other developers to know the type of function within your action creators.
+		+\ Best suited for spa but works perfectly well with normal html project too.
+			+\ iK I did not use import and export as I did this demo on html project. */
+
+	/******/
+	/*actionType.js file*/
+	/******/
+/*Action types */
+const iKaddNameVar1 = "IKADDNAME1",
+	  iKremoveNameVar2 = "IKREMOVENAME2";
+	/*1+*/
+
+
+	/******/
+	/*actionCreator.js file*/
+	/******/
+/*Action Creator and Action */
+const iKaddNameActionCreator1 = iKactionDataP1 => ({
+	type: iKaddNameVar1,  /*2+*/
+	iKactionData1: iKactionDataP1
+});
+
+const iKremoveNameActionCreator2 = iKactionDataP2 => ({
+	type: iKremoveNameVar2,
+	iKactionData2: iKactionDataP2
+});
+
+
+	/******/
+	/*reducer.js file*/
+	/******/
+/*Reducer */
+const iKnameListReducer1 = (iKinitialStateP1 = [], iKactionP1) => {
+	switch (iKactionP1.type) {
+		case iKaddNameVar1: /*3+*/
+			return [
+				...iKinitialStateP1,
+				{
+					name: iKactionP1.iKactionData1
+				}
+			];
+		case iKremoveNameVar2:
+			return iKinitialStateP1.filter( iKitemP1 => iKitemP1.name !== iKactionP1.iKactionData2 ); /*4+*/
+		default:
+			return iKinitialStateP1;
+	}; /*END switch */
+}; /*END iKnameListReducer1 */
+
+
+	/******/
+	/*store.js file*/
+	/******/
+/*Store */
+const {createStore} = Redux;
+
+const iKstore1 = createStore(
+	iKnameListReducer1,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+/*Dispatches */
+const {dispatch, getState} = iKstore1;
+
+dispatch( iKaddNameActionCreator1( "Alpha" ) );
+dispatch( iKaddNameActionCreator1( "Bravo" ) );
+dispatch( iKaddNameActionCreator1( "Charlie" ) );
+	/*5+*/
+
+dispatch( iKremoveNameActionCreator2( "Bravo" ) );
+
+console.log( getState() ); /*OP: ["Alpha", "Charlie"] */
+
+
+/*1+ you can write down all your string variable action types in one place so that it is easier to see and know all your actions there is.
+	+\ ideally you would put these in a separate file and export them (eg. using export const). Then import them for both action creator and reducer file..
+		+\ helpful to use * to import them.
+			+\ import * as iKactionTypes1 from "./actionType.js";  =eg. Then you could use iKactionTypes1.iKaddNameVar1 and iKactionTypes1.iKremoveNameVar2 for easier access.
+2+ Use the string variable action type as value.
+	+\ you would normally import it if using SPA.
+3+ You also place the string variable action type within each reducer conditional statement.
+4+ .filter() is quite good at removing items for the new array. Alternatively you could use .slice() or possibly .splice(), etc...
+5+ current output: ["Alpha", "Bravo", "Charlie"] . */
+
+
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ /* 
+	IK.printD( html );
+	IK.everyStyles( DOMelement );
+	IK.ascii("a", "b");
+	IK.patternIndexNumber( iKarray, searchThisValue );
+	IK.cssSupport("cssProperty", "cssValue");
+	IK.listAttributes( DOMnode );
+	IK.serialize( formDOMelement );
+	IK.serializeObject( iKobject );
+	IK.cloneObject( iKobject );
+	IK.fetchJson( apiUrlP );
+
+const iKvar1 = "iKV1";
+const iKarray1 = ["iKaV1", "iKaV2", "iKaV3"];
+const iKobject1 = {iKoProperty1: "iKoV1", iKoProperty2: "iKoV2", iKoProperty3: "iKoV3"};
+const iKmap1 = new Map([ ["iKmapProp1", "iKmapV1"], ["iKmapProp2", "iKmapV2"], ["iKmapProp3", "iKmapV3"] ]);
+const iKset1 = new Set([ "iKsetV1", "iKsetV2", "iKsetV3" ]);
+const iKconsFunction1 = function ( {iKpar1, iKpar2, iKpar3} = {} ) {
+	this.iKconsFuncProp1 = iKpar1 || "iKdefaultPar1";
+	this.iKconsFuncProp2 = iKpar2 || "iKdefaultPar2";
+	this.iKconsFuncProp3 = iKpar3 || "iKdefaultPar3";
+};
+	const iKconsObject1 = new iKconsFunction1();
+const iKasyncFunction1 = async () => {
+	try {
+		const iKpromise1 = await new Promise(function(resolve, reject) {
+		});
+		return iKpromise1;
+	} catch(iKcatchError1) {
+		throw new Error("iKerror >>> ", iKcatchError1);
+	};
+};
+	iKasyncFunction1();	*/
+</script>
+</main>
+</body>
+</html>

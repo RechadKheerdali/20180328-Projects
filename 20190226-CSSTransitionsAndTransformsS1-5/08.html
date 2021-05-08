@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- 08 perspective: / transform-style: / the rotate effect on child and grandchild in 3d space-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="zIK/2-css/aReset.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/normalize.css" rel="stylesheet" type="text/css">-->
+    <link href="zIK/2-css/oikGrid.css" rel="stylesheet" type="text/css">
+<!--    <link href="zIK/2-css/oikFlex.css" rel="stylesheet" type="text/css">-->
+    <title>08 perspective: / transform-style: / the rotate effect on child and grandchild in 3d space</title>
+<style>
+/* + + + + + + + + + + + + + STYLE -------------------------------*/
+
+/* ik skip not important */
+  div {
+    width: 140px;
+    height: 140px;
+    border: 2px pink dotted;
+  }
+  .box {
+    border: 1px solid #000000;
+    margin: 5px 0 35px 70px;
+  }
+
+/* IK THIS IS THE MOST IMPORTANT PART */
+/* the nested childed (grandchild) which will show the effects of perspective: & transform-style: */
+  .gray {
+    background-color: gray;
+    transform-origin: top 100%;  /*ik having trouble setting the second axis for some reason??? it does not respond as expected*/
+    transform: rotateX(-45deg);
+  }
+
+/* will show the blue box rotated 45deg and the effect of 3d space using perspective and transform-style */
+/*1st box = flat */
+  .blue1 {
+    background-color: blue;
+    transform: rotateY(45deg);
+    transform-style: flat;
+  }
+    /* no 3d on child blue or grandchild grey */
+
+/*2nd box = flat + perspective */
+  .container2 {
+    perspective: 500px;
+    perspective-origin: center;  /*giving center viewing*/
+  }
+  .blue2 {
+    background-color: blue;
+    transform: rotateY(45deg);
+    transform-style: flat;
+  }
+    /* 3d on child blue but no 3d on grandchild grey.
+    +\ alternatively i could use perspective() within transform: */
+
+/*3rd box = preserve-3d */
+  .blue3 {
+    background-color: blue;
+    transform: rotateY(45deg);
+    transform-style: preserve-3d;
+  }
+    /* no 3d on child blue but 3d on grandchild grey */
+
+/*4th box = preserve-3d + perspective */
+  .container4 {
+    perspective: 500px;
+    perspective-origin: 50% 50%;  /*giving center viewing*/
+  }
+  .blue4 {
+    background-color: blue;
+    transform: rotateY(45deg);
+    transform-style: preserve-3d;
+  }
+    /* 3d on child blue and grandchild grey
+    +\ alternatively i could use perspective() within transform: */
+
+/*-------------------------- /style //////////////////////////////*/
+</style>
+</head>
+<body>
+<main>
+<!--+ + + + + + + + + + + + + MAIN ------------------------------->
+
+  <div class="box container1">
+    <div class="blue1">transform: flat;
+        <div class="gray"></div>
+    </div>
+  </div>
+
+  <div class="box container2">
+    <div class="blue2">transform: flat;
+        <div class="gray"></div>
+    </div>
+  </div>
+
+  <div class="box container3">
+    <div class="blue3">transform: preserve-3d;
+        <div class="gray"></div>
+    </div>
+  </div>
+
+  <div class="box container4">
+    <div class="blue4">transform: preserve-3d;
+        <div class="gray"></div>
+    </div>
+  </div>
+
+<!-------------------------- /main /////////////////////////////-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+<script src="zIK/3-JS/kiK.js" type="text/javascript"></script>
+<script>
+/* + + + + + + + + + + + + + SCRIPT ------------------------------*/
+/*------------------------- /script /////////////////////////////*/
+// printD(html);
+// everyStyles(DOMelement);
+// ascii(a, b);
+// patternIndexNumber(theArrayz, searchThisValue);
+</script>
+</main>
+</body>
+</html>

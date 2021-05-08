@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 08Az HOME PAGE '/' / POST form search text / form element -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>08Az HOME PAGE '/' / POST form search text / form element</title>
+<style>
+/* + + + + + + + + + + + STYLE ---------------------------*/
+/*---------------------- /style //////////////////////////*/
+</style>
+</head>
+<body>
+<main role="main">
+<!--+ + + + + + + + + + + MAIN --------------------------->
+
+
+<!-- iK form element with POST method and url home page -->
+<form method='POST' action='/'>         <!--1+-->
+	<input type='search' name='iKsearch' value='iKvalue333'> <!--2+-->
+	<button type='submit'>submit</button>
+</form>
+
+<a href='http://127.0.0.1:3008/303'>path page</a> <!--3+-->
+<a href='http://127.0.0.1:3008/303zzz'>non-existent page</a>
+
+<!-- 1+ setting to POST method because it is easier to set if statement on the path page using the requestP.method , and also POST is cleaner/sensitive than GET .
+    +\ GET will mean user enterd home page url.
+    +\ POST will mean user submitted their search text.
+1+ VIP you must also set action url to home page to stay on your server otherwise you will not be able to redirect (eg. 303) and could go to another site.
+2+ the querystring object will use the name attribute as its property when user submits.
+2+ the value will become the querystring object value for iKsearch property.
+    +\ which you will be using in this demo to replace {{iKplaceholder}} on the path page (08zB.html).
+3+ it appears you can use <a> too to direct to other pages on your server. -->
+
+
+<!---------------------- /main /////////////////////////-->
+<script>
+/* + + + + + + + + + + + SCRIPT --------------------------*/
+'use strict';
+ /*OP */
+/* **** d */
+/*--------------------- /script /////////////////////////*/ 
+</script>
+</main>
+</body>
+</html>
