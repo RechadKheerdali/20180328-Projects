@@ -7,7 +7,7 @@
     "test": "mocha",
     "watch": "mocha --watch ./test ./",
     "brow": "browserify ./*.js -o ./iKjs.js",
-	"ikupdate": "npm install && npm audit fix && npm update && exit"
+    "ikupdate": "npm install && npm audit fix && npm update && exit"
   },
   "repository": {
     "type": "git",

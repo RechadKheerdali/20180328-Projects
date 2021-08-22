@@ -34,9 +34,8 @@ server.listen(port, hostname, () => {	/*7+*/
 3+ .createServer() creates your own server.
 3+ requestP is the client side sending data to the server-side and what they would like in its response object.
 3+ responseP is the server side (nodejs) sending back a response to the client-side.
-4+ iK not too sure what this does yet. UPDATE WHEN YOU KNOW.
+4+ iK When the response to the clientside is status 200, response with this particular responseP
 5+ iK setting header, however responseP.writeHead() seem more powerful, makes me wonder why have this.
-	+\ iK UPDATE WHEN YOU KNOW.
 6+ .end() will end any more response coding, and the client-side will no longer be listening after this.
 6+ will also allow you to write on document (like document.write() ).
 7+ .listen() will set the server to listen to matching connection.

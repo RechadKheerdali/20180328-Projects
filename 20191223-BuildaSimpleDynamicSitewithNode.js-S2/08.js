@@ -63,12 +63,12 @@ httpMOD.createServer( (requestP, responseP) => {
 }).listen(3008, '127.0.0.1', () => console.log('iKserver working on: localhost:3008') );
 
 
-/*1+ this is when the user sumbit their search text on form, and append the querystring object to this variable. So you can use it when user have been redirected to the path page.
+/*1+ this is when the user submit their search text on form, and append the querystring object to this variable. So you can use it when user have been redirected to the path page.
 	+\ VIP it has to be at least 1 scope above the .createServer() as it will not append otherwise.
 2+ '/' represent the home page (08zA.html)
 3+ BIM best practice to use responseP.writeHead() on each page for your server.
 4+ GET represent what the requestP method (home page) is currently on.
-	+\ also easier to set if statement, because when user sumbit their search text, it will become POST method. But I am sure there are plenty of alternatives ways.
+	+\ also easier to set if statement, because when user submit their search text, it will become POST method. But I am sure there are plenty of alternatives ways.
 4+ BIM use .toUpperCase() because some browser inconsistency of typing method differently.
 5+ inserting home page to '\' .
 6+ use responseP.end() for each page.

@@ -1,4 +1,5 @@
 /*02 using chai expect() for bdd without mocha */
+/*iK YOU WILL NEED TO npm run ikupdate for testing to work on any of the project files */
 'use strict';
 const kb = require('./zikBE/iKmodules/iKbe');
 /* + + + + + + + + + + node Main Codes ------------------------*/
